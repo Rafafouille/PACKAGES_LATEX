@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc} 
+
+	\usepackage[raccourcis]{Raf_Notations_AF}
+
+
+
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Notations Analyse Fonctionnelle}\\\hrule
+	\end{center}
+
+	\section{Inclusion dans le fichier .tex :}
+
+		\verb!\usepackage[raccourcis]{Raf_Notation_AF}!
+
+		\textbf{Note :} Oui, je sais... l'option \verb!raccourci! est un peu crétine dans le sens où il n'y a que des raccourcis dans ce package.
+								C'est simplement pour avoir une uniformité dans tous mes packages.
+
+	\section{Commandes}
+
+		\noindent
+		\begin{tabular}{|p{0.2\linewidth}|p{0.3\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\MO!	&	\MO	&	``Matière d'\oe uvre'' (raccourci)
+			\\\hline
+				\verb!\MOs!	&	\MOs	&	``Matières d'\oe uvre'' au pluriel (raccourci)
+			\\\hline
+				\verb!\VA!	&	\VA	&	``Valeur ajoutée'' (raccourci)
+			\\\hline
+				\verb!\VAs!	&	\VAs	&	``Matière d'\oe uvre'' au pluriel (raccourci)
+			\\\hline
+		\end{tabular}
+
+	\section{Chaîne Fonctionnelle}
+
+	
+\begin{verbatim}
+\begin{chaineFonctionnelle}
+     \fontsize{1}{1}\selectfont
+     \CFAcquerir{Capteur1\\Capteur2}
+     \CFTraiter{PC\\Automate}
+     \CFAlimenter{Prise\\Transformateur}
+     \CFDistribuer{Hacheur}
+     \CFConvertir{MCC}
+     \CFTransmettre{Réducteur}
+     \CFAgir{Effecteur}
+
+     \CFEnergieEntree{Puissance\\électrique}
+     \CFInfosEntree{Consignes\\utilisateur}
+     \CFInfosSortie{Rapport\\utilisateur}
+     \CFOrdres{Ordres}
+     \CFAcquisition{Données\\récoltées}
+
+     \CFMO{Mon produit}
+     \CFMOVA{Mon produit\\modifié}
+\end{chaineFonctionnelle}
+\end{verbatim}
+
+	
+\begin{chaineFonctionnelle}
+\fontsize{1}{1}\selectfont
+ 	\CFAcquerir{Capteur1\\Capteur2}
+ 	\CFTraiter{PC\\Automate}
+	\CFAlimenter{Prise\\Transformateur}
+	\CFDistribuer{Hacheur}
+	\CFConvertir{MCC}
+	\CFTransmettre{Réducteur}
+	\CFAgir{Effecteur}
+
+	\CFEnergieEntree{Puissance\\électrique}
+	\CFInfosEntree{Consignes\\utilisateur}
+	\CFInfosSortie{Rapport\\utilisateur}
+	\CFOrdres{Ordres}
+	\CFAcquisition{Données\\récoltées}
+
+	\CFMO{Mon produit}
+	\CFMOVA{Mon produit\\modifié}
+\end{chaineFonctionnelle}
+
+
+
+\end{document}
