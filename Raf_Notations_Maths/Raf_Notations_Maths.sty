@@ -1,0 +1,328 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Maths}[2016/05/28]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+
+%\RequirePackage{color}%Pour mettre de la couleur
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{xargs}%Pour arguments optionnels multiples
+\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
+\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
+\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+\RequirePackage{color}
+\RequirePackage{xspace}		%Pour faire des espace après les commandes
+\RequirePackage{xstring}	%Pour faire des remplacements de chaines
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisMaths}%création du booléen
+\setboolean{boolRaccourcisMaths}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\newif\if@RafNotMathRac	\@RafNotMathRactrue
+\DeclareOption{noRaccourci}	{\@RafNotMathRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafMathRac}[1]{\ifthenelse{\boolean{boolRaccourcisMaths}}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+
+
+\newcommand*{\indiceGauche}[2]		{\ensuremath{{\vphantom{#2}}_{#1}{#2}}}
+\newcommand*{\exposantGauche}[2]	{\ensuremath{{\vphantom{#2}}^{#1}{#2}}}
+\newcommand*{\transposee}[1]		{\ensuremath{\exposantGauche{\mathit t}{#1}}}%{\vphantom{#1}}_{\mathit t}{#1}	}}
+\newcommand*{\equivaut}			{\ensuremath{\Leftrightarrow}}
+\if@RafNotMathRac
+\newcommand*{\ssi}			{si et seulement si }
+\newcommand*{\Cte}			{\ensuremath{C^{\text{te}}}}
+\newcommand*{\LR}			\equivaut
+\newcommand*{\E}[1]			{\ensuremath{\cdot10^{#1}}}
+\fi
+
+\newcommand*{\mathbox}[1]		{\fbox{$\displaystyle #1$}}
+
+
+% EQUATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{alignSysteme}[1][c]
+	{\left\lbrace
+		\begin{array}{#1}
+	}
+	{	\end{array}
+	\right.}
+
+% NOMBRES
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\jComplexe}		{\ensuremath{\mathrm{j}}}	%Nombre complexe, initialement un e dans le a (un symbole bizarre)
+\if@RafNotMathRac
+\renewcommand{\j}	\jComplexe	%Nombre complexe, initialement un e dans le a (un symbole bizarre)
+\fi
+
+
+%Opérateurs
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% FONCTION
+%%%%%%%%%%%%%%%%%%%%
+\definecolor{couleurParametres}{rgb}{0.3,0.3,0.3} %un peu gris
+%\newcommand*{\fonction}[2]	{\ensuremath{{#1}{\scriptstyle\color{couleurParametres}{\left(#2\right)}}}\xspace}
+\newcommand*{\fonction}[2]	{\ensuremath{{#1}{\scriptstyle{\left(#2\right)}}}\xspace}
+
+%Fonctions usuelles
+\newcommand*{\reel}[1]		{\f{\mathcal Re}{#1}}	%Partie réelle
+\newcommand*{\imaginaire}[1]	{\f{\mathcal Im}{#1}}	%Partie imaginaire
+
+\if@RafNotMathRac
+\fi
+
+
+\if@RafNotMathRac
+	\newcommand*{\f}		{\fonction}
+	\newcommand*{\atan}[1][]	{\ifthenelse{\equal{#1}{}}
+						{\ensuremath{\text{arctan}}}
+						{\f{\text{arctan}}{#1}}}
+	\renewcommand*{\Re}	\reel	%Partie réelle
+	\renewcommand*{\Im}	\imaginaire	%Partie imaginaire
+\fi
+
+%Derivees
+\newcommandx*{\derivee}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\mathrm{d}^{#1}{#2}}{\mathrm{d}{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{{#4}}}}}
+	\newcommand*{\deriv}		{\derivee}
+%\newcommandx*{\deriv}[4][1=,4=]	{\derivee[#1]{#2}{#3}[#4]}
+\newcommandx*{\deriveePartielle}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\partial^{#1}{#2}}{\partial{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{#4}}}}
+	\newcommand*{\derivP}		{\deriveePartielle}
+%Notations de Landau
+\newcommand*{\bigO}[1]		{\fonction{\mathcal{O}}{#1}}
+	\newcommand*{\grandO}		{\bigO}
+\newcommand*{\smallo}[1]	{\fonction{o}{#1}}
+	\newcommand*{\petito}		{\smallo}
+\if@RafNotMathRac
+	\renewcommand{\O}	{\bigO}
+	\renewcommand{\o}	{\smallo}
+\fi
+
+
+% ENSEMBLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if@RafNotMathRac
+\newcommand*{\R}		{\ensuremath{\mathbb{R}}}
+\newcommand*{\couple}[2]	{\ensuremath{\left(#1,#2\right)}}	%Couple (ex : (U,V) )
+\fi
+\newcommand*{\triplet}[3]	{\ensuremath{\left(#1,#2,#3\right)}}	%Triplet (ex : (U,V,W) )
+\newcommand*{\quadruplet}[4]	{\ensuremath{\left(#1,#2,#3,#4\right)}}	%Triplet (ex : (U,V,W) )
+
+
+
+% GEOMETRIE
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if@RafNotMathRac
+\newcommand*{\segment}[1]	{\ensuremath{\left[#1\right]}}		%Fait un sement
+\newcommand*{\droite}[1]	{\ensuremath{\left(#1\right)}}
+\newcommand*{\arc}[1]		{\ensuremath{\overset{\frown}{#1}}}		%Arc
+\renewcommand*{\angle}[1]	{\ensuremath{\left(\widehat{#1}\right)}} %(Redéfini : la fonction angle correspondait au symbole angle)
+\fi
+
+
+
+% Axes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommandx*{\axes}[6][3=,6=]	{\draw[-triangle 45] (#1,0) -- (#2,0);%
+				\draw[-triangle 45] (0,#4) -- (0,#5);%
+				\node[anchor=west] at (#2,0) {#3};%
+				\node[anchor=east] at (0,#5) {#6};%
+				}
+
+				
+
+
+
+%VECTEURS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Commandes de base
+%-----------------------------
+\newcommandx*{\vecteur}[2][2=]	{\ensuremath{\protect\overrightarrow{{#1}_{#2}}}\xspace}	%Fait un vecteur
+
+\newcommand{\vecteurIndice}[2]	{\vecteur{#1}[#2]} %Identique à vecteur, sauf que l'indice est obligatoire - Fait un vecteur avec un indice (x1, y1...), ou un vecteur simple si indice = espace
+\newcommand{\vInd}[2]		{\vecteurIndice{#1}{#2}} %Raccourci de vecteur Indice	
+
+\newcommand*{\vecteurChamp}[2]	{\ifthenelse{\equal{#2}{}}{\vecteur{#1}}{\fonction{\vecteur{#1}}{#2}}}
+\newcommand*{\vChamp}[2]	{\vecteurChamp{#1}{#2}}
+\newcommandx*{\vChampOpt}[2][2=]	{\vecteurChamp{#1}{#2}}	%Quasi identique à vecteur champ, sauf que le parametre du champ est optionnel
+
+\newcommand*{\bipoint}[2]	{\ensuremath{\vecteur{\segment{#1#2}}}}	%bipoint
+\newcommand*{\vLie}[2]		{\ensuremath{\couple{#1}{#2}}}			%Vecteur lie
+\newcommand*{\vGlissant}[2]	{\ensuremath{\couple{#1}{#2}}}			%Vecteur glissant
+%\newcommandx*{\vColonne}[2][2=]	{\ensuremath{\left( \begin{array}{c} #1 \end{array} \right)_{#2}	}}	%Vecteur colonne (avec coordonnées)
+
+\newcommand*{\RMremplace}[1]{\noexpandarg\StrSubstitute{#1}{;}{\\}}%On la crée juste une fois pour pas s'embeter avec les renewcommand
+\newcommandx*{\vColonne}[3][3=;]	{\renewcommand*{\RMremplace}[1]{\noexpandarg\StrSubstitute{##1}{#3}{\\}}%	}
+						\ensuremath{\left( \begin{array}{c} \RMremplace{#1} \end{array} \right)_{\hspace{-0.1cm}#2}	}
+					}	%Vecteur colonne (avec coordonnées)
+
+%Espaces
+%--------------------------------
+\newcommand*{\eAffine}[1][3]	{\ensuremath{\mathscr{E}^{#1}}}	%Espace affine
+\newcommand*{\eVectoriel}[1][3]	{\ensuremath{E^{#1}}}	%Espace vectoriel
+
+%Bases
+%-------------------------
+\newcommand*{\base}[3]	{\triplet{#1}{#2}{#3}}	%Triplet de vecteurs
+\newcommand*{\bBase}[1][]	{\ensuremath{\bgroup\mathscr{B}_{#1}\egroup}}	%Symbole base portant éventuellement un indice
+\if@RafNotMathRac
+\newcommand*{\bB}[1]		{\bBase[#1]}	%Symbole d'une base avec indice
+\newcommand*{\bxyz}	{\base{\vx{}}{\vy{}}{\vz{}}}
+\newcommand*{\buvw}	{\base{\vu}{\vv}{\vw}}
+\fi
+
+%Repère
+%-------------------------
+\newcommand*{\repere}[4]	{\quadruplet{#1}{#2}{#3}{#4}}	
+\if@RafNotMathRac
+\newcommand*{\rR}[1]		{\ensuremath{R_{#1}}}	%Symbole d'une base
+\fi
+\newcommand*{\rOxyz}		{\repere{O}{\vex}{\vey}{\vez}}
+\newcommand*{\rOuvw}		{\repere{O}{\vu}{\vv}{\vw}}
+\newcommandx*{\repxyz}[2]	{\repere{#1}{\vx{#2}}{\vy{#2}}{\vz{#2}}}
+
+%Operateurs Vectoriel
+%--------------------------
+\newcommand*{\norme}[1]			{\ensuremath{\left\Vert #1 \right\Vert}}	%Norme
+\newcommand*{\prodMixte}[3]		{\ensuremath{\left(#1\wedge#2\right)\cdot#3}}	%produit mixte
+\newcommand*{\doubleProdVect}[3]	{\ensuremath{#1\wedge\left(#2\wedge#3\right)}}	%double produit vectoriel
+\newcommand*{\dbPVect}[3]		{\doubleProdVect{#1}{#2}{#3}}	%double produit vectoriel
+\newcommand*{\scalaire}			{\ensuremath{\cdot}}	%produit scalaire
+\newcommand*{\vectoriel}		{\ensuremath{\wedge}}	%produit scalaire
+\if@RafNotMathRac
+\newcommand*{\abs}[1]			{\ensuremath{\left\vert #1 \right\vert}}	%Valeur absolue
+\newcommand*{\vect}			{\vectoriel}	%produit vectoriel
+\newcommand*{\scal}			{\scalaire}	%produit vectoriel
+\fi
+
+%Vecteurs pré-fabriqués
+%--------------------------------
+
+\newcommand*{\vNul}		{\vecteur{0}}	%vecteur nul
+\newcommand*{\vCte}		{\vecteur{\Cte}}	%vecteur constant
+
+
+\if@RafNotMathRac
+\newcommand*{\ve}[1]{\vecteurIndice{e}{#1}}	%\e_i
+	\newcommand*{\vex}{\ve{x}}	%e_x
+	\newcommand*{\vey}{\ve{y}}	%e_y
+	\newcommand*{\vez}{\ve{z}}	%e_z
+\newcommand*{\vx}[1]{\vecteurIndice{x}{#1}}	%x_i
+\newcommand*{\vy}[1]{\vecteurIndice{y}{#1}}	%y_i
+\newcommand*{\vz}[1]{\vecteurIndice{z}{#1}}	%z_i
+\fi
+
+%\newcommand{\vXzero}{\ensuremath{\vecteur{x_1}}}
+%\newcommand{\vYun}{\ensuremath{\vecteur{y_1}}}
+%\newcommand{\vZun}{\ensuremath{\vecteur{z_1}}}
+
+%\newcommand{\vXun}{\ensuremath{\vecteur{x_1}}}
+%\newcommand{\vYun}{\ensuremath{\vecteur{y_1}}}
+%\newcommand{\vZun}{\ensuremath{\vecteur{z_1}}}
+
+%\newcommand{\vXdeux}{\ensuremath{\vecteur{x_2}}}
+%\newcommand{\vYdeux}{\ensuremath{\vecteur{y_2}}}
+%\newcommand{\vZdeux}{\ensuremath{\vecteur{z_2}}}
+
+
+\if@RafNotMathRac
+\newcommand*{\vn}[1][]		{\vecteur{n}[#1]}
+\newcommand*{\ver}[1][]		{\vChampOpt{e_r}[#1]}
+\fi
+\newcommand*{\vetheta}[1][]	{\vChampOpt{e_\theta}[#1]}
+
+\if@RafNotMathRac
+\newcommand*{\vu}[1][]		{\vecteur{u}[#1]}
+\newcommand*{\vut}[1][]		{\vecteurChamp{u}{t}}
+\newcommand*{\vU}[1][]		{\vecteur{U}[#1]}
+	\newcommand*{\ux}	{\ensuremath{u_x}}	%coordonnees ux
+	\newcommand*{\uy}	{\ensuremath{u_y}}	%coordonnees uy
+	\newcommand*{\uz}	{\ensuremath{u_z}}	%coordonnees uz
+
+\newcommand*{\vv}[1][]		{\vecteur{v}[#1]}
+\newcommand*{\vvt}[1][]		{\vecteurChamp{v}{t}}
+\newcommand*{\vV}[1][]		{\vecteur{V}[#1]}
+	\newcommand*{\vvx}	{\ensuremath{v_x}}	%coordonnees vx
+	\newcommand*{\vvy}	{\ensuremath{v_y}}	%coordonnees vy
+	\newcommand*{\vvz}	{\ensuremath{v_z}}	%coordonnees vz
+
+
+\newcommand*{\vw}[1][]		{\vecteur{w}[#1]}
+\newcommand*{\vW}[1][]		{\vecteur{W}[#1]}
+	\newcommand*{\wx}	{\ensuremath{\omega_x}}	%coordonnees wx
+	\newcommand*{\wy}	{\ensuremath{\omega_y}}	%coordonnees wx
+	\newcommand*{\wz}	{\ensuremath{\omega_z}}	%coordonnees wx
+\fi
+
+\newcommand{\vOM}[1][]		{\vChampOpt{OM}[#1]}
+\if@RafNotMathRac
+	\newcommand*{\Mx}{\ensuremath{m_x}}	\newcommand{\mx}{\Mx}
+	\newcommand*{\My}{\ensuremath{m_y}}	\newcommand{\my}{\My}
+	\newcommand*{\Mz}{\ensuremath{m_z}}	\newcommand{\mz}{\Mz}
+\fi
+
+\newcommand*{\vOP}[1][]	{\vChampOpt{OP}[#1]}
+\newcommand*{\vAB}[1][]	{\vChampOpt{AB}[#1]}
+\newcommand*{\vBA}[1][]	{\vChampOpt{BA}[#1]}
+\newcommand*{\vOA}[1][]	{\vChampOpt{OA}[#1]}
+\newcommand*{\vOB}[1][]	{\vChampOpt{OB}[#1]}
+
+\if@RafNotMathRac
+	\newcommand*{\vi}[1]	{\vecteur{i}[#1]}
+	\newcommand*{\vj}[1]	{\vecteur{j}[#1]}
+	\newcommand*{\vk}[1]	{\vecteur{k}[#1]}
+\fi
+
+%\newcommand*{\vg}[1][]	{\vChampOpt{g}[#1]}
+
+%\newcommand{\vUun}	{\vecteurIndice{U}{1}}
+%\newcommand{\vUn}	{\vecteurIndice{U}{n}}
+%\newcommand{\vVun}	{\vecteurIndice{U}{1}}
+%\newcommand{\vVp}	{\vecteurIndice{V}{p}}
+
+%\newcommand{\OP}[1][]	{	\vOP[#1]	}
+%\newcommand{\AB}[1][]	{	\vAB[#1]	}
+%\newcommand{\BA}[1][]	{	\vBA[#1]	}
+%\newcommand{\OA}[1][]	{	\vOA[#1]	}
+%\newcommand{\OB}[1][]	{	\vOB[#1]	}
+
+
+
+
+
+				
+%=======================================================
+% Pour encadrer des lignes dans \begin{align}\end{align}
+%=======================================================
+
+\makeatletter
+ \newlength{\boxed@align@width}
+ \newcommand{\boxedalign}[2]{
+ #1 & \setlength{\boxed@align@width}{\widthof{$\displaystyle#1$}+0.1389em+\fboxsep+\fboxrule}
+ \hspace{-\boxed@align@width}\addtolength{\boxed@align@width}{-\fboxsep-\fboxrule}\boxed{\vphantom{#1}\hspace{\boxed@align@width}#2}}
+\makeatother
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!
+% CETTE DERNIERE COMMANDE DOIT RESTER A LA FIN !!!!!!
+
+
+\endinput
