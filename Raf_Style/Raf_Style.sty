@@ -1,0 +1,679 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Style}[2016/05/30]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+%\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+%\RequirePackage{xargs}%Pour arguments optionnels multiples
+%\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
+%\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
+%\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+\RequirePackage{import}
+\RequirePackage{graphicx}
+\RequirePackage{qrcode}
+
+
+%Initialisation des booleens 
+%\newboolean{boolRaccourcisMaths}%création du booléen
+%\setboolean{boolRaccourcisMaths}{false}%affectation de la valeur false
+
+
+%déclaration des options de l'extension
+%\DeclareOption{}{}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+
+%Mise à zéro des variables
+%==================================
+
+	\newcommand*	{\partie}		{Sciences Industrielles pour l'Ingénieur}
+	\newcommand*	{\titre}		{}
+	\newcommand*	{\sousTitre}		{}
+	\newcommand*	{\numero}		{}
+	\newcommand*	{\auteur}		{Raphaël ALLAIS}
+	\newcommand*	{\etablissement}	{Lycée Gustave Eiffel de Dijon}
+	\newcommand*	{\discipline}		{Sciences de L'ingénieur}
+	\newcommand*	{\classe}		{Classe préparatoire P.T.S.I.}
+	\newcommand*	{\anneeScolaire}	{2015 - 2016}
+	\newcommand*	{\icone}		{logoeiffel.png}
+	\newcommand*	{\duree}		{10 minutes}
+	\newcommand*	{\jour}			{\today}
+	\newcommand*	{\competences}		{}
+	\newcommand*	{\dessineCompetences}	{}
+	\newcommand*	{\pointeCompetences}	{}
+	\newcommand*	{\QRcode}		{}
+	\newcommand*	{\iconeQRcode}		{\iconeAmpoule}
+
+%Page de garde
+%============================
+
+%	\subimport{}{}
+	%\input{./page_de_garde.tex}
+	
+
+%Mise en page des titres de parties
+%======================================
+
+	%Sections
+	\renewcommand*	{\thesection}	{\Roman{section}}	%Numérotation en chiffres romains
+	\titleformat	{\section}[hang]{\LARGE\bfseries}{\thesection.}{1em}{}[\rule{\linewidth}{.5pt}]
+	%\newcommand*	{\sectionbreak}	{\clearpage}%Change de page a chaque section
+	%\titlespacing*{\section}{0px}{20cm}{\wordsep}
+
+	%Subsection
+	\renewcommand*	{\thesubsection}	{\arabic{subsection}}%Numérotation en chiffres arabes
+	\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
+	\titleformat	{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{\underline}[]
+
+	%Subsubsection
+	\renewcommand	{\thesubsubsection}	{\alph{subsubsection})}%Numérotation en lettres
+	\titlespacing*	{\subsubsection}{1cm}{0.5cm}{0.3cm}
+
+
+
+
+	
+	
+% Mise en page
+%================================
+	\renewcommand{\baselinestretch}{0.9}		%Inter ligne
+	\setlength{\parskip}{0.3em}	%Inter-paragraphe
+	\setlist{itemsep=0mm}
+	
+
+
+%Table des matieres
+%==========================
+
+	%\setlength{\cftbeforesecskip}{0.5ex}
+	\newcommand*	{\nocontentsline}[3]{}
+	\newcommand*	{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+	\renewcommand{\cftsecindent}{0 em}	%Indentation des sections
+	\renewcommand{\cftsecnumwidth}{3 em}	%Intentation du titres des sections APRES le numero
+
+
+%Entete / Pied de page
+%===========================
+
+	\pagestyle{fancy}	%On veut utiliser les entetes/pieds
+	\rhead{\titre}		%Entete gauche --> Titre du document
+	\lhead{\textsc{\partie}}	%Entete droite --> Titre de la sections
+
+	\renewcommand*{\footrulewidth}{1px}
+	\lfoot{\etablissement}	%Pied de gauche --> Etablissement
+	\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> n°de page
+	\rfoot{\ifthenelse{\equal{\anneeScolaire}{}}{\classe }{\classe \\Année \anneeScolaire}}
+
+
+%Captions (légendes)
+%==========================================
+	\captionsetup{	labelsep	=	endash,
+			justification	=	centering,
+			labelfont	=	bf,
+			textfont	=	{small, it}}
+	
+
+
+%Booleen d'affichage vectoriel ou bitmap
+\newboolean{imageEnVectoriel}
+\setboolean{imageEnVectoriel}{true}	%Petite condition qui choisit entre 2 formats d'image
+
+
+
+
+
+
+%\newcommand{\makingOf}[1]{\ifthenelse{\boolean{makingOf}}{}{#1}}
+
+
+
+
+
+
+
+%MATH
+%==========================
+
+%Mode DISPLAY STYLE dans les tableau
+	%%%% debut macro %%%%
+	\newenvironment{disarray}%
+		{\everymath{\displaystyle\everymath{}}\array}%
+		{\endarray}
+	%%%% fin macro %%%%
+	
+	%Pour ne pas apparaitre dans le menu
+	%exemple :
+	% \tocless\subsection{blabla}
+
+
+
+%ITEMIZE
+%==========================
+	\AtBeginDocument{%
+		\renewcommand{\labelitemi}	{\textbullet}
+		\renewcommand{\labelitemii}	{$\circ$}%
+		\renewcommand{\labelitemiii}	{>}%
+		\renewcommand{\labelitemiv}	{-}%
+		\setlist[itemize]{leftmargin=*}
+		}
+
+
+
+%Page de garde
+%=================================
+%\newcommand*{\includeLogo}{\begingroup \includegraphics{logoeiffel.png} \endgroup}
+
+\newcommand*{\makePageDeGarde}	{\begingroup 
+			\begin{titlepage}	%Début de la page de garde
+			%=======================================================
+				\begin{center} %----------------------------------------
+					%partie superieure
+					%......................
+					\begin{center}
+						\begin{tabular}{p{0.2\linewidth}p{0.6\linewidth}}
+							\begin{minipage}{\linewidth}
+								\begin{center}
+									\includegraphics[width=100px]{\icone}
+								\end{center}
+							\end{minipage}
+						&
+							\begin{minipage}{\linewidth}
+								\begin{center}
+									\textsc{\LARGE \etablissement}\\[1cm]
+									\textsc{\Large \classe}\\[0.5cm]
+									\textsc{\Large Année \anneeScolaire}\\[1cm]
+								\end{center}
+							\end{minipage}
+						\end{tabular}
+					\end{center}
+					\vspace{0.6cm}
+					%Titre
+					%..........................
+					\rule{\linewidth}{0.5mm}\\[0.4cm]
+					{\textsc{\partie}}\\[0.4cm]
+					{ \huge \bfseries \ifthenelse{\equal{\numero}{}}{}{\numero\ -} \titre }\\[0.4cm]
+					\rule{\linewidth}{0.5mm}\\[1cm]
+					%Sommaire
+					%.............................
+					\begin{minipage}{0.9\linewidth}
+						\tableofcontents
+					\end{minipage}
+					%Partie inférieur
+					%.........................
+					\vfill
+					%Objectif
+					%........................
+					%\ifthenelse{\isundefined{\competences}}
+					
+					
+					\hfill
+					
+					
+					\ifx \competences \@empty
+						
+					\else
+							\begin{objectif*}
+								\begin{itemize}
+									\competences
+								\end{itemize}
+							\end{objectif*}
+					\fi
+					
+					%Compétences + QR code
+						\ifthenelse{\equal{\QRcode}{}}
+							{}
+							{%
+								\hfill%
+								\begin{tikzpicture}%
+									\node[anchor=center] (QRCODE) at (0,0) {\qrcode[forget,nolinks,height=7.4em,level=4,version=5]{\QRcode}};%
+									%\fill[color=white] (-4.8em,1.16em) rectangle (-2.59em,-1.05em);
+									%\fill[color=white] (-1.0em,-1.0em) rectangle (1.0em,1.0em);%
+									\iconeQRcode%
+								\end{tikzpicture}%
+							}
+					\hfill
+						\ifthenelse{\equal{\dessineCompetences}{}}
+							{}
+							{{\tiny\diagrammeCompetences[\dessineCompetences][\pointeCompetences]}\vspace{0.5cm}\hfill}
+					\phantom.
+
+% 					\begin{center}
+% 						\begin{minipage}{0.95\linewidth}
+% 								\begin{bclogo}[couleur=fond_objectif,couleurBord=bord_objectif,arrondi=0.2,logo=\bcoutil]{Objectif 132 : 456}
+% 12345698465
+% 								\end{bclogo}
+% 						\end{minipage}
+% 					\end{center}
+
+
+					%Affiche Version
+					\ifthenelse{\boolean{versionProf}}
+						{\afficheLogoVersionProf}
+						{}
+					\ifthenelse{\boolean{versionCorrigee}}
+						{\afficheLogoVersionCorrigee}
+						{}
+
+
+						
+					% Bottom of the page
+					{\large \jour}
+				\end{center}	%-----------------------------------------
+			%=======================================================
+
+			
+
+
+			\end{titlepage}		%Fin de la page de garde
+	\endgroup}
+
+
+\newcommand*{\afficheLogoVersionProf}
+	{
+		%Version prof
+		\begin{textblock}{2}(1.7,1) %
+			\bgroup%
+				\Huge%
+				\color{red}%
+				\rotatebox{20}
+					{
+						\begin{minipage}{5cm}
+							\centering\fcolorbox{red}{white}{Version Prof}\newline%
+							{\fcolorbox{red}{white}{\normalsize\today}\\\ }
+						\end{minipage}
+					}%
+			\egroup%
+		\end{textblock}
+	}
+
+\newcommand*{\afficheLogoVersionCorrigee}
+	{
+		%Version corrigee
+		\begin{textblock}{2}(1.2,1) %
+			\bgroup%
+				\Huge%
+				\color{red}%
+				\rotatebox{20}
+					{
+						\begin{minipage}{5cm}
+							\centering\fcolorbox{red}{white}{\qquad Corrigé\qquad}%\newline%
+							%{\fcolorbox{red}{white}{\normalsize\today}\\\ }
+						\end{minipage}
+					}%
+			\egroup%
+		\end{textblock}
+	}
+	
+	
+\newcommand{\makeTitre}
+		{
+			\begin{center}
+				{\textsc{\partie}}\\[0.4cm]
+				{ \huge \bfseries \ifthenelse{\equal{\numero}{}}{}{\numero\ -} \titre }\\[0.4cm]
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+		}
+
+\newcommand{\makeEnteteControle}
+		{
+			\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+
+			\begin{center}
+				\huge \textsc{Contrôle}
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+			%
+			\ifthenelse{\boolean{versionProf}}
+				{\afficheLogoVersionProf}
+				{}
+			\ifthenelse{\boolean{versionCorrigee}}
+				{\afficheLogoVersionCorrigee}
+				{}
+		}
+
+\newcommand{\makeEnteteDocumentReponse}
+		{
+			\begin{tabular}{m{0.4\linewidth}m{0.6\linewidth}}
+				\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+				&
+				\begin{center}
+					\huge \textsc{Document-Réponse}
+				\end{center}
+			\end{tabular}
+
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+
+			%Affiche Version
+			\ifthenelse{\boolean{versionProf}}
+				{\afficheLogoVersionProf}
+				{}
+			\ifthenelse{\boolean{versionCorrigee}}
+				{\afficheLogoVersionCorrigee}
+				{}
+
+		}
+
+\newcommand{\makeEnteteDM}
+		{
+			%\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+
+			\begin{center}
+				\large \textsc{Devoir - Maison}\\
+				\huge \titre
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+			
+			\ifthenelse{\boolean{versionCorrigee}}
+				{\afficheLogoVersionCorrigee}
+				{}
+
+		}
+		
+\newcommand{\makeEnteteSoutien}
+		{
+			\begin{center}
+				\large \textsc{Soutien}\\[0.3cm]
+				\small\textsc{\partie}\\
+				\huge \titre
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+		}
+		
+		
+\newcommand{\makeEnteteCorrige}
+		{
+			\begin{center}
+				\large \textsc{Corrigé}\\[0.3cm]
+				\small\textsc{\partie}\\
+				\huge \titre
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+		}
+		
+\newcommand{\makeEnteteTIPE}
+		{
+			\begin{center}
+				\large \textsc{TIPE}\\[0.3cm]
+				\small\textsc{\partie}\\
+				\huge \titre
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+		}
+
+\newcommand*{\makePageDeGardeDS}[1]	{\begingroup 
+			\begin{titlepage}	%Début de la page de garde
+			%=======================================================
+				\begin{center} %----------------------------------------
+					%partie superieure
+					%......................
+					\begin{center}
+						\jour
+					\end{center}
+					\vspace{0.7cm}
+
+					%Titre
+					%..........................
+					\rule{\linewidth}{0.5mm}\\[0.4cm]
+					{\textsc{\partie}}\\[0.4cm]
+					{ \huge \bfseries \ifthenelse{\equal{\numero}{}}{}{\numero\ -} \titre }
+					\ifthenelse{\equal{\sousTitre}{}}{}{\\[0.4cm]\emph{\large\gras{\sousTitre}}}\\[0.4cm]
+					\rule{\linewidth}{0.5mm}\\[1cm]
+
+					\begin{center}
+						\huge\emph{\gras{Sujet}}
+					\end{center}
+					%Sommaire
+					%.............................
+					\setcounter{tocdepth}{1}
+					\begin{minipage}{0.9\linewidth}
+						\tableofcontents
+					\end{minipage}
+					
+					%Partie inférieur
+					%.........................
+					\vfill
+					{#1}
+
+					\vfill%{\large \jour}
+				\end{center}	%-----------------------------------------
+			%=======================================================
+			\end{titlepage}		%Fin de la page de garde
+	\endgroup}
+
+
+
+
+
+
+
+
+% DOC RESSOURCE (a n'utiliser qu'à la fin du document)
+%===============================================
+
+\newcommand{\annexe}[1]
+		{
+			\clearpage
+			\newpage
+			\section{Annexe : #1}
+			%Subsection
+			\renewcommand*	{\thesubsection}{DR\arabic{subsection}}%Numérotation en chiffres arabes
+			\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
+			\newcommand*	{\subsectionbreak}	{\clearpage}%Change de page a chaque section
+			\titleformat	{\subsection}{\centering\normalfont\Large\bfseries}{\thesubsection\ -- }{0.em}{}[]
+
+		}
+		
+		
+		
+		
+		
+% Icones pour le QR-CODE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand* {\iconeAmpoule}{
+\begin{scope}[shift={(-1.1em,-1.1em)},scale=0.07]
+\fill(4,0) rectangle (7,3);
+
+\fill(3,3) rectangle (4,4);
+\fill(7,3) rectangle (8,4);
+
+\fill(2,4) rectangle (3,8);
+\fill(8,4) rectangle (9,8);
+\fill(3,8) rectangle (8,9);
+
+\fill(5,3) rectangle (6,5);
+\fill(4,5) rectangle (5,6);
+\fill(5,6) rectangle (6,7);
+\fill(6,5) rectangle (7,6);
+
+\fill(1,2) rectangle (2,3);
+\fill(9,2) rectangle (10,3);
+\fill(0,6) rectangle (1,7);
+\fill(10,6) rectangle (11,7);
+\fill(1,9) rectangle (2,10);
+\fill(9,9) rectangle (10,10);
+\fill(5,10) rectangle (6,11);
+\end{scope}
+}
+
+
+\newcommand*	{\iconeSwitch}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/interrupteur.png}};
+}
+
+
+\newcommand*	{\iconeVerin}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/verin.png}};
+}
+
+
+\newcommand*	{\iconeEngrenage}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/engrenage.png}};
+}
+
+\newcommand*	{\iconeRadar}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/radar.png}};
+}
+
+\newcommand*	{\iconeRegulateur}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/regulateur.png}};
+}
+
+\newcommand*	{\iconeGraphe}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/graphe.png}};
+}
+
+\newcommand*	{\iconeLaplace}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/laplace.png}};
+}
+
+\newcommand*	{\iconeComparateur}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/comparateur.png}};
+}
+
+\newcommand*	{\iconeRegle}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/regle.png}};
+}
+
+\newcommand*	{\iconeMetro}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.15em]{LogoQR-Codes/metro.png}};
+}
+
+\newcommand*	{\iconeComparateurMecanique}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.0em]{LogoQR-Codes/metro2.png}};
+}
+
+\newcommand*	{\iconeEcrou}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/ecrou.png}};
+}
+
+\newcommand*	{\iconeClavette}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/clavette.png}};
+}
+
+\newcommand*	{\iconePivot}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/roulement.png}};
+}
+
+\newcommand*	{\iconeVecteur}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/vecteur.png}};
+}
+
+\newcommand*	{\iconeTorseur}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/torseur.png}};
+}
+
+\newcommand*	{\iconePivotCinematique}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/pivot.png}};
+}
+
+\newcommand*	{\iconeVitessePoint}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/vitessePoint.png}};
+}
+
+\newcommand*	{\iconeManege}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/manege.png}};
+}
+
+\newcommand*	{\iconeChaise}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/chaise.png}};
+}
+
+\newcommand*	{\iconeRoue}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/roue.png}};
+}
+
+\newcommand*	{\iconePas}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/pas.png}};
+}
+
+\newcommand*	{\iconeBatterie}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/batterie.png}};
+}
+
+\newcommand*	{\iconeMoteur}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/moteur.png}};
+}
+
+\newcommand*	{\iconeHacheur}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/hachage.png}};
+}
+
+\newcommand*	{\iconeEprouvette}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/eprouvette.png}};
+}
+
+\newcommand*	{\iconeFer}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/fer.png}};
+}
+
+\newcommand*	{\iconeLamage}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/lamage.png}};
+}
+
+\newcommand*	{\iconeMoule}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/moule.png}};
+}
+
+\newcommand*	{\iconeCiseaux}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/ciseaux.png}};
+}
+
+\newcommand*	{\iconeComposite}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/composite.png}};
+}
+
+\newcommand*	{\iconePerceuse}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/perceuse-colonne.png}};
+}
+
+\newcommand*	{\iconeForcePoutre}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/force-poutre.png}};
+}
+
+\newcommand*	{\iconeGravite}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/gravite.png}};
+}
+
+\newcommand*	{\iconeEquilibre}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/equilibre.png}};
+}
+
+\newcommand*	{\iconePatin}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/patin.png}};
+}
+
+\newcommand*	{\iconeEnergie}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/energie.png}};
+}
+
+\newcommand*	{\iconeReseau}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/reseau.png}};
+}
+
+\newcommand*	{\iconeCombinatoire}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/combinatoire.png}};
+}
+
+\newcommand*	{\iconeStm}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/stm.png}};
+}
+
+\newcommand*	{\iconeSinus}{
+	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.2em]{LogoQR-Codes/sinus.png}};
+}
+\endinput
