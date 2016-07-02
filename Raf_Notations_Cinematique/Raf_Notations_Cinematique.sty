@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cinematique
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Cinematique}[2016/07/02]
+ 
+
+\RequirePackage{Raf_Notations_Torseurs}		
+\RequirePackage{Raf_Notations_Maths}	
+\RequirePackage{tikz}%Pour faire des dessins
+\usetikzlibrary{calc}	
+
+
+
+
+
+%déclaration des options de l'extension
+\newif\if@RafNotCinRac	\@RafNotCinRactrue
+\DeclareOption{noRaccourci}	{\@RafNotCinRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
+\ProcessOptions
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+%Simplification écriture :
+%Raccourcis
+\if@RafNotCinRac
+\newcommand*{\CIR}	{centre instantané de rotation}
+\newcommand*{\cir}	{\CIR}
+\newcommand*{\Cir}	{Centre instantané de rotation}
+
+%DDL
+\newcommand*{\Rx}	{\ensuremath{R_x}}
+\newcommand*{\Ry}	{\ensuremath{R_y}}
+\newcommand*{\Rz}	{\ensuremath{R_z}}
+\newcommand*{\Tx}	{\ensuremath{T_x}}
+\newcommand*{\Ty}	{\ensuremath{T_y}}
+\newcommand*{\Tz}	{\ensuremath{T_z}}
+%Géométrie
+\fi
+\newcommand*{\solide}[1]	{\ensuremath{\left(#1\right)}}		%Solide
+\if@RafNotCinRac
+\newcommand*{\sS}[1]		{\solide{S_{#1}}}	%Solides S1, S2, ...
+\fi
+%Repères
+%Déjà fait en math
+
+%coordonnées variables fonction du temps
+\if@RafNotCinRac
+\newcommand*{\xt}	{\fonction{x}{t}}
+\newcommand*{\yt}	{\fonction{y}{t}}
+\newcommand*{\zt}	{\fonction{z}{t}}
+\newcommand*{\rt}	{\fonction{r}{t}}
+\newcommand*{\thetat}	{\fonction{\theta}{t}}
+%\newcommand*{\phit}	{\fonction{\phi}{t}}
+\newcommand*{\psit}	{\fonction{\psi}{t}}
+\newcommand*{\alphat}	{\fonction{\alpha}{t}}
+\newcommand*{\betat}	{\fonction{\beta}{t}}
+\newcommand*{\gammat}	{\fonction{\gamma}{t}}
+
+\newcommand*{\xtp}	{\fonction{\dot{x}}{t}}
+\newcommand*{\ytp}	{\fonction{\dot{y}}{t}}
+\newcommand*{\ztp}	{\fonction{\dot{z}}{t}}
+\newcommand*{\rtp}	{\fonction{\dot{r}}{t}}
+\newcommand*{\thetatp}	{\fonction{\dot\theta}{t}}
+\newcommand*{\phitp}	{\fonction{\dot\phi}{t}}
+\newcommand*{\psitp}	{\fonction{\dot\psi}{t}}
+\newcommand*{\alphatp}	{\fonction{\dot\alpha}{t}}
+\newcommand*{\betatp}	{\fonction{\dot\beta}{t}}
+\newcommand*{\gammatp}	{\fonction{\dot\gamma}{t}}
+
+
+\newcommand*{\xp}	{\ensuremath{\dot x}}
+\newcommand*{\yp}	{\ensuremath{\dot y}}
+\newcommand*{\zp}	{\ensuremath{\dot z}}
+\newcommand*{\rp}	{\ensuremath{\dot r}}
+\newcommand*{\thetap}	{\ensuremath{\dot \theta}}
+\newcommand*{\phip}	{\ensuremath{\dot \phi}}
+\newcommand*{\psip}	{\ensuremath{\dot \psi}}
+\newcommand*{\alphap}	{\ensuremath{\dot \alpha}}
+\newcommand*{\betap}	{\ensuremath{\dot \beta}}
+\newcommand*{\gammap}	{\ensuremath{\dot \gamma}}
+
+
+\newcommand*{\xtpp}	{\fonction{\ddot{x}}{t}}
+\newcommand*{\ytpp}	{\fonction{\ddot{y}}{t}}
+\newcommand*{\ztpp}	{\fonction{\ddot{z}}{t}}
+\newcommand*{\rtpp}	{\fonction{\ddot{r}}{t}}
+\newcommand*{\thetatpp}	{\fonction{\ddot\theta}{t}}
+\newcommand*{\phitpp}	{\fonction{\ddot\phi}{t}}
+\newcommand*{\psitpp}	{\fonction{\ddot\psi}{t}}
+\newcommand*{\alphatpp}	{\fonction{\ddot\alpha}{t}}
+\newcommand*{\betatpp}	{\fonction{\ddot\beta}{t}}
+\newcommand*{\gammatpp}	{\fonction{\ddot\gamma}{t}}
+
+\newcommand*{\xpp}	{\ensuremath{\ddot x}}
+\newcommand*{\ypp}	{\ensuremath{\ddot y}}
+\newcommand*{\zpp}	{\ensuremath{\ddot z}}
+\newcommand*{\rpp}	{\ensuremath{\ddot r}}
+\newcommand*{\thetapp}	{\ensuremath{\ddot \theta}}
+\newcommand*{\phipp}	{\ensuremath{\ddot \phi}}
+\newcommand*{\psipp}	{\ensuremath{\ddot \psi}}
+\newcommand*{\alphapp}	{\ensuremath{\ddot \alpha}}
+\newcommand*{\betapp}	{\ensuremath{\ddot \beta}}
+\newcommand*{\gammapp}	{\ensuremath{\ddot \gamma}}
+\fi
+
+%Paramétrage
+\newcommandx*{\parametrageAngulaire}[8][2=30,8=]
+	{
+	\begin{tikzpicture}
+		\draw [->,very thick] (0,0) -- (5.5em,0) ;
+		\draw [->,very thick] (0,0) -- (0,5.5em) ;
+		\draw [anchor=north west] (5.5em,0) node {#3};
+		\draw [anchor=south west] (0,5.5em) node {#4};
+		\ifthenelse{\equal{#8}{}}
+			{\draw [anchor=north east] (0,0) node {#5};}
+			{\draw [anchor=north east] (0,0) node {#5=#8};}
+		\begin{scope} [rotate=#2]
+			\draw [->] (0,0) -- (5.5em,0) ;
+			\draw [->] (0,0) -- (0,5.5em) ;
+			\draw [anchor=south west] (5.5em,0) node {#6};
+			\draw [anchor=north east] (0,5.5em) node {#7};
+		\end{scope}
+		\draw [->](2.75em,0) arc (0:#2:2.75em);
+		\draw [anchor=center]({#2/2}:3.85em) node {$#1$};
+		\draw[->,rotate=90] (2.75em,0) arc (0:#2:2.75em);
+		\draw [rotate=90,anchor=center]({#2/2}:3.85em) node {$#1$};
+		\draw [fill=white] (0,0) circle (0.4em);
+		\fill [black] (0,0) circle (0.15em);
+	\end{tikzpicture}
+	}
+
+%Vecteur de base
+\newcommand*{\vutheta}	{\f {\vecteur{u}}{\theta}}
+\newcommand*{\vvtheta}	{\f {\vecteur{v}}{\theta}}
+\newcommand*{\vwthetaphi}	{\f {\vecteur{w}}{\theta}}
+\newcommand*{\vwthetaphibis}	{\f {\vecteur{w'}}{\theta}}
+
+
+%Vitesse
+\newcommandx*{\vVitesse}[3]		{\ifthenelse{\equal{#2}{}}{\vecteur{V_{\left(#1/#3\right)}}}{\vecteur{V_{\left(#1\in#2/#3\right)}}}}%{\vecteurChamp{V}{#2/#3}}{\vecteurChamp{V}{#1\in#2/#3}}}
+\newcommandx*{\vAcceleration}[3]	{\ifthenelse{\equal{#2}{}}{\vecteur{\Gamma_{\left(#1/#3\right)}}}{\vecteur{\Gamma_{\left(#1\in#2/#3\right)}}}}
+\newcommand*{\vRotation}[2]		{\vecteur{\Omega_{\left(#1/#2\right)}}}
+\newcommand*{\vPivotement}[2]		{\vecteur{\Omega^p_{\left(#1/#2\right)}}}
+\newcommand*{\vRoulement}[2]		{\vecteur{\Omega^r_{\left(#1/#2\right)}}}
+
+%Déplacement de vitesse
+\newcommand*{\deplaceVitesse}[4]	{\ensuremath{	\vVitesse{#3}{#1}{#2}+\vecteur{#4#3}\wedge\vRotation{#1}{#2}	}}	%\deplaceVitesse{Solid}{Referentiel}{Pdepart}{Parrivee}
+
+%petits déplacements
+\newcommandx*{\vDeplacement}[3]		{\ifthenelse{\equal{#2}{}}{\vecteur{U_{\left(#1/#3\right)}}}{\vecteur{U_{\left(#1\in#2/#3\right)}}}}
+\if@RafNotCinRac
+\newcommandx*{\vDep}			{\vDeplacement}
+\fi
+\newcommandx*{\vPetitDeplacement}[3]	{\ifthenelse{\equal{#2}{}}{\vecteur{dU_{\left(#1/#3\right)}}}{\vecteur{dU_{\left(#1\in#2/#3\right)}}}}
+\newcommandx*{\vPetitDep}		{\vPetitDeplacement}
+\newcommand{\vPetiteRotation}[2]	{\vecteur{d\theta_{\left(#1/#2\right)}}}
+\newcommand{\vPetiteRot}		{\vPetiteRotation}
+
+
+
+%Torseur
+\newcommand*{\VCallig}				{\ensuremath{	\mathscr{V}	}}	%Symbole du torseur cinematique
+\newcommand*{\tCinematique}[3][]		{\ensuremath{	\torseur{\VCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur cinematique
+\if@RafNotCinRac
+\newcommand*{\tV}[3][]				{\tCinematique[#1]{#2}{#3}}	%torseur cinematique
+\fi
+
+\newcommand{\DCallig}				{\ensuremath{	\mathscr{D}	}}	%Symbole du torseur petit déplacement
+\newcommand{\tPetitDeplacement}[3][]	{\ensuremath{	\torseur{\DCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur petit déplacement
+\newcommand{\tPetitDep}[3][]		{\tPetitDeplacement[#1]{#2}{#3}}
+\if@RafNotCinRac
+\newcommand{\tD}[3][]			{\tPetitDeplacement[#1]{#2}{#3}}
+\fi
+
+\endinput
