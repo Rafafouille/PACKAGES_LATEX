@@ -1,0 +1,122 @@
+\documentclass[a4paper,10pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc}
+	\usepackage{hyperref}
+
+	\usepackage{Raf_Notations_Autom}
+
+	\everymath{\displaystyle}
+	
+	
+	\newcommand{\rac}{({\color{red}Raccourci})}
+	\newcommand{\ren}{({\color{blue}Renommé})}
+	
+	
+	
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Notations d'automatisme}\\\hrule
+	\end{center}
+	(Version du 14/08/16)
+
+	\section{Packages requis}
+	%-------------------------------------
+
+		\begin{itemize}
+			\item \href{https://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour faire (notamment) des commandes à plusieurs arguments optionnels.
+			\item \href{https://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles.
+			\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Package de notations mathématiques.
+			\item \href{http://www.ctan.org/pkg/pgf}{\textbf{tikz}} : Package pour faire des dessins (avec library \verb!calc!)
+		\end{itemize}
+
+	\section{Appel du package}
+	%-------------------------------------
+
+		Le package est appelé en début de document par la commande :
+		\begin{verbatim}
+\usepackage{Raf_Notations_Autom}
+		\end{verbatim}
+
+		
+		% PAS ENCORE DE RACCOURCIS !!!!!!!!!!!!!!!!!!!!
+		
+% 	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
+% 	De plus, certaines commandes ont été rebaptisées.
+% 	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
+% 	Pour ne pas créer ces raccourcis/renommage, il faut rentrer l'option \verb!noRaccourci! à l'appel du package.
+% 
+% 	\begin{verbatim}
+% usepackage[noRaccourci]{Raf_Notations_Autom}
+% 	\end{verbatim}
+
+
+	\section{Numération}
+	%-------------------------------------------
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!lBase{20}[n]!			&	\lBase{20}[n]			&	Nombre dans une base $n$
+		\\\hline
+			\verb!lBase{20}!			&	\lBase{20}			&	idem, avec par défaut : $n=10$
+		\\\hline
+			\verb!\binaire{100111}!			&	\binaire{100111}		&	Raccourci de \verb!\lBase{...}[2]!
+		\\\hline
+			\verb!\lBin{100111}!			&	\lBin{100111}			&	Raccourci direct de \verb!\binaire!
+		\\\hline
+			\verb!\hexadecimal{1A2B3C}!		&	\hexadecimal{1A2B3C}		&	Raccourci de \verb!\lBase{...}[16]!
+		\\\hline
+			\verb!\lHex{1A2B3C}!			&	\lHex{1A2B3C}			&	Raccourci direct de \verb!\hexadecimal!
+		\\\hline
+			\verb!\poseDivision! \verb!{312}{100}{12}{3}!			&	\poseDivision{312}{100}{12}{3}			&	Pose une division
+		\\\hline
+			\verb!\poseDivision! \verb!{5}{2}{1}! \verb!{\poseDivision{2}{2}{0}! \verb!{\poseDivision{1}{2}{1}! \verb!{0}}}!			&	\poseDivision{5}{2}{1}{\poseDivision{2}{2}{0}{\poseDivision{1}{2}{1}{0}}}			&	Pose plusieurs divisions en cascade
+		\\\hline
+	\end{tabular}
+
+	\section{Opérateurs Logiques}
+	%-------------------------------------------
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!a\ET b!			&	a\ET b			&	Opérateur ``et''
+		\\\hline
+			\verb!a\AND b!			&	a\AND b			&	idem que \verb!\ET!
+		\\\hline
+			\verb!a\OU b!			&	a\OU b			&	Opérateur ``ou''
+		\\\hline
+			\verb!a\OR b!			&	a\OR b			&	idem que \verb!\OU!
+		\\\hline
+			\verb!\NON{a\OU b}!		&	\NON{a\OU b}		&	Opérateur ``non''
+		\\\hline
+			\verb!\NOT{b}!			&	\NOT{b}			&	idem que \verb!\NON!
+		\\\hline
+			\verb!\NOR ab!			&	\NOR ab			&	Opérateur ``non-ou''
+		\\\hline
+			\verb!\NAND ab!			&	\NAND ab		&	Opérateur ``non-et''
+		\\\hline
+			\verb!\XOR ab!			&	\XOR ab			&	Opérateur ``ou-exclusif''
+		\\\hline
+			\verb!\XNOR ab!			&	\XNOR ab		&	Opérateur ``et-inclusif''
+		\\\hline
+	\end{tabular}
+
+	\section{Séquentiel}
+	%-------------------------------------------
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\frontMontant{a}!			&	\frontMontant{a}		&	Front montant d'un événement.
+		\\\hline
+			\verb!\frontDescendant{a}!			&	\frontDescendant{a}	&	Front descendant d'un événement.
+		\\\hline
+	\end{tabular}
+\end{document}

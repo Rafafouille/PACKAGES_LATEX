@@ -1,0 +1,74 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Autom}[2012/06/13]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}		%If-Then-Else package
+\RequirePackage{xargs}		%arguments optionnels mutliples
+\RequirePackage{amsmath}			%Pour faire des maths (\text notamment)	
+\RequirePackage{tikz}			%Pour faire des dessins
+	\usetikzlibrary{calc}
+
+% %Initialisation des booleens 
+% \newboolean{boolRaccourcisAutom}%création du booléen
+% \setboolean{boolRaccourcisAutom}{false}%affectation de la valeur false
+% 
+% %déclaration des options de l'extension
+% \DeclareOption{noRaccourcis}{\setboolean{boolRaccourcisAutom}{true}}
+% \ProcessOptions
+
+
+%déclaration des options de l'extension
+\newif\if@RafNotAutomRac	\@RafNotAutomRactrue
+\DeclareOption{noRaccourci}	{\@RafNotAutomRacfalse}
+\ProcessOptions
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+%NUMERATION
+\newcommandx{\lBase}[2][2=10]	{\ensuremath{{\mathrm{#1}}_{\ifthenelse{\equal{#2}{}}{}{(#2)}}}}
+\newcommand{\binaire}[1]	{\lBase{#1}[2]}
+\newcommand{\lBin}		\binaire
+\newcommand{\hexadecimal}[1]	{\lBase{#1}[16]}
+\newcommand{\lHex}		\hexadecimal
+
+
+%Division
+\newcommand{\poseDivision}[4]{\begin{tikzpicture}%
+\node[anchor=south east] (numerateur) at (0,0) {#1};%
+\node[anchor=south west] (denominateur) at (0,0) {#2};%
+\node[anchor=north east] (reste) at (0,0) {#3};%
+\node[anchor=north west] (quotient) at (0,0) {#4};%
+\draw (numerateur.north east) -- (reste.south east);%
+\draw (denominateur.south east) -- (denominateur.south west);%
+\end{tikzpicture}}
+
+
+
+%OPERATEURS
+\newcommand{\ET}	{\ensuremath{{\tiny\mathbf{\cdot}}}}
+\newcommand{\AND}	{\ET}
+\newcommand{\OU}	{\ensuremath{\text{\raisebox{0.5ex}{\tiny \textbf{+}}}}}
+\newcommand{\OR}	{\OU}
+\newcommand{\NON}[1]	{\ensuremath{\overline{#1}}}
+\newcommand{\NOT}	\NON
+\newcommand{\NOR}[2]	{\NON{{#1}\OU{#2}}}
+\newcommand{\NAND}[2]	{\NON{{#1}\ET{#2}}}
+\newcommand{\XOR}[2]	{\ensuremath{{#1}\oplus{#2}}}
+\newcommand{\XNOR}[2]	{\ensuremath{{#1}\odot{#2}}}
+
+
+%GRAFCET
+\newcommand{\frontMontant}[1]		{\ensuremath{\uparrow{#1}}}
+\newcommand{\frontDescendant}[1]	{\ensuremath{\downarrow{#1}}}
+\endinput
