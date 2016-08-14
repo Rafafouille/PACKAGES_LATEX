@@ -1,0 +1,242 @@
+\documentclass[a4paper,12pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc} 
+	\usepackage{hyperref}
+
+	\usepackage{Raf_Notations_Actions-Meca}
+
+
+
+
+
+	\newcommand{\rac}{({\color{red}Raccourci})}
+	\newcommand{\ren}{({\color{blue}Renommé})}
+
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Actions mécaniques}\\\hrule
+	\end{center}
+
+(Version du 14/04/16)
+
+	\section{Packages requis}
+	%-------------------------------------
+
+	\begin{itemize}
+		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation à choix multiple,
+		\item \href{http://www.ctan.org/pkg/color}{\textbf{Raf\_Notations\_Torseurs}} : Package de mise en forme des torseurs
+	\end{itemize}
+
+	\section{Appel du package}
+	%-------------------------------------
+
+	Le package est appelé en début de document par la commande :
+	\begin{verbatim}
+\usepackage{Raf_Notations_Actions-Meca}
+	\end{verbatim}
+
+	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide à taper !).
+	De plus, certaines commandes ont été rebaptisée.
+	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+
+	\begin{verbatim}
+usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
+	\end{verbatim}
+
+
+	\section{Torseur des actions mécanique}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\torseurActionsMeca{S_1}! \verb!{S_2}!		&	\torseurActionsMeca{S_1}{S_2}		&	Torseur de l'action mécanique de $S_1$ sur $S_2$.
+			\\\hline
+				\verb!\torseurActionsMeca[2]! \verb!{S_1}{S_2}!	&	\torseurActionsMeca[2]{S_1}{S_2}	&	Torseur de l'action mécanique de $S_1$ sur $S_2$ avec un exposant pour le différencier d'un autre torseur.
+			\\\hline
+				\verb!\tAM{S_1}{S_2}!					&	\tAM{S_1}{S_2}				&	Raccourci direct de \verb!\torseurActionsMeca!. \rac
+			\\\hline
+		\end{tabular}
+
+
+	\section{Forces et résultantes d'actions mécaniques}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\vForce{S_1}{S_2}!				&	\vForce{S_1}{S_2}			&	Vecteur force de $S_1$ sur $S_2$.
+			\\\hline
+				\verb!\vForce{}{2}!					&	\vForce{}{2}				&	Vecteur force n°2.
+			\\\hline
+				\verb!\vForce[P]{S_1}{S_2}!				&	\vForce[P]{S_1}{S_2}			&	Vecteur force avec changement de lettre.
+			\\\hline
+				\verb!\vF!						&	\vF					&	Raccourci de \verb!\vForce[F]{}{}!. \rac
+			\\\hline
+				\verb!\vF[2]!						&	\vF[2]					&	Raccourci de \verb!\vForce[F]{}{}! avec indice. \rac
+			\\\hline
+				\verb!\vForceNormale{S_1}{S_2}!				&	\vForceNormale{S_1}{S_2}		&	Force normale de contact de $S_1$ sur $S_2$.
+			\\\hline
+				\verb!\vFN{S_1}{S_2}!					&	\vFN{S_1}{S_2}				&	Raccourci de \verb!\vForceNormale!. \rac
+			\\\hline
+				\verb!\vForceTangentielle{S_1}! \verb!{S_2}!		&	\vForceTangentielle{S_1}{S_2}		&	Force tangentielle de contact de $S_1$ sur $S_2$.
+			\\\hline
+				\verb!\vFT{S_1}{S_2}!					&	\vFT{S_1}{S_2}				&	Raccourci de \verb!\vForceTangentielle!. \rac
+			\\\hline
+				\verb!\resultanteActionsMeca! \verb!{S_1}{S_2}!	&	\resultanteActionsMeca{S_1}{S_2}	&	Résultante des actions mécaniques.
+			\\\hline
+				\verb!\resultanteActionsMeca[2]! \verb!{S_1}{S_2}!	&	\resultanteActionsMeca[2]{S_1}{S_2}	&	Résultante des actions mécaniques avec exposant.
+			\\\hline
+				\verb!\resAM{S_1}{S_2}!					&	\resAM{S_1}{S_2}			&	Raccourci direct de \verb!\resultanteActionsMeca!.
+			\\\hline
+		\end{tabular}
+
+	\section{Moments d'actions mécaniques}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\momentActionsMeca! \verb!{A}{S_1}{S_2}!		&	\momentActionsMeca{A}{S_1}{S_2}	&	Vecteur moment de l'action de $S_1$ sur $S_2$ au point $A$.
+			\\\hline
+				\verb!\momentActionsMeca! \verb!{A}{\vLie{A}{\vF}}{}!	&	\momentActionsMeca{A}{\vLie{A}{\vF}}{}	&	Vecteur moment associé à un vecteur lié (le $3^{eme}$ argument est vide).
+			\\\hline
+				\verb!\momentActionsMeca! \verb!{A}{S_1}{S_2}!		&	\momentActionsMeca{A}{S_1}{S_2}	&	Vecteur moment de l'action de $S_1$ sur $S_2$ au point $A$.
+			\\\hline
+				\verb!\momentActionsMeca[1]! \verb!{A}{S_1}{S_2}!	&	\momentActionsMeca[1]{A}{S_1}{S_2}	&	Vecteur moment de l'action de $S_1$ sur $S_2$ au point $A$ avec exposant.
+			\\\hline
+				\verb!\momAM{A}{S_1}{S_2}!				&	\momAM{A}{S_1}{S_2}		&	Raccourci direct de \verb!\momentActionsMeca!
+			\\\hline
+				\verb!\momentRoulement{A}! \verb!{S_1}{S_2}!		&	\momentRoulement{A}{S_1}{S_2}		&	Moment de roulement.
+			\\\hline
+				\verb!\momentPivotement{A}! \verb!{S_1}{S_2}!		&	\momentPivotement{A}{S_1}{S_2}		&	Momet de pivotement.
+			\\\hline
+		\end{tabular}
+
+	\section{Densité d'effort}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\vContrainte{X}{\vn}! 			&	\vContrainte{X}{\vn}		&	Vecteur contrainte de normale \vn, au point $X$.
+			\\\hline
+				\verb!\vContrainte{}{\vn}!				&	\vContrainte{}{\vn}		&	Idem sans le point.
+			\\\hline
+				\verb!\vContrainte[\sigma]{X}! \verb!{\vn}!		&	\vContrainte[\sigma]{X}{\vn}	&	Idem avec changement de notation.
+			\\\hline
+				\verb!\vForceRepartie{S_1}{S_2}!			&	\vForceRepartie{S_1}{S_2}		&	Force de contact ``répartie'' sur une surface, entre $(S_1)$ et $(S_2)$ (par défaut au point $P$).
+			\\\hline
+				\verb!\vForceRepartie{S_1}{S_2}! \verb![X]!		&	\vForceRepartie{S_1}{S_2}[X]		&	Idem en précisant le point.
+			\\\hline
+				\verb!\vForceRepartie[\sigma]! \verb!{S_1}{S_2}!		&	\vForceRepartie[\sigma]{S_1}{S_2}	&	Idem en changeant le symbole.
+			\\\hline
+				\verb!\vFRep{S_1}{S_2}!					&	\vFRep{S_1}{S_2}			&	Raccourci direct de \verb!\vForceRepartie!.
+			\\\hline
+				\verb!\vFRep{S_1}{S_2}[P]!				&	\vFRep{S_1}{S_2}[P]			&	Raccourci direct de \verb!\vForceRepartie! en précisant le point.
+			\\\hline
+				\verb!\vFRep[\sigma]{S_1}{S_2}!				&	\vFRep[\sigma]{S_1}{S_2}		&	Raccourci direct de \verb!\vForceRepartie! en précisant changeant le symbole.
+			\\\hline
+				\verb!\vContrainteNormale{S_1}! \verb!{S_2}!			&	\vContrainteNormale{S_1}{S_2}		&	Contrainte normale de contact entre $(S_1)$ et $(S_2)$ (par défaut au point $P$).
+			\\\hline
+				\verb!\vContrainteNormale{S_1}! \verb!{S_2}[X]!		&	\vContrainteNormale{S_1}{S_2}[X]	&	Idem avec changement de point.
+			\\\hline
+				\verb!\vCN{S_1}{S_2}!						&	\vCN{S_1}{S_2}				&	Raccourci direct de \verb!\vContrainteNormale!. \rac
+			\\\hline
+				\verb!\vCN{S_1}{S_2}[X]!					&	\vCN{S_1}{S_2}[X]			&	Idem avec changement de point. \rac
+			\\\hline
+		\end{tabular}
+
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\vContrainteTangentielle! \verb!{S_1}{S_2}!		&	\vContrainteTangentielle{S_1}{S_2}	&	Contrainte tangentielle de contact entre $(S_1)$ et $(S_2)$ (par défaut au point $P$).
+			\\\hline
+				\verb!\vContrainteTangentielle! \verb!{S_1}{S_2}[X]!		&	\vContrainteTangentielle{S_1}{S_2}[X]	&	Idem avec changement de point.
+			\\\hline
+				\verb!\vCT{S_1}{S_2}!						&	\vCT{S_1}{S_2}				&	Raccourci direct de \verb!\vContrainteTangentielle!. \rac
+			\\\hline
+				\verb!\vCT{S_1}{S_2}[X]!					&	\vCT{S_1}{S_2}[X]			&	Idem avec changement de point. \rac
+			\\\hline	
+		\end{tabular}
+
+
+
+
+	\section{Tribologie}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\coefficientFrottement! 	&	\coefficientFrottement	&	Coefficient de frottement
+			\\\hline
+				\verb!\coefFr! 			&	\coefFr			&	Raccourci de \verb!\coefficientFrottement!
+			\\\hline
+				\verb!\fFrot! 			&	\fFrot			&	Raccourci de \verb!\coefficientFrottement!
+			\\\hline
+				\verb!\angleFrottement! 	&	\angleFrottement	&	Angle de frottement
+			\\\hline
+				\verb!\aFr! 			&	\aFr			&	Raccourci de \verb!\angleFrottement! \rac
+			\\\hline
+				\verb!\coefficientAdherence! 	&	\coefficientAdherence	&	Coefficient d'adhérence
+			\\\hline
+				\verb!\coefAdh! 		&	\coefAdh		&	Raccourci de \verb!\coefiicientAdherence!
+			\\\hline
+				\verb!\fAdh! 			&	\fAdh			&	Raccourci de \verb!\coefiicientAdherence!
+			\\\hline
+				\verb!\coefResPivotement! 	&	\coefResPivotement	&	Coefficient de résistance au pivotement
+			\\\hline
+				\verb!\coefResRoulement! 	&	\coefResRoulement	&	Coefficient de résistance au roulement
+			\\\hline
+		\end{tabular}
+
+
+	\section{Hyper/Isostatisme}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\inconnuesStatiques!	&	\inconnuesStatiques	&	Nombre d'inconnues statiques total
+			\\\hline
+				\verb!\inconnuesStatiques[i]!	&	\inconnuesStatiques[i]	&	Nombre d'inconnues statiques pour la liaison $i$
+			\\\hline
+				\verb!\iS!			&	\iS			&	Raccourci de \verb!\inconnuesStatiques! \rac
+			\\\hline
+				\verb!\inconnuesCinematiques!	&	\inconnuesCinematiques	&	Nombre d'inconnues cinématiques total
+			\\\hline
+				\verb!\inconnuesCinematiques[i]!&	\inconnuesCinematiques[i]&	Nombre d'inconnues cinématiques pour la liaison $i$
+			\\\hline
+				\verb!\iC!			&	\iC			&	Raccourci de \verb!\inconnuesCinematiques! \rac
+			\\\hline
+				\verb!\nCyclomatique!		&	\nCyclomatique		&	Nombre de boucles cyclomatiques
+			\\\hline
+		\end{tabular}
+
+
+	\section{Autre...}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\vConstanteGravite!	&	\vConstanteGravite	&	Vecteur constante de gravité
+			\\\hline
+				\verb!\vg!			&	\vg			&	Raccourci de \verb!\vConstanteGravite! \rac
+			\\\hline
+		\end{tabular}
+\end{document}
