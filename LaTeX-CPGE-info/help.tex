@@ -1,0 +1,677 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{CPGE-info}
+
+
+\newcommand{\rac}{{\color{red}(\emph{Raccourci})}}
+\newcommand{\ren}{{\color{blue}(\emph{Renommé})}}
+
+\begin{document}
+
+
+	\begin{center}
+		\Huge Aide pour le package CPGE-info
+	\end{center}
+	
+	\hrule
+
+
+	\section{appel du package}
+	%----------------------------------
+	
+	Le fichier doit être copié :
+	\begin{itemize}
+		\item soit dans le même dossier que le fichier \verb!.tex! à compiler ;
+		\item soit dans le dossier commun de tous les packages (pour Windows, je crois que c'est :\\ \verb! c:/Program Files/MikTeX x.x/tex/latex!) puis,
+		dans une console, lancer la commande \verb!texhash! pour mettre la liste des paquets à jour.
+	\end{itemize}
+
+	Ensuite, il faut simplement appeler le package en entête du fichier \verb!.tex! de la manière suivante :
+	\begin{verbatim}
+\usepackage{CPGE-info}
+	\end{verbatim}
+	
+	Un certain nombre de commandes sont des \gras{raccourcis}, qui peuvent rentrer en conflit avec d'autres packages.
+	Ces commandes sont notées avec \rac.
+	Pour les annuler, on pourra appeler le package avec l'option << \verb![noRaccourci]! >> :
+	\begin{verbatim}
+\usepackage[noRaccourci]{CPGE-info}
+	\end{verbatim}
+	
+	De plus, certaines commandes existent déjà et ont été renommées. Dans ce cas, elle seront indiquées par \ren.
+
+	\section{Configuration du document}
+	%----------------------------------------
+
+		\begin{tabular}{|m{0.3\linewidth}|m{0.2\linewidth}|m{0.4\linewidth}|}
+			\hline
+				CODE LaTex			&	RENDU				&	COMMENTAIRES
+			\\\hline\hline
+				\verb!\version{prof}!		&					&	Passe en << version prof >> (corrigés, commentaires...)
+			\\\hline
+				\verb!\version{eleve}!		&					&	(élève ou autre...) repasse en version << eleve >>
+			\\\hline
+				\verb!\numero{123}!		&					&	Définit le numéro du cours (vide par défaut -- a mettre en entête)
+			\\\hline
+				\verb!\getNumeroCours!		&	\numero{123}\getNumeroCours	&	Renvoie le numéro du cours (précédemment affecté)
+			\\\hline
+				\verb!\getNumero!		&	\numero{123}\getNumero		&	Identique à \verb!\getNumeroCours!
+			\\\hline
+				\verb!\classe{PT*}!		&					&	Définit la classe (<< \getClasse\ >> par défaut -- a mettre en entête)
+			\\\hline
+				\verb!\getClasse!		&	\classe{PT*}\getClasse		&	Renvoie la classe (précédemment affecté)
+			\\\hline
+				\verb!\partie{Simulation}!	&	\partie{Simulation}		&	Définit la partie de cours dans l'année (vide par défaut -- a mettre en entête)
+			\\\hline
+				\verb!\getPartie!		&	\partie{Simulation}\getPartie	&	Renvoie la partie de cours dans l'année (précédemment affecté)
+			\\\hline
+				\verb!\annee{2011}!		&					&	Définit l'année (<< \getAnnee\ >> par défaut -- a mettre en entête)
+			\\\hline
+				\verb!\getAnnee!		&	\annee{2011}\getAnnee		&	Renvoie l'année (précédemment affectée)
+			\\\hline
+				\verb!\titre{Dérivation numérique}!		&			&	Définit le titre du cours (vide par défaut -- a mettre en entête)
+			\\\hline
+				\verb!\competences{\item compet.1! \verb!\item compet.2}!&		&	Définit les compétences sous forme de liste (vide par défaut)
+			\\\hline
+				\verb!\begin{itemize}! \verb!\getListeCompetences! \verb!\end{itemize}!	&	\competences{\item compet.1\item compet.2}\begin{itemize}\getListeCompetences\end{itemize}	&	Renvoie la liste des compétences (attention : sans les begin et end)
+			\\\hline
+		\end{tabular}
+
+\numero{123}
+\classe{PT*}
+\partie{Simulation}
+\annee{2011}
+\titre{Dérivation numérique}
+\competences{\item compet.1\item compet.2}
+
+\newpage
+	\section{Entêtes de documents}
+	%----------------------------------------
+	
+		\verb!\makeEnteteCours!
+		
+		\makeEnteteCours
+		
+		\verb!\makeEnteteTD!
+		
+		\makeEnteteTD
+		
+		\verb!\makeEnteteDM!
+		
+		\makeEnteteDM
+		
+		\verb!\makeEnteteDS!
+		
+		\makeEnteteDS
+		
+		\verb!\makeEnteteCorrige!
+		
+		\makeEnteteCorrige
+		
+		\verb!\makeEnteteControle!
+		
+		\makeEnteteControle
+		
+	\section{Raccourcis commandes}
+	%--------------------------------------
+	
+		\begin{tabular}{|m{0.3\linewidth}|m{0.2\linewidth}|m{0.4\linewidth}|}
+			\hline
+				CODE LaTex			&	RENDU				&	COMMENTAIRES
+			\\\hline\hline
+				\verb!\gras{texte en gras}!	&	\gras{texte en gras}		&	Raccourci de \verb!\textbf!
+			\\\hline
+				\verb!\italic{texte en italic}!	&	\italic{texte en italic}		&	Raccourci de \verb!\emph!
+			\\\hline
+				\verb!\souligne{texte souligné}!&	\souligne{texte souligné}		&	Raccourci de \verb!\underline!
+			\\\hline
+				\verb!\fig{Label}!&	\fig{Label-Figure}		&	Référence vers une figure. Raccourci de \verb!(fig.\ref{Label})!
+			\\\hline
+				\verb!$1\er$!	&	$1\er$		&	Symbole de premier
+			\\\hline
+				\verb!$1\ere$!	&	$1\ere$		&	Symbole de première
+			\\\hline
+				\verb!$2\eme$!	&	$2\eme$		&	Symbole de n-ième
+			\\\hline
+				\verb!a\tabulation b!	&	a\tabulation b		&	Tabulation de $1cm$ par défaut
+			\\\hline
+				\verb!a\tabulation[2cm] b!	&	a\tabulation[2cm] b		&	Tabulation de $2cm$
+			\\\hline
+				\verb!a\tab b!	&	a\tab b		&	Raccourci de \verb!\tabulation! \rac
+			\\\hline
+				\verb!a\tab[2cm] b!	&	a\tab[2cm] b		&	Raccourci de \verb!\tabulation!  \rac
+			\\\hline
+				\verb!\bigO{n}!	&	\bigO{n}		&	Grand ``O'' (Notation de Landeau)
+			\\\hline
+				\verb!\O{n}!	&	\O{n}		&	Raccourci \rac\ren
+			\\\hline
+				\verb!\smallO{n}!	&	\smallo{n}		&	Petit ``o'' (Notation de Landeau)
+			\\\hline
+				\verb!\o{n}!	&	\o{n}		&	Raccourci \rac\ren
+			\\\hline
+				\verb!\variable{n}!	&	\variable{n}		&	Notation d'une variable
+			\\\hline
+				\verb!\var{n}!	&	\var{n}		&	Raccourci de Variable \rac
+			\\\hline
+				\verb!\quoteVar{id}!	&	\quoteVar{id}		&	Mise en évidence d'une variable.
+			\\\hline
+				\verb!\quotevar{id}!	&	\quoteVar{id}		&	Identique à \verb!\quoteVar! (sans majuscule)
+			\\\hline
+				\verb!\qvar{id}!		&	\qvar{id}		&	Identique à \verb!\quoteVar! \rac
+			\\\hline
+				\verb!\qVar{id}!		&	\qVar{id}		&	Identique à \verb!\quoteVar! \rac
+			\\\hline
+				\verb!\qvr{id}!		&	\qvr{id}		&	Identique à \verb!\quoteVar! \rac
+			\\\hline
+		\end{tabular}
+
+		
+	\section{Numération}
+	%--------------------------------------
+	
+	
+		\begin{tabular}{|m{0.3\linewidth}|m{0.2\linewidth}|m{0.4\linewidth}|}
+			\hline
+				CODE LaTex			&	RENDU				&	COMMENTAIRES
+			\\\hline\hline
+				\verb!\lBase{101010}[2]!	&	\lBase{101010}[2]		&	Format d'un nombre dans une base donnée (décimal par défaut)
+			\\\hline
+				\verb!\binaire{101010}!		&	\binaire{101010}		&	Format binaire
+			\\\hline
+				\verb!\Bin{101010}!		&	\Bin{101010}		&	Raccourci de \verb!\binaire!
+			\\\hline
+				\verb!\octal{1234}!		&	\octal{1234}		&	Format octal
+			\\\hline
+				\verb!\Oct{1234}!		&	\Oct{1234}		&	Raccourci de \verb!\octal!
+			\\\hline
+				\verb!\decimal{1234}!		&	\decimal{1234}		&	Format décimal
+			\\\hline
+				\verb!\Dec{1234}!		&	\Dec{1234}		&	Raccourci de \verb!\decimal!
+			\\\hline
+				\verb!\hexadecimal{1A2B}!	&	\hexadecimal{1A2B}		&	Format hexadécimal
+			\\\hline
+				\verb!\Hex{1A2B}!		&	\Hex{1A2B}		&	Raccourci de \verb!\hexadecimal!
+			\\\hline
+				\verb!\poseDivision{num}{denom}! \verb!{reste}{quotient}!	&	\poseDivision{num}{denom}{reste}{quotient}		&	Division posée
+			\\\hline
+				\verb!\poseDivision{7}{2}{1}{3}!	&	\poseDivision{7}{2}{1}{3}		&	Exemple de division
+			\\\hline
+				\verb!\poseDivision{6}{2}{0}{! \verb!\poseDivision{3}{2}{1}{! \verb!\poseDivision{1}{2}{1}{0}!  \verb!}! \verb!}!	&	\poseDivision{6}{2}{0}{\poseDivision{3}{2}{1}{\poseDivision{1}{2}{1}{0}}}		&	Divisions en cascades
+			\\\hline
+		\end{tabular}
+		
+		
+	\section{Les questions / réponses}
+	%-----------------------------------------
+	
+		\verb!\question{Quelle est la question ?}!
+		
+		\question{Quelle est la question ?}
+		
+		\verb!\question{Une deuxième question ?}!
+		
+		\question{Une deuxième question ?}
+		
+		\verb!\resetQuestions!
+		
+		\verb!\question{Remise à zéro des questions ?}!
+		
+		\resetQuestions
+		\question{Remise à zéro des questions ?}
+		
+	\section{Les boites}
+	%----------------------------
+	
+		\subsection{Les définitions}
+		%.............................
+		
+		\begin{verbatim}
+\begin{definition}
+	Ceci est une définition
+\end{definition}
+		\end{verbatim}
+
+\begin{definition}
+	Ceci est une définition
+\end{definition}
+
+		\begin{verbatim}
+\begin{definition}[Titre]
+	Ceci est une définition avec un titre
+\end{definition}
+		\end{verbatim}
+		
+\begin{definition}[Titre]
+	Ceci est une définition avec un titre
+\end{definition}
+
+
+		\begin{verbatim}
+\begin{definition}[Titre][nobreak=true]
+	Ceci est une définition avec option passée à BClogo
+	(ici : pour ne passer casser la boite en 2 dans la version 3 de bclogo...)
+\end{definition}
+		\end{verbatim}
+		
+\begin{definition}[Titre][nobreak=true]
+	Ceci est une définition avec option passée à BClogo
+	(ici : pour ne passer casser la boite en 2 dans la version 3 de bclogo...)
+\end{definition}
+
+		\begin{verbatim}
+\begin{definition*}[Titre]
+	Ceci est une définition avec un titre et sans numéro
+\end{definition*}
+		\end{verbatim}
+		
+\begin{definition*}[Titre]
+	Ceci est une définition avec un titre et sans numéro
+\end{definition*}
+
+
+		\begin{verbatim}
+\begin{definitions}[Titre]
+	\item Ceci est une liste de définitions
+	\item attention au << s >> de << definitions >>
+\end{definitions}
+		\end{verbatim}
+		
+\begin{definitions}[Titre]
+	\item Ceci est une liste de définitions
+	\item attention au << s >> de << definitions >>
+\end{definitions}
+
+
+		\begin{verbatim}
+\begin{definitions*}[Titre]
+	\item Ceci est une liste de définitions
+	\item attention au << s >> de << definitions >>
+\end{definitions*}
+		\end{verbatim}
+		
+\begin{definitions*}[Titre]
+	\item Combo !
+	\item Liste de définitions, sans numéro !
+\end{definitions*}
+
+
+
+
+
+
+
+		\subsection{Les propriétés}
+		%.............................
+
+		Le principe est le même que pour les définitions !
+		
+		\begin{verbatim}
+\begin{propriete}[Titre]
+	Ceci est une propriété avec un titre
+\end{propriete}
+		\end{verbatim}
+		
+\begin{propriete}[Titre]
+	Ceci est une propriété avec un titre
+\end{propriete}
+
+
+
+
+
+		\subsection{Les exemples}
+		%.............................
+
+		Le principe est le même que pour les définitions !
+		
+		\begin{verbatim}
+\begin{exemple}[Titre]
+	Ceci est un exemple avec un titre
+\end{exemple}
+		\end{verbatim}
+		
+\begin{exemple}[Titre]
+	Ceci est un exemple avec un titre
+\end{exemple}
+
+		\subsection{Les remarques}
+		%.............................
+
+		Le principe est le même que pour les définitions !
+		
+		\begin{verbatim}
+\begin{remarque}[Titre]
+	Ceci est une remarque avec un titre
+\end{remarque}
+		\end{verbatim}
+		
+\begin{remarque}[Titre]
+	Ceci est une remarque avec un titre
+\end{remarque}
+
+
+		\subsection{Important}
+		%.............................
+
+		La, il n'y a qu'une seule boite (pas comme ``définition'')
+		
+		\begin{verbatim}
+\begin{important}[Titre]
+	Ceci est une chose importante avec un titre
+\end{important}
+		\end{verbatim}
+		
+\begin{important}[Titre]
+	Ceci est une chose importante avec un titre
+\end{important}
+
+
+
+		\subsection{Les compétences}
+		%.............................
+
+			\begin{verbatim}
+\competences{\item compet.1 \item compet.2}
+
+\begin{boiteCompetences}
+	\getListeCompetences
+\end{boiteCompetences}
+			\end{verbatim}
+
+		
+		
+			\bgroup
+			\competences{\item compet.1 \item compet.2}
+			\begin{boiteCompetences}
+				\getListeCompetences
+			\end{boiteCompetences}
+			\egroup
+			
+			
+		\subsection{Les exercices}
+		%.............................
+
+		Les exercices peuvent être définis sous forme de boite ou sous forme de sous-section (au choix...)
+		
+			\subsubsection{Sous forme de boite :}
+		
+		\begin{verbatim}
+\begin{exercice}[Exo1]
+	Ceci est un exercice.
+	\question{Quelle est la question ?}
+	\question{Quelle est la réponse ?}
+\end{exercice}
+\begin{exercice}[Exo2]
+	\question{Est-ce que le compteur de question se remet à zéro tout seul ?}
+\end{exercice}
+		\end{verbatim}
+		
+\begin{exercice}[Exo1]
+	Ceci est un exercice.
+	\question{Quelle est la question ?}
+	\question{Quelle est la réponse ?}
+\end{exercice}
+\begin{exercice}[Exo2]
+	\question{Est-ce que le compteur de question se remet à zéro tout seul ?}
+\end{exercice}
+
+			\subsubsection{Sous forme de sous-section :}
+
+\verb!\sectionExercice{Nouvel exercice sous forme de sous-section (au sens de LaTex)}!
+
+\verb!\question{$1\ere$ question}!
+
+\verb!\question{$2\eme$ question}!
+
+\verb!\question{$3\eme$ question}!
+
+\sectionExercice{Nouvel exercice sous forme de sous-section (au sens de LaTex)}
+\question{$1\ere$ question}
+\question{$2\eme$ question}
+\question{$3\eme$ question}
+
+
+		\subsection{Les réponses}
+		%.............................
+
+			Les réponse fonctionne conjointement avec la commande \verb!\version! (voir plus haut).
+			Elle affiche (ou non) la réponse en rouge.
+			Si on ne veut pas afficher la réponse, il est possible de mettre un texte de remplacement en option.
+			Par défaut de cette option, en mode élève, le texte sera invisible, mais prendra de la place sur la page.
+		\begin{verbatim}
+\version{eleve}
+\question{Comment rendre une reponse invisible ?}
+\reponse{comme ceci !}
+
+\version{prof}
+\question{Et là, peut-on voir la réponse ?}
+\reponse{Oui, on peut la voir !}
+
+\question{Et si je veux un certain texte pour les élèves, et un autre pour le prof ?}
+\version{prof}
+\reponse{Réponse pour le prof}[Texte pour les élèves]
+
+\version{eleve}
+\reponse{Réponse pour le prof}[Texte pour les élèves]
+		\end{verbatim}
+
+\version{eleve}
+\question{Comment rendre une reponse invisible ?}
+\reponse{comme ceci !}
+
+\version{prof}
+\question{Et là, peut-on voir la réponse ?}
+\reponse{Oui, on peut la voir !}
+
+\question{Et si je veux un certain texte pour les élèves, et un autre pour le prof ?}
+\version{prof}
+\reponse{Réponse pour le prof}[Texte pour les élèves]
+
+\version{eleve}
+\reponse{Réponse pour le prof}[Texte pour les élèves]
+
+
+\vspace{1cm}Pour les réponses faisant plusieurs lignes, on pourra utiliser l'environnement :
+		\begin{verbatim}
+
+\begin{grosseReponse}
+	Réponse sur plusieurs ligne...
+\end{grosseReponse}
+
+ou éventuellement :
+\begin{bigReponse}
+	Ca marche aussi !
+\end{bigReponse}
+		\end{verbatim}
+		
+\version{prof}
+\begin{grosseReponse}
+	Réponse sur plusieurs ligne...
+\end{grosseReponse}
+
+ou éventuellement :
+\begin{bigReponse}
+	Ca marche aussi !
+\end{bigReponse}
+
+	\paragraph{Les pointillés :}
+	
+	Pour pallier aux problèmes de la commande \verb!\dotfill! (qui nécessite qu'il y ait d'autres caractères sur la même ligne), voici la commande \verb!\pointilles! :
+	\begin{verbatim}
+\pointilles\\
+\pointilles
+	\end{verbatim}
+	
+
+\noindent\pointilles\\
+\pointilles
+
+	\vspace{0.5cm}Avec une longueur définie (\verb!\linewidth! par défaut) :
+	\begin{verbatim}
+\pointilles[3cm]\\
+\pointilles[3cm]
+	\end{verbatim}
+	
+
+\noindent\pointilles[3cm]\\
+\pointilles[3cm]
+
+	\vspace{0.5cm}Avec un interligne défini : ($0.5cm$ par défaut) :
+	\begin{verbatim}
+\pointilles[1cm][2cm]\\
+\pointilles[3cm][2cm]
+	\end{verbatim}
+	
+\noindent\pointilles[1cm][2cm]\\
+\pointilles[3cm][2cm]
+
+
+	\section{algèbre relationnelle}
+	%=========================
+	
+		\begin{tabular}{|m{0.3\linewidth}|m{0.2\linewidth}|m{0.4\linewidth}|}
+			\hline
+				CODE LaTex			&	RENDU				&	COMMENTAIRES
+			\\\hline\hline
+				\verb!\selection{a>b}{R}!	&	\selection{a>b}{R}		&	La sélection (en algèbre relationnelle)
+			\\\hline
+				\verb!\selection{a\is 1\and! \verb!c\is 2}{R}! 		&	\selection{a\is 1\and b\is 2}{R}		&	Idem avec une mise en forme un poil mieux sur les conditions. \verb!\and! a été renommé \ren
+			\\\hline
+				\verb!\selection{a\sup 1\and! \verb!c\inf 2}{R}! 	&	\selection{a\sup 1\and b\inf 2}{R}		&	Idem. \verb!\sup! et \verb!\inf! ont été renommé \ren
+			\\\hline
+				\verb!\selection{a\supeg 1\and! \verb!c\infeg 2}{R}! 	&	\selection{a\supeg 1\and b\infeg 2}{R}		&	Idem
+			\\\hline
+				\verb!\projection{attr1,attr2}{R}!	&	\projection{attr1,attr2}{R}		&	La projection (en algèbre relationnelle)
+			\\\hline
+				\verb!\renommage{attr1\to attr2}{R}!	&	\renommage{attr1\to attr2}{R}		&	Le renommage. \verb!\to! a été renommé \ren
+			\\\hline
+				\verb!\join!	&	\join		&	La jointure (raccourci de la fonction \verb!join!)
+			\\\hline
+				\verb!$\dom{R}$!	&	$\dom{R}$		&	Domaine d'une relation
+			\\\hline
+		\end{tabular}
+
+
+	\section{Les extraits de code}
+	%================================
+	
+
+		\subsection{Pseudo-code}
+		%-------------------------------
+		
+		\begin{verbatim}
+\begin{pseudoCode}
+         Pour i allant de 0 jusqu'à 1000
+                Afficher i et "ouse"
+        Fin pour
+\end{pseudoCode}
+		\end{verbatim}
+
+\begin{pseudoCode}
+	Pour i allant de 0 jusqu'à 1000
+		Afficher i et "ouse"
+	Fin pour
+\end{pseudoCode}
+
+Possibilité de réduire la largeur en option :
+		\begin{verbatim}
+\begin{pseudoCode}[7cm]
+         Pour i allant de 0 jusqu'à 1000
+                Afficher i et "ouse"
+        Fin pour
+\end{pseudoCode}
+		\end{verbatim}
+123
+\begin{pseudoCode}[7cm]
+	Pour i allant de 0 jusqu'à 1000
+		Afficher i et "ouse"
+	Fin pour
+\end{pseudoCode}
+
+La liste des mots clés reconnus par le pseudo code est :
+
+Pour, POUR, pour, allant, Allant, ALLANT, de, DE, De, jusqu, JUSQU, Jusqu, à, À, FIN, Fin, fin, Effectuer, EFFECTUER, effectuer, si, Si, SI, faire, et, Et, ET, ou,
+Ou, OU, FAIRE, Faire, alors, Alors, ALORS, fonction, Fonction, FONCTION, retourner, Retourner, RETOURNER, afficher, Afficher, AFFICHER, concaténer, concatener,
+Concaténer, Concatener, CONCATÉNER, CONCATENER, Nouveau, NOUVEAU, nouveau.
+
+On peut en rajouter...
+
+
+		\subsection{Code python}
+		%-------------------------------
+		
+			\begin{verbatim}
+\begin{codePython}
+for in in range(1001):
+        print(str(i)+"-ouse")	#Ne cherchez pas à comprendre ce code...
+\end{codePython}
+			\end{verbatim}
+\begin{codePython}
+for in in range(1001):
+	print(str(i)+"-ouse")	#Ne cherchez pas à comprendre ce code...
+\end{codePython}
+
+			\begin{verbatim}
+\begin{codePython}[13cm]
+for in in range(1001):
+        print(str(i)+"-ouse")	#Ne cherchez pas à comprendre ce code...
+\end{codePython}
+			\end{verbatim}
+			
+\begin{codePython}[13cm]
+for in in range(1001):
+	print(str(i)+"-ouse")	#Ne cherchez pas à comprendre ce code...
+\end{codePython}
+
+
+			
+
+		\subsection{Requête SQL}
+		%-------------------------------
+
+			\begin{verbatim}
+\begin{requeteSQL}
+Select a,b from table1 JOIN table2 ON table1.a<table2.a AND table1.b>table2.b
+\end{requeteSQL}
+			\end{verbatim}
+			
+\begin{requeteSQL}
+Select a,b from table1 JOIN table2 ON table1.a<table2.a AND table1.b>table2.b
+\end{requeteSQL}
+		
+			\begin{verbatim}
+\begin{requeteSQL}[15cm]
+Select a,b from table1 JOIN table2 ON table1.a<table2.a AND table1.b>table2.b
+\end{requeteSQL}
+			\end{verbatim}
+			
+\begin{requeteSQL}[15cm]
+Select a,b from table1 JOIN table2 ON table1.a<table2.a AND table1.b>table2.b
+\end{requeteSQL}
+
+
+		\subsection{Console de sortie}
+		%-------------------------------
+
+			\begin{verbatim}
+\begin{console}
+test test test
+\end{console}
+			\end{verbatim}
+			
+\begin{console}
+test test test
+\end{console}
+		
+			\begin{verbatim}
+\begin{console}[10cm]
+test test test
+\end{console}
+			\end{verbatim}
+			
+\begin{console}[10cm]
+test test test
+\end{console}
+
+
+\end{document}
