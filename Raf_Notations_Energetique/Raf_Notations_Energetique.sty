@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations en énergétique
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Energetique}[2016/08/16]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+
+%\RequirePackage{color}%Pour mettre de la couleur
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{xargs}%Pour arguments optionnels multiples
+%\RequirePackage{amsfonts}		%Pour faire des maths (ensemble des reels, notamment)
+%\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
+\RequirePackage{mathrsfs}		%Pour faire des maths (notamment le L de la transformée de Laplace)
+%\RequirePackage{color}
+%\RequirePackage{xspace}
+\RequirePackage{Raf_Notations_Maths}	%Pour les fonctions (notamment)
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisEnergetique}%création du booléen
+\setboolean{boolRaccourcisEnergetique}{true}%affectation de la valeur false
+
+
+
+\newif\if@RafNotEnergRac	\@RafNotEnergRactrue
+\DeclareOption{noRaccourci}	{\@RafNotEnergRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafEnergRac}[1]{\ifthenelse{\boolean{boolRaccourcisMaths}}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+
+
+% PUISSANCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\PCallig}	{\ensuremath{\mathscr{P}}}
+\newcommandx{\puissance}[3][3=]	{\ifthenelse{\equal{#3}{}}
+					{\ensuremath{\PCallig_{#1\ifthenelse{\equal{#2}{}}{}{,#2}}}}
+					{\f {\ensuremath{\PCallig_{#1\ifthenelse{\equal{#2}{}}{}{,#2}}}}{#3}}
+				}
+
+\if@RafNotEnergRac
+	\renewcommand{\P}	{\puissance}	%Redéfini (anciennement : symbole paragraphe)
+\fi
+
+
+% TRAVAIL / ENERGIE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommandx{\travail}[3][3=]	{\ensuremath{W_{#1\ifthenelse{\equal{#2}{}}{}{,#2\ifthenelse{\equal{#3}{}}{}{\rightarrow#3}}}}}
+
+\if@RafNotEnergRac
+	\newcommand{\Wk}	{\travail}	%Redéfini (anciennement : symbole paragraphe)
+\fi
+
+\endinput

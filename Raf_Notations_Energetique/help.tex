@@ -1,0 +1,94 @@
+\documentclass[a4paper,10pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc}
+	\usepackage{hyperref}
+
+	\usepackage{Raf_Notations_Energetique}
+
+	\everymath{\displaystyle}
+
+
+	\newcommand{\rac}{({\color{red}Raccourci})}
+	\newcommand{\ren}{({\color{blue}Renommé})}
+
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Notations Mathématiques ``de base''}\\\hrule
+	\end{center}
+
+	(Version du 27/04/13)
+
+	\section{Packages requis}
+	%-------------------------------------
+
+	\begin{itemize}
+		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation à choix multiple,
+		%\item \href{http://tug.ctan.org/tex-archive/macros/latex/contrib/xargs}{\textbf{xarg}} : Package permettant de créer des commandes à plusieurs arguments optionnels.
+		%\item \href{http://www.ams.org/publications/authors/tex/amsfonts}{\textbf{amsfonts}} : Package qui ajoute des polices d'écritures mathématiques.
+		%\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Package qui ajoute des fonctions mathématiques non-standards.
+		\item \href{http://www.ctan.org/pkg/mathrsfs}{\textbf{mathrsfs}} : Package qui rajoute des polices d'écritures mathématiques.
+		%\item \href{http://www.ctan.org/pkg/color}{\textbf{color}} : Package permettant de mettre en couleur du texte, des lignes, etc.
+		\item \href{http://enseignement.allais.eu/page-latex}{\textbf{Raf\_Notations\_Maths}} : Un autre de mes packages, permettant de faire des notations mathématiques
+	\end{itemize}
+
+	\section{Appel du package}
+	%-------------------------------------
+
+	Le package est appelé en début de document par la commande :
+	\begin{verbatim}
+\usepackage{Raf_Notations_Energetique}
+	\end{verbatim}
+
+	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide à taper !).
+	De plus, certaines commandes ont été rebaptisées.
+	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+
+	\begin{verbatim}
+\usepackage[noRaccourci]{Raf_Notations_Energetique}
+	\end{verbatim}
+
+	\section{Puissances}
+	%-------------------------------------------
+	\noindent
+	
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\PCallig!			&	\PCallig			&	\PCallig\ calligraphié
+		\\\hline
+			\verb!\puissance{F}{V}!		&	\puissance{F}{V}		&	Puissance d'une force $F$, pour une vitesse $V$.
+		\\\hline
+			\verb!\puissance{F}{}!		&	\puissance{F}{}			&	Puissance d'une force $F$.
+		\\\hline
+			\verb!\puissance{F}{}[t]!	&	\puissance{F}{}[t]		&	Puissance instantanée à la date $t$.
+		\\\hline
+			\verb!\P{F}{}[t]!		&	\P{F}{}[t]			&	Raccourci direct de \verb!\puissance! \rac -- \ren
+		\\\hline
+	\end{tabular}
+
+
+	\section{Travail}
+	%-------------------------------------------
+	\noindent
+	
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\travail{F}{d}!		&	\travail{F}{d}			&	travail d'une force $F$, pour un déplacement $d$.
+		\\\hline
+			\verb!\travail{F}{}!		&	\travail{F}{}			&	travail d'une force $F$.
+		\\\hline
+			\verb!\travail{F}{t_1}[t_2]!	&	\travail{F}{t_1}[t_2]		&	travail d'une force $F$, pour un déplacement entre l'instant $t_1$ et l'instant $t_2$.
+		\\\hline
+			\verb!\Wk{F}{}!			&	\Wk{F}{}			&	Raccourci direct de \verb!\Wk! \rac. Le \verb!\W! a été gardée pour les Watt. \verb!Wk! vient de \verb!Work!.
+		\\\hline
+	\end{tabular}
+
+
+\end{document}
