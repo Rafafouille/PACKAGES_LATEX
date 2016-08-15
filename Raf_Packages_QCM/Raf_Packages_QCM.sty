@@ -1,0 +1,512 @@
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Packages_QCM}[2012/06/13]
+
+
+
+
+
+
+
+\RequirePackage[latin1]{inputenc} 		%Caracteres francais
+\RequirePackage[T1]{fontenc} 		%Caracteres francais
+\RequirePackage[francais]{babel}		%On ecrit en francais
+\RequirePackage{graphicx}			%Pour les images
+\RequirePackage[top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}%Marges etc...
+\RequirePackage{fancybox}			%Des boites
+\RequirePackage[tikz]{bclogo}		%Pour faire des boites avec logo (remarques, etc...)
+\RequirePackage{xcolor}			%Pour définir les couleurs
+\RequirePackage{titlesec}		%Pour modifier l'aspet des titres (sections, etc...)
+\RequirePackage{soul} 			%Pour souligner
+\RequirePackage{ifthen}			%Package des conditions
+\RequirePackage{fancyhdr}		%Pour l'entete et le pied de page
+\RequirePackage{lastpage}		%Pour connaitre le nombre total de page pour le pied de page
+\RequirePackage{subfig}			%Pour faire des figures dans les figures
+\RequirePackage{amsmath}			%Pour faire des maths (environnement ``align'' notamment)
+\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
+\RequirePackage{amssymb}
+\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+%\RequirePackage{answers}
+\RequirePackage{pifont}			%Pour faire des chiffres entourés
+% \RequirePackage[colorlinks=true,linkcolor=black,linktocpage]{hyperref}	%Pour faire des liens
+\RequirePackage{calc}			%Pour faire heightof et des calculs de coordonnées
+\RequirePackage{import}			%Permet de gérer les chemins relatifs des fichiers dans Latex
+\RequirePackage{multirow}		%Pour faire des tableau avec plusieurs lignes
+\RequirePackage{tikz}			%Pour faire des dessins
+	\usetikzlibrary{calc}
+\RequirePackage{pgfplots}			%Pour faire des dessins (bis) (voir --> http://bertrandmasson.free.fr/index.php?article28/comment-faire-de-beaux-graphiques-avec-tikz-et-pgfplots)
+\RequirePackage{enumerate}			%Pour personnaliser les listes ``enumerate''
+\RequirePackage{enumitem}			%Pour personnaliser les listes
+\RequirePackage{wasysym}			%Pour faire le symbole diametre
+\RequirePackage{array}			%Tableaux (notamment alignements)
+\RequirePackage{xargs}			%Pour faire des commandes à plusieurs arguments
+\RequirePackage{eurosym}		%Pour faire des euros
+\RequirePackage[subfigure]{tocloft}		%Pour modifier le style de la table des matieres
+%	\RequirePackage{comment}		%Pour virer des paragraphe (comme les corrections, par exemple)
+\RequirePackage{icomma}			%Pour ne pas mettre d'espace après une virgule (le séparateur décimal étant par défaut le ``.'', et non le ``,'')
+\RequirePackage{xspace}			%pour mettre des espaces automatique à la fin des commandes
+\RequirePackage[absolute,overlay]{textpos}	%Positionner du texte de maniere absolue (``version prof''...)
+%\RequirePackage{scrtime}		%Pour avoir l'heure (voir mode version prof)IL NE FONCTIONNE PAS BIEN !!!!!
+\RequirePackage[european,cute inductors]{circuitikz}		%Pour dessiner des circuit électriques avec Tikz
+\RequirePackage[space]{grffile}
+\RequirePackage{etoolbox}		%Permet notamment de tester si une commande existe avec \ifdef
+\RequirePackage{setspace}		%Permet de régler les interlignes
+\RequirePackage{listings}		%Pour faire du code
+\RequirePackage[francais,bloc,completemulti]{automultiplechoice}
+
+
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcis}%création du booléen
+\setboolean{boolRaccourcis}{false}%affectation de la valeur false
+\DeclareOption{raccourcis}{\setboolean{boolRaccourcis}{true}}
+\ProcessOptions
+
+%Notations
+%\RequirePackage{Raf_Boites}		%Notations Analyse fonctionnelle
+\RequirePackage{Raf_Notations_AF}		%Notations Analyse fonctionnelle
+\RequirePackage{Raf_Notations_SLCI}		%Notations Asservissements
+\RequirePackage{Raf_Notations_Maths}	%Notations mathématiques de base
+\RequirePackage{Raf_Notations_Torseurs}	%Notations mathématiques sur les torseurs
+\RequirePackage{Raf_Notations_Cinematique}	%Notations cinematique
+\RequirePackage[raccourcis]{fast-diagram}
+\RequirePackage{Raf_Notations_Autres}	%Toutes les autres notations utiles
+\RequirePackage{Raf_Notations_Unites}	%Toutes les unités
+\RequirePackage{Raf_Notations_Cotation}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Actions-Meca}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Fab}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Materiaux}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Style}				%Styles de documents
+\RequirePackage{Raf_Notations_Autom}
+\RequirePackage{Raf_Notations_Energetique}	%Notations de puissance, travail, etc...
+\RequirePackage{Raf_Notations_Elec}	%Notations de puissance, travail, etc...
+
+
+
+
+
+\ProcessOptions
+ 
+%commandes et/ou environnements personnalisés
+
+
+\newcommand{\pointsBonnesRepSimple}	{1}	%En cas de bonne réponse
+\newcommand{\pointsMauvaisesRepSimple}	{-0.5}	%En cas de mauvaise réponse
+\newcommand{\pointsNoRepSimple}		{0}	%En cas de pas de réponse.
+
+\newcommand{\pointsBonnesRepMult}	{0.5}	%En cas de bonne réponse
+\newcommand{\pointsMauvaisesRepMult}	{-0.25}	%En cas de mauvaise réponse
+\newcommand{\pointsNoRepMult}	{0}	%En cas de pas de réponse.
+
+%Barême simple
+\baremeDefautS{e=0,v=\pointsNoRepSimple,b=\pointsBonnesRepSimple,m=\pointsMauvaisesRepSimple}%e=incohérent ; v= vide ; b = bonne ; m = mauvaise
+%Barême question multiple
+\baremeDefautM{e=0,v=0,formula=(NBC+NMC>0 ? \pointsMauvaisesRepMult*NMC+\pointsBonnesRepMult*NBC : ( NB>0 ? \pointsNoRepMult : \pointsBonnesRepMult ))}
+% SI on a coché des trucs, alors on compte les bon points moins les mauvais poins
+% SINON si on a rien coché et SI Il y avait quand meme des choses à cocher,
+% Alors on met les points NoReponse
+% Sinon, on met les points Bonne réponse
+
+\newcommand*{\makeEnteteQCM} {
+	\begin{tabular}{m{0.45\linewidth}m{0.45\linewidth}}
+		\begin{center}
+			\Large \textbf{Contrôle de SII}\\
+			\emph{\titre}
+		\end{center}
+	&
+		\champnom{\fbox{
+				\begin{minipage}{\linewidth}
+					Nom et prénom :
+
+					\vspace*{.5cm}\dotfill
+					\vspace*{1mm}
+				\end{minipage}
+			}}
+	\end{tabular}
+	}
+
+\newcommand*{\makeEnteteQCMInfo} {
+	\begin{tabular}{m{0.45\linewidth}m{0.45\linewidth}}
+		\begin{center}
+			\Large \textbf{Contrôle d'Informatique}\\
+			\emph{\titre}
+		\end{center}
+	&
+		\champnom{\fbox{
+				\begin{minipage}{\linewidth}
+					Nom et prénom :
+
+					\vspace*{.5cm}\dotfill
+					\vspace*{1mm}
+				\end{minipage}
+			}}
+	\end{tabular}
+	}
+	
+\newcommand*{\makeConsignesQCM}{
+	\begin{tabular}{m{0.75\linewidth}m{0.25\linewidth}}
+		\em\footnotesize
+		Durée : \duree.\newline\newline
+		%
+		\gras{Aucun document} autorisé.
+		\gras{Calculatrice interdite}.
+		%
+		Les questions avec \multiSymbole{} peuvent
+		présenter 0, 1 ou plusieurs bonnes réponses. Les autres ont
+		une unique bonne réponse.
+		%
+		Barème  :\newline
+		\gras{Réponses simples} :
+		Bonne : \gras{\pointsBonnesRepSimple\ pt.}
+		-- Mauvaise : \gras{\pointsMauvaisesRepSimple\ pt.}
+		-- Vide : \gras{\pointsNoRepSimple\ pt.}\newline
+		\gras{Réponses multiples \multiSymbole{} :}
+		Bonnes : \gras{\pointsBonnesRepMult\ pt.}
+		-- Mauvaises : \gras{\pointsMauvaisesRepMult\ pt.}
+		-- Vide : \gras{\pointsNoRepMult\ pt.}
+		
+	&
+		\begin{flushleft}\small
+			Exemple :\newline
+		\imageBienCoche
+		\end{flushleft}
+	\end{tabular}
+	\vspace*{.5cm}
+}
+
+
+
+
+
+
+\newcommand*{\imageBienCoche}{
+\definecolor{cffffff}{RGB}{255,255,255}
+\definecolor{c8f8f8f}{RGB}{143,143,143}
+\begin{tikzpicture}[y=0.80pt,x=0.80pt,yscale=-0.5,xscale=0.5, inner sep=0pt, outer sep=0pt]
+\begin{scope}[shift={(-160.5704,-200.57069)}]
+  \begin{scope}[shift={(1.47665,0)}]
+    \path[color=black,draw=black,fill=cffffff,line join=miter,line cap=butt,miter
+      limit=4.00,nonzero rule,line width=0.800pt,rounded corners=0.0000cm]
+      (159.6041,201.8137) rectangle (197.1060,239.3157);
+    \path[draw=black,line join=round,line cap=round,miter limit=4.00,line
+      width=2.2pt] (162.3645,208.6162) .. controls (163.8320,208.6868) and %4.560
+      (164.9336,207.4387) .. (166.2218,206.7517) .. controls (167.4572,206.4540) and
+      (168.0868,205.7061) .. (169.3929,205.1649) .. controls (169.7180,204.1589) and
+      (171.3672,204.5189) .. (172.1135,203.7843) .. controls (172.8509,203.3695) and
+      (173.9160,203.1799) .. (172.7815,204.2343) .. controls (171.8015,205.5426) and
+      (170.9013,206.9092) .. (169.8536,208.1486) .. controls (169.2927,208.8530) and
+      (168.5623,209.2456) .. (167.9886,209.8500) .. controls (166.7980,210.5109) and
+      (166.0079,211.2133) .. (165.0306,212.1035) .. controls (164.6406,212.7469) and
+      (163.2497,213.8350) .. (163.7249,214.1383) .. controls (164.6229,213.5608) and
+      (166.6702,212.1998) .. (167.0842,212.2079) .. controls (168.2482,211.8952) and
+      (169.7710,211.3429) .. (170.0730,210.9170) .. controls (171.9969,210.0678) and
+      (174.2762,209.1406) .. (175.6916,207.8885) .. controls (176.2390,207.2018) and
+      (177.7288,207.0008) .. (178.7047,206.7744) .. controls (179.5663,206.0293) and
+      (180.9996,205.7248) .. (181.8625,205.2799) .. controls (182.2493,205.2805) and
+      (183.6212,204.4581) .. (183.4283,204.6687) .. controls (183.3894,204.4971) and
+      (181.5115,206.1959) .. (181.8356,205.9573) .. controls (180.2719,207.2600) and
+      (178.5970,208.4127) .. (177.1014,209.7666) .. controls (175.8331,210.3929) and
+      (174.8899,211.4826) .. (173.5572,212.0252) .. controls (172.5136,212.7601) and
+      (171.8285,212.4552) .. (171.0933,213.3329) .. controls (169.8932,214.2759) and
+      (168.8024,215.2484) .. (167.5791,215.9790) .. controls (166.6842,216.7808) and
+      (166.2048,217.3675) .. (164.9794,217.9565) .. controls (165.4499,218.2045) and
+      (163.5869,218.8694) .. (163.8129,219.4719) .. controls (165.0537,218.2681) and
+      (166.4662,217.1924) .. (167.9164,216.2049) .. controls (169.8585,214.9347) and
+      (171.6131,213.4308) .. (173.4738,212.0675) .. controls (175.0620,211.0521) and
+      (177.0246,210.7861) .. (178.5451,209.5951) .. controls (180.3130,208.9157) and
+      (181.8867,207.9920) .. (183.6775,207.3518) .. controls (185.0067,206.6996) and
+      (186.5707,206.6512) .. (187.6258,205.4789) .. controls (188.8518,205.2742) and
+      (189.8860,204.4857) .. (190.9313,204.0144) .. controls (190.2551,204.7457) and
+      (189.1359,205.9134) .. (188.8966,205.6808) .. controls (187.6412,206.6889) and
+      (186.7039,207.6239) .. (185.2618,208.5566) .. controls (183.5244,209.7190) and
+      (181.9890,211.1229) .. (180.2754,212.2976) .. controls (178.8494,213.4075) and
+      (177.4996,214.5475) .. (175.9605,215.4501) .. controls (174.7239,216.2674) and
+      (173.6776,217.1160) .. (172.4207,217.9681) .. controls (171.3428,218.8783) and
+      (170.3285,219.8908) .. (169.1661,220.6957) .. controls (168.3529,221.2668) and
+      (167.5807,221.8955) .. (166.8989,222.6515) .. controls (166.3136,222.4150) and
+      (165.5690,223.3512) .. (166.5473,223.1218) .. controls (165.7211,223.6225) and
+      (164.5877,223.6862) .. (164.2026,224.5943) .. controls (164.0609,224.0702) and
+      (163.1665,226.1642) .. (164.4050,225.1825) .. controls (166.0366,223.8535) and
+      (167.5395,222.3149) .. (169.3870,221.2603) .. controls (170.0412,220.9199) and
+      (172.2339,219.8621) .. (171.9319,220.1006) .. controls (171.2163,220.2409) and
+      (173.4137,219.0755) .. (173.9190,218.8393) .. controls (175.9794,217.8850) and
+      (177.8080,216.4839) .. (179.8132,215.4355) .. controls (181.7897,215.1298) and
+      (183.4194,213.9237) .. (185.2691,213.2328) .. controls (186.0714,212.6771) and
+      (187.9082,212.0819) .. (187.8094,212.0485) .. controls (189.0106,212.0395) and
+      (191.0248,210.1828) .. (191.0715,210.2477) .. controls (192.0647,209.3494) and
+      (193.6596,208.6848) .. (194.1064,207.8604) .. controls (194.3848,208.2512) and
+      (194.7701,206.7062) .. (195.2390,207.2356) .. controls (196.0655,206.9723) and
+      (197.5499,206.0146) .. (196.1105,207.2780) .. controls (195.8497,206.8193) and
+      (194.2377,208.8911) .. (193.4356,209.3193) .. controls (191.9132,210.4623) and
+      (190.4648,211.7010) .. (188.8228,212.6678) .. controls (187.5766,213.7218) and
+      (186.1457,214.5451) .. (185.0366,215.7489) .. controls (183.4523,216.5655) and
+      (182.2859,218.0194) .. (180.9643,219.2108) .. controls (179.5791,220.4744) and
+      (178.0934,221.6364) .. (176.6211,222.7148) .. controls (175.6265,223.9812) and
+      (174.8823,225.5389) .. (173.4738,226.4480) .. controls (172.5504,227.0699) and
+      (171.4779,228.0046) .. (170.2997,228.6338) .. controls (169.1764,229.8419) and
+      (167.5816,230.4184) .. (166.5595,231.7624) .. controls (165.3718,232.3005) and
+      (165.8706,232.5714) .. (165.0852,233.4656) .. controls (164.5389,234.0529) and
+      (163.9224,235.0771) .. (163.9516,236.2267) .. controls (165.5566,236.1213) and
+      (166.5514,234.4959) .. (168.0854,233.9719) .. controls (169.5005,233.7774) and
+      (170.6848,232.8237) .. (171.9812,232.2592) .. controls (171.9259,232.5927) and
+      (173.7247,231.6212) .. (174.3482,231.2963) .. controls (175.7774,230.5079) and
+      (177.3664,229.9682) .. (178.5788,228.8358) .. controls (180.5136,227.9578) and
+      (181.9725,226.2958) .. (183.9030,225.4126) .. controls (185.8653,224.1444) and
+      (187.6194,222.5044) .. (189.4628,221.1637) .. controls (190.5213,220.2935) and
+      (191.5491,219.4000) .. (192.5932,218.6545) .. controls (193.9873,217.8193) and
+      (195.1105,216.8328) .. (196.3726,215.9790) .. controls (197.5467,215.4420) and
+      (195.7282,218.1339) .. (195.2390,218.5099) .. controls (194.8613,219.2971) and
+      (193.5772,220.5133) .. (194.0987,219.9383) .. controls (193.0955,221.3172) and
+      (192.2982,222.7663) .. (191.1580,224.0320) .. controls (189.8733,226.0560) and
+      (188.0254,227.5953) .. (186.3969,229.3240) .. controls (185.2748,230.0776) and
+      (184.3714,231.1381) .. (183.2228,231.8550) .. controls (181.9377,232.3676) and
+      (180.7874,233.9980) .. (180.0930,234.6358) .. controls (179.1684,235.2322) and
+      (178.4482,235.8234) .. (178.2350,236.4568) .. controls (177.5756,236.6914) and
+      (177.3908,237.5514) .. (178.4491,237.0644) .. controls (180.0470,236.1965) and
+      (181.4424,235.0897) .. (182.8893,234.0493) .. controls (184.3363,232.7896) and
+      (185.9696,231.7439) .. (187.2914,230.3402) .. controls (189.1785,229.4362) and
+      (190.3453,227.5035) .. (192.0556,226.3207) .. controls (193.5028,225.3458) and
+      (194.9120,224.2717) .. (196.3707,223.3427) .. controls (196.7635,223.0420) and
+      (197.9955,221.9849) .. (198.9954,221.5160) .. controls (199.6069,220.6202) and
+      (200.1828,220.2940) .. (199.3199,221.5011) .. controls (197.3649,223.5472) and
+      (195.2714,225.4681) .. (193.4311,227.6200) .. controls (194.1119,227.5800) and
+      (191.6684,229.4150) .. (191.9645,230.4794) .. controls (191.2020,231.9993) and
+      (190.0513,233.2285) .. (189.1175,234.6161) .. controls (188.8630,235.6930) and
+      (188.2813,236.3751) .. (187.3456,237.0690) .. controls (187.3125,238.5526) and
+      (189.2211,236.0608) .. (190.1344,236.3279) .. controls (191.9913,236.0940) and
+      (193.8961,235.9240) .. (195.4657,234.8462) .. controls (196.0328,234.3748) and
+      (196.5009,233.7664) .. (196.3726,233.0055);
+  \end{scope}
+  \path[color=black,draw=black,fill=cffffff,line join=miter,line cap=butt,miter
+    limit=4.00,nonzero rule,line width=0.800pt,rounded corners=0.0000cm]
+    (161.0807,256.3647) rectangle (198.5827,293.8666);
+    \path[draw=c8f8f8f,line join=round,line cap=round,miter limit=4.00,line
+      width=1.600pt] (164.5286,260.5288) .. controls (164.9308,260.9266) and
+      (165.1878,261.2527) .. (165.6650,261.5390) .. controls (165.7457,261.5874) and
+      (165.8423,261.6088) .. (165.9176,261.6653) .. controls (166.0128,261.7367) and
+      (166.0771,261.8434) .. (166.1701,261.9178) .. controls (166.4071,262.1074) and
+      (166.6945,262.2286) .. (166.9277,262.4229) .. controls (167.0649,262.5372) and
+      (167.1612,262.6979) .. (167.3065,262.8017) .. controls (167.4597,262.9111) and
+      (167.6520,262.9545) .. (167.8116,263.0542) .. controls (169.0552,263.8315) and
+      (167.6624,263.0370) .. (168.6955,263.8118) .. controls (168.8918,263.9591) and
+      (169.1226,264.0545) .. (169.3268,264.1907) .. controls (169.6770,264.4241) and
+      (170.0003,264.6957) .. (170.3370,264.9483) .. controls (170.5053,265.0745) and
+      (170.6848,265.1873) .. (170.8421,265.3271) .. controls (171.0645,265.5248) and
+      (171.2629,265.7480) .. (171.4734,265.9584) .. controls (171.7680,266.2530) and
+      (172.0626,266.5477) .. (172.3573,266.8423) .. controls (172.4836,266.9686) and
+      (172.6005,267.1049) .. (172.7361,267.2211) .. controls (172.8959,267.3581) and
+      (173.0728,267.4736) .. (173.2412,267.5999) .. controls (173.4095,267.7262) and
+      (173.5711,267.8620) .. (173.7462,267.9787) .. controls (173.9504,268.1149) and
+      (174.1734,268.2214) .. (174.3776,268.3575) .. controls (174.7278,268.5910) and
+      (175.0473,268.8676) .. (175.3877,269.1151) .. controls (175.3897,269.1171) and
+      (177.1552,270.3776) .. (177.1555,270.3778) .. controls (177.2949,270.4894) and
+      (177.3971,270.6423) .. (177.5343,270.7566) .. controls (177.6872,270.8841) and
+      (178.0607,271.0518) .. (178.1657,271.2617) .. controls (178.2033,271.3370) and
+      (178.1190,271.4442) .. (178.1657,271.5143) .. controls (178.2179,271.5926) and
+      (178.3516,271.5740) .. (178.4182,271.6405) .. controls (178.4847,271.7071) and
+      (178.4960,271.8124) .. (178.5445,271.8931) .. controls (178.6226,272.0232) and
+      (178.7553,272.1260) .. (178.7970,272.2719) .. controls (178.8433,272.4338) and
+      (178.7438,272.6172) .. (178.7970,272.7769) .. controls (178.8391,272.9032) and
+      (179.0916,273.0295) .. (179.1758,273.1558) .. controls (179.2280,273.2341) and
+      (179.2499,273.3300) .. (179.3021,273.4083) .. controls (179.4012,273.5569) and
+      (179.5737,273.6442) .. (179.6809,273.7871) .. controls (179.7374,273.8624) and
+      (179.7507,273.9643) .. (179.8072,274.0396) .. controls (179.9500,274.2301) and
+      (180.1897,274.3406) .. (180.3122,274.5447) .. controls (180.3807,274.6588) and
+      (180.3553,274.8196) .. (180.4385,274.9235) .. controls (180.5333,275.0420) and
+      (180.6988,275.0813) .. (180.8173,275.1761) .. controls (180.9103,275.2505) and
+      (180.9857,275.3444) .. (181.0698,275.4286) .. controls (181.1961,275.5549) and
+      (181.3224,275.6811) .. (181.4486,275.8074) .. controls (181.5328,275.8916) and
+      (181.6021,275.9939) .. (181.7012,276.0599) .. controls (181.9983,276.2580) and
+      (182.3268,276.3067) .. (182.5851,276.5650) .. controls (183.0060,276.9859) and
+      (182.6272,276.9438) .. (183.2164,277.1964) .. controls (183.3759,277.2648) and
+      (183.5708,277.2366) .. (183.7215,277.3226) .. controls (183.8765,277.4112) and
+      (183.9631,277.5871) .. (184.1003,277.7014) .. controls (184.2169,277.7985) and
+      (184.3556,277.8658) .. (184.4791,277.9540) .. controls (184.6504,278.0763) and
+      (184.8129,278.2105) .. (184.9842,278.3328) .. controls (185.4476,278.6638) and
+      (185.9397,278.9714) .. (186.3731,279.3429) .. controls (186.6309,279.5639) and
+      (187.0115,280.0304) .. (187.2570,280.2268) .. controls (187.4940,280.4164) and
+      (187.7718,280.5498) .. (188.0146,280.7319) .. controls (188.2527,280.9105) and
+      (188.4173,281.1727) .. (188.6460,281.3632) .. controls (188.8791,281.5576) and
+      (189.1666,281.6787) .. (189.4036,281.8683) .. controls (189.9507,282.3060) and
+      (189.3616,281.9357) .. (189.9087,282.3734) .. controls (190.0272,282.4682) and
+      (190.1690,282.5311) .. (190.2875,282.6259) .. controls (190.3805,282.7003) and
+      (190.4448,282.8070) .. (190.5400,282.8785) .. controls (190.6153,282.9350) and
+      (190.7119,282.9563) .. (190.7926,283.0047) .. controls (190.9227,283.0828) and
+      (191.0412,283.1792) .. (191.1714,283.2573) .. controls (191.2521,283.3057) and
+      (191.3574,283.3170) .. (191.4239,283.3836) .. controls (191.4905,283.4502) and
+      (191.4719,283.5839) .. (191.5502,283.6361) .. controls (191.6202,283.6828) and
+      (191.7274,283.5985) .. (191.8027,283.6361) .. controls (191.8780,283.6737) and
+      (191.7651,283.8133) .. (191.8027,283.8886) .. controls (191.8293,283.9418) and
+      (191.9023,283.9616) .. (191.9290,284.0149) .. controls (191.9571,284.0711) and
+      (191.9098,284.4622) .. (191.9290,284.5200) .. controls (191.9478,284.5765) and
+      (192.0286,284.5930) .. (192.0552,284.6462) .. controls (192.0894,284.7147) and
+      (192.0207,285.1168) .. (192.0552,285.1513) .. controls (192.0850,285.1811) and
+      (192.1517,285.1215) .. (192.1815,285.1513) .. controls (192.1822,285.1520) and
+      (192.1805,285.5259) .. (192.1815,285.5301) .. controls (192.2730,285.8963) and
+      (192.2800,285.6779) .. (192.4341,285.9089) .. controls (192.4863,285.9872) and
+      (192.4938,286.0949) .. (192.5603,286.1615) .. controls (192.6269,286.2281) and
+      (192.7346,286.2356) .. (192.8129,286.2877) .. controls (192.8624,286.3207) and
+      (192.8971,286.3719) .. (192.9391,286.4140) .. controls (192.9812,286.4561) and
+      (193.0387,286.4870) .. (193.0654,286.5403) .. controls (193.0842,286.5779) and
+      (193.0466,286.6289) .. (193.0654,286.6665) .. controls (193.3282,287.1920) and
+      (193.0564,286.5316) .. (193.3179,286.7928) .. controls (193.3477,286.8226) and
+      (193.2881,286.8893) .. (193.3179,286.9191) .. controls (193.3477,286.9489) and
+      (193.4144,286.8893) .. (193.4442,286.9191) .. controls (193.4740,286.9489) and
+      (193.4144,287.0156) .. (193.4442,287.0454) .. controls (193.4740,287.0752) and
+      (193.5328,287.0266) .. (193.5705,287.0454) .. controls (193.6237,287.0720) and
+      (193.6547,287.1296) .. (193.6968,287.1716);
+    \path[draw=c8f8f8f,line join=round,line cap=round,miter limit=4.00,line
+      width=1.600pt] (190.7619,261.8095) .. controls (190.7619,261.9778) and
+      (190.7949,262.1495) .. (190.7619,262.3146) .. controls (190.7502,262.3730) and
+      (190.6777,262.3988) .. (190.6357,262.4408) .. controls (190.2030,262.8734) and
+      (190.5794,262.5504) .. (190.1306,262.8196) .. controls (190.1185,262.8266) and
+      (189.3764,263.3232) .. (189.3730,263.3247) .. controls (189.2135,263.3931) and
+      (189.0186,263.3649) .. (188.8679,263.4510) .. controls (184.7043,265.8302) and
+      (190.4331,262.9108) .. (186.3425,265.0925) .. controls (186.0497,265.2487) and
+      (185.2384,265.5026) .. (184.9536,265.5976) .. controls (184.7010,265.6818) and
+      (184.4340,265.7310) .. (184.1959,265.8501) .. controls (184.0077,265.9442) and
+      (183.8825,266.1418) .. (183.6909,266.2289) .. controls (183.4119,266.3557) and
+      (183.0955,266.3784) .. (182.8070,266.4814) .. controls (181.7103,266.8731) and
+      (182.2245,266.7047) .. (181.5443,267.1128) .. controls (181.4636,267.1612) and
+      (181.3583,267.1725) .. (181.2918,267.2391) .. controls (181.2252,267.3057) and
+      (181.2321,267.4250) .. (181.1655,267.4916) .. controls (181.0989,267.5582) and
+      (180.9882,267.5614) .. (180.9129,267.6179) .. controls (180.8177,267.6893) and
+      (180.7446,267.7862) .. (180.6604,267.8704) .. controls (180.5762,267.9546) and
+      (180.4822,268.0300) .. (180.4079,268.1229) .. controls (179.6415,269.0809) and
+      (180.5892,267.9470) .. (180.0291,268.8806) .. controls (179.9678,268.9826) and
+      (179.8607,269.0489) .. (179.7765,269.1331) .. controls (179.6502,269.2594) and
+      (179.5120,269.3747) .. (179.3977,269.5119) .. controls (179.1379,269.8237) and
+      (179.0199,270.2051) .. (178.7664,270.5220) .. controls (178.6920,270.6150) and
+      (178.5751,270.6725) .. (178.5138,270.7746) .. controls (178.4453,270.8887) and
+      (178.4370,271.0298) .. (178.3876,271.1534) .. controls (178.0160,272.0824) and
+      (178.5538,270.5284) .. (178.1350,271.7847) .. controls (178.0929,271.9110) and
+      (178.0772,272.0494) .. (178.0087,272.1635) .. controls (177.3041,273.3380) and
+      (178.2618,271.2786) .. (177.5037,272.7949) .. controls (177.3846,273.0330) and
+      (177.3500,273.3053) .. (177.2511,273.5525) .. controls (177.0621,274.0250) and
+      (177.1687,273.5909) .. (176.8723,274.1839) .. controls (176.8535,274.2215) and
+      (176.8856,274.2702) .. (176.8723,274.3101) .. controls (176.8425,274.3994) and
+      (176.7881,274.4785) .. (176.7461,274.5627) .. controls (176.7040,274.6469) and
+      (176.6720,274.7369) .. (176.6198,274.8152) .. controls (176.4959,275.0010) and
+      (176.2386,275.1345) .. (176.1147,275.3203) .. controls (176.0103,275.4769) and
+      (175.9666,275.6687) .. (175.8622,275.8254) .. controls (175.7631,275.9739) and
+      (175.5905,276.0613) .. (175.4834,276.2042) .. controls (175.4269,276.2795) and
+      (175.4136,276.3814) .. (175.3571,276.4567) .. controls (175.1803,276.6924) and
+      (174.9025,276.8523) .. (174.7258,277.0880) .. controls (174.6693,277.1633) and
+      (174.6560,277.2653) .. (174.5995,277.3406) .. controls (174.4566,277.5311) and
+      (174.2373,277.6552) .. (174.0944,277.8457) .. controls (173.7955,278.2442) and
+      (174.1893,278.0033) .. (173.7156,278.4770) .. controls (173.6491,278.5436) and
+      (173.5296,278.5367) .. (173.4631,278.6033) .. controls (173.3558,278.7106) and
+      (173.3016,278.8607) .. (173.2105,278.9821) .. controls (172.4705,279.9688) and
+      (172.9480,279.2487) .. (172.3266,280.1185) .. controls (172.2384,280.2420) and
+      (172.1420,280.3616) .. (172.0741,280.4973) .. controls (172.0146,280.6164) and
+      (172.0003,280.7538) .. (171.9478,280.8761) .. controls (171.8736,281.0491) and
+      (171.7795,281.2128) .. (171.6953,281.3812) .. controls (171.6532,281.4654) and
+      (171.6175,281.5530) .. (171.5690,281.6337) .. controls (171.4909,281.7639) and
+      (171.3946,281.8824) .. (171.3165,282.0125) .. controls (171.2681,282.0932) and
+      (171.2568,282.1985) .. (171.1902,282.2651) .. controls (171.1236,282.3317) and
+      (171.0160,282.3392) .. (170.9377,282.3913) .. controls (170.6476,282.5847) and
+      (170.9918,282.4634) .. (170.6851,282.7701) .. controls (170.6553,282.7999) and
+      (170.5886,282.7403) .. (170.5589,282.7701) .. controls (170.5291,282.7999) and
+      (170.5887,282.8666) .. (170.5589,282.8964) .. controls (170.5291,282.9262) and
+      (170.4703,282.8776) .. (170.4326,282.8964) .. controls (170.3794,282.9230) and
+      (170.3484,282.9806) .. (170.3063,283.0227) .. controls (170.2642,283.0648) and
+      (170.2221,283.1069) .. (170.1801,283.1490) .. controls (170.0117,283.3173) and
+      (169.8433,283.4857) .. (169.6750,283.6540) .. controls (169.6329,283.6961) and
+      (169.5817,283.7307) .. (169.5487,283.7803) .. controls (169.4965,283.8586) and
+      (169.4746,283.9545) .. (169.4225,284.0328) .. controls (169.3895,284.0823) and
+      (169.3383,284.1170) .. (169.2962,284.1591) .. controls (169.2541,284.2012) and
+      (169.2194,284.2524) .. (169.1699,284.2854) .. controls (169.0916,284.3376) and
+      (169.0016,284.3696) .. (168.9174,284.4116) .. controls (168.8332,284.4958) and
+      (168.7601,284.5928) .. (168.6648,284.6642) .. controls (168.4604,284.8175) and
+      (168.4148,284.7236) .. (168.2860,284.9167) .. controls (168.2338,284.9950) and
+      (168.2162,285.0940) .. (168.1598,285.1693) .. controls (168.0526,285.3121) and
+      (167.8800,285.3995) .. (167.7810,285.5481) .. controls (167.7288,285.6264) and
+      (167.7069,285.7223) .. (167.6547,285.8006) .. controls (167.6217,285.8501) and
+      (167.5705,285.8848) .. (167.5284,285.9269) .. controls (167.4863,285.9690) and
+      (167.4554,286.0265) .. (167.4021,286.0531) .. controls (167.3644,286.0719) and
+      (167.3179,286.0531) .. (167.2759,286.0531);
+  \path[fill=black] (216.28572,225.65137) node[above right] (text3838) {Bien
+    coché};
+  \path[fill=black] (216.27072,280.26816) node[above right] (text3842) {Mal
+    coché};
+\end{scope}
+\end{tikzpicture}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code python
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{PY-fond}{rgb}{1,1,1}			%Couleur du fond
+\definecolor{PY-commentaires}{rgb}{0.5,0.5,0.5}	%Couleur des commentaires
+\definecolor{PY-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
+\definecolor{PY-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
+\definecolor{PY-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
+\definecolor{PY-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
+\definecolor{PY-numeros}{rgb}{0.7,0.7,0.7}		%numéros de ligne
+\definecolor{PY-chevrons}{rgb}{1,0.,0.}		%chevrons
+\definecolor{PY-ombre}{rgb}{0.,0.,0.}		%Ombre
+
+
+%\makeatletter
+%\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+%\makeatother
+
+\lstnewenvironment{codePython}[1][0.975\linewidth]
+		{
+		\lstset{
+			%Langage
+				language=Python,	%Langage par défaut
+			%Mise en forme de l'environnement
+				xleftmargin=2em,	%marge a gauche
+				%frame=trBL,		%Cadre (double cadre)
+				backgroundcolor=\color{PY-fond},	%Couleur d'arriere plan
+				framexleftmargin=5mm,
+				frame=shadowbox,
+				rulesepcolor=\color{PY-ombre},
+				texcl=true,	%Activle les commandes LaTex dans le code
+				%escapechar=ø,	%Caractere a echapper
+				escapeinside={(*}{*)},
+				linewidth=#1,	%taille d'une ligne
+			%Titre
+				title=code Python,
+				belowcaptionskip=-0.0em,
+				abovecaptionskip=-0.0em,
+				nolol=true,
+			%Numeros de ligne
+				numbers=left,	%Rajoute des numéros de ligne
+				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numéros de ligne
+				numbersep=1em,			%Marge entre le code et les numéros de ligne
+			%Mise en forme du texte
+				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
+				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
+				showspaces=false,	%Pour mettre des especes d'underscore sur les espaces
+				tabsize=8,	%Taille des tabulations	
+			%Commentaires
+				commentstyle=\color{PY-commentaires}\slshape,	%Couleur des commentaires
+			%Chaine de caracteres
+				stringstyle=\color{PY-chaines},
+				showstringspaces=false,
+				morecomment=[s][\color{PY-chaines}]{"""}{"""},
+				morecomment=[s][\color{PY-chaines}]{'''}{'''},
+			%Fonctions et mot clé de python
+				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+				keywordstyle=\color{PY-fonctions}\bfseries,
+				morekeywords={[3]>>>},
+				keywordstyle={[3]\color{PY-chevrons}\bfseries},
+				morekeywords={[2]@invariant},
+				keywordstyle={[2]\color{PY-decoration}\slshape},
+				emph={self},
+				emphstyle={\color{PY-self}\slshape}
+			}
+			\minipage{#1}%
+		}
+		{	\endminipage%
+		}
+		\BeforeBeginEnvironment{codePython}{\par\noindent}
+		\AfterEndEnvironment{codePython}{\par}
+
+\endinput
