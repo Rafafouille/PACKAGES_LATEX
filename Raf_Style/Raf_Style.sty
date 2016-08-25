@@ -49,6 +49,7 @@
 	\newcommand*	{\dessineCompetences}	{}
 	\newcommand*	{\pointeCompetences}	{}
 	\newcommand*	{\QRcode}		{}
+	\newcommand*	{\codeQRcode}		{1234}
 	\newcommand*	{\iconeQRcode}		{\iconeAmpoule}
 
 %Page de garde
@@ -232,7 +233,10 @@
 							{%
 								\hfill%
 								\begin{tikzpicture}%
-									\node[anchor=center] (QRCODE) at (0,0) {\qrcode[forget,nolinks,height=7.4em,level=4,version=5]{\QRcode}};%
+									\ifthenelse{\equal{\codeQRcode}{}}
+										{\node[anchor=center] (QRCODE) at (0,0) {\qrcode[forget,nolinks,height=7.4em,level=4,version=5]{\QRcode}};}
+										{\node[anchor=center] (QRCODE) at (0,0) {\qrcode[forget,nolinks,height=7.4em,level=4,version=5]{\QRcode?QR\_CODE=\codeQRcode}};}
+									%
 									%\fill[color=white] (-4.8em,1.16em) rectangle (-2.59em,-1.05em);
 									%\fill[color=white] (-1.0em,-1.0em) rectangle (1.0em,1.0em);%
 									\iconeQRcode%
