@@ -109,7 +109,9 @@
 \newcommand* {\tempsReponse}	{\ensuremath{t_r^{5\%}}}
 \newcommand* {\tReponse}	{\tempsReponse}
 
-
+%Bode
+\newcommand{\wMPhase}	{\ensuremath{\omega_{\phantom{i}_{\hspace{-0.35em}0 dB}}}}
+\newcommand{\wMGain}	{\ensuremath{\omega_{\phantom{i}_{\hspace{-0.35em}-180\deg}}}}
 
 
 %Schema bloc (appuyé sur le package de Papanicola)
@@ -168,6 +170,7 @@
 
 %BODE
 %-------------------------------
+
 
 \newenvironmentx{bodeGain}[6][1=-1,2=4,3=-20,4=20,5=2,6=0.2]%1=10^x_min   2=10^x_max    3=Gdb_min    4=Gdb_max   5=xscale   6=yscale
 		{
