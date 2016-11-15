@@ -142,7 +142,7 @@
 		\draw [->,very thick] (0,0) -- (5.5em,0) ;
 		\draw [->,very thick] (0,0) -- (0,5.5em) ;
 		\draw [anchor=east] (-0.3em,0) node {#3};
-		\draw [anchor=north east] (5.5em,0) node {#4};
+		\draw [anchor=north] (5.5em,0) node {#4};
 		\draw [anchor=north west] (0,5.5em) node {#5};
 		\draw [anchor=north west] (0,0) node {#6};
 		\draw [fill=white] (0,0) circle (0.4em);
@@ -152,7 +152,7 @@
 		\draw [->] (#1em,0) -- ({#1em+5.5em},0) ;
 		\draw [->] (#1em,0) -- (#1em,5.5em) ;
 		\draw [anchor=east] ({#1em-0.3em},0) node {#7};
-		\draw [anchor=north east] ({#1em+5.5em},0) node {#4};
+		\draw [anchor=north] ({#1em+5.5em},0) node {#4};
 		\ifthenelse{\equal{#8}{}}
 			{\draw [anchor=north west] (#1em,5.5em) node {#5};}
 			{\draw [anchor=north west] (#1em,5.5em) node {#8};}
