@@ -113,6 +113,20 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 			\verb!\parametrageAngulaire! \verb!{\theta}[60]{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}!	&	\parametrageAngulaire{\theta}[60]{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}		&idem avec un angle différent.
 		\\\hline
 	\end{tabular}
+	
+	\begin{tabular}{|p{0.35\linewidth}|p{0.5\linewidth}|p{0.2\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\parametrageLineaire! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}! &	\parametrageLineaire{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}	&Figure plane de paramétrage linéaire
+		\\\hline
+			\verb!\parametrageLineaire! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}{B}[\vy1][\vz1]!	&	\parametrageLineaire{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}[\vy1][\vz1]	&idem en changeant le nom des deux axes orthogonaux d'un repère à l'autre. (Note : impossible de changer le nom du troisième axe -- Nombre de paramètres limités par xarg.)
+		\\\hline
+			\verb!\parametrageLineaire[7]! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}{B}[\vy1][\vz1]!	&	\parametrageLineaire[7]{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}[\vy1][\vz1]	&Idem avec changement d'écartement.
+		\\\hline
+	\end{tabular}
+	
+	
 
 	\section{Vecteurs de la base tournante (en coordonnées sphériques)}
 	%-----------------------------

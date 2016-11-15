@@ -135,7 +135,39 @@
 		\fill [black] (0,0) circle (0.15em);
 	\end{tikzpicture}
 	}
-
+	
+\newcommandx*{\parametrageLineaire}[9][1=10,8=,9=]
+	{
+	\begin{tikzpicture}
+		\draw [->,very thick] (0,0) -- (5.5em,0) ;
+		\draw [->,very thick] (0,0) -- (0,5.5em) ;
+		\draw [anchor=east] (-0.3em,0) node {#3};
+		\draw [anchor=north east] (5.5em,0) node {#4};
+		\draw [anchor=north west] (0,5.5em) node {#5};
+		\draw [anchor=north west] (0,0) node {#6};
+		\draw [fill=white] (0,0) circle (0.4em);
+		\fill [black] (0,0) circle (0.15em);
+		
+		
+		\draw [->] (#1em,0) -- ({#1em+5.5em},0) ;
+		\draw [->] (#1em,0) -- (#1em,5.5em) ;
+		\draw [anchor=east] ({#1em-0.3em},0) node {#7};
+		\draw [anchor=north east] ({#1em+5.5em},0) node {#4};
+		\ifthenelse{\equal{#8}{}}
+			{\draw [anchor=north west] (#1em,5.5em) node {#5};}
+			{\draw [anchor=north west] (#1em,5.5em) node {#8};}
+		\ifthenelse{\equal{#9}{}}
+			{\draw [anchor=north west] (#1em,0) node {#6};}
+			{\draw [anchor=north west] (#1em,0) node {#9};}
+		\draw [fill=white] (#1em,0) circle (0.4em);
+		\fill [black] (#1em,0) circle (0.15em);
+		
+		\draw [->] (0.5em,1.5em) -- ({#1em-0.5em},1.5em) ;
+		\draw [anchor=south] ({#1em/2},1.5em) node {$#2$};
+		
+	\end{tikzpicture}
+	}
+	
 %Vecteur de base
 \newcommand*{\vutheta}	{\f {\vecteur{u}}{\theta}}
 \newcommand*{\vvtheta}	{\f {\vecteur{v}}{\theta}}
