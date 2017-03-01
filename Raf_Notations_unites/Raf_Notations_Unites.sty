@@ -55,7 +55,9 @@
 	%\newcommand*{\uniteQueFaire}	{\ifthenelse{\equal{\uniteLeCaractereSuivant}{/}}{c'est un slash !}{Ce n'est pas un slash}}
 
 
-
+	%Sans unité
+	\newcommand*{\dent}[1][]	{\unite[#1]{\text{dent}}}
+	\newcommand*{\dents}[1][]	{\unite[#1]{\text{dents}}}
 
 	%Longueurs
 	\newcommand*{\micrometre}[1][] 	{\unite[#1]{\mu \text{m}}}
