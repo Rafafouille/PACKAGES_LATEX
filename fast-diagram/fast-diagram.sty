@@ -215,7 +215,7 @@
 				\addtocounter{cptAbscisse}{-1}	%On recule le compteur d'une colonne
 			}
 
-		\newcommand*{\fastTraceConnecteurs}[1][]
+		\newcommandx*{\fastTraceConnecteurs}[3][1=,2=0em,3=0em]%(#1 : Mot clé (ou,...) #2 : Décallage horizontale parent, #3 : Décallage horizontal enfant)
 			{
 				\ifthenelse{\equal{##1}{tempo}}	%Option ``tempo''
 					{\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits] (noeud \thecptAbscisse.north) -- ($(noeud \thecptAbscisse.north)+(0,\fastInterligne)$); }{}
@@ -225,8 +225,9 @@
 						\path ($(noeud \thecptAbscisse.north west)+(\fastDecalageOuHorizontal,\fastDecalageTrait)$) -- ($(noeud \thecptAbscisseParent.north east)+(0,\fastDecalageTrait)+(\fastDecalageOuHorizontal,-\fastDecalageOuVertical)$) coordinate[pos=.5] (milieu);	%On cherche le point milieu du connecteur
 						\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits] ($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)$) -| (milieu) |- ($(noeud \thecptAbscisseParent.north east)+(0,\fastDecalageTrait)+(0,-\fastDecalageOuVertical)$);			%On trace le connecteur en faisant un zig	
 					}
-					{	\path ($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)$) -- ($(noeud \thecptAbscisseParent.north east)+(0,\fastDecalageTrait)$) coordinate[pos=.5] (milieu);	%On cherche le point milieu du connecteur
-						\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits]($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)$) -| (milieu) |- ($(noeud \thecptAbscisseParent.north east)+(0,\fastDecalageTrait)$);			%On trace le connecteur en faisant un zig-zag par le milieu
+					{
+						\path ($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)$) -- ($(noeud \thecptAbscisseParent.north east)+(0,\fastDecalageTrait)$) coordinate[pos=.5] (milieu);	%On cherche le point milieu du connecteur
+						\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits]($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)+(##3,0)$) -| (milieu) |- ($(noeud \thecptAbscisseParent.north east)+(0,\fastDecalageTrait)+(##2,0)$);			%On trace le connecteur en faisant un zig-zag par le milieu
 					}
 			}
 
@@ -253,13 +254,30 @@
 		}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%Boite Test
+		%---------------------------
+		\newcommandx*\fastIF[3][1=]{%Argument 1 = option,Argument 2 = contenu de la solution technique)
+				\fastAvanceColonne	%On avance d'une colonne
+				\addtocounter{cptBoite}{1}	%//On incremente le numero de la boite
+				\node[text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,anchor=north west] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {}; %On écrit le contenu de la fonction
+				\node[draw,signal,signal to=east and west,anchor=north,text width=\fastLargeurBoite-1.2em,text=fastCouleurTexteFV,\fastFVStyle,text centered,] (sousNoeud \thecptAbscisse) at (noeud \thecptAbscisse.north) {\fastFVtexteStyle ##2};
+				\fastTraceConnecteurs[##1]%[1em][-1em]
+				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
+				##3
+				\fastEnregistreMinimum
+				\fastReculeColonne
+			}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%Solution technique
 		%---------------------------
 		\newcommandx*\fastST[3][1=,3=]{%Argument 1 = option,Argument 2 = contenu de la solution technique)
 				\fastAvanceColonne	%On avance d'une colonne
 				\addtocounter{cptBoite}{1}	%//On incremente le numero de la boite
-				\node[dashed,rounded corners=\fastSTarrondi,draw,text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,line width=\fastEpaisseurTraits,text centered,anchor=north west,fastCouleurBorduresST,fill=fastCouleurFondST,text=fastCouleurTexteST,\fastSTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastSTtexteStyle ##2}; %On écrit le contenu de la fonction
+				\node[dashed,rounded corners=\fastSTarrondi,draw,text width=\fastLargeurBoit-,minimum size=\fastHauteurBoite,line width=\fastEpaisseurTraits,text centered,anchor=north west,fastCouleurBorduresST,fill=fastCouleurFondST,text=fastCouleurTexteST,\fastSTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastSTtexteStyle ##2}; %On écrit le contenu de la fonction
 				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
 				\fastTraceConnecteurs[##1]
 				##3
@@ -296,7 +314,8 @@
 				\fastReculeColonne
 				}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+		
+		
 		\if@fastRaccourcis 
 			\newcommand*{\FT}[3][]	{\fastFT[##1]{##2}{##3}}
 			\newcommandx*{\ST}[3][1=,3=]	{\fastST[##1]{##2}[##3]}
