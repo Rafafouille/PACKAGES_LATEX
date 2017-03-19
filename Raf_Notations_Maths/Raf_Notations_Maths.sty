@@ -100,7 +100,7 @@
 	\renewcommand*{\Im}	\imaginaire	%Partie imaginaire
 \fi
 
-%Derivees
+%Derivees / Calculs différentiels
 \newcommandx*{\derivee}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\mathrm{d}^{#1}{#2}}{\mathrm{d}{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{{#4}}}}}
 	\newcommand*{\deriv}		{\derivee}
 %\newcommandx*{\deriv}[4][1=,4=]	{\derivee[#1]{#2}{#3}[#4]}
@@ -114,6 +114,18 @@
 \if@RafNotMathRac
 	\renewcommand{\O}	{\bigO}
 	\renewcommand{\o}	{\smallo}
+\fi
+
+\if@RafNotMathRac
+	\newcommand*{\dDroit}[1]	{\ensuremath{\text{d}{#1}}}
+	\newcommand*{\dRond}[1]		{\ensuremath{\partial{#1}}}
+	\newcommand*{\dx}[1][]	{\dDroit{x_{#1}}}
+	\newcommand*{\dy}[1][]	{\dDroit{y_{#1}}}
+	\newcommand*{\dz}[1][]	{\dDroit{z_{#1}}}
+	\newcommand*{\dtheta}[1][]	{\dDroit{\theta_{#1}}}
+	\newcommand*{\dr}[1][]	{\dDroit{r_{#1}}}
+	\newcommand*{\dS}[1][]	{\dDroit{S_{#1}}}
+	\newcommand*{\dV}[1][]	{\dDroit{V_{#1}}}
 \fi
 
 
