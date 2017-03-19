@@ -4,7 +4,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
-\ProvidesPackage{Raf_Notations_Actions-Meca}[2016/08/14]
+\ProvidesPackage{Raf_Notations_Actions-Meca}[2017/03/19]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 \RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
@@ -97,6 +97,12 @@
 \if@RafNotAMRac
 \newcommandx*{\vCT}[3][3=P]				{\vContrainteTangentielle{#1}{#2}[#3]}
 \fi
+
+
+\newcommand*{\vdF}[1][P]	{\vecteur{dF_{#1}}}
+\newcommandx*{\vdM}[2][1=P]	{\vecteur{\f{dM_{#1}}{#2}}}
+
+
 % 
 % %Tribologie
 % %==============================
