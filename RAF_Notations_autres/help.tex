@@ -31,6 +31,10 @@
 			\item \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}}: Plusieurs symboles (dont le clic de souris)
 		\end{itemize}
 		
+		\paragraph{Note : } Historiquement, le package \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}} pouvait être en conflit s'il est appelé après
+			\href{https://www.ctan.org/pkg/eurosym}{\textbf{eurosym}} dans le même document.
+			La commande \verb!\EUR! (\EUR) était en cause.
+			De ce fait, le package "libère" cette commande (la supprimer) avant de la redéfinir (en utilisant \verb!\let\EUR\undefined! avant l'appel de \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}})
 		
 	\section{Appel du package}
 	%-------------------------------------
