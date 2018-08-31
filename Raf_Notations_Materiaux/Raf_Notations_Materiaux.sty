@@ -4,7 +4,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
-\ProvidesPackage{Raf_Notations_Materiaux}[2016/08/16]
+\ProvidesPackage{Raf_Notations_Materiaux}[2018/08/24]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 \RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
@@ -12,7 +12,7 @@
 %\RequirePackage{Raf_Notations_Torseurs}	%Pour faire des torseurs
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
-
+\RequirePackage{xspace} %Pour faire des espaces à la fin des commandes
 
 
 %Initialisation des booleens 
@@ -28,7 +28,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %commandes et/ou environnements personnalisés
  
-	\newcommand*{\tauxDeformation}[1][]	{\ensuremath{\varepsilon_{#1}}}
+	\newcommand*{\tauxDeformation}[1][]	{\ensuremath{\varepsilon_{#1}}\xspace}
 	\newcommand*{\matDef}[1][]		{\tauxDeformation[#1]}
 
 	\newcommand*{\deformationElastique}	{\tauxDeformation[e]}
@@ -39,41 +39,46 @@
 	\newcommand*{\matDefP}			{\deformationPlastique}
 	\newcommand*{\defP}			{\deformationPlastique}
 
-	\newcommandx*{\matContrainte}[2][2=]	{\ensuremath{{#1}_{#2}}}
+	\newcommandx*{\matContrainte}[2][2=]	{\ensuremath{{#1}_{#2}}\xspace}
 	\newcommand*{\contrainteNormale}[1][]	{\matContrainte{\sigma}[#1]}
 	\newcommand*{\matS}[1][]		{\matContrainte{\sigma}[#1]}
 
 
-	\newcommand*{\moduleYoung}	{\ensuremath{E}}
+	\newcommand*{\moduleYoung}	{\ensuremath{E}\xspace}
 	\newcommand*{\matE}		{\moduleYoung}
 
-	\newcommand*{\limiteElastique}	{\ensuremath{R_e}}	%Limite élastique
+	\newcommand*{\limiteElastique}	{\ensuremath{R_e}\xspace}	%Limite élastique
 	\newcommand*{\matRe}		{{\limiteElastique}}	%idem (Ancien symbol des réels)
 
-	\newcommand*{\limiteElastiqueDeuxPourCent}	{\ensuremath{{\limiteElastique}_{2\%}}}
+	\newcommand*{\limiteElastiqueDeuxPourCent}	{\ensuremath{{\limiteElastique}_{2\%}}\xspace}
 	\newcommand*{\matRep}	{\limiteElastiqueDeuxPourCent}
 
-	\newcommand*{\limiteRupture}	{\ensuremath{R_m}}	%Limite à la rupture
+	\newcommand*{\limiteRupture}	{\ensuremath{R_m}\xspace}	%Limite à la rupture
 	\newcommand*{\matRm}		{\limiteRupture}
+	
+	\newcommand*{\limitePratique}	{\ensuremath{R_p}\xspace}	%Limite Pratique
+	\newcommand*{\resistancePratique}{\limitePratique}	%Limite Pratique
+	\newcommand*{\matRp}		{\limitePratique}
 
-	\newcommand*{\coefficientPoisson}	{\ensuremath{\nu}}	%Coefficient de Poisson
+	\newcommand*{\coefficientPoisson}	{\ensuremath{\nu}\xspace}	%Coefficient de Poisson
+	\newcommand*{\coefPoisson}		{\coefficientPoisson}
 	\newcommand*{\matPoisson}		{\coefficientPoisson}
 	\newcommand*{\matnu}			{\coefficientPoisson}
 
-	\newcommand*{\allongementPourCent}	{\ensuremath{A_{\%}}}
+	\newcommand*{\allongementPourCent}	{\ensuremath{A_{\%}}\xspace}
 	\newcommand*{\matAp}			{\allongementPourCent}
 
-	\newcommand*{\coefficientStriction}	{\ensuremath{Z_{\%}}}
+	\newcommand*{\coefficientStriction}	{\ensuremath{Z_{\%}}\xspace}
 	\newcommand*{\matZp}			{\coefficientStriction}
 
-	\newcommand*{\matEndurance}	{\ensuremath{\epsilon}}	%Coefficient résilience en V
+	\newcommand*{\matEndurance}	{\ensuremath{\epsilon}\xspace}	%Coefficient résilience en V
 
 
 %Designation
 %===========================================
 
 \definecolor{couleurMateriaux}{RGB}{200,100,0}%{250,250,250} %Couleur du fond
-	\newcommand{\designationMateriaux}[1]	{{\color{couleurMateriaux}#1}}
+	\newcommand{\designationMateriaux}[1]	{{\color{couleurMateriaux}#1}\xspace}
 
 
 %	%ACIERS
@@ -121,7 +126,7 @@
 %Elements chimiques
 %=======================================
 %
-	\newcommandx*{\elementChimique}[2][2=]	{{\small\ensuremath{\text{\,#1}_{#2}}}}
+	\newcommandx*{\elementChimique}[2][2=]	{{\small\ensuremath{\text{\,#1}_{#2}}}\xspace}
 	\newcommandx*{\eChim}[2][2=]	{\elementChimique{#1}[#2]}
 %
 	\newcommand{\Al}[1][]	{\elementChimique{Al}[#1]}

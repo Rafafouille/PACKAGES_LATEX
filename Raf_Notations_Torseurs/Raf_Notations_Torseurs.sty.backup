@@ -7,7 +7,7 @@
 \ProvidesPackage{Raf_Notations_Torseurs}[2016/06/01]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{mathrsfs}	%Pour faire des maths (notamment le L de la transformée de Laplace)
+\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
 \RequirePackage{ifthen}		%If-Then-Else package
 \RequirePackage{xargs}		%arguments optionnels mutliples
 \RequirePackage{Raf_Notations_Maths}		%arguments optionnels mutliples

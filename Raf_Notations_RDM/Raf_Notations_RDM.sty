@@ -1,0 +1,147 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_RDM}[2018/08/01]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+
+\RequirePackage{ifthen}	%Pour faire des compilations conditionnelles (if, etc..)
+\RequirePackage{mathrsfs}	%Pour faire des maths (notamment le P calligraphié)
+\RequirePackage{xspace} %Pour faire des espaces automatiques après les commandes.
+\RequirePackage{tikz}    %Pour faire des dessins
+    \usetikzlibrary{calc}%Package supplémentaire pour faire des calculs de coordonnées
+\RequirePackage{xargs}   %Pour avoir plus d'arguments facultatifs
+\RequirePackage{Raf_Notations_Actions-Meca}	%Pour faire des actions mécaniques
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisRDM}%création du booléen
+\setboolean{boolRaccourcisRDM}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\newif\if@RafNotRDMRac	\@RafNotRDMRactrue
+\DeclareOption{noRaccourci}	{\@RafNotRDMRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisRDM}{false}}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafRDMRac}[1]{\ifthenelse{\boolean{boolRaccourcisRDM}}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+
+
+
+% ===============================
+% Notations, annotations
+% ==============================
+
+\ifcsname PCallig\endcsname%
+    %
+  \else%
+  \newcommand{\PCallig}{\ensuremath{\mathscr{P}}\xspace}
+\fi%
+\newcommand{\ensemblePoutre}{\ensuremath{\left\lbrace\PCallig\right\rbrace}\xspace}
+\newcommand{\ensemblePoutreSup}{\ensuremath{\left\lbrace\PCallig_+\right\rbrace}\xspace}
+\newcommand{\ensemblePoutreInf}{\ensuremath{\left\lbrace\PCallig_-\right\rbrace}\xspace}
+
+\if@RafNotRDMRac
+\newcommand{\eP}{\ensemblePoutre}
+\newcommand{\ePp}{\ensemblePoutreSup}
+\newcommand{\ePm}{\ensemblePoutreInf}
+\fi
+
+
+% ===============================
+% Torseur de cohésions
+% ==============================
+
+\newcommand{\tCohesion}{\ensuremath{\tAM{\PCallig_+}{\PCallig_-}}\xspace}
+\newcommandx{\composanteTCohesion}[2][2=]
+    {
+        \ifthenelse{\equal{#2}{}}
+        {
+            \ensuremath{#1}\xspace
+        }
+        {
+            \f{#1}{#2}\xspace
+        }
+    }
+    
+\if@RafNotRDMRac
+\newcommand{\Nt}[1][]{\composanteTCohesion{N}[#1]}
+\ifdefined\Ty
+    \renewcommand{\Ty}[1][]{\composanteTCohesion{T_y}[#1]}
+\else
+    \newcommand{\Ty}[1][]{\composanteTCohesion{T_y}[#1]}
+\fi
+\ifdefined\Tz
+    \renewcommand{\Tz}[1][]{\composanteTCohesion{T_z}[#1]}
+\else
+    \newcommand{\Tz}[1][]{\composanteTCohesion{T_z}[#1]}
+\fi
+
+\newcommand{\Mt}[1][]{\composanteTCohesion{M_t}[#1]}
+\fi
+\newcommand{\Mfy}[1][]{\composanteTCohesion{M_{fy}}[#1]}
+\newcommand{\Mfz}[1][]{\composanteTCohesion{M_{fz}}[#1]}
+
+
+
+
+%=======================================================
+% Graphe d'évolution du torseur de cohesion
+%=======================================================
+
+    %L,absisse,ymin,ymax(,xmin,xscale,yscale)
+    \newenvironmentx{grapheRDM}[7][2=0,6=8,7=0.2]
+    {
+        \newcommand{\grapheRDMAbscisse}{#1}
+        \newcommand{\grapheRDMxmin}{#2}
+        \newcommand{\grapheRDMxmax}{#3}
+        \newcommand{\grapheRDMymin}{#4}
+        \newcommand{\grapheRDMymax}{#5}
+        \newcommand{\grapheRDMxscale}{#6}
+        \newcommand{\grapheRDMyscale}{#7}
+        
+        %Commande qui permet de tracer une courbe
+        \newcommandx*{\grapheRDMTrace}[3][2=\grapheRDMxmin,3=\grapheRDMxmax]
+        {
+             \fill[color=red!20] (##2,0) -- plot[domain=##2:##3] (\x,##1) -- (##3,0) -- cycle;
+             \draw [red,very thick,domain=##2:##3] plot (\x,##1);
+        }
+        
+        \begin{tikzpicture}[yscale=\grapheRDMyscale,xscale=\grapheRDMxscale]
+        
+    }
+    {
+        %Grille
+                \draw[color=black!20] (\grapheRDMxmin,\grapheRDMymin) grid[ystep=5,xstep=0.2] (\grapheRDMxmax,\grapheRDMymax);
+        %Axes
+        \draw[very thick,->] (0,\grapheRDMymin) -- (0,\grapheRDMymax);
+                    \draw [anchor=west] (0,\grapheRDMymax) node {\grapheRDMAbscisse};
+                \draw[very thick,->] (\grapheRDMxmin,0) -- (\grapheRDMxmax,0);
+                    \draw[anchor=north west] (\grapheRDMxmax,0) node {$x$};
+    
+            \end{tikzpicture}
+            
+    }
+%=======================================================
+% Pour encadrer des lignes dans \begin{align}\end{align}
+%=======================================================
+
+% \makeatletter
+%  \newlength{\boxed@align@width}
+%  \newcommand{\boxedalign}[2]{
+%  #1 & \setlength{\boxed@align@width}{\widthof{$\displaystyle#1$}+0.1389em+\fboxsep+\fboxrule}
+%  \hspace{-\boxed@align@width}\addtolength{\boxed@align@width}{-\fboxsep-\fboxrule}\boxed{\vphantom{#1}\hspace{\boxed@align@width}#2}}
+% \makeatother
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!
+% CETTE DERNIERE COMMANDE DOIT RESTER A LA FIN !!!!!!
+
+
+\endinput

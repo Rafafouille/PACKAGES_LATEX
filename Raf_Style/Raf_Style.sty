@@ -33,15 +33,15 @@
 %Mise à zéro des variables
 %==================================
 
-	\newcommand*	{\partie}		{Sciences Industrielles pour l'Ingénieur}
+	\newcommand*	{\partie}		{Sciences Industrielles de l'Ingénieur}
 	\newcommand*	{\titre}		{}
 	\newcommand*	{\sousTitre}		{}
 	\newcommand*	{\numero}		{}
 	\newcommand*	{\auteur}		{Raphaël ALLAIS}
 	\newcommand*	{\etablissement}	{Lycée Gustave Eiffel de Dijon}
-	\newcommand*	{\discipline}		{Sciences de L'ingénieur}
-	\newcommand*	{\classe}		{Classe préparatoire P.T.S.I.}
-	\newcommand*	{\anneeScolaire}	{2017 - 2018}
+	\newcommand*	{\discipline}		{Sciences Industrielle pour l'Ingénieur}
+	\newcommand*	{\classe}		{Classe préparatoire P.T.}
+	\newcommand*	{\anneeScolaire}	{2018 - 2019}
 	\newcommand*	{\icone}		{logoeiffel.png}
 	\newcommand*	{\duree}		{10 minutes}
 	\newcommand*	{\jour}			{\today}
@@ -104,8 +104,8 @@
 %===========================
 
 	\pagestyle{fancy}	%On veut utiliser les entetes/pieds
-	\rhead{\titre}		%Entete gauche --> Titre du document
-	\lhead{\textsc{\partie}}	%Entete droite --> Titre de la sections
+	\rhead{\ifthenelse{\equal{\partie}{}}{}{\partie}\\\titre}		%Entete gauche --> Titre du document
+	\lhead{\textsc{\discipline}}	%Entete droite --> Titre de la sections
 
 	\renewcommand*{\footrulewidth}{1px}
 	\lfoot{\etablissement}	%Pied de gauche --> Etablissement
@@ -374,6 +374,27 @@
 			\begin{center}
 				\large \textsc{Devoir - Maison}\\
 				\huge \titre
+			\end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+			
+			\ifthenelse{\boolean{versionCorrigee}}
+				{\afficheLogoVersionCorrigee}
+				{}
+
+		}
+
+\newcommand{\makeEnteteTD}
+		{
+			%\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+
+			\begin{center}
+				\large \textsc{Travaux Dirigés}
+			\ifthenelse{\equal{\numero}{}}
+				{}%
+				{ n°\numero}%
+				\\
+				\huge \textbf{\titre}
 			\end{center}
 			\vspace{0.5cm}\hrule
 			\par\vspace{0.4cm}

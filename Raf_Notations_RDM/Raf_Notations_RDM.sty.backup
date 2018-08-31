@@ -1,0 +1,65 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_RDM}[2018/08/01]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+
+\RequirePackage{ifthen}	%Pour faire des compilations conditionnelles (if, etc..)
+\RequirePackage{mathrsfs}	%Pour faire des maths (notamment le P calligraphié)
+
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisRDM}%création du booléen
+\setboolean{boolRaccourcisRDM}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\newif\if@RafNotRDMRac	\@RafNotRDMRactrue
+\DeclareOption{noRaccourci}	{\@RafNotRDMRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafRDMRac}[1]{\ifthenelse{\boolean{boolRaccourcisMaths}}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+
+
+
+% ===============================
+% Notations, annotations
+% ==============================
+
+\newcommand{\PCalig}{\ensuremath{\mathscr{P}}}
+\newcommand{\ensemblePoutre}{\ensuremath{\left\lbrace\PCalig\right\rbrace}}
+\newcommand{\ensemblePoutreSup}{\ensuremath{\left\lbrace\PCalig_+\right\rbrace}}
+\newcommand{\ensemblePoutreInf}{\ensuremath{\left\lbrace\PCalig_-\right\rbrace}}
+
+\if@RafNotRDMRac
+\newcommand{\eP}{\ensemblePoutre}
+\newcommand{\ePp}{\ensemblePoutreSup}
+\newcommand{\ePm}{\ensemblePoutreInf}
+\fi
+
+				
+%=======================================================
+% Pour encadrer des lignes dans \begin{align}\end{align}
+%=======================================================
+
+% \makeatletter
+%  \newlength{\boxed@align@width}
+%  \newcommand{\boxedalign}[2]{
+%  #1 & \setlength{\boxed@align@width}{\widthof{$\displaystyle#1$}+0.1389em+\fboxsep+\fboxrule}
+%  \hspace{-\boxed@align@width}\addtolength{\boxed@align@width}{-\fboxsep-\fboxrule}\boxed{\vphantom{#1}\hspace{\boxed@align@width}#2}}
+% \makeatother
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!
+% CETTE DERNIERE COMMANDE DOIT RESTER A LA FIN !!!!!!
+
+
+\endinput
