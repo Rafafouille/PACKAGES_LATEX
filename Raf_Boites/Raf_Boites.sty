@@ -23,8 +23,8 @@
  
 
 %TAILLE DES BOITES : pourcentage de la taille de la ligne
-\newcommand*{\tailleDesBoites}	{0.9}	
-\newcommand*{\margesBoites}	{0.75}
+\newcommand*{\tailleDesBoites}	{1}	
+\newcommand*{\margesBoites}	{0}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +50,7 @@
 													{\textbf{##1} :}
 											}
 							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définitions \thecptDefinition\ : \emph{#1}}
-									\begin{description}[leftmargin=2cm,style=nextline]
+									\begin{description}[leftmargin=2cm]%,style=nextline]
 						}
 						{			\end{description}
 							\end{bclogo}
@@ -69,7 +69,7 @@
 												}
 							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définitions : \emph{#1}
 						}
-								\begin{description}[leftmargin=2cm,style=nextline]}
+								\begin{description}[leftmargin=2cm]}%,style=nextline]}
 						{		\end{description}
 							\end{bclogo}
 						}
