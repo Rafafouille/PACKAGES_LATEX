@@ -58,7 +58,7 @@
 usepackage[noRaccourci]{Raf_Notations_RDM}
 	\end{verbatim}
 
-	\section{Notations/annotations}
+	\section{Poutre}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -78,6 +78,10 @@ usepackage[noRaccourci]{Raf_Notations_RDM}
 			\verb!\ensemblePoutreInf!	&	\ensemblePoutreInf	&	Partie de poutre " à gauche ".
 		\\\hline
 			\verb!\ePm!			&	\ePm			&	Raccourci de \verb!\ensemblePoutreInf!.
+		\\\hline
+            \verb!\Sx!          &   \Sx             &   Section de poutre à l'bascisse $x$ (par défaut).
+		\\\hline
+            \verb!\Sx[2]!          &   \Sx[2]             &   Section de poutre à l'abscisse $2$.
 		\\\hline
 	\end{tabular}
 
@@ -104,7 +108,25 @@ usepackage[noRaccourci]{Raf_Notations_RDM}
 	\end{tabular}
 
 
-
+    \section{Coefficients...}
+    %---------------------------------------
+    
+    \noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\momentQuadratique{A}! \verb!{\vec V}!		&	\momentQuadratique{A}{\vec V}		&	Moment quadratique autour de l'axe $(A,\vec V)$.
+		\\\hline
+			\verb!\IGz!		&	\IGz		&	Moment quadratique autour de \vz{}.
+		\\\hline
+			\verb!\IGz[P]!		&	\IGz[P]		&	Choix d'un autre point.
+		\\\hline
+			\verb!\IGz[P][\vec z_2]!		&	\IGz[P][\vec z_2]		&	Choix d'une autre direction.
+		\\\hline
+			\verb!\IGy!		&	\IGy		&	Moment quadratique autour de \vy{} (fonctionnement identique à \verb!\IGz!).
+		\\\hline
+	\end{tabular}
 
 	\section{Graphe}
 	%-------------------------------------------
@@ -122,4 +144,380 @@ usepackage[noRaccourci]{Raf_Notations_RDM}
     \grapheRDMTrace{7.5*\x-11.25}[0.5][1.5]
 \end{grapheRDM}
 
+
+	\section{Poutre}
+	%-------------------------------------------
+
+	Voici une série d'exemples commentés pour voir les différentes macros/
+	
+	\subsection{Environnement poutre}
+	%------------------------------------
+	%
+        Pour créer une poutre, dont l'origine est à gauche, et de longueur L (10cm dans l'exemple) :
+
+        \begin{verbatim}
+\begin{poutre}{10cm}    %On donne la longueur de la poutre en argument
+\end{poutre}
+        \end{verbatim}
+
+        \begin{poutre}{10cm}
+        \end{poutre}
+	
+    
+    \subsection{Liaison encastrement}
+	%------------------------------------
+	
+	\begin{center}
+        \begin{tabular}{|c|}
+            \hline
+            \verb!\encastrement[position][orientation]!
+            \\\hline
+        \end{tabular}
+    \end{center}
+	
+	\subsubsection{Par défaut :}
+	
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \encastrement   %Encastrement en (0,0) par défaut
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \encastrement   %Encastrement en (0,0) par défaut
+\end{poutre}
+
+
+        \subsubsection{Pour positionner (horizontalement) ailleur :}
+       
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \encastrement[5cm]   %Encastrement à 5cm de l'origine
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \encastrement[5cm]  %Encastrement à 5cm de l'origine
+\end{poutre}
+	
+
+        \subsubsection{Pour effectuer une rotation (en degrés) :}
+       
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \encastrement[10cm][180]   %Encastrement à 180°
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \encastrement[10cm][180]   %Encastrement à 180°
+\end{poutre}
+
+    Attention : pour préciser l'angle, il faut obligatoirement préciser la position (même si c'est zéro).
+	
+
+	
+	
+    
+    \subsection{Liaison Articulation}
+	%------------------------------------
+	
+	\begin{center}
+        \begin{tabular}{|c|}
+            \hline
+            \verb!\articulation{position}[orientation][noCercle]!
+            \\\hline
+        \end{tabular}
+    \end{center}
+	
+	
+        \subsubsection{Par défaut}
+	
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \articulation{5cm}   %Articulation 5cm de l'origine
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \articulation{5cm}   %Articulation 5cm de l'origine
+\end{poutre}
+
+
+        \subsubsection{Orientation :}
+	
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \articulation{5cm}[30]   %Articulation inclinée à 30°
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \articulation{5cm}[30]   %Articulation inclinée à 30°
+\end{poutre}
+
+    Attention : pour préciser l'angle, il faut obligatoirement préciser la position (même si c'est zéro).
+    
+    
+        \subsubsection{Pas de "petit cercle" au bout de l'articulation :}
+	
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \articulation{5cm}[0][noCercle]   %Articulation sans le petit cercle
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \articulation{5cm}[0][noCercle]   %Articulation sans le petit cercle
+\end{poutre}
+
+    Attention : le mot clé doit être exactement \verb!noCercle! (avec le \verb!C! majuscule). De plus, il doit être précéder des autres options, (même si elles sont dans leur valeur par défaut).
+	
+
+	
+  
+    \subsection{Liaison Appui Simple}
+	%------------------------------------
+	
+	\begin{center}
+        \begin{tabular}{|c|}
+            \hline
+            \verb!\appuiSimple{position}[orientation][noCercle]!
+            \\\hline
+        \end{tabular}
+    \end{center}
+	
+        Cette macro fonctionne exactement pareil que \verb!articulation! :
+	
+        \begin{verbatim}
+\begin{poutre}{10cm}
+    \appuiSimple{5cm}[0][noCercle]
+    \appuiSimple{10cm}[90]
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+    \appuiSimple{5cm}[0][noCercle]
+    \appuiSimple{10cm}[90]
+\end{poutre}
+	
+	
+    \subsection{Ajouter (graphiquement) un point}
+	%------------------------------------
+	
+           \begin{verbatim}
+\begin{poutre}{10cm}
+    \point{5cm}{A}
+\end{poutre}
+        \end{verbatim}
+	
+        \begin{poutre}{10cm}
+            \point{5cm}{A}
+        \end{poutre}
+	
+
+    \subsection{Composantes inconnues (ou pas)}
+	%------------------------------------
+	
+	
+        \subsubsection{Composantes indépendantes}
+        %.................................................
+	
+            \begin{center}
+                \begin{tabular}{|c|}
+                    \hline
+                    \verb!\composanteX{position}{texte}!\\
+                    \verb!\composanteY{position}{texte}!\\
+                    \verb!\composanteN{position}{texte}!
+                    \\\hline
+                \end{tabular}
+            \end{center}
+	
+	
+           \begin{verbatim}
+\begin{poutre}{10cm}
+    \composanteX{3cm}{$X_0$}
+    \composanteY{6cm}{$Y_2$}
+    \composanteN{9cm}{C}
+\end{poutre}
+        \end{verbatim}
+	
+\begin{poutre}{10cm}
+    \composanteX{3cm}{$X_0$}
+    \composanteY{6cm}{$Y_2$}
+    \composanteN{9cm}{C}
+\end{poutre}
+	
+        \subsubsection{Composantes groupées}
+        %.................................................
+        
+            \begin{center}
+                \begin{tabular}{|l|}
+                    \hline
+                    \verb!\composanteEncastrement{distance}{texte X}{texte Y}{texte N}!\\
+                    \verb!\composanteArticulation{distance}{texte X}{texte Y}!
+                    \\\hline
+                \end{tabular}
+            \end{center}
+        
+           \begin{verbatim}
+\begin{poutre}{10cm}
+    \composanteEncastrement{0}{$X_O$}{$Y_O$}{$N_O$}
+    \composanteArticulation{10cm}{$X_A$}{$Y_A$}
+\end{poutre}
+        \end{verbatim}
+        
+\begin{poutre}{10cm}
+    \composanteEncastrement{0}{$X_O$}{$Y_O$}{$N_O$}
+    \composanteArticulation{10cm}{$X_A$}{$Y_A$}
+\end{poutre}
+        
+        
+        \subsection{Actions mécaniques extérieures}
+        %----------------------------------------------
+        
+            \subsubsection{Forces}
+            %------------------------
+
+            \begin{center}
+                \begin{tabular}{|l|}
+                    \hline
+                    \verb!\Pforce{distance}{X}{Y}{texte}!
+                    \\\hline
+                \end{tabular}
+            \end{center}
+        
+           \begin{verbatim}
+\begin{poutre}{10cm}
+    \Pforce{0cm}{1}{2}{$\vec R$}
+    \Pforce{2cm}{-1}{2}{$\vec R$}
+    \Pforce{4cm}{1}{-2}{$\vec R$}
+    \Pforce{6cm}{-1}{-2}{$\vec R$}
+    \Pforce{8cm}{0}{2}{$\vec R$}
+\end{poutre}
+        \end{verbatim}
+        
+\begin{poutre}{10cm}
+    \Pforce{0cm}{1}{2}{$\vec R$}
+    \Pforce{2cm}{-1}{2}{$\vec R$}
+    \Pforce{4cm}{1}{-2}{$\vec R$}
+    \Pforce{6cm}{-1}{-2}{$\vec R$}
+    \Pforce{8cm}{0}{2}{$\vec R$}
+\end{poutre}
+        
+        Remarque : le label se place tout seul à droite ou à gauche. Si ça ne vous plait pas, le mieux est de ne rien mettre et de faire un autre n\oe ud à l'emplacement qui vous plait.
+	
+	
+	  
+            \subsubsection{Moment}
+            %------------------------
+
+            \begin{center}
+                \begin{tabular}{|l|}
+                    \hline
+                    \verb!\pmoment{distance}{texte}[inverse]!
+                    \\\hline
+                \end{tabular}
+            \end{center}
+        
+           \begin{verbatim}
+\begin{poutre}{10cm}
+    \pmoment{3cm}{$vec M$}
+    \pmoment{6cm}{$vec M$}[inverse]
+\end{poutre}
+        \end{verbatim}
+	
+\begin{poutre}{10cm}
+    \pmoment{3cm}{$\vec M$}
+    \pmoment{6cm}{$\vec M$}[inverse]
+\end{poutre}
+
+
+	  
+            \subsubsection{Force Répartie}
+            %-----------------------------------
+
+            \begin{center}
+                \begin{tabular}{|l|}
+                    \hline
+                    \verb!\pforceRepartie{x_min}{x_max}{texte}!
+                    \\\hline
+                \end{tabular}
+            \end{center}
+        
+           \begin{verbatim}
+\begin{poutre}{10cm}
+    \pforceRepartie{1}{4}{$f$}
+    \pforceRepartie{5}{9}{$f$}[2*(\x-5)]
+\end{poutre}
+        \end{verbatim}
+	
+\begin{poutre}{10cm}
+    \pforceRepartie{1}{4}{$f$}
+    \pforceRepartie{5}{9}{$f$}[2*(\x-5)]
+\end{poutre}
+
+  
+
+    \subsection{Cotes}
+	%------------------------------------      
+	
+            \begin{center}
+                \begin{tabular}{|l|}
+                    \hline
+                    \verb!\abscisse[x_départ]{x_arrivée}{texte}[position verticale]!\\
+                    \verb![options de la flèche][options du texte][options des côtes latérales]!
+                    \\\hline
+                \end{tabular}
+            \end{center}
+            
+           \begin{verbatim}
+\begin{poutre}{10cm}
+	\abscisse[1]{4}{$x$}
+	\abscisse{5}{$y$}[0.5]
+	\abscisse{6}{$y$}[-1.5][red][yellow][blue]
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+	\abscisse[1]{4}{$x$}
+	\abscisse{5}{$y$}[0.5]
+	\abscisse{6}{$y$}[-1.5][red][yellow][blue]
+\end{poutre}
+
+    \subsection{Base}
+	%------------------------------------ 
+	
+	
+           \begin{verbatim}
+\begin{poutre}{10cm}
+	\Pbase{$\vec x_0$}{$\vec y_0$}
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+	\Pbase{$\vec x_0$}{$\vec y_0$}
+\end{poutre}
+	
+	
+	
+           \begin{verbatim}
+\begin{poutre}{10cm}
+	\Pbase[1cm]{$\vec x_0$}{$\vec y_0$}[red]
+\end{poutre}
+        \end{verbatim}
+
+\begin{poutre}{10cm}
+	\Pbase[1cm]{$\vec x_0$}{$\vec y_0$}[red]
+\end{poutre}
+
+
+% 	\begin{poutre}{10}
+%         \encastrement
+%         \articulation[3cm]
+%         \articulation[5cm][0][noCercle]
+%         \appuiSimple[7cm][0][noCercle]
+%         \appuiSimple[10cm][90]
+%         \composanteEncastrement{5cm}{X}{Y}{Z}
+% 	\end{poutre}
 \end{document}
