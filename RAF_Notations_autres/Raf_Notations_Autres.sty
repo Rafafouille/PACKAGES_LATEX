@@ -13,6 +13,7 @@
 \RequirePackage{xspace}		%Permet notamment de tester si une commande existe avec \ifdef
 \let\EUR\undefined
 \RequirePackage{marvosym}		%Pour faire des symboles (utilisé pour le symbole "souris")
+\RequirePackage{xargs}		%Pour faires des commandes avec plusieurs arguments optionnels
 
 
 %Initialisation des booleens 
@@ -64,7 +65,16 @@
 \ifdef{\nd}	{\renewcommand*{\nd}	{^{\text{nd}}}}		{\newcommand*{\nd}{^{\text{nd}}}	}
 \ifdef{\nde}	{\renewcommand*{\nde}	{^{\text{nde}}}}	{\newcommand*{\nde}{^{\text{nde}}}	}
 
+% ==============================
+% DESSIN
+% ==============================
+
 \newcommand*{\fig}[1]		{(fig.\ref{#1})}
+\newcommand{\cheminGraphics}{./sources/images/}
+\newcommandx*{\graphicPDF}[4][1=\linewidth,2=\cheminGraphics,4=.pdf_tex]{\def\svgwidth{#1}\input{#2/#3#4}}
+
+
+
 
 \newcommand*{\miniCentre}[2][\linewidth]	{\begin{minipage}{#1}\begin{center}#2\end{center}\end{minipage}}
 \newcommand*{\dotparagraph}[2][$\bullet$]	{\paragraph{{#1} #2}}

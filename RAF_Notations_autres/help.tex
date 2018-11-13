@@ -29,6 +29,7 @@
 			\item \href{https://www.ctan.org/pkg/etoolbox}{\textbf{etoolbox}} : Permet notamment de tester si une commande existe avec \ifdef .
 			\item \href{https://www.ctan.org/pkg/xspace}{\textbf{xspace}} : Permet de gérer les espaces après les commandes.
 			\item \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}}: Plusieurs symboles (dont le clic de souris)
+			\item \href{https://ctan.org/pkg/xargs}{\textbf{xargs}}: Créer des macros avec plusieurs arguments optionnels.
 		\end{itemize}
 		
 		\paragraph{Note : } Historiquement, le package \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}} pouvait être en conflit s'il est appelé après
@@ -176,11 +177,20 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 	
 	\section{Dessin\label{REF}}
 
-		\begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+        \noindent
+		\begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.4\linewidth}|}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
 				\verb!\fig{REF}!	&\fig{REF} 	&	raccourci de \verb!(fig \ref{REF})!
+			\\\hline
+				\verb!\cheminGraphics!	& \cheminGraphics	&	Chemin par défaut vers les figures tex\_pdf
+			\\\hline
+				\verb!\graphicPDF{figure}!	& 	&	Ouvre le fichier .tex (qui renferme une figure PDF) : \cheminGraphics figure.pdf\_tex
+			\\\hline
+				\verb!\graphicPDF! \verb![autre_chemin]! \verb!{figure}!	& 	&	Ouvre le fichier tex (qui renferme une figure PDF) : autre\_chemin/figure.pdf\_tex
+			\\\hline
+				\verb!\graphicPDF! \verb![autre_chemin]! \verb!{figure}[.txt]!	& 	&	Ouvre le fichier dans un autre format : autre\_chemin/figure.txt
 			\\\hline
 		\end{tabular}
 	

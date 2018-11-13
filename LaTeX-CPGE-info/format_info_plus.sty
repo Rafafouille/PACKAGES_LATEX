@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{format_info_plus}[20/09/2018 Fichier formats]
+
+%%%%%%%%%%%%%%%%%% Extensions
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents	
+% \RequirePackage[latin1]{inputenc} 		%Caracteres francais
+% \RequirePackage[T1]{fontenc} 		%Caracteres francais
+% \RequirePackage[francais]{babel}		%On ecrit en francais
+% \RequirePackage{hyperref}	%Pour faire des liens clicables (intra et extra document)
+% \RequirePackage{lmodern}
+% \frenchbsetup{StandardLists=true}	%IMPORTANT : bable et enumitem (options sur les listes) sont incompatibles, d'ou cette ligne
+% %\RequirePackage[tikz]{bclogo}	%Pour faire des boites
+% \RequirePackage{xcolor}		%Package de gestion des couleurs
+% \RequirePackage{listings}
+% \RequirePackage{bold-extra}
+% 
+% 
+% \RequirePackage{titlesec}	%Pour l'aspect des titres (Attention, au moment ou j'écris, il y a un bug dans la version 2016 du package. Le fichier titlesec.sty a été modifié --> http://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15  )
+% \RequirePackage{fancyhdr}	%Pour l'entete et le pied de page
+% \RequirePackage{lastpage}	%Pour connaitre le nombre total de page pour le pied de page
+ \RequirePackage{subfig}			%Pour faire des figures dans les figures
+% \RequirePackage[top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}%Marges etc...
+ \RequirePackage{xifthen}			%Package des conditions
+% \RequirePackage[absolute,overlay]{textpos}	%Positionner du texte de maniere absolue (``version prof''...)
+% \RequirePackage{enumerate}			%Pour personnaliser les listes ``enumerate''
+% \RequirePackage{enumitem}			%Pour personnaliser les listes
+% \RequirePackage{xargs}			%Ppour faire plusieurs arguments optionnels
+% \RequirePackage{amsmath}
+% \RequirePackage{amsfonts}
+% \RequirePackage{amssymb}
+% \RequirePackage{multicol}
+% \RequirePackage{lscape}
+% \RequirePackage{graphicx}	%Permet de faire des dessins
+% %\RequirePackage{fp}	%????
+% \RequirePackage{pgf}	%Faire des graphes
+% \RequirePackage{tikz}
+% %	\usetikzlibrary{arrows}
+% \RequirePackage{tkz-tab}
+\RequirePackage{array}
+% \RequirePackage{placeins}	%Permet de mettre une ``barriere'' aux figures pour ne pas qu'elle s'étalent trop, avant de continuier le texte
+% \RequirePackage{textcomp}
+% %\RequirePackage{scrtime}	%Pour afficher l'heure dans la version prof (il y a une erreur -- package obsolète ????)
+% \RequirePackage{cancel}		%Pour pouvoir faire du texte barré
+% \RequirePackage{icomma}
+% \RequirePackage{caption}	%Pour modifier l'aspet des légendes (en particulier pour les environnement lstlisting)
+% \RequirePackage{etoolbox}	%OUtils, notamment pour changer les espaces avant et après Verbatim
+% % \RequirePackage{import}		%Pour importer des fichiers Latex, avec des chemins relatifs
+
+
+
+
+    \newcommand{\var}[1]{\texttt#1}
+    \newcommand{\qvar}[1]{"\var{#1}"}
+    \newcommand{\gras}[1]{\textbf{#1}}
+    
+    \newcommand{\fig}[1]{(fig.\ref{#1})}
+    
+    %QUESTION ========================================
+    \newcounter{cptQuestions}
+
+	\newcommand*{\resetQuestions}	{\setcounter{cptQuestions}{0}}
+	
+	\reversemarginpar
+	\newcommand{\bareme}[1]	{\marginpar{(/#1)}}
+
+	\newcommand*{\question}[2][]		{	\par	%Fini un paragraphe
+							\refstepcounter{cptQuestions}
+							%\global\advance\cptQuestions\@ne	%Incrémente le compteur
+							\vspace{0.cm}
+							\fbox{\textbf{Q\thecptQuestions .}}
+							\ifthenelse{\equal{#1}{}}
+								{}
+								{\bareme{#1}} 
+							{\gras{\itshape #2}}
+							\par\vspace{0.1cm}
+						}
+						
+    \newcommand{\sectionExercice}[1]{\resetQuestions\section{#1}}

@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Dynamique
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Dynamique}[2018/10/23]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}	%Pour faire des compilations conditionnelles (if, etc..)
+\RequirePackage{xspace} %Pour faire des espaces automatiques après les commandes.
+\RequirePackage{xargs}   %Pour avoir plus d'arguments facultatifs
+
+\RequirePackage{Raf_Notations_Maths}		%arguments optionnels mutliples
+\RequirePackage{Raf_Notations_Torseurs}		%Torseurs
+
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisDyn}%création du booléen
+\setboolean{boolRaccourcisDyn}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\newif\if@RafNotDynRac	\@RafNotDynRactrue
+\DeclareOption{noRaccourci}	{\@RafNotDynRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisRDM}{false}}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafDynRac}[1]{\ifthenelse{\boolean{boolRaccourcisDyn}}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+
+
+% ===============================
+% Masse
+% ==============================
+
+\newcommand*{\ddm}{\ensuremath{\text{d}m}}
+
+% ===============================
+% Matrice d'inertie
+% ==============================
+
+
+\newcommand{\matInertie}[2]{\ensuremath{\overline{\overline{I_{\left(#1,#2\right)}}}}\xspace}
+\newcommandx{\IGS}[2][1=G,2=S]{\matInertie{#1}{#2}}
+\newcommand{\matInertieComposantes}[3]{\ensuremath{ \indiceGauche{#1}{\left[\begin{array}{ccc}#2\end{array}\right]}_{#3}}}
+
+\newcommandx*{\IGSABCDEF}[2][1=G,2=\rR0]{\matInertieComposantes{#1}{A&-F&-E\\-F&B&-D\\-E&-D&C}{#2}}
+\newcommandx*{\IGSABC}[5][1=G,2=R,3=A,4=B,5=C]{\matInertieComposantes{#1}{#3&0&0\\0&#4&0\\0&0&#5}{#2}}
+
+
+\newcommandx*{\IGSParallelepipede}[6][1=G,2=M,6=\rR{}]
+    {
+        \matInertieComposantes{#1}
+            {
+                \frac{#2\left(#4^2+#5^2\right)}{12}  &0  &0\\
+                0   &\frac{#2\left(#3^2+#5^2\right)}{12} &0\\
+                0   &0  &\frac{#2\left(#3^2+#4^2\right)}{12}
+            }
+            {#6}
+    }
+
+\newcommandx*{\IGSCylindre}[5][1=G,2=M,5=\rR{}]
+    {
+        \matInertieComposantes{#1}
+            {
+                \frac{#2\left(3#3^2+#4^2\right)}{12}  &0  &0\\
+                0   &\frac{#2\left(3#3^2+#4^2\right)}{12} &0\\
+                0   &0  &\frac{#2#3^2}{12}
+            }
+            {#5}
+    }
+    
+\if@RafNotDynRac
+
+\fi
+
+% ===============================
+% Cinétique
+% ==============================
+\newcommand*{\CCallig}				{\ensuremath{	\mathscr{C}	}}	%Symbole du torseur cinematique
+
+\newcommand*{\tCinetique}[3][]		{\ensuremath{	\torseur{\CCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur cinetique
+\newcommand*{\resCinetique}[2]		{\vecteur{p_{\left(#1/#2\right)}}}
+\newcommand*{\momCinetique}[3]		{\ifthenelse{\equal{#2}{}}{\vecteur{\sigma_{\left(#1/#3\right)}}}{\vecteur{\sigma_{\left(#1\in#2/#3\right)}}}}
+
+
+\endinput
