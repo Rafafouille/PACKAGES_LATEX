@@ -820,53 +820,57 @@
 
 \lstnewenvironment{codePython}[1][0.975\linewidth]
 		{
-         \lstset{
-                upquote=true,
-                columns=flexible,
-                basicstyle=\ttfamily,
-                language=Python,
-                keywordstyle=\color{blue},
-                identifierstyle=\color{black},
-                commentstyle=\color{orange},
-            % *** titre
-                title={\hspace{-2.2em}\color{black}Code Python :},
-                belowcaptionskip=-0.5em,
-                abovecaptionskip=-0.0em,
-                nolol=true,
-            % *** style
-                frame=leftline,%
-                framerule=3pt,%
-                rulecolor=\color{black!20},%
-                framesep=2em,%
-                xleftmargin=2em,%
-            %Numeros de ligne
+		\lstset{
+			%Langage
+				language=Python,	%Langage par défaut
+			%Mise en forme de l'environnement
+				xleftmargin=2em,	%marge a gauche
+				%frame=trBL,		%Cadre (double cadre)
+				backgroundcolor=\color{PY-fond},	%Couleur d'arriere plan
+				framexleftmargin=5mm,
+				frame=shadowbox,
+				rulesepcolor=\color{PY-ombre},
+				texcl=true,	%Activle les commandes LaTex dans le code
+				%escapechar=ø,	%Caractere a echapper
+				escapeinside={(*}{*)},
+				linewidth=#1,	%taille d'une ligne
+			%Titre
+				title=code Python,
+				belowcaptionskip=-0.0em,
+				abovecaptionskip=-0.0em,
+				nolol=true,
+			%Numeros de ligne
 				numbers=left,	%Rajoute des numéros de ligne
-				numberstyle=\footnotesize\color{black!20},	%Taille des numéros de ligne
+				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numéros de ligne
 				numbersep=1em,			%Marge entre le code et les numéros de ligne
-            % code
-                showstringspaces=false,
-                texcl=True,% to activate teX code
-            literate=%
-                {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-                {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-                {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-                {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-                {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-                {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-                {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-                {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-                {½}{{\oe}}1 {¼}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-                {?}{{\H{u}}}1 {?}{{\H{U}}}1 {?}{{\H{o}}}1 {?}{{\H{O}}}1
-                {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-                {¤}{{\EUR}}1 {£}{{\pounds}}1
-                {°}{{\degres{}}}1
-            }
-			%\minipage{#1}
+			%Mise en forme du texte
+				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
+				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
+				showspaces=false,	%Pour mettre des especes d'underscore sur les espaces
+				tabsize=8,	%Taille des tabulations	
+			%Commentaires
+				commentstyle=\color{PY-commentaires}\slshape,	%Couleur des commentaires
+			%Chaine de caracteres
+				stringstyle=\color{PY-chaines},
+				showstringspaces=false,
+				morecomment=[s][\color{PY-chaines}]{"""}{"""},
+				morecomment=[s][\color{PY-chaines}]{'''}{'''},
+			%Fonctions et mot clé de python
+				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+				keywordstyle=\color{PY-fonctions}\bfseries,
+				morekeywords={[3]>>>},
+				keywordstyle={[3]\color{PY-chevrons}\bfseries},
+				morekeywords={[2]@invariant},
+				keywordstyle={[2]\color{PY-decoration}\slshape},
+				emph={self},
+				emphstyle={\color{PY-self}\slshape}
+			}
+			\minipage{#1}
 		}
-		{	%\endminipage%
+		{	\endminipage%
 		}
-		%\BeforeBeginEnvironment{codePython}{\par\noindent}
-		%\AfterEndEnvironment{codePython}{\par}
+		\BeforeBeginEnvironment{codePython}{\par\noindent}
+		\AfterEndEnvironment{codePython}{\par}
 
 
 
@@ -1022,7 +1026,7 @@
 % Console
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\definecolor{console-fond}{rgb}{1.,1.,1.}			%Couleur du fond
+\definecolor{console-fond}{rgb}{0.,0.,0.}			%Couleur du fond
 \definecolor{console-commentaires}{rgb}{0.5,0.5,0.5}	%Couleur des commentaires
 \definecolor{console-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 \definecolor{console-fonctions}{rgb}{1,1,1}		%Couleur des fonctions de bases
@@ -1044,51 +1048,45 @@
 				%frame=trBL,		%Cadre (double cadre)
 				backgroundcolor=\color{console-fond},	%Couleur d'arriere plan
 				framexleftmargin=5mm,
-				frame=leftline,%shadowbox,
-                framerule=3pt,%
-                framesep=0em,%
-				rulecolor=\color{black},
-				%rulesepcolor=\color{console-ombre},
+				frame=shadowbox,
+				rulesepcolor=\color{console-ombre},
 				texcl=true,	%Activle les commandes LaTex dans le code
 				%escapechar=ø,	%Caractere a echapper
 				escapeinside={(*}{*)},
 				linewidth=#1,	%taille d'une ligne
 			%Titre
-				title={\hspace{-1.8em}\color{black}Sortie-Console :},
-                belowcaptionskip=-0.5em,
-                abovecaptionskip=-0.0em,
+				title={\color{black}Sortie-Console},
+				belowcaptionskip=-0.0em,
+				abovecaptionskip=-0.0em,
 				nolol=true,
 			%Numeros de ligne
-				%numbers=left,	%Rajoute des numéros de ligne
-				%numberstyle=\footnotesize\color{console-numeros},	%Taille des numéros de ligne
-				%numbersep=1em,			%Marge entre le code et les numéros de ligne
+				numbers=left,	%Rajoute des numéros de ligne
+				numberstyle=\footnotesize\color{console-numeros},	%Taille des numéros de ligne
+				numbersep=1em,			%Marge entre le code et les numéros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
 				showspaces=false,	%Pour mettre des especes d'underscore sur les espaces
 				tabsize=8,	%Taille des tabulations	
-                xleftmargin=2em,%
 			%Commentaires
-				%commentstyle=\color{console-commentaires}\slshape,	%Couleur des commentaires
+				commentstyle=\color{console-commentaires}\slshape,	%Couleur des commentaires
 			%Chaine de caracteres
-				%stringstyle=\color{console-chaines},
-				%showstringspaces=false,
-				%morecomment=[s][\color{console-chaines}]{"""}{"""},
-				%morecomment=[s][\color{console-chaines}]{'''}{'''},
+				stringstyle=\color{console-chaines},
+				showstringspaces=false,
+				morecomment=[s][\color{console-chaines}]{"""}{"""},
+				morecomment=[s][\color{console-chaines}]{'''}{'''},
 			%délimiteurs de Commentaires
 				deletecomment=[n]{(*}{*)},
 			%Fonctions et mot clé de python
 				%morekeywords=[1]{Pour,pour,Fin,fin,Effectuer,effectuer,si,Si,faire,Faire,alors,Alors},
-				literate=*{>>>}{{\textbf{\color{red}{>}{>}{>}}}}{3}
-        %
-				keywordstyle=[1]*\color{red}\bfseries,
+				keywordstyle=[1]*\color{console-fonctions}\bfseries,
 				emph={self},
 				emphstyle={\color{console-self}\slshape}
 			}
 			%\footnotesize\setbox1=\vbox
 			%\bgroup
 			\minipage{#1}
-			%	\color{white}
+				\color{white}
 		}
 		{	\endminipage
 		}
