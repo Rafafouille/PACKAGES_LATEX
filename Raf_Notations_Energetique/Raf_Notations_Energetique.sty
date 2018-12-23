@@ -41,10 +41,43 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\PCallig}	{\ensuremath{\mathscr{P}}}
-\newcommandx{\puissance}[3][3=]	{\ifthenelse{\equal{#3}{}}
-					{\ensuremath{\PCallig_{#1\ifthenelse{\equal{#2}{}}{}{,#2}}}}
-					{\f {\ensuremath{\PCallig_{#1\ifthenelse{\equal{#2}{}}{}{,#2}}}}{#3}}
-				}
+\newcommandx{\puissance}[4][2=,4=]	{{
+                    \ifthenelse{\equal{#2}{}}
+                        {\newcommand*{\notationActionMecaniquePourP}{\ensuremath{#1}}}
+                        {\newcommand*{\notationActionMecaniquePourP}{\ensuremath{#1\mapsto#2}}}
+%
+                    \ifthenelse{\equal{#3}{}}
+                        {\newcommand*{\notationFinIndicePuissanceCommeParExempleReferentiel}{}}
+                        {\newcommand*{\notationFinIndicePuissanceCommeParExempleReferentiel}{\ensuremath{,#3}}}
+%
+                    \ifthenelse{\equal{#4}{}}
+                        {
+                            \ensuremath{
+                                \PCallig_{
+                                    \notationActionMecaniquePourP
+                                    \notationFinIndicePuissanceCommeParExempleReferentiel
+                                }
+                            }
+                        }
+                        {
+                            \f {
+                                \PCallig_{
+                                    \notationActionMecaniquePourP
+                                    \notationFinIndicePuissanceCommeParExempleReferentiel
+                                }
+                            }
+                            {#4}
+                        }
+				}}
+\newcommand*{\puissanceMutuelle}[2]{\ensuremath{\PCallig_{#1\leftrightarrow#2}}}
+\newcommand*{\puissanceMutuelles}{\puissanceMutuelle}
+\newcommand*{\pMutuelle}{\puissanceMutuelle}
+\newcommand*{\pMutuelles}{\puissanceMutuelle}
+
+\newcommand*{\Pint}[1]{\ensuremath{\ifthenelse{\equal{#1}{}}
+                            {\PCallig_{int}}
+                            {\f {\PCallig_{int}}{#1}}
+                            }}
 
 \if@RafNotEnergRac
 	\renewcommand{\P}	{\puissance}	%Redéfini (anciennement : symbole paragraphe)
@@ -55,6 +88,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommandx{\travail}[3][3=]	{\ensuremath{W_{#1\ifthenelse{\equal{#2}{}}{}{,#2\ifthenelse{\equal{#3}{}}{}{\rightarrow#3}}}}}
+
+\newcommand*{\eCinetique}[2]{\ensuremath{T_{(#1/#2)}}}
+\newcommand*{\eCin} {\eCinetique}
+
 
 \if@RafNotEnergRac
 	\newcommand{\Wk}	{\travail}	%Redéfini (anciennement : symbole paragraphe)

@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations Analyse fonctionnelle
+%	Notations Unités
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
-\ProvidesPackage{Raf_Notations_Unites}[2016/08/14]
+\ProvidesPackage{Raf_Notations_Unites}[2018/11/22]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 \RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
@@ -230,7 +230,7 @@
 	\newcommand*{\dm} 		{\decimetre}
 	\newcommand*{\m} 		{\metre}
 	\newcommand*{\dam} 		{\decametre}
-	\newcommand*{\hm} 		{\hectometre}
+	\newcommand*{\hhm} 		{\hectometre}%Conflit de \hm avec le package bm (math en gras)
 	\newcommand*{\km} 		{\kilometre}
 
 	%Volume

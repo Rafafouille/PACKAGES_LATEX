@@ -67,7 +67,19 @@
 		\\\hline
 			\verb!\puissance{F}{}[t]!	&	\puissance{F}{}[t]		&	Puissance instantanée à la date $t$.
 		\\\hline
+			\verb!\puissance{S_1}[S_2]{R}!		&	\puissance{S_1}[S_2]{R}			&	Puissance d'une action mécanique de $S_1$ sur $S_2$
+		\\\hline
+			\verb!\puissance{S_1}[S_2]{}!		&	\puissance{S_1}[S_2]{}			&	Idem, sans référentiel
+		\\\hline
 			\verb!\P{F}{}[t]!		&	\P{F}{}[t]			&	Raccourci direct de \verb!\puissance! \rac -- \ren
+		\\\hline
+			\verb!\puissanceMutuelle{S_1}! \verb!{S_2}!		&	\puissanceMutuelle{S_1}{S_2}			&	Puissance des actions mutuelles.
+		\\\hline
+			\verb!\pMutuelle{S_1}{S_2}!		&	\pMutuelle{S_1}{S_2}			&	Identique à \verb!\puissanceMutuelle!
+		\\\hline
+			\verb!\Pint{\Sigma}!		&	\Pint{\Sigma}			&	Puissance intérieure à l'ensemble $\Sigma$.
+		\\\hline
+			\verb!\Pint{}!		&	\Pint{}			&	Idem, sans préciser l'ensemble isolé.
 		\\\hline
 	\end{tabular}
 
@@ -86,9 +98,24 @@
 		\\\hline
 			\verb!\travail{F}{t_1}[t_2]!	&	\travail{F}{t_1}[t_2]		&	travail d'une force $F$, pour un déplacement entre l'instant $t_1$ et l'instant $t_2$.
 		\\\hline
-			\verb!\Wk{F}{}!			&	\Wk{F}{}			&	Raccourci direct de \verb!\Wk! \rac. Le \verb!\W! a été gardée pour les Watt. \verb!Wk! vient de \verb!Work!.
+			\verb!\Wk{F}{}!			&	\Wk{F}{}			&	Raccourci direct de \verb!\travail! \rac. Le \verb!\W! a été gardée pour les Watt. \verb!Wk! vient de \verb!Work!.
 		\\\hline
 	\end{tabular}
 
-
+	\section{Énegie Cinétique}
+	%-------------------------------------------
+	
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\eCinetique{S}{R_0}!		&	\eCinetique{S}{R_0}			&	Énergie cinétique d'une ensemble $S$ par rapport à un référentiel $R_0$. 
+		\\\hline
+			\verb!\eCin{S}{R_0}!		&	\eCin{S}{R_0}			&	Raccourci de \verb!\eCinetique!
+		\\\hline
+	\end{tabular}
+	
+	
+	
 \end{document}

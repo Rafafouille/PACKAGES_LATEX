@@ -1,0 +1,160 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cours Info Cor TD Package Jo 2018-19
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%ENTETE / INCLUDES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=======================================================================
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{CPGE-info}[2014/08/26]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents	
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[french]{babel}
+%\RequirePackage[autolanguage]{numprint} %enlev� par Jo
+\RequirePackage{%
+	%setspace, enlev� par Jo
+color,calc,graphicx,multicol,float,caption,% << style
+	amsmath,amssymb,amsfonts,amstext,amsthm,
+%stmaryrd,enlev� par Jo % << maths
+	%mathtools, enlev� par Jo % << for left side subs
+	mathrsfs, % << some math fonts
+	longtable,colortbl,%
+	enumitem,% << lists
+	%colortbl,enlev� par Jo % << color in tabular
+	%marvosym, enlev� par Jo % << symbols
+	tikz,pgf,pgfcore,
+    %pgfplots,% << graphics
+	lscape,%
+	schemabloc,% << shémas-blocs
+	pifont,
+	amsmath,
+}  
+              
+    
+% *** pgf/tikz library
+\usepgflibrary{arrows}
+
+\usetikzlibrary{calc,through,automata,er,fadings,decorations,shadows,shapes,%
+	topaths,positioning,matrix,patterns,intersections,%
+	%babel, enlev� par Jo % pour préserver les caractères actifs
+}
+\RequirePackage[textwidth=180mm,textheight=254mm,
+	twoside,marginratio=2:3,%
+	hmarginratio=3:2,% to reverse
+]{geometry}
+%\RequirePackage{listings} %ajout� par Jo
+
+\RequirePackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=0mm] %Doc Virgile
+%\RequirePackage{pgfpages} %enlev� par Jo
+%\pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=0mm] enlev� par Jo
+    
+%-----------------------------------------------------------------------
+% *** fonts
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp,lmodern}
+% *** microtype
+%\RequirePackage[babel]{microtype} enlev� par Jo
+%\RequirePackage[babel=true,kerning=french]{microtype}
+%\DeclareMicrotypeAlias{lmr}{cmr} enlev� par Jo
+% *** title style
+\RequirePackage[small,bf]{titlesec}
+% *** text spacing
+%\RequirePackage{setspace}  enlev� par Jo
+% *** inclusion de pdf
+%\RequirePackage{pdfpages} enlev� par Jo
+% *** paquets utilisés par rémi
+%\RequirePackage{csquotes} enlev� par Jo
+
+% *** paquets => SII
+\RequirePackage{gensymb}
+\RequirePackage{multirow}
+\RequirePackage{schemabloc}
+
+%-----------------------------------------------------------------------
+% *** info environment
+%-----------------------------------------------------------------------
+\newsavebox{\boiteinfo}
+\newenvironment{info}{\medskip%
+	\setbox\boiteinfo=\vbox\bgroup%
+	\hsize\textwidth\addtolength{\hsize}{-6em}\parindent0pt%
+	\vspace*{2pt}}%
+	{\vspace*{2pt}\par\egroup%
+	\noindent\parbox[b][\heightof{\usebox{\boiteinfo}}][c]{4em}{\centering\huge\Info}%
+	\rule{1pt}{\heightof{\usebox{\boiteinfo}}}\hskip1em%
+	\parbox[b][\heightof{\usebox{\boiteinfo}}][c]{\textwidth-6em}{\usebox{\boiteinfo}}
+	\par\medskip
+}
+
+% *** code info
+%-----------------------------------------------------------------------
+% *** code python
+%-----------------------------------------------------------------------
+\RequirePackage{listings}
+\lstset{
+	upquote=true,
+	columns=flexible,
+	basicstyle=\ttfamily,
+	language=Python,
+	keywordstyle=\color{blue},
+	identifierstyle=\color{black},
+	commentstyle=\color{orange},
+	% *** style
+	frame=leftline,%
+	framerule=3pt,%
+	rulecolor=\color{black!20},%
+	framesep=1em,%
+	xleftmargin=2em,%
+	% code
+	showstringspaces=false,
+	texcl=True,% to activate teX code
+	literate=%
+{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+{€}{{\EUR}}1 {£}{{\pounds}}1
+{°}{{\degres{}}}1
+}
+
+% *** def lastpage counter
+\RequirePackage{lastpage,refcount}
+% *** header
+\RequirePackage{fancyhdr}
+\pagestyle{fancy} 
+\fancyhf{}
+\fancyhead{}
+\fancyfoot[l]{Cor TD \numeroTD} %ajout Jo
+\fancyfoot[c]{\thepage/\pageref{LastPage}}
+%\fancyfoot[r]{2018-19} %ajout Jo
+%\fancyfoot[ro]{\ifnum\thepage<\getpagerefnumber{LastPage}
+%\small\itshape Tournez la page S.V.P.\fi}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy} 
+\newcommand*\subc[1]{%
+	^{\text{\tikz{\node[draw,circle,inner sep=.5pt]{\tiny$#1$};}}}%
+}
+
+
+\RequirePackage{pdflscape} %ajout Jo  
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Numero TD
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\numeroTD}{}
+\newcommand*{\numero}[1]{\renewcommand*{\numeroTD}{#1}}
+
+

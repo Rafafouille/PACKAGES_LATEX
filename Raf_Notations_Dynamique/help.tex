@@ -96,7 +96,11 @@ usepackage[noRaccourci]{Raf_Notations_Dynamique}
 		\\\hline
 			\verb!\IGSParallelepipede[A]! \verb![M_2]{a}{b}{c}[R_1]!			&	\IGSParallelepipede[A][M_2]{a}{b}{c}[R_1]		&	idem, en un autre point, et un autre repère.
 		\\\hline
-			\verb!\IGSCylindre! \verb!{R}{H}!			&	\IGSCylindre{R}{H}		&	Matrice d'inertie d'un cylindre de rayon $R$ et de hauteur $H$.
+			\verb!\IGSCylindreX! \verb!{R}{H}!			&	\IGSCylindreX{R}{H}		&	Matrice d'inertie d'un cylindre de rayon $R$ et de hauteur $H$ d'axe // $\overrightarrow{x}$.
+		\\\hline
+			\verb!\IGSCylindreY! \verb!{R}{H}!			&	\IGSCylindreY{R}{H}		&	Matrice d'inertie d'un cylindre de rayon $R$ et de hauteur $H$ // $\overrightarrow{x}$.
+		\\\hline
+			\verb!\IGSCylindreZ! \verb!{R}{H}!			&	\IGSCylindreZ{R}{H}		&	Matrice d'inertie d'un cylindre de rayon $R$ et de hauteur $H$ // $\overrightarrow{x}$.
 		\\\hline
 	\end{tabular}
 
@@ -110,6 +114,8 @@ usepackage[noRaccourci]{Raf_Notations_Dynamique}
 			\verb!\CCallig!			&	\CCallig			&	C calligraphié
 		\\\hline
 			\verb!\tCinetique{S_1}{S_2}!			&	\tCinetique{S_1}{S_2}			&	Torseur cinétique
+		\\\hline
+			\verb!\tCinetique[2]{S_1}{S_2}!			&	\tCinetique[2]{S_1}{S_2}			&	Torseur cinétique avec exposant
 		\\\hline
 			\verb!\resCinetique{S_1}{S_2}!			&	\resCinetique{S_1}{S_2}			&	Résultante cinétique
 		\\\hline
@@ -133,6 +139,10 @@ usepackage[noRaccourci]{Raf_Notations_Dynamique}
 			\verb!\resDynamique{S}{R}!			&	\resDynamique{S}{R}			&	Résultante dynamique
 		\\\hline
 			\verb!\momDynamique{A}{S}{R}!			&	\momDynamique{A}{S}{R}			&	moment dynamique au point $A$
+		\\\hline
+			\verb!\tDynamique{S}{R}!			&	\tDynamique{S}{R}			&	Torseur dynamique
+		\\\hline
+			\verb!\tDynamique[2]{S}{R}!			&	\tDynamique[2]{S}{R}			&	Torseur dynamique avec exposant
 		\\\hline
 	\end{tabular}
 \end{document}

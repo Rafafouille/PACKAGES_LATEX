@@ -17,6 +17,7 @@
 \RequirePackage{color}
 \RequirePackage{xspace}		%Pour faire des espace après les commandes
 \RequirePackage{xstring}	%Pour faire des remplacements de chaines
+\RequirePackage{bm}     %Pour mettre les maths en gras
 
 %Initialisation des booleens 
 \newboolean{boolRaccourcisMaths}%création du booléen
@@ -48,6 +49,9 @@
 \fi
 \newcommand*{\valPi}        {3.141592653589793}
 \newcommand*{\mathbox}[1]		{\fbox{$\displaystyle #1$}}
+\newcommand*{\mathGras}[1]  {\ensuremath{\bm{{#1}}}}
+\newcommand*{\grasMath} \mathGras
+\newcommand*{\inconnue}[1] {{\color{red}\mathGras{{#1}}}}
 
 
 % EQUATIONS
@@ -173,7 +177,7 @@
 %VECTEURS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Commandes de base
+%Commandes de base\RequirePackage{bm}
 %-----------------------------
 \newcommandx*{\vecteur}[2][2=]	{\ensuremath{\protect\overrightarrow{{#1}_{#2}}}\xspace}	%Fait un vecteur
 
