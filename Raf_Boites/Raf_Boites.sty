@@ -717,6 +717,18 @@
 						\section*{Exercice \thecptExos\ : #1}
 						\resetQuestions}
 
+    
+	\newcommand{\subsectionExercice}[1]	{\refstepcounter{cptExos}
+						\setcounter{subsection}{0}
+						\subsection*{Exercice \thecptExos\ : #1}
+						\resetQuestions}
+                    
+	\newcommand{\subsubsectionExercice}[1]	{\refstepcounter{cptExos}
+						\setcounter{subsection}{0}
+						\subsubsection*{Exercice \thecptExos\ : #1}
+						\resetQuestions}
+						
+                    
 	\newenvironment{exercice}[1][]		{%\refstepcounter{cptExos}
 						%\setcounter{subsection}{0}
 						%\section*{Exercice \thecptExos\ : #1}

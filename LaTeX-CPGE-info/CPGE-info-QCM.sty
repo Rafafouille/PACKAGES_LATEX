@@ -168,45 +168,45 @@
 							{}
 				}
 
-\newcommand*{\makeEnteteTD}	{
-				%\hrule
-				\vspace{1cm}
-				\begin{center}
-					Informatique\\[0.2cm]
-					TD \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
-					{\Large\getTitre}
-				\end{center}
-				\vspace{1cm}
-				\hrule
-				\vspace{1cm}
-
-				%Competences
-%				\ifx \getListeCompetences \@empty
-%						
-%				\else
-%					\begin{boiteCompetences}
-%								\getListeCompetences
-%					\end{boiteCompetences}
-%				\fi
-
-
-
-				%Version prof :
-				\ifthenelse{\boolean{versionProf}}{\begin{textblock}{2}(1,0.5) %
-								\bgroup%
-									\Huge%
-									\color{red}%
-									\rotatebox{20}
-										{\begin{minipage}{5cm}
-											\centering\fcolorbox{red}{white}{Version Prof}\newline%
-											{\normalsize\today\\\ }
-										\end{minipage}
-										}%
-								\egroup%
-							\end{textblock}
-							}
-							{}
-				}
+% \newcommand*{\makeEnteteTD}	{
+% 				%\hrule
+% 				\vspace{1cm}
+% 				\begin{center}
+% 					Informatique\\[0.2cm]
+% 					TD \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
+% 					{\Large\getTitre}
+% 				\end{center}
+% 				\vspace{1cm}
+% 				\hrule
+% 				\vspace{1cm}
+% 
+% 				%Competences
+% %				\ifx \getListeCompetences \@empty
+% %						
+% %				\else
+% %					\begin{boiteCompetences}
+% %								\getListeCompetences
+% %					\end{boiteCompetences}
+% %				\fi
+% 
+% 
+% 
+% 				%Version prof :
+% 				\ifthenelse{\boolean{versionProf}}{\begin{textblock}{2}(1,0.5) %
+% 								\bgroup%
+% 									\Huge%
+% 									\color{red}%
+% 									\rotatebox{20}
+% 										{\begin{minipage}{5cm}
+% 											\centering\fcolorbox{red}{white}{Version Prof}\newline%
+% 											{\normalsize\today\\\ }
+% 										\end{minipage}
+% 										}%
+% 								\egroup%
+% 							\end{textblock}
+% 							}
+% 							{}
+% 				}
 
 % \newcommand*{\makeEnteteDM}	{
 % 				%\hrule

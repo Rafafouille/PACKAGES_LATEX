@@ -28,6 +28,7 @@
 % \RequirePackage{xargs}			%Ppour faire plusieurs arguments optionnels
 \RequirePackage{amsmath}
 \RequirePackage{stmaryrd}
+\RequirePackage{textpos}
 % \RequirePackage{amsfonts}
 % \RequirePackage{amssymb}
 % \RequirePackage{multicol}
@@ -39,6 +40,7 @@
 % %	\usetikzlibrary{arrows}
 % \RequirePackage{tkz-tab}
 \RequirePackage{array}
+\usetikzlibrary{calc}   
 % \RequirePackage{placeins}	%Permet de mettre une ``barriere'' aux figures pour ne pas qu'elle s'étalent trop, avant de continuier le texte
 % \RequirePackage{textcomp}
 % %\RequirePackage{scrtime}	%Pour afficher l'heure dans la version prof (il y a une erreur -- package obsolète ????)
@@ -51,11 +53,53 @@
 
 
 
-    \newcommand{\var}[1]{\texttt#1}
+    %\newcommand{\var}[1]{{\color{blue}{\normalfont\texttt{#1}}}}
+    \newcommand{\var}[1]{{\normalfont\bfseries\texttt{#1}}}
     \newcommand{\qvar}[1]{"\var{#1}"}
     \newcommand{\gras}[1]{\textbf{#1}}
     
     \newcommand{\fig}[1]{(fig.\ref{#1})}
+    
+    \newcommand{\f}[2] {\ensuremath{#1{\footnotesize\left(#2\right)}}}
+    \newcommand{\deriv}[2] {\ensuremath{\frac{\text{d}#1}{\text{d}#2}}}
+    \newcommand{\vecteur}[1]{\ensuremath{\overrightarrow{#1}}}
+    \newcommand{\vNul}{\vecteur 0}
+    
+    \newcommand{\mathbox}[1]    {\ensuremath{\text{\fbox{#1}}}}
+    
+    \newcommand{\er}{\ensuremath{^{\text{er}}}}
+    
+    \newcommand{\oo}[1]{\ensuremath{\f {\mathcal{o}}{#1}}}
+    \newcommand{\oO}[1]{\ensuremath{\f {\mathcal{O}}{#1}}}
+    
+    \newcommand{\LR}{\ensuremath{\Leftrightarrow}}
+    
+    \newcommand{\tab}{\ \ \ \ }
+    
+    
+        
+    \newcommand*{\captionfig}[1]{\par\refstepcounter{figure}
+            {
+                \scriptsize
+                \textsc{
+                    \textbf{
+                        Figure \thefigure
+                            }
+                        }
+                --
+                \textit{
+                    #1
+                        }
+            }
+        }
+    % Titre ==============================================
+    
+    %titre DS
+    \newcommand{\titreCB}[2]
+    {\begin{mdframed}[linewidth=3pt,innerrightmargin=0,innerleftmargin=0pt,innertopmargin=10pt,linecolor=gray!60,backgroundcolor=white,font=\bfseries,leftline=false, rightline=false,topline=false]
+    \LARGE Concours Blanc {#1}\hfill #2
+    \end{mdframed}
+    \vspace*{1cm}}
     
     %QUESTION ========================================
     \newcounter{cptQuestions}
@@ -69,12 +113,88 @@
 							\refstepcounter{cptQuestions}
 							%\global\advance\cptQuestions\@ne	%Incrémente le compteur
 							\vspace{0.cm}
-							\fbox{\textbf{Q\thecptQuestions .}}
+							
+							%\begin{tabular}{p{0.05\linewidth}p{0.93\linewidth}}
+                                \begin{minipage}[t]{0.07\linewidth}\fbox{\textbf{Q\thecptQuestions .}}\end{minipage}
+							%&
+                                {\begin{minipage}[t]{0.9\linewidth}\textbf{\itshape #2}\end{minipage}}
+							%\end{tabular}
+							
 							\ifthenelse{\equal{#1}{}}
 								{}
 								{\bareme{#1}} 
-							{\gras{\itshape #2}}
+							
 							\par\vspace{0.1cm}
 						}
 						
     \newcommand{\sectionExercice}[1]{\resetQuestions\section{#1}}
+    
+    
+
+    
+    %Texte caché ======================================
+
+    \newcommand{\theVersion}{eleve}
+    \newcommand{\version}[1]{\renewcommand{\theVersion}{#1}}
+    
+    \newcommand*{\afficheLogoVersionProf}
+	{
+		%Version prof
+		\begin{textblock}{2}(0,0) %
+			\bgroup%
+				\Huge%
+				\color{red}%
+				\rotatebox{20}
+					{
+						\begin{minipage}{5cm}
+							\centering\fcolorbox{red}{white}{Version Prof}\newline%
+							{\fcolorbox{red}{white}{\normalsize\today}\\\ }
+						\end{minipage}
+					}%
+			\egroup%
+		\end{textblock}
+	}
+    
+    
+    
+    
+    \newcommand{\reponse}[2][pasDeParametre]{{%
+                                \newcommand{\laReponseAAfficher}{#2}%\color{green!50!black}
+                                \ifthenelse{\equal{#1}{pasDeParametre}}%
+                                    {\newcommand{\quoiMettreALaPlace}{\phantom{#2}}}%
+                                    {\newcommand{\quoiMettreALaPlace}{#1}}%
+                                \ifthenelse{\equal{\theVersion}{prof}}%
+                                    {\laReponseAAfficher}%
+                                    {\quoiMettreALaPlace}%
+                            }}
+    
+    
+    %NUMERATION ========================
+\newcommandx{\lBase}[2][2=10]	{\ensuremath{{\mathrm{#1}}_{\ifthenelse{\equal{#2}{}}{}{(#2)}}}}
+\newcommand{\binaire}[1]	{\lBase{#1}[2]}
+\newcommand{\Bin}		\binaire
+\newcommand{\octal}[1]		{\lBase{#1}[8]}
+\newcommand{\Oct}		\octal
+\newcommand{\decimal}[1]	{\lBase{#1}[10]}
+\newcommand{\Dec}		\decimal
+\newcommand{\hexadecimal}[1]	{\lBase{#1}[16]}
+\newcommand{\Hex}		\hexadecimal
+
+%Division (Commande pour dessiner une division que l'on pose) Syntaxe : \poseDivision{numerateur}{denominateur}{reste}{quotient}
+\newcommand{\poseDivision}[4]{\begin{tikzpicture}%
+				\node[anchor=south east] (numerateur) at (0,0) {#1};%
+				\node[anchor=south west] (denominateur) at (0,0) {#2};%
+				\node[anchor=north east] (reste) at (0,0) {#3};%
+				\node[anchor=north west] (quotient) at (0,0) {#4};%
+				\draw (numerateur.north east) -- (reste.south east);%
+				\draw (denominateur.south east) -- (denominateur.south west);%
+				\end{tikzpicture}
+				}
+    
+    
+    %Verbatim ============================
+    
+    
+            \lstset{%
+  escapeinside={(*}{*)},% Pour autoriser les macros dans verbatim
+}

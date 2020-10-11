@@ -135,9 +135,15 @@ color,calc,graphicx,multicol,float,caption,% << style
 \pagestyle{fancy} 
 \fancyhf{}
 \fancyhead{}
-\fancyfoot[l]{Cor TD \numeroTD} %ajout Jo
+%\fancyfoot[l]{Cor TD \numeroTD} %ajout Jo
 \fancyfoot[c]{\thepage/\pageref{LastPage}}
-%\fancyfoot[r]{2018-19} %ajout Jo
+
+%avec parit� L left, O impair, R right, E pair
+
+\fancyhead[lo]{Corrigé TD \numeroTD}
+\fancyhead[re]{\Titre}
+\fancyfoot[lo]{Lycée Eiffel}
+\fancyfoot[re]{2018-19} %ajout Jo
 %\fancyfoot[ro]{\ifnum\thepage<\getpagerefnumber{LastPage}
 %\small\itshape Tournez la page S.V.P.\fi}
 \renewcommand{\headrulewidth}{0pt}
@@ -157,4 +163,8 @@ color,calc,graphicx,multicol,float,caption,% << style
 \newcommand{\numeroTD}{}
 \newcommand*{\numero}[1]{\renewcommand*{\numeroTD}{#1}}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Titre Haut de Page reduit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Titre}{}
+\newcommand*{\titre}[1]{\renewcommand*{\Titre}{#1}}

@@ -41,8 +41,10 @@
 
 	\newcommandx*{\matContrainte}[2][2=]	{\ensuremath{{#1}_{#2}}\xspace}
 	\newcommand*{\contrainteNormale}[1][]	{\matContrainte{\sigma}[#1]}
-	\newcommand*{\matS}[1][]		{\matContrainte{\sigma}[#1]}
+	\newcommand*{\matS}		{\contrainteNormale}
 
+	\newcommand*{\contrainteTangentielle}[1][]    {\matContrainte{\tau}[#1]}
+	\newcommand*{\matT}		             {\contrainteTangentielle}
 
 	\newcommand*{\moduleYoung}	{\ensuremath{E}\xspace}
 	\newcommand*{\matE}		{\moduleYoung}

@@ -39,9 +39,9 @@
 	\newcommand*	{\numero}		{}
 	\newcommand*	{\auteur}		{Raphaël ALLAIS}
 	\newcommand*	{\etablissement}	{Lycée Gustave Eiffel de Dijon}
-	\newcommand*	{\discipline}		{Sciences Industrielles pour l'Ingénieur}
+	\newcommand*	{\discipline}		{Sciences Industrielles de l'Ingénieur}
 	\newcommand*	{\classe}		{Classe préparatoire P.T.}
-	\newcommand*	{\anneeScolaire}	{2018 - 2019}
+	\newcommand*	{\anneeScolaire}	{2020 - 2021}
 	\newcommand*	{\icone}		{logoeiffel.png}
 	\newcommand*	{\duree}		{10 minutes}
 	\newcommand*	{\jour}			{\today}
@@ -164,6 +164,22 @@
 		\renewcommand{\labelitemiv}	{-}%
 		\setlist[itemize]{leftmargin=*}
 		}
+		
+    \newenvironment{itemizetirets}
+        {\begin{itemize}[label=-]}
+        {\end{itemize}}
+    
+    \newenvironment{itemizecercle}
+        {\begin{itemize}[label=$\circ$]}
+        {\end{itemize}}
+    
+    \newenvironment{enumeratealpha}
+    {\begin{enumerate}[label=(\alph*)]}
+    {\end{enumerate}}
+    
+    \newenvironment{enumerateAlpha}
+    {\begin{enumerate}[label=(\Alph*)]}
+    {\end{enumerate}}
 
 
 
@@ -256,7 +272,7 @@
 % 						\end{minipage}
 % 					\end{center}
 
-
+\graphicspath{{illustrations/}}
 					%Affiche Version
 					\ifthenelse{\boolean{versionProf}}
 						{\afficheLogoVersionProf}
@@ -344,13 +360,13 @@
 				{}
 		}
 
-\newcommand{\makeEnteteDocumentReponse}
+\newcommand{\makeEnteteDocumentReponse}[1][] %Numero du doc répond (facultatif)
 		{
 			\begin{tabular}{m{0.4\linewidth}m{0.6\linewidth}}
 				\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
 				&
 				\begin{center}
-					\huge \textsc{Document-Réponse}
+					\huge \textsc{Document-Réponse #1}
 				\end{center}
 			\end{tabular}
 
@@ -438,6 +454,15 @@
 			\vspace{0.5cm}\hrule
 			\par\vspace{0.4cm}
 		}
+		
+		
+\newcommand*{\makeEnteteColle}
+    {
+    \begin{center}
+		\huge {\partie\ \numero\\\gras{\textsc{\titre}}}
+	\end{center}
+	
+    }
 
 \newcommand*{\makePageDeGardeDS}[1]	{\begingroup 
 			\begin{titlepage}	%Début de la page de garde
@@ -714,6 +739,29 @@
 
 \newcommand*	{\iconeMatrice}{
 	\node[anchor=center] (logoQR) at (0,0) {\includegraphics[width=2.em]{/media/Placard/Boulot/LaTex/PACKAGES_RAF/Raf_Style/LogoQR-Codes/matrice.png}};
+}
+
+
+
+
+
+\newcommand* {\fin}[1][Fin]
+{
+    \begin{center}
+        \hfill
+        \rule[3pt]{0.3\linewidth}{0.4pt}
+        \hfill
+        \textbf{\textsc{#1}}
+        \hfill 
+        \rule[3pt]{0.3\linewidth}{0.4pt}
+        \hfill \phantom.
+    \end{center}
+}
+
+
+\newcommand* {\finSujet}
+{
+    \fin[Fin du sujet]
 }
 
 

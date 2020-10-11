@@ -134,6 +134,8 @@
 	\newcommand*{\hectojoule}[1][]	{\unite[#1]{\text{hJ}}}	%Joule
 	\newcommand*{\kilojoule}[1][]	{\unite[#1]{\text{kJ}}}	%Kilo Joule
 	\newcommand*{\megajoule}[1][]	{\unite[#1]{\text{MJ}}}	%Mega Joule
+	\newcommand*{\wattheure}[1][]	{\unite[#1]{\text{Wh}}}	%Watt Heure
+	\newcommand*{\kilowattheure}[1][]	{\unite[#1]{\text{kWh}}}	%kilo Watt heure
 	
 	%Puissance
 	\newcommand*{\milliwatt}[1][]	{\unite[#1]{\text{mW}}}	%Watt
@@ -173,8 +175,18 @@
 	\newcommand*{\ohm}[1][]	{\unite[#1]{\Omega}}
 	\newcommand*{\kiloohm}[1][]	{\unite[#1]{k\Omega}}
 	\newcommand*{\megaohm}[1][]	{\unite[#1]{M\Omega}}
-
+	\newcommand*{\VAR}[1][]     {\unite[#1]{VAR}}
+	%\newcommand*{\VA}[1][]     {\unite[#1]{VA}}
+	\newcommand*{\farad}[1][]     {\unite[#1]{F}}
+	\newcommand*{\microfarad}[1][]     {\unite[#1]{\mu F}}
+	\newcommand*{\picofarad}[1][]     {\unite[#1]{pF}}
+	\newcommand*{\nanofarad}[1][]     {\unite[#1]{nF}}
+	\newcommand*{\millifarad}[1][]     {\unite[#1]{mF}}
+	\newcommand*{\ampereheure}[1][]    {\unite[#1]{\text{Ah}}} %Ampère Heure
+	\newcommand*{\milliampereheure}[1][]    {\unite[#1]{\text{mAh}}}	%Milli Ampère Heure
+	
 	%Inductance
+	\newcommand*{\microhenry} [1][]	{\unite[#1]{\text{$\mu$H}}}
 	\newcommand*{\millihenry} [1][]	{\unite[#1]{\text{mH}}}
 	\newcommand*{\centihenry} [1][]{\unite[#1]{\text{cH}}}
 	\newcommand*{\decihenry} [1][]	{\unite[#1]{\text{dH}}}
@@ -198,6 +210,10 @@
 	\newcommand*{\decibell}[1][] 	{\unite[#1]{\text{dB}}}
 	\newcommand*{\decade}[1][]	{\unite[#1]{\text{decade}}}
 	\newcommand*{\decades}[1][]	{\unite[#1]{\text{decades}}}
+	
+	%Température 
+	\newcommand{\degreCelcius}[1][]  {\unite[#1]{\text{°C}}}
+	\newcommand{\kelvin}[1][]  {\unite[#1]{\text{K}}}
 	
 	%Informatique
 	\newcommand*{\octet}[1][] 	{\unite[#1]{\text{o}}}
@@ -293,6 +309,8 @@
 	\newcommand*{\W}		{\watt}		%Watt
 	\newcommand*{\kW}		{\kilowatt}	%Kilo Watt
 	\newcommand*{\MW}		{\megawatt}	%Mega Watt
+	\newcommand*{\Wh}		{\wattheure}	%Watt Heure
+	\newcommand*{\kWh}		{\kilowattheure}	%kilo Watt Heure
 	
 	\newcommand*{\ch}		{\cheval}	%Cheval
 	
@@ -315,8 +333,15 @@
 	%\newcommand*{\ohm}[1][]	{\unite[#1]{\Omega}}
 	\newcommand*{\kohm}		{\kiloohm}
 	\newcommand*{\Mohm}		{\megaohm}
+	\newcommand*{\microF}   {\microfarad}
+	\newcommand*{\pF}   {\picofarad}
+	\newcommand*{\mF}   {\millifarad}
+	\newcommand*{\nF}   {\nanofarad}
+	\newcommand*{\Ah}       {\ampereheure} %Ampère Heure
+	\newcommand*{\mAh}      {\milliampereheure} %Ampère Heure
 
 	%Inductance
+	\newcommand*{\microH}	{\microhenry}
 	\newcommand*{\mH}	{\millihenry}
 	\newcommand*{\cH}	{\centihenry}
 	\newcommand*{\dH}	{\decihenry}
@@ -340,6 +365,11 @@
 	\newcommand*{\dB}	{\decibell}
 	\newcommand*{\dec}[1][]	{\decade}
 	\newcommand*{\decs}[1][]{\decades}
+	
+	
+	%Température 
+	\newcommand*{\degC} {\degreCelcius}
+	\newcommand{\K}    {\kelvin}
 	
 	%Informatique
 	\newcommand*{\ko}	{\kilooctet}
