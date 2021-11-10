@@ -1,12 +1,12 @@
-\section{Détail des commandes}\label{commandes}
+\section{DÃ©tail des commandes}\label{commandes}
 %=====================================
 
 
 	\subsection{Environement ``fast''}\label{environnement}
 	%------------------------------------
 
-		Le diagramme fast est placé dans l'environnement {\color{blue}\verb'\begin{fast}...\end{fast}'}.
-		Cet environnement prend comme argument la \emph{fonction de service} que l'on souhaite développer.
+		Le diagramme fast est placÃ© dans l'environnement {\color{blue}\verb'\begin{fast}...\end{fast}'}.
+		Cet environnement prend comme argument la \emph{fonction de service} que l'on souhaite dÃ©velopper.
 
 \begin{code}%##################################################################
 \begin{fast}{Fonction de Service}
@@ -22,8 +22,8 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		A l'intérieur de l'environnement \verb!fast!, on va alors venir placer chacune des fonctions techniques, solutions techniques, etc.
-		Ces commandes vont être décrites dans les paragraphes suivants.
+		A l'intÃ©rieur de l'environnement \verb!fast!, on va alors venir placer chacune des fonctions techniques, solutions techniques, etc.
+		Ces commandes vont Ãªtre dÃ©crites dans les paragraphes suivants.
 
 
 
@@ -32,11 +32,11 @@
 	\subsection{Principe des commandes}\label{principe}
 	%----------------------------------------------
 
-		Une fois l'environnement fast ouvert, le but du jeu va être de créer des fonctions (c'est à dire des ``\emph{boites}'') à l'intérieur, reliées entre elles de manière hiérarchique.
+		Une fois l'environnement fast ouvert, le but du jeu va Ãªtre de crÃ©er des fonctions (c'est Ã  dire des ``\emph{boites}'') Ã  l'intÃ©rieur, reliÃ©es entre elles de maniÃ¨re hiÃ©rarchique.
 
-		Il existe plusieurs ``boites'' différentes qui seront chacune développées dans les paragraphes suivants.
+		Il existe plusieurs ``boites'' diffÃ©rentes qui seront chacune dÃ©veloppÃ©es dans les paragraphes suivants.
 
-		Chaque boite possède un ``\textbf{parent}'' en amont, un ``\textbf{texte}'' à l'intérieur et éventuellement une ou plusieurs ``\textbf{descendances}'' en aval.
+		Chaque boite possÃ¨de un ``\textbf{parent}'' en amont, un ``\textbf{texte}'' Ã  l'intÃ©rieur et Ã©ventuellement une ou plusieurs ``\textbf{descendances}'' en aval.
 
 		\begin{center}
 			\begin{fast}{Parent}
@@ -49,10 +49,10 @@
 		\end{center}
 		
 
-		Le texte de chaque fonction est passé en premier argument de la commande.
+		Le texte de chaque fonction est passÃ© en premier argument de la commande.
 
-		On parlera de fonctions ``\emph{s\oe urs}'' lorsque ces fonctions sont en parallèles, issues d'un même parent.
-		Les commandes permettant de créer plusieurs fonctions s\oe urs sont placées les unes à la suite des autres.
+		On parlera de fonctions ``\emph{s\oe urs}'' lorsque ces fonctions sont en parallÃ¨les, issues d'un mÃªme parent.
+		Les commandes permettant de crÃ©er plusieurs fonctions s\oe urs sont placÃ©es les unes Ã  la suite des autres.
 
 %##################################################################
 \begin{code}
@@ -64,7 +64,7 @@
 %##################################################################
 
 		On parlera de fonctions ``\emph{filles}'' les fonctions descendant d'un parent.
-		Les fonctions filles sont passées en deuxième argument de leur parent.
+		Les fonctions filles sont passÃ©es en deuxiÃ¨me argument de leur parent.
 
 %##################################################################
 \begin{code}
@@ -77,10 +77,10 @@
 \end{code}
 %##################################################################
 
-	En pratique, la descendance peut être n'importe quelle fonction \emph{TikZ} (voir \ref{tikzz}).
-	Elle peut également ne rien comporter.
+	En pratique, la descendance peut Ãªtre n'importe quelle fonction \emph{TikZ} (voir \ref{tikzz}).
+	Elle peut Ã©galement ne rien comporter.
 
-	La suite de ce chapitre va présenter les différentes fonctions disponibles.
+	La suite de ce chapitre va prÃ©senter les diffÃ©rentes fonctions disponibles.
 
 
 
@@ -89,7 +89,7 @@
 	%----------------------------------------------
 
 		{\color{blue}\verb'\fastFT'} (raccourci : {\color{blue}\verb'\FT'}) est une commande ``de base'' du diagramme FAST.
-		Elle s'emploie de la manière suivante :
+		Elle s'emploie de la maniÃ¨re suivante :
 
 %##################################################################
 \begin{code}
@@ -113,7 +113,7 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		Voici un exemple d'utilisation en série et en parallèle :
+		Voici un exemple d'utilisation en sÃ©rie et en parallÃ¨le :
 
 %##################################################################
 \begin{code}
@@ -149,12 +149,12 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		Si le premier argument est vide, cela revient à faire un trait horizontal, au même titre que que la fonction {\color{blue}\verb'\fastFTrait'} (voir \ref{trait}).
+		Si le premier argument est vide, cela revient Ã  faire un trait horizontal, au mÃªme titre que que la fonction {\color{blue}\verb'\fastFTrait'} (voir \ref{trait}).
 
-		La commande {\color{blue}\verb'\fastFT'} peut également prendre un mot-clé en options :
+		La commande {\color{blue}\verb'\fastFT'} peut Ã©galement prendre un mot-clÃ© en options :
 		%\begin{itemize}
-			%\item le mot clé {\color{blue}\verb'[tempo]'} permet de rajouter un connecteur entre la fonction courante et la fonction située au dessus (Ne fonctionne pas si la fonction est vide).
-			 le mot clé {\color{blue}\verb'[ou]'} ; il décale légèrement le connecteur pour représenter un liaison ``\emph{ou}'' (voir la mise en forme au paragraphe \ref{dimensions}).
+			%\item le mot clÃ© {\color{blue}\verb'[tempo]'} permet de rajouter un connecteur entre la fonction courante et la fonction situÃ©e au dessus (Ne fonctionne pas si la fonction est vide).
+			 le mot clÃ© {\color{blue}\verb'[ou]'} ; il dÃ©cale lÃ©gÃ¨rement le connecteur pour reprÃ©senter un liaison ``\emph{ou}'' (voir la mise en forme au paragraphe \ref{dimensions}).
 		%\end{itemize}
 
 %##################################################################
@@ -201,9 +201,9 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		Normalement, la solution technique correspond à la fin d'une branche du diagramme FAST.
-		C'est pourquoi elle ne requière pas d'autre argument.
-		Toutefois, pour des besoins spécifiques (commentaire, image, etc.), on peut lui rajouter une descendance en option :
+		Normalement, la solution technique correspond Ã  la fin d'une branche du diagramme FAST.
+		C'est pourquoi elle ne requiÃ¨re pas d'autre argument.
+		Toutefois, pour des besoins spÃ©cifiques (commentaire, image, etc.), on peut lui rajouter une descendance en option :
 
 %##################################################################
 \begin{code}
@@ -251,7 +251,7 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		Tout comme pour la boite ``solution technique'', cette fonction est destinée à être en bout de branche du diagramme.
+		Tout comme pour la boite ``solution technique'', cette fonction est destinÃ©e Ã  Ãªtre en bout de branche du diagramme.
 		On ne demande donc pas de descendance.
 		Toutefois, on peut la lui proposer en argument optionnel :
 
@@ -275,10 +275,10 @@
 	\subsection{Trait continu}\label{trait}
 	%-----------------------------------------
 
-		{\color{blue}\verb'\fastTrait'} (raccourci : {\color{blue}\verb'\trait'}) représente un simple trait.
-		Il permet en effet de tracer un connecteur directement de la colonne $(n-1)$ à $(n+1)$, en ``sautant'' la colonne $(n)$.
-		Le seul argument demandé est la descendance de ce connecteur.
-		La fonction technique {\color{blue}\verb'\fastFT'} avec un premier argument vide réalise la même chose.
+		{\color{blue}\verb'\fastTrait'} (raccourci : {\color{blue}\verb'\trait'}) reprÃ©sente un simple trait.
+		Il permet en effet de tracer un connecteur directement de la colonne $(n-1)$ Ã  $(n+1)$, en ``sautant'' la colonne $(n)$.
+		Le seul argument demandÃ© est la descendance de ce connecteur.
+		La fonction technique {\color{blue}\verb'\fastFT'} avec un premier argument vide rÃ©alise la mÃªme chose.
 
 %##################################################################
 \begin{code}

@@ -1,0 +1,267 @@
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{CCINP_SII}[2021/05/28]
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUTRES PACKAGES ===========================================
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{amsfonts} % Symboles mathématiques
+\RequirePackage{amssymb}  % Symboles mathématiques
+\RequirePackage{amsmath}    % Ecriture mathématiques
+
+\RequirePackage{geometry}   % Change les marges et le format de la page
+    \geometry{a4paper, top=2.5cm, bottom=2cm, left=2.5cm, right=2.5cm}
+\RequirePackage{moreverb}   % Collection de mise en forme de code verbatim (Python, etc...)
+\RequirePackage{wrapfig}    % Permet de faire des figures flottantes à droite ou gauche
+\RequirePackage{subcaption} % Permet de gérer mieux les titres des sous-figures.
+\RequirePackage{graphicx}   % Pour mettre des images, photos, etc.
+\RequirePackage{tikz}       % Pour faire des figures géométriques
+    \usetikzlibrary{calc}   % Pour calculer des coordonnées.
+\RequirePackage{tcolorbox}  % Boites pour les définition des environnements Modeliser, Experimenter, Resoudre et Analyser
+\RequirePackage{enumitem}   % pour ne pas avoir d'indentation dans les enumerations
+\RequirePackage{ifthen}     % Pour faire de la compilation conditionnelle
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OPTIONS DU PACKAGE ========================================
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newboolean{boolOption} %création du booléen
+\setboolean{boolOption}{false}  %affectation de la valeur false
+\DeclareOption{monOption}{\setboolean{boolOption}{true}}
+\ProcessOptions
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INFO PAGE =================================================
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\CCINPSysteme}{Nom du système}  % Contient le nom du système
+\newcommand{\systeme}[1][]{
+        \ifthenelse{\equal{#1}{}}   
+            {\CCINPSysteme} % Si on envoie pas un nouveau nom de syteme
+            {\renewcommand{\CCINPSysteme}{#1}}  % Sinon, on actualise le système
+    }
+
+\newcommand{\CCINPPhotoSysteme}{}
+\newcommand{\photoSysteme}[1][]{
+        \ifthenelse{\equal{#1}{}}
+            {\CCINPPhotoSysteme}  % Si on envoie pas un nouveau chemin d'image
+            {\renewcommand{\CCINPPhotoSysteme}{#1}} % Sinon, on actualise l'image
+    }
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STYLES / MISE EN FORME ====================================
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Definition des titres de section avec des boites colorees
+% -------------------------------------------------------------
+
+\newcommand{\sectionbox}[1] {
+\begin{tcolorbox}
+                 [colback=myBlue, arc=0mm, boxrule=0pt, colupper=white, top=1pt, bottom=1pt]
+    {\begin{center}\textbf{\Large #1}\end{center}}
+\end{tcolorbox} 
+} %
+
+\newcommand{\csection}[1]{\section*{\color{myBlue} #1} } % avoir les sections colorees
+\newcommand{\csubsection}[1]{\subsection*{\color{myBlue} #1} } % avoir les sections colorees
+\setlength\parindent{0pt} % ne pas avoir d'indentation dans le document
+
+
+%% Légende des images
+% -------------------------------
+\captionsetup[figure]{labelfont=bf,textfont=it,justification=centering}
+\captionsetup[subfigure]{labelfont=bf,textfont=it,singlelinecheck=off,justification=centering}
+ 
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGES DE GARTE ============================================
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\makePageDeGardeSujet}
+    {
+        \begin{titlepage}
+            \begin{center}
+                {
+                    \color{myBlue}
+                    \begin{flushright}
+                        Concours CCINP TSI\\
+                        Travaux pratiques de S2i
+                    \end{flushright}
+                }
+                \vspace{-2cm}
+                \begin{figure}[h!]
+                    \includegraphics[width=.2\linewidth]{logo_CCINP.png}
+                \end{figure}
+                \vfill
+                \begin{figure}[h!]
+                \centering
+                \begin{tikzpicture}
+                \fill[color=gray!50] (0.2,0.8) -- (10.2,0.8) -- (11.2,1.8) -- (11.2,6.8) -- (0.2 , 6.8) -- (0.2, 0.8);
+                \draw[fill=white] (0,1) -- (10,1) -- (11,2) -- (11,7) -- (0,7) -- (0,1) ;
+                \node[text width=9cm,text centered, minimum width=8cm, minimum height=6cm] at (5.5,4) {\baselineskip=20pt \Huge \color{myBlue} \textbf{\CCINPSysteme}\par} ;
+                \draw[fill=gray!50] (10,1) -- (11,2) -- (10.2,1.8) -- (10,1);
+                \end{tikzpicture}
+                \end{figure}
+
+                \vfill
+
+                % Image du systeme (penser à la mettre dans le meme dossier, ou preciser le chemin comme suit : ``./Images/nom_image.png''
+                \ifthenelse{\equal{\CCINPPhotoSysteme}{}}
+                    {}  % Si la photo est vide
+                    {
+                        \begin{figure}[h!]
+                            \centering
+                            \includegraphics[height=8cm]{\CCINPPhotoSysteme}
+                        \end{figure}
+                    }
+                \vfill
+                \end{center}
+        \end{titlepage}
+    }
+
+
+
+\newcommand{\makePageDeGardeDT}
+    {
+        \begin{titlepage}
+            \begin{center}
+                {
+                    \color{myBlue}
+                    \begin{flushright}
+                        Concours CCINP TSI\\
+                        Travaux pratiques de S2i
+                    \end{flushright}
+                }
+                \vspace{-2cm}
+                \begin{figure}[h!]
+                    \includegraphics[width=.2\linewidth]{logo_CCINP.png}
+                \end{figure}
+                \vfill
+                \begin{figure}[h!]
+                \centering
+                \begin{tikzpicture}
+                \fill[color=gray!50] (0.2,0.8) -- (10.2,0.8) -- (11.2,1.8) -- (11.2,6.8) -- (0.2 , 6.8) -- (0.2, 0.8);
+                \draw[fill=white] (0,1) -- (10,1) -- (11,2) -- (11,7) -- (0,7) -- (0,1) ;
+                \node[text width=9cm,text centered, minimum width=8cm, minimum height=6cm] at (5.5,4) {\baselineskip=20pt \Huge \color{myBlue} \textbf{\CCINPSysteme}\\[0.5cm] DOCUMENT TECHNIQUE} ;
+                \draw[fill=gray!50] (10,1) -- (11,2) -- (10.2,1.8) -- (10,1);
+                \end{tikzpicture}
+                \end{figure}
+
+                \vfill
+
+                % Image du systeme (penser à la mettre dans le meme dossier, ou preciser le chemin comme suit : ``./Images/nom_image.png''
+                \ifthenelse{\equal{\CCINPPhotoSysteme}{}}
+                    {}  % Si la photo est vide
+                    {
+                        \begin{figure}[h!]
+                            \centering
+                            \includegraphics[height=8cm]{\CCINPPhotoSysteme}
+                        \end{figure}
+                    }
+                \vfill
+                \end{center}
+        \end{titlepage}
+    }
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMMANDES / MACROS ========================================
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Boites "Analyser", "Modéliser", etc.
+% ----------------------------------------------------------
+
+\colorlet{myBlue}{blue!65!black}
+\colorlet{cExperimenter1}{yellow!5!white}
+\colorlet{cExperimenter2}{yellow!40!red!15}
+\colorlet{cModeliser1}{yellow!2!red!3!white}
+\colorlet{cModeliser2}{yellow!10!red!25}
+\colorlet{cResoudre1}{green!5!white}
+\colorlet{cResoudre2}{green!50!black!15}
+\colorlet{cAnalyser1}{blue!5!white}
+\colorlet{cAnalyser2}{blue!50!black!15}
+
+\colorlet{cConcevoir1}{red!5!white}
+\colorlet{cConcevoir2}{red!40!}
+\colorlet{cRealiser1}{blue!65!green!5!white}
+\colorlet{cRealiser2}{blue!50!green!15}
+\colorlet{cInformatique1}{black!5!white}
+\colorlet{cInformatique2}{black!50!black!15}
+
+
+\newcommand{\modeliser}[2] {
+\begin{tcolorbox}
+                 [colback=cModeliser1,colframe=cModeliser2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Modéliser} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+\newcommand{\experimenter}[2] {
+\begin{tcolorbox}
+                 [colback=cExperimenter1,colframe=cExperimenter2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Expérimenter} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+\newcommand{\resoudre}[2] {
+\begin{tcolorbox}
+                 [colback=cResoudre1,colframe=cResoudre2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Résoudre} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+\newcommand{\analyser}[2] {
+\begin{tcolorbox}
+                 [colback=cAnalyser1,colframe=cAnalyser2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Analyser} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+\newcommand{\concevoir}[2] {
+\begin{tcolorbox}
+                 [colback=cConcevoir1,colframe=cConcevoir2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Concevoir} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+\newcommand{\realiser}[2] {
+\begin{tcolorbox}
+                 [colback=cRealiser1,colframe=cRealiser2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Realiser} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+
+\newcommand{\informatique}[2] {
+\begin{tcolorbox}
+                 [colback=cInformatique1,colframe=cInformatique2, leftrule=1mm, rightrule=0mm , toprule=0mm , bottomrule=0mm ,arc=0mm]
+    {\Large \textbf{Informatique} #1}{\newline \vspace{-1em}\par #2}
+\end{tcolorbox} 
+}
+
+
+
+
+% Commandes perso
+% --------------------------------------------
+
+\newcommand{\fig}[1]    {(fig.\ref{#1})}        % \fig{monLable} ---> (fig.numLabel)
+\newcommand{\objectif}[1]  {\textbf{Objectif :} {\itshape #1}}
+
+%Variable Python
+\newcommand{\var}[1]    {{\color{blue}\texttt{#1}}}
+
+\endinput

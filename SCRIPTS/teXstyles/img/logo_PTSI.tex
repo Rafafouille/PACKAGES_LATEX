@@ -1,0 +1,39 @@
+\documentclass[a5paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}% << french
+\usepackage{%
+	setspace,color,calc,graphicx,% << style
+	amsmath,amssymb,amsfonts,amstext,amscd,mathrsfs,amsthm,% << maths
+	marvosym,% << symbols
+	tikz,pgf,pgfplots,% << graphics
+}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,lmodern}
+\usepackage[papersize={50mm,50mm},margin=0mm,centering,mag=1000,truedimen]{geometry}
+\usepgfmodule{shapes,plot,decorations}
+\usepgflibrary{arrows}
+\usetikzlibrary{calc,positioning,trees,positioning,chains,shapes,%
+        patterns,automata,er,fit,matrix,shadows,topaths,through,%
+        mindmap,decorations,%
+	decorations.text,%
+}
+\parindent0mm
+%-----------------------------------------------------------------------
+\pagestyle{empty}
+%-----------------------------------------------------------------------
+\begin{document}\thispagestyle{empty}
+\parbox[m][\textheight][c]{\textwidth}{
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) circle (1.4);
+\draw[thick] (0,0) circle (1.45);
+\draw[thick] (0,0) circle (2);
+\draw (0,0) circle (2.05);
+\draw [decorate,decoration={text along path,text={Maths {\textperiodcentered} Physique {\textperiodcentered} S.I.I.}}] (164:1.6) arc (164:16:1.6);
+\draw [decorate,decoration={text along path,text={Lyc{\'e}e Jules Ferry {\textperiodcentered} Versailles}}] (-160:1.83) arc (-160:0:1.83);
+\node at (0,0)[scale=3]{PTSI};
+\end{tikzpicture}
+\end{center}
+}
+\end{document}
+%====================================================================eof

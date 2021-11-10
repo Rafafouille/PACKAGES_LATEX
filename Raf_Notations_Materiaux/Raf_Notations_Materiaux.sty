@@ -7,26 +7,26 @@
 \ProvidesPackage{Raf_Notations_Materiaux}[2018/08/24]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
-\RequirePackage{xargs}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
+\RequirePackage{xargs}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 %\RequirePackage{Raf_Notations_Torseurs}	%Pour faire des torseurs
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
-\RequirePackage{xspace} %Pour faire des espaces à la fin des commandes
+\RequirePackage{xspace} %Pour faire des espaces Ã  la fin des commandes
 
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisMat}%création du booléen
+\newboolean{boolRaccourcisMat}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisMat}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMat}{false}}
 \ProcessOptions
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 	\newcommand*{\tauxDeformation}[1][]	{\ensuremath{\varepsilon_{#1}}\xspace}
 	\newcommand*{\matDef}[1][]		{\tauxDeformation[#1]}
@@ -49,13 +49,13 @@
 	\newcommand*{\moduleYoung}	{\ensuremath{E}\xspace}
 	\newcommand*{\matE}		{\moduleYoung}
 
-	\newcommand*{\limiteElastique}	{\ensuremath{R_e}\xspace}	%Limite élastique
-	\newcommand*{\matRe}		{{\limiteElastique}}	%idem (Ancien symbol des réels)
+	\newcommand*{\limiteElastique}	{\ensuremath{R_e}\xspace}	%Limite Ã©lastique
+	\newcommand*{\matRe}		{{\limiteElastique}}	%idem (Ancien symbol des rÃ©els)
 
 	\newcommand*{\limiteElastiqueDeuxPourCent}	{\ensuremath{{\limiteElastique}_{2\%}}\xspace}
 	\newcommand*{\matRep}	{\limiteElastiqueDeuxPourCent}
 
-	\newcommand*{\limiteRupture}	{\ensuremath{R_m}\xspace}	%Limite à la rupture
+	\newcommand*{\limiteRupture}	{\ensuremath{R_m}\xspace}	%Limite Ã  la rupture
 	\newcommand*{\matRm}		{\limiteRupture}
 	
 	\newcommand*{\limitePratique}	{\ensuremath{R_p}\xspace}	%Limite Pratique
@@ -73,7 +73,7 @@
 	\newcommand*{\coefficientStriction}	{\ensuremath{Z_{\%}}\xspace}
 	\newcommand*{\matZp}			{\coefficientStriction}
 
-	\newcommand*{\matEndurance}	{\ensuremath{\epsilon}\xspace}	%Coefficient résilience en V
+	\newcommand*{\matEndurance}	{\ensuremath{\epsilon}\xspace}	%Coefficient rÃ©silience en V
 
 
 %Designation
@@ -87,12 +87,12 @@
 %
 	\newcommandx*{\acier}[3][1=S,3=]	{\designationMateriaux{\ensuremath{{#1}\ {#2}\ifthenelse{\equal{#3}{}}{}{\ {#3}}}}}
 %
-	\newcommandx*{\acierS}[2][2=]	{\acier[S]{#1}[#2]}	%Acier non allié de construction mécanique
-	\newcommandx*{\acierE}[2][2=]	{\acier[E]{#1}[#2]}	%Acier non allié de construction mécanique
-	\newcommandx*{\acierC}[2][2=]	{\acier[C]{#1}[#2]}	%Acier non allié pour traitement thermique
-	\newcommandx*{\acierP}[2][2=]	{\acier[P]{#1}[#2]}	%Acier non allié pour appareil à pression
-	\newcommandx*{\acierB}[2][2=]	{\acier[B]{#1}[#2]}	%Acier non allié pour armature béton
-	\newcommandx*{\acierH}[2][2=]	{\acier[H]{#1}[#2]}	%Acier non allié pour mise en forme de pièces plates
+	\newcommandx*{\acierS}[2][2=]	{\acier[S]{#1}[#2]}	%Acier non alliÃ© de construction mÃ©canique
+	\newcommandx*{\acierE}[2][2=]	{\acier[E]{#1}[#2]}	%Acier non alliÃ© de construction mÃ©canique
+	\newcommandx*{\acierC}[2][2=]	{\acier[C]{#1}[#2]}	%Acier non alliÃ© pour traitement thermique
+	\newcommandx*{\acierP}[2][2=]	{\acier[P]{#1}[#2]}	%Acier non alliÃ© pour appareil Ã  pression
+	\newcommandx*{\acierB}[2][2=]	{\acier[B]{#1}[#2]}	%Acier non alliÃ© pour armature bÃ©ton
+	\newcommandx*{\acierH}[2][2=]	{\acier[H]{#1}[#2]}	%Acier non alliÃ© pour mise en forme de piÃ¨ces plates
 %
 	\newcommandx*{\acierMoule}[3][1=S,3=]	{\acier[G#1]{#2}[#3]}
 	\newcommandx*{\acierG}[3][1=S,3=]	{\acierMoule[#1]{#2}[#3]}

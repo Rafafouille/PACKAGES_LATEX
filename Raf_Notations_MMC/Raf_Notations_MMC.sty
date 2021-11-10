@@ -1,0 +1,137 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Maths}[2016/05/28]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+
+%\RequirePackage{color}%Pour mettre de la couleur
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage[cspex,bbgreekl]{mathbbol}   %Pour faire un epsilon tenseur
+\RequirePackage{Raf_Notations_Maths}   %Pour faire un epsilon tenseur
+%\RequirePackage{xargs}%Pour arguments optionnels multiples
+%\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
+%\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
+%\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+%\RequirePackage{color}
+%\RequirePackage{xspace}		%Pour faire des espace après les commandes
+%\RequirePackage{xstring}	%Pour faire des remplacements de chaines
+%\RequirePackage{bm}     %Pour mettre les maths en gras
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisMMC}%création du booléen
+\setboolean{boolRaccourcisMMC}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\newif\if@RafNotMMCRac	\@RafNotMMCRactrue
+\DeclareOption{noRaccourci}	{\@RafNotMMCRacfalse}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafMMCRac}[1]{\ifthenelse{\boolean{boolRaccourcisMMC}}{#1}{}}
+
+\renewcommandx*{\div}[2][1=,2=]{
+                            \ifthenelse{\equal{#1}{}}
+                                {\ensuremath{\text{div}}}
+                                {
+                                    \ifthenelse{\equal{#2}{}}
+                                        {\f{\text{div}}{#1}}
+                                        {
+                                            \ifthenelse{\equal{#1}{0}}
+                                                {\f{\text{div}}{#2}}
+                                                {
+                                                    \ifthenelse{\equal{#1}{1}}
+                                                        {\f{\vecteur{\text{div}}}{#2}}
+                                                        {
+                                                            \ifthenelse{\equal{#1}{2}}
+                                                                {\f{\dbarre{\text{div}}}{#2}}
+                                                                {\f{\text{div}^{(#1)}}{#2}}
+                                                        }
+                                                }
+                                        }
+                                }
+                        }
+\newcommand*{\rot}[1][]	{\ifthenelse{\equal{#1}{}}
+						{\ensuremath{\text{rot}}}
+						{\f{\text{rot}}{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%TENSEURS
+
+\newenvironment*{tenseur}[1][\bB{}]
+                    {   \newcommand{\baseDuTenseursmldfmsd}{#1}
+                        \left[\begin{array}{ccc}
+                    }
+                    {\end{array}\right]_{\baseDuTenseursmldfmsd}}
+
+\newcommand*{\dbarre}[1]    {\ensuremath{\overline{\overline{#1}}}}
+                    
+\newcommand*{\symbolTenseurF}{\ensuremath{\mathbb{F}}}
+\newcommand*{\symbolTenseurE}{\ensuremath{\mathbb{E}}}
+\newcommand*{\symbolTenseure}{\ensuremath{\mathbb{e}}}
+\newcommand*{\symbolTenseurEps}{\ensuremath{\bbespilon}}
+\newcommand*{\symbolTenseurI}{\ensuremath{\mathbb{1}}}
+\newcommand*{\symbolTenseurC}{\ensuremath{\mathbb{C}}}
+\newcommand*{\symbolTenseurb}{\ensuremath{\mathbb{b}}}
+
+\newcommand*{\symbolTenseurSigma}{\ensuremath{\bbsigma}}
+
+\newcommand*{\tenseurF}{\ensuremath{\dbarre{\symbolTenseurF}}}
+\newcommand*{\tenseurE}{\ensuremath{\dbarre{\symbolTenseurE}}}
+\newcommand*{\tenseure}{\ensuremath{\dbarre{\symbolTenseure}}}
+\newcommand*{\tenseurEps}{\ensuremath{\dbarre{\symbolTenseurEps}}}
+\newcommand*{\tenseurI}{\ensuremath{\dbarre{\symbolTenseurI}}}
+\newcommand*{\tenseurC}{\ensuremath{\dbarre{\symbolTenseurC}}}
+\newcommand*{\tenseurb}{\ensuremath{\dbarre{\symbolTenseurb}}}
+\newcommand*{\tenseurSigma}{\ensuremath{\dbarre{\symbolTenseurSigma}}}
+\newcommand*{\tenseurNul}{\ensuremath{\dbarre{0}}}
+
+\newcommand*{\sig}[2]{\ensuremath{\sigma_{#1#2}}}
+\newcommand*{\eps}[2]{\ensuremath{\varepsilon_{#1#2}}}
+
+\newcommandx*{\grad}[3][1=,2=entier] {{
+                            \ifthenelse{\equal{#2}{nabla}}
+                                {\newcommand*{\nomOperateurGraddd}{\nabla}}
+                                {\newcommand*{\nomOperateurGraddd}{\operatorname{grad}}}
+                            %
+                            \ifthenelse{\equal{#1}{1}}
+                                {\ensuremath{\vecteur{\f {\nomOperateurGraddd}{#3}}}}
+                                {
+                                    \ifthenelse{\equal{#1}{2}}
+                                    {\ensuremath{\dbarre{\f {\nomOperateurGraddd}{#3}}}}
+                                    {
+                                        \ifthenelse{\equal{#1}{3}}
+                                        {\ensuremath{\dbarre{\overline{\f {\nomOperateurGraddd}{#3}}}}}
+                                        {
+                                            \ifthenelse{\equal{#1}{4}}
+                                            {\ensuremath{\dbarre{\dbarre{\f {\nomOperateurGraddd}{#3}}}}}
+                                            {
+                                                \ifthenelse{\equal{#1}{}}
+                                                {
+                                                    \f{\nomOperateurGraddd}{#3}}
+                                                {
+                                                    \f{{\nomOperateurGraddd}^{\left(#1\right)}}{#3}}
+                                            }
+                                        }
+                                    }
+                                }
+                        }}
+
+\newcommandx*{\laplacien}[1]
+    {
+        \f{\Delta}{#1}
+    }
+                        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonctions
+
+\newcommand*{\fTransfo}[1]{\f{\Phi}{#1}}
+\newcommand*{\dep}[1]{\vecteur{\f{u}{#1}}}
+
+\newcommand*{\dfij}[3][\Phi]{\deriv{#1_{#2}}{X_{#3}}}
+
+\endinput

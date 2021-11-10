@@ -7,7 +7,7 @@
 \ProvidesPackage{Raf_Notations_Elec}[2016/08/15]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 %\RequirePackage{amsmath}%Pour utiliser \text
 %\RequirePackage{tikz}%Pour faire des symboles
 %\usetikzlibrary{calc}
@@ -17,15 +17,15 @@
 \RequirePackage[european]	{circuitikz}	%Permet de dessiner des packages
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisElec}%création du booléen
+\newboolean{boolRaccourcisElec}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisElec}{true}%affectation de la valeur true
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \DeclareOption{noRaccourci}{\setboolean{boolRaccourcisElec}{false}}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 
 
@@ -207,7 +207,7 @@
 %\ctikzset{voltage=german}
 %--------
 
-% Trouvé sur http://www.developpez.net/forums/d1115674/autres-langages/autres-langages/latex/tableaux-graphiques-images-flottants/fleches-tension-circuitikz/
+% TrouvÃ© sur http://www.developpez.net/forums/d1115674/autres-langages/autres-langages/latex/tableaux-graphiques-images-flottants/fleches-tension-circuitikz/
 %Note : le fichier pgfcircvoltage.sty
 \ctikzset{voltage/european label distance=1.8}
 

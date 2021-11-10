@@ -8,7 +8,7 @@
 
 		L'environnement FAST est un environnement \emph{TikZ}.
 		Il est donc possible d'y ajouter n'importe quelle fonction de dessin de \emph{TikZ}.
-		Il en est de même pour les descendances des fonctions.
+		Il en est de mÃªme pour les descendances des fonctions.
 %##########################################
 \begin{code}
 \begin{fast}{Fonction de Service}
@@ -37,17 +37,17 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		Il est à noter que dans l'exemple précédent, la seconde ligne du diagramme ne tient pas compte de la ``place'' que prend notre dessin.
-		Pour que ce soit le cas, il faut que la descendance (c'est à dire le dessin) ``marque'' sa place en créant une coordonnée correspondant au point le plus bas du dessin.
+		Il est Ã  noter que dans l'exemple prÃ©cÃ©dent, la seconde ligne du diagramme ne tient pas compte de la ``place'' que prend notre dessin.
+		Pour que ce soit le cas, il faut que la descendance (c'est Ã  dire le dessin) ``marque'' sa place en crÃ©ant une coordonnÃ©e correspondant au point le plus bas du dessin.
 		C'est sur ce point que la seconde ligne va se baser.
 
-		Ce point doit être enregistré dans la variable {\color{blue}\verb'BoiteMinimums'} de la manière suivante :
+		Ce point doit Ãªtre enregistrÃ© dans la variable {\color{blue}\verb'BoiteMinimums'} de la maniÃ¨re suivante :
 %##########################################
 \begin{code}
 \coordinate (BoiteMinimums) at (X,Y);
 \end{code}
 %##########################################
-		où le couple $(X, Y)$ est la coordonnées du minimum.
+		oÃ¹ le couple $(X, Y)$ est la coordonnÃ©es du minimum.
 
 		Par exemple :
 %##########################################
@@ -80,13 +80,13 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	\subsection{Gestion des boîtes}\label{boites}
+	\subsection{Gestion des boÃ®tes}\label{boites}
 	%-----------------------------------------
 
-	Les boites créées dans le diagramme FAST sont réalisées par la fonction {\color{blue}\verb'\node'} de \emph{TikZ}.
-	Ces boîtes sont nommées sous la forme suivante : {\color{blue}\verb'\fastBoiteX'} où {\color{blue}\verb'X'} est remplacé par le numéro de la boite.
-	Ce numéro est défini par ordre de création des boites : de gauche à droite, de haut en bas.
-	Voici un exemple faisant apparaître le nom des boites :
+	Les boites crÃ©Ã©es dans le diagramme FAST sont rÃ©alisÃ©es par la fonction {\color{blue}\verb'\node'} de \emph{TikZ}.
+	Ces boÃ®tes sont nommÃ©es sous la forme suivante : {\color{blue}\verb'\fastBoiteX'} oÃ¹ {\color{blue}\verb'X'} est remplacÃ© par le numÃ©ro de la boite.
+	Ce numÃ©ro est dÃ©fini par ordre de crÃ©ation des boites : de gauche Ã  droite, de haut en bas.
+	Voici un exemple faisant apparaÃ®tre le nom des boites :
 	\begin{center}
 		\begin{fast}{fastBoite0}
 			\FT{fastBoite1}{\FT{fastBoite2}{}
@@ -96,8 +96,8 @@
 		\end{fast}
 	\end{center}
 
-	Partant de là, il est alors possible de réaliser des modifications manuelles sur le diagramme.
-	Par exemple, pour avoir une solution technique commune à deux fonctions techniques :
+	Partant de lÃ , il est alors possible de rÃ©aliser des modifications manuelles sur le diagramme.
+	Par exemple, pour avoir une solution technique commune Ã  deux fonctions techniques :
 %##########################################
 \begin{code}
 \begin{fast}{Fonction de service}
@@ -120,17 +120,17 @@
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	\subsection{Créer sa propre boite}\label{perso}
+	\subsection{CrÃ©er sa propre boite}\label{perso}
 	%--------------------------------------
 
-	Les boites sont à peu prés toutes créées sur le même modèle et il est possible d'en créer d'autres :
+	Les boites sont Ã  peu prÃ©s toutes crÃ©Ã©es sur le mÃªme modÃ¨le et il est possible d'en crÃ©er d'autres :
 %##########################################
 \begin{code}
 \newcommand*{\maBoite}[2]{
 	\fastAvanceColonne		%On avance d'une colonne
 	\addtocounter{cptBoite}{1}	%On incremente le numero de la boite
 	%%%%%%%%%%%%%%%%%%%%%%%
-	%Créer votre boite ici :
+	%CrÃ©er votre boite ici :
 	\node [anchor=north west] (noeud \thecptAbscisse) at
 		($(\posX,0)+(BoiteMinimums)$) {#1};
 	%%%%%%%%%%%%%%%%%%%%%%
@@ -149,10 +149,10 @@
 %##########################################
 
 
-	Le n\oe ud créé sous la ligne ``{\color{blue}\verb'Créer votre boite ici'}'' est la boite que vous allez afficher.
-	C'est elle que vous allez pouvoir modifier pour l'adapter à vos besoins.
+	Le n\oe ud crÃ©Ã© sous la ligne ``{\color{blue}\verb'CrÃ©er votre boite ici'}'' est la boite que vous allez afficher.
+	C'est elle que vous allez pouvoir modifier pour l'adapter Ã  vos besoins.
 	Ce n\oe ud doit obligatoirement porter le nom {\color{blue}\verb'(noeud \thecptAbscisse)'}.
-	Les autres commandes ne doivent pas être changées.
+	Les autres commandes ne doivent pas Ãªtre changÃ©es.
 
 	Voici un exemple :
 %##########################################
@@ -161,7 +161,7 @@
 	\fastAvanceColonne		%On avance d'une colonne
 	\addtocounter{cptBoite}{1}	%On incremente le numero de la boite
 	%%%%%%%%%%%%%%%%%%%%%%%
-	%Créer votre boite ici
+	%CrÃ©er votre boite ici
 	\node [anchor=north west,draw,rounded corners=3pt,
 		aspect=2.5,text=red](noeud \thecptAbscisse)
 		at ($(\posX,0)+(BoiteMinimums)$) {#1};
@@ -193,7 +193,7 @@
 	\fastAvanceColonne		%On avance d'une colonne
 	\addtocounter{cptBoite}{1}	%On incremente le numero de la boite
 	%%%%%%%%%%%%%%%%%%%%%%%
-	%Créer votre boite ici
+	%CrÃ©er votre boite ici
 	\node [anchor=north west,draw,rounded corners=3pt,aspect=2.5,text=red](noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {#1};
 	%%%%%%%%%%%%%%%%%%%%%%
 	\node[inner sep=0,fit=(noeud \thecptAbscisse.north west)

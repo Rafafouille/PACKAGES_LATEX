@@ -8,7 +8,7 @@
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 \RequirePackage{ifthen}	%Pour faire des compilations conditionnelles (if, etc..)
-\RequirePackage{xspace} %Pour faire des espaces automatiques après les commandes.
+\RequirePackage{xspace} %Pour faire des espaces automatiques aprÃ¨s les commandes.
 \RequirePackage{xargs}   %Pour avoir plus d'arguments facultatifs
 
 \RequirePackage{Raf_Notations_Maths}		%arguments optionnels mutliples
@@ -16,10 +16,10 @@
 
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisDyn}%création du booléen
+\newboolean{boolRaccourcisDyn}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisDyn}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \newif\if@RafNotDynRac	\@RafNotDynRactrue
 \DeclareOption{noRaccourci}	{\@RafNotDynRacfalse}
 %\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisRDM}{false}}
@@ -30,7 +30,7 @@
 \newcommand*{\RafDynRac}[1]{\ifthenelse{\boolean{boolRaccourcisDyn}}{#1}{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
 
 
 % ===============================
@@ -101,7 +101,7 @@
 \fi
 
 % ===============================
-% Cinétique
+% CinÃ©tique
 % ==============================
 \newcommand*{\CCallig}				{\ensuremath{	\mathscr{C}	}}	%Symbole du torseur cinematique
 

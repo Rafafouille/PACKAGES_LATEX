@@ -1,0 +1,121 @@
+\documentclass[a4paper,10pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc} 
+	\usepackage{hyperref}
+
+	\usepackage[]{Raf_Notations_Torseurs}
+
+	\everymath{\displaystyle}
+
+
+	\newcommand{\rac}{({\color{red}Raccourci})}
+	\newcommand{\ren}{({\color{blue}Renommé})}
+
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Notations de torseurs ``de base''}\\\hrule
+	\end{center}
+
+	(Version du 01/06/16)
+
+	Ce package sert de \textbf{base} pour les torseurs qui seront utilisés dans les packages \verb!Raf_Notations_Cinematique! et \verb!Raf_Notations_Actions_Meca! (et autres...)
+
+	\section{Packages requis}
+	%-------------------------------------
+
+	\begin{itemize}
+		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation à choix multiple,
+		\item \href{http://tug.ctan.org/tex-archive/macros/latex/contrib/xargs}{\textbf{xarg}} : Package permettant de créer des commandes à plusieurs arguments optionnels.
+		\item \href{http://www.ctan.org/pkg/mathrsfs}{\textbf{mathrsfs}} : Package qui rajoute des polices d'écritures mathématiques.
+		\item \href{http://enseignement.allais.eu/page-latex}{\textbf{Raf\_Notations\_Maths}} : Package de mise en forme d'objets mathématiques
+	\end{itemize}
+
+	\section{Appel du package}
+	%-------------------------------------
+	Le package est appelé en début de document par la commande :
+	\begin{verbatim}
+\usepackage{Raf_Notations_Torseurs}
+	\end{verbatim}
+
+	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
+	De plus, certaines commandes ont été rebaptisée.
+	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+
+	\begin{verbatim}
+usepackage[noRaccourci]{Raf_Notations_Torseurs}
+	\end{verbatim}
+
+	\section{Écriture générale}
+	%-------------------------------------------
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\TCallig!			&	\TCallig		&	Symbole ``T'' de torseur calligraphié du torseur
+		\\\hline
+			\verb!\torseur{X}!		&	\torseur{X}		&	Objet torseur
+		\\\hline
+			\verb!\tT!			&	\tT			&	Torseur \TCallig \rac
+		\\\hline
+			\verb!\tC!			&	\tC			&	Torseur couple \rac
+		\\\hline
+			\verb!\tNul!			&	\tNul			&	Torseur nul
+		\\\hline
+	\end{tabular}
+
+	\section{Éléments de réduction}
+	%-------------------------------------------
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\Mom!			&	\Mom			&	Symbole ``M'' de base de moment
+		\\\hline
+			\verb!\Res!			&	\Res			&	Symbole ``R'' de base d'une résultante
+		\\\hline
+			\verb!\resultante{\TCallig}!		&	\resultante{\TCallig}		&	Résultante (de \tT)
+		\\\hline
+			\verb!\resultante{1}[2]!	&	\resultante{1}[2]		&	Résultante d'un objet par rapport à un autre
+		\\\hline
+			\verb!\moment{A}{\TCallig}!		&	\moment{A}{\TCallig}		&	Moment de \tT au point $A$
+		\\\hline
+			\verb!\moment{A}{1}[2]!		&	\moment{A}{1}[2]		&	Moment de $(1/2)$ au point $A$
+		\\\hline
+			\verb!\torseurLigne{A}!\qquad\verb!{\vecteur{X}}!\qquad\verb!{\vecteur{Y}}!		&	\torseurLigne{A}{\vecteur{X}}{\vecteur{Y}}	&	Torseur ligne
+		\\\hline
+			\verb!\tLigne{A}!\qquad\verb!{\vecteur{X}}!\qquad\verb!{\vecteur{Y}}!		&	\torseurLigne{A}{\vecteur{X}}{\vecteur{Y}}	&	Raccourci de \verb!\torseurLigne!
+		\\\hline
+			\verb!\torseurColonne{A}!\qquad\verb!{X\\Y\\Z}!\qquad\verb!{L\\M\\N}{R}!		&	\torseurColonne{A}{X\\Y\\Z}{L\\M\\N}{R}	&	Torseur Colonne
+		\\\hline
+			\verb!\tColonne{A}!\qquad\verb!{X\\Y\\Z}!\qquad\verb!{L\\M\\N}{R}!		&	\tColonne{A}{X\\Y\\Z}{L\\M\\N}{R}	&	Raccourci de \verb!\torseurColonne!
+		\\\hline
+	\end{tabular}
+
+	\section{Opérateurs}
+	%-------------------------------------------
+	\noindent
+	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\automoment{\TCallig}!		&	\automoment{\TCallig}	&	Automoment
+		\\\hline
+			\verb!\automoment{1}[2]!	&	\automoment{1}[2]	&	Automoment
+		\\\hline
+			\verb!\axeCentral{\TCallig}!	&	\axeCentral{\TCallig}	&	Axe Central du torseur
+		\\\hline
+			\verb!\axeCentral{1}[2]!	&	\axeCentral{1}[2]	&	Axe Central du torseur
+		\\\hline
+			\verb!\comoment! 	&	\comoment	&	Comoment de deux torseurs
+		\\\hline
+			\verb!\devComoment{A}! \verb!{\TCallig_1}! \verb!{\TCallig_2}!	&	\devComoment{A}{\TCallig_1}{\TCallig_2}	&	Comoment en développant avec les éléments de réduction
+		\\\hline
+	\end{tabular}
+
+\end{document}

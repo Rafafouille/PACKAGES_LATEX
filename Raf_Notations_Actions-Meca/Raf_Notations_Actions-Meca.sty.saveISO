@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Actions mécaniques
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Actions-Meca}[2017/03/19]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{Raf_Notations_Torseurs}	%Pour faire des torseurs
+
+
+%déclaration des options de l'extension
+\newif\if@RafNotAMRac	\@RafNotAMRactrue
+\DeclareOption{noRaccourci}	{\@RafNotAMRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
+\ProcessOptions
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+
+
+%Torseur
+%=================================================
+
+\newcommand*{\torseurActionsMeca}[3][]	{\ensuremath{\torseur{\TCallig^{#1}_{\left({#2}\rightarrow{#3}\right)}}}}
+\newcommand*{\tActionsMeca}[3][]	{\torseurActionsMeca[#1]{#2}{#3}}
+\if@RafNotAMRac
+\newcommand*{\tAM}[3][]		{\torseurActionsMeca[#1]{#2}{#3}}
+\fi
+
+%Résultantes
+%=================================
+% 
+\newcommand*{\resultanteActionsMeca}[3][]	{\vecteur{\Res^{#1}_{\left({#2}\rightarrow{#3}\right)}}}
+\newcommand*{\resAM}[3][]	{\resultanteActionsMeca[#1]{#2}{#3}}
+
+\newcommand*{\vForce}[3][F]	{\ifthenelse{\equal{#2}{}}
+ 					{\vecteur{{#1}_{#3}}}
+ 					{\vecteur{{#1}_{\left(#2\rightarrow#3\right)}}	}}
+\if@RafNotAMRac
+\newcommand*{\vF}[1][]		{\vForce[F]{}{#1}}
+\fi
+
+\newcommand*{\vForceNormale}[2]		{\vForce[F^N]{#1}{#2}}
+\if@RafNotAMRac
+\newcommand*{\vFN}[2]	{\vForceNormale{#1}{#2}}
+\fi
+
+\newcommand*{\vForceTangentielle}[2]		{\vForce[F^T]{#1}{#2}}
+\if@RafNotAMRac
+\newcommand*{\vFT}[2]	{\vForceTangentielle{#1}{#2}}
+\fi
+
+
+
+% \newcommand{\vF}[2][]		{\vForce[F]{#1}{#2}}	%Raccourci
+% \newcommand{\vT}[2][]		{\vForce[T]{#1}{#2}}	%Raccourci
+% \newcommand{\vP}[2][]		{\vForce[P]{#1}{#2}}	%Raccourci
+% \newcommand{\vQ}[2][]		{\vForce[Q]{#1}{#2}}	%Raccourci
+% 
+% %Moments
+% %==================================
+% 
+\newcommand*{\momentActionsMeca}[4][]	{\vecteur{\Mom^{#1}_{{#2}_{\ifthenelse{\equal{#4}{}}{#3}{\left(#3\rightarrow#4\right)}}}}}
+\newcommand*{\momAM}[4][]			{\momentActionsMeca[#1]{#2}{#3}{#4}}
+% \newcommand{\momentForce}[3]		{\moment[#2\rightarrow#3]{#1}}
+\newcommand*{\momentRoulement}[3]	{\ensuremath{	\vecteur{{\Mom^r_{#1}}_{\left(#2\rightarrow#3\right)}}	}}
+\newcommand*{\momentPivotement}[3]	{\ensuremath{	\vecteur{{\Mom^p_{#1}}_{\left(#2\rightarrow#3\right)}}	}}
+% 
+% 
+% %Vecteurs contrainte/pression
+% %===================================
+% 
+\newcommand*{\vContrainte}[3][T]	{\ifthenelse{\equal{#2}{} \OR \equal{#3}{}}
+						{\f {\vecteur{#1}}{#2#3}}
+						{\f {\vecteur{#1}}{#2,#3}}
+					}
+
+\newcommandx*{\vForceRepartie}[4][1=f,4=P]	{\vForce[{#1}_{#4}]{#2}{#3}}
+						%\ifthenelse{\equal{#4}{}}
+						%{\vForce[#1]{#2}{#3}}
+						%{\f {\vForce[#1]{#2}{#3}}{#4}}
+					%}
+
+\newcommandx*{\vFRep}[4][1=f,4=P]		{\vForceRepartie[#1]{#2}{#3}[#4]}
+
+\newcommandx*{\vContrainteNormale}[3][3=P]	{\vForceRepartie[n]{#1}{#2}[#3]}
+\if@RafNotAMRac
+\newcommandx*{\vCN}[3][3=P]			{\vContrainteNormale{#1}{#2}[#3]}
+\fi
+
+\newcommandx*{\vContrainteTangentielle}[3][3=P]	{\vForceRepartie[t]{#1}{#2}[#3]}
+\if@RafNotAMRac
+\newcommandx*{\vCT}[3][3=P]				{\vContrainteTangentielle{#1}{#2}[#3]}
+\fi
+
+
+\newcommand*{\vdF}[1][P]	{\vecteur{dF_{#1}}}
+\newcommandx*{\vdM}[2][1=P]	{\vecteur{\f{dM_{#1}}{#2}}}
+
+
+% 
+% %Tribologie
+% %==============================
+\newcommand*{\coefficientFrottement}	{\ensuremath{f}}	%Coefficient de frottement
+\newcommand*{\coefFr}			{\coefficientFrottement}
+\newcommand*{\fFrot}			{\coefficientFrottement}
+% 
+\newcommand*{\angleFrottement}	{\ensuremath{\varphi}}	%Angle de frottement
+\if@RafNotAMRac
+\newcommand{\aFr}		{\angleFrottement}
+\fi
+% 
+\newcommand*{\coefficientAdherence}	{\ensuremath{f^{*}}}	%Coefficient d'adhérence
+\newcommand*{\coefAdh}			{\coefficientAdherence}
+\newcommand*{\fAdh}			{\coefficientAdherence}
+% 
+\newcommand*{\coefResPivotement}		{\ensuremath{\delta}}	%Coefficient de résistance pivotement
+\newcommand*{\coefResRoulement}		{\ensuremath{\eta}}	%Coefficient de résistance roulement
+% 
+% 
+% %Hyperstatisme
+% %=====================================
+ \newcommand{\inconnuesStatiques}[1][]	{\ifthenelse{\equal{#1}{}}{\ensuremath{N_s}}{\ensuremath{n_{s_{#1}}}}}
+\if@RafNotAMRac
+ \newcommand{\iS}[1][]			{\inconnuesStatiques[#1]}
+\fi
+% 
+\newcommand{\inconnuesCinematiques}[1][]	{\ifthenelse{\equal{#1}{}}{\ensuremath{N_c}}{\ensuremath{n_{c_{#1}}}}}
+\if@RafNotAMRac
+\newcommand{\iC}[1][]			{\inconnuesCinematiques[#1]}
+\fi
+% 
+\newcommand{\nCyclomatique}		{\ensuremath{\gamma}}
+
+
+% %Autre
+% %===========================
+
+\newcommand*{\vConstanteGravite}	{\vecteur g}
+\if@RafNotAMRac
+\newcommand*{\vg}	{\vConstanteGravite}
+\fi
+
+%
+
+
+
+
+
+\endinput

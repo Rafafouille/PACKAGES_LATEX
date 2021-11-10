@@ -7,7 +7,7 @@
 \ProvidesPackage{Raf_Notations_AF}[2016/05/27]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 \RequirePackage{xcolor}%Pour faire des trucs en couleur
 \RequirePackage{tikz}%Pour faire des dessins
 		\usetikzlibrary{calc}
@@ -26,26 +26,26 @@
 % 		\makeatother
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisAF}%création du booléen
+\newboolean{boolRaccourcisAF}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisAF}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \DeclareOption{noRaccourcis}{\setboolean{boolRaccourcisAF}{false}}
 \ProcessOptions
 
 
 
-\newcommand*{\citeSys}[1]	{\texttt{\textbf{#1}}} %Attention, il y a un renewcommand après
+\newcommand*{\citeSys}[1]	{\texttt{\textbf{#1}}} %Attention, il y a un renewcommand aprÃ¨s
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 	\ifthenelse{\boolean{boolRaccourcisAF}}
 {
-	\newcommand{\MO}	{matière d'\oe uvre}
-	\newcommand{\MOs}	{matières d'\oe uvre}
-	\newcommand{\VA}	{valeur ajoutée}
-	\newcommand{\VAs}	{valeurs ajoutées}
+	\newcommand{\MO}	{matiÃ¨re d'\oe uvre}
+	\newcommand{\MOs}	{matiÃ¨res d'\oe uvre}
+	\newcommand{\VA}	{valeur ajoutÃ©e}
+	\newcommand{\VAs}	{valeurs ajoutÃ©es}
 
 	\newcommand*{\bdd} {\citeSys{bdd}}
 	\newcommand*{\ibd} {\citeSys{ibd}}
@@ -73,7 +73,7 @@
 		\newcommand*{\CFLargeurBoites}	{9em}
 
 
-		\newcommand*{\CFBoiteAcquerir}{ACQUÉRIR}
+		\newcommand*{\CFBoiteAcquerir}{ACQUÃ‰RIR}
 		\newcommand*{\CFBoiteTraiter}{TRAITER}
 		\newcommand*{\CFBoiteCommuniquer}{COMMUNIQUER}
 		\newcommand*{\CFBoiteAlimenter}{ALIMENTER}
@@ -97,17 +97,17 @@
 		\newcommand*{\CFNomsOrdres}{Ordres}	\newcommand*	{\CFOrdres}[1]	{\renewcommand*{\CFNomsOrdres}{##1}}
 		\newcommand*{\CFNomsAcquisition}{}	\newcommand*	{\CFAcquisition}[1]	{\renewcommand*{\CFNomsAcquisition}{##1}}
 		
-		\newcommand*{\CFNomsMO}{Matière\\ d'\oe uvre}	\newcommand*	{\CFMO}[1]	{\renewcommand*{\CFNomsMO}{##1}}
-		\newcommand*{\CFNomsMOVA}{Matière\\d'\oe uvre\\\ \ \ +\\Valeur\\ajoutée}	\newcommand*	{\CFMOVA}[1]	{\renewcommand*{\CFNomsMOVA}{##1}}
+		\newcommand*{\CFNomsMO}{MatiÃ¨re\\ d'\oe uvre}	\newcommand*	{\CFMO}[1]	{\renewcommand*{\CFNomsMO}{##1}}
+		\newcommand*{\CFNomsMOVA}{MatiÃ¨re\\d'\oe uvre\\\ \ \ +\\Valeur\\ajoutÃ©e}	\newcommand*	{\CFMOVA}[1]	{\renewcommand*{\CFNomsMOVA}{##1}}
 		
-		\newcommand*{\CFChaineInfo}{Chaîne d'information}
-		\newcommand*{\CFChaineEnergie}{Chaîne d'énergie}
+		\newcommand*{\CFChaineInfo}{ChaÃ®ne d'information}
+		\newcommand*{\CFChaineEnergie}{ChaÃ®ne d'Ã©nergie}
 		
 		\newcommand*{\CFafter}{} \newcommand*	{\CFApres}[1]	{\renewcommand*{\CFafter}{##1}}
 		\newcommand*{\CFbefore}{} \newcommand*	{\CFAvant}[1]	{\renewcommand*{\CFafter}{##1}}
 		
 		\newcommand*{\CFVierge}{
-					\renewcommand*{\CFBoiteAcquerir}{\phantom{ACQUÉRIR}}
+					\renewcommand*{\CFBoiteAcquerir}{\phantom{ACQUÃ‰RIR}}
 					\renewcommand*{\CFBoiteTraiter}{\phantom{TRAITER}}
 					\renewcommand*{\CFBoiteCommuniquer}{\phantom{COMMUNIQUER}}
 					\renewcommand*{\CFBoiteAlimenter}{\phantom{ALIMENTER}}

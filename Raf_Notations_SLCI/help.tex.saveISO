@@ -1,0 +1,372 @@
+\documentclass[a4paper,12pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{hyperref}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc} 
+
+	\usepackage{Raf_Notations_SLCI}
+
+
+	\newcommand{\rac}{({\color{red}Raccourci})}
+	\newcommand{\ren}{({\color{blue}Renommé})}
+
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Systèmes Linéaires Continus Invariants}\\\hrule
+	\end{center}
+
+
+	\section{Packages requis}
+	%-------------------------------------
+
+		\begin{itemize}
+			\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles (if...then...else....)
+			\item \href{http://www.ctan.org/pkg/mathrsfs}{\textbf{mathrsfs}} : Notation mathématiques (notamment l'opérateur $\mathscr{L}$ de transformée de Laplace)
+			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour créer des commandes avec plusieurs arguments optionnels
+			\item \href{http://sciences-indus-cpge.papanicola.info/Bode-Black-et-Nyquist-avec-Tikz}{\textbf{bodegraph}} : Pour créer facilement des diagrammes de Bode, Black et Nyquist (nécessite en particulier GNU Plot. Chez moi, il faut créer un dossier \emph{gnuplot} dans le dossier du source.)
+			\item \href{http://sciences-indus-cpge.papanicola.info/Schema-blocs-avec-PGF-TIKZ-sous}{\textbf{schemabloc}} : Pour dessiner facilement des schéma-blocs via Tikz (juste pour l'avoir sous la main. En soit, il ne sert pas aux commandes suivantes).
+			\item \href{http://enseignement.allais.eu/page-latex}{\textbf{Raf\_Notations\_Maths}} : Notations mathématiques
+		\end{itemize}
+
+	\section{Appel du package}
+	%-------------------------------------
+
+		Le package est appelé en début de document par la commande :
+		\begin{verbatim}
+\usepackage{Raf_Notations_SLCI}
+		\end{verbatim}
+
+	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
+	De plus, certaines commandes ont été rebaptisées.
+	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+
+	\begin{verbatim}
+usepackage[noRaccourci]{Raf_Notations_SLCI}
+	\end{verbatim}
+
+
+	\section{Transformation}
+	%------------------------------------------
+
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\verb!\transfoLaplace{}!	&	\transfoLaplace{} &	Opérateur transformée de Laplace
+		\\\hline
+			\verb!\transfoLaplace{f}!	&	\transfoLaplace{f} &	Transformation d'une fonction $f$
+		\\\hline
+			\verb!\transfoLaplace[2]{f}!	&	\transfoLaplace[2]{f} &	Opérateur transformée de Laplace avec exposant
+		\\\hline
+			\verb!\transfoLaplaceInv{}!	&	\transfoLaplaceInv{} &		Opérateur transformée inverse de Laplace
+		\\\hline
+			\verb!\transfoLaplaceInv{f}!	&	\transfoLaplaceInv{f} &		Transformation inverse d'une fonction $f$
+		\\\hline
+			\verb!\L{}!		&	\L{} 	&	Identique à \verb'\transfoLaplace' \rac\ren
+		\\\hline
+			\verb!\L{f}!	&	\L{f} 		&	Identique à \verb'\transfoLaplace' \rac\ren
+		\\\hline
+			\verb!\L[-1]{f}!	&	\L[-1]{f} &	Identique à \verb'\transfoLaplace' \rac\ren
+		\\\hline
+			\verb!\LInv{}!	&	\LInv{} &	Identique à \verb!\transfoLaplaceInv{f}! \rac
+		\\\hline
+			\verb!\LInv{f}!	&	\LInv{f} &	Identique à \verb!\transfoLaplaceInv{f}! \rac
+		\\\hline
+	\end{tabular}
+
+
+
+
+	\section{Abréviations}
+	%--------------------------------
+	\begin{tabular}{|p{0.35\linewidth}|p{0.5\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}
+		\\\hline\hline
+			\verb!\TOR!	&	\TOR	
+		\\\hline
+			\verb!\FTBO!	&	\FTBO	
+		\\\hline
+			\verb!\FTBF!	&	\FTBF	
+		\\\hline
+	\end{tabular}
+
+
+	\section{Signaux}
+	%--------------------------------
+
+
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\echelon!	&	\echelon	&	Échelon unitaire
+		\\\hline
+			\verb!\echelon[t-\tau]!	&	\echelon[t-\tau]	&	Échelon unitaire avec paramètre différent
+		\\\hline
+			\verb!\dirac!	&	\dirac	&	Dirac
+		\\\hline
+			\verb!\dirac[t-\tau]!	&	\dirac[t-\tau]	&	Dirac avec paramètre différent
+		\\\hline
+			\verb!\rampe!	&	\rampe	&	Rampe
+		\\\hline
+			\verb!\rampe[t-\tau]!	&	\rampe	&	Rampe avec paramètre différent
+		\\\hline
+	\end{tabular}
+	
+
+	\section{Formes canoniques}
+	%------------------------------------------
+
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\canonique1!	&	\canonique1 &	Forme canonique du $1^{er}$ ordre.
+		\\\hline
+			\verb!\canonique1[1.2]!	&	\canonique1[1.2] &	Forme canonique du $1^{er}$ ordre avec gain paramétré.
+		\\\hline
+			\verb!\canonique1[1.2][5]!	&	\canonique1[1.2][5] &	Forme canonique du $1^{er}$ ordre avec gain et constante de temps paramétrés.
+		\\\hline
+			\verb!\canonique2!	&	\canonique2 &	Forme canonique du $2^{eme}$ ordre.
+		\\\hline
+			\verb!\canonique2[1.2]!	&	\canonique2[1.2] &	Forme canonique du $2^{eme}$ ordre avec gain paramétré.
+		\\\hline
+			\verb!\canonique2[1.2][10]!	&	\canonique2[1.2][10] &	Forme canonique du $2^{eme}$ ordre avec gain et pulsation propre paramétrés.
+		\\\hline
+			\verb!\canonique2[1.2][10]! \verb![\pi]!	&	\canonique2[1.2][10][\pi] &	Forme canonique du $2^{eme}$ ordre avec gain et pulsation propre et amortissement paramétrés.
+		\\\hline
+	\end{tabular}
+
+	\section{Caractéristiques}
+	%------------------------------------------------------------------
+
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\erreurStatique!	&	\erreurStatique &	Erreur statique
+		\\\hline
+			\verb!\eStatique!	&	\eStatique &	idem version courte
+		\\\hline
+			\verb!\erreurTrainage!	&	\erreurTrainage &	Erreur de trainage
+		\\\hline
+			\verb!\eTrainage!	&	\eTrainage &	idem version courte
+		\\\hline
+			\verb!\erreurDynamique!	&	\erreurDynamique &	Erreur dynamique
+		\\\hline
+			\verb!\eDynamique!	&	\eDynamique &	idem version courte
+		\\\hline
+			\verb!\tempsReponse!	&	\tempsReponse & temps de réponse à $5\%$
+		\\\hline
+			\verb!\tReponse!	&	\tReponse &	idem version courte
+		\\\hline
+	\end{tabular}
+
+
+
+	\section{Fonctions pré-définies dans le domaine temporel}
+	%------------------------------------------------------------------
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\Fst!	&	\Fst &	
+		\\\hline
+			\verb!\Fstc!	&	\Fstc &	
+		\\\hline
+			\verb!\Fet!	&	\Fet &	
+		\\\hline
+			\verb!\Fetc!	&	\Fetc &	
+		\\\hline
+			\verb!\Fpt!	&	\Fpt &	
+		\\\hline
+			\verb!\Fyt!	&	\Fyt &	
+		\\\hline
+			\verb!\Fxt!	&	\Fxt &	
+		\\\hline
+			\verb!\Fit!	&	\Fit &	
+		\\\hline
+			\verb!\Fumt!	&	\Fumt &	
+		\\\hline
+			\verb!\Fcmt!	&	\Fcmt &	
+		\\\hline
+			\verb!\Fwt!	&	\Fwt &	
+		\\\hline
+			\verb!\Fwmt!	&	\Fwmt &	
+		\\\hline
+	\end{tabular}
+	
+	
+	
+	\section{Fonctions pré-définies dans le domaine de Laplace}
+	%------------------------------------------------------------------
+
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+		\\\hline\hline
+			\verb!\FFp!	&	\FFp &	
+		\\\hline
+			\verb!\FYp!	&	\FYp &	
+		\\\hline
+			\verb!\FXp!	&	\FXp &	
+		\\\hline
+			\verb!\FSp!	&	\FSp &	
+		\\\hline
+			\verb!\FEp!	&	\FEp &	
+		\\\hline
+			\verb!\FDp!	&	\FDp &	
+		\\\hline
+			\verb!\FNp!	&	\FNp &	
+		\\\hline
+			\verb!\FHp!	&	\FHp &	
+		\\\hline
+			\verb!\Hjw!	&	\Hjw &	
+		\\\hline
+			\verb!\FGp!	&	\FGp &	
+		\\\hline
+			\verb!\FCp!	&	\FCp &	
+		\\\hline
+			\verb!\FUp!	&	\FUp &	
+		\\\hline
+			\verb!\FUmp!	&	\FUmp &	
+		\\\hline
+			\verb!\FVp!	&	\FVp &	
+		\\\hline
+			\verb!\FTp!	&	\FTp &	
+		\\\hline
+			\verb!\FWp!	&	\FWp &	
+		\\\hline
+			\verb!\FWmp!	&	\FWmp &	
+		\\\hline
+			\verb!\FWrp!	&	\FWrp &	
+		\\\hline
+			\verb!\Fepsp!	&	\Fepsp &	
+		\\\hline
+			\verb!\FTBFp!	&	\FTBFp &	
+		\\\hline
+			\verb!\FTBOp!	&	\FTBOp &	
+		\\\hline
+	\end{tabular}
+		
+	\section{Schéma-bloc}
+	%-------------------------------
+	
+	\noindent
+	\begin{tabular}{|p{0.20\linewidth}|p{0.45\linewidth}|p{0.25\linewidth}|}
+		\hline
+			\verb!\blocSeul{a}! \verb!{b}{c}!	&	\blocSeul{a}{b}{c} &	Schéma-bloc à un seul bloc
+		\\\hline
+			\verb!\blocSeul{a}! \verb![2]{b}[3]{c}!	&	\blocSeul{a}[2]{b}[3]{c} &	idem avec espacement des flèches en option (en em)
+		\\\hline
+	\end{tabular}
+	
+	
+	
+	\section{Fonctions fréquentielles}
+	%------------------------------------------------------------------
+	\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.4\linewidth}|}
+		\hline
+			\verb!\jw!	&	\jw &	\j\ (nombre complexe) fois la pulsation \rac
+		\\\hline
+			\verb!\Gw!	&	\Gw &	Gain
+		\\\hline
+			\verb!\Gw[25]!	&	\Gw[25] &	Gain avec paramètre personnalisé
+		\\\hline
+			\verb!\Gwc!	&	\Gwc &	Gain pour la pulsation de coupure
+		\\\hline
+			\verb!\Gdbw!	&	\Gdbw &	Gain en $dB$
+		\\\hline
+			\verb!\Gdbw[25]!&	\Gdbw[25] &	Gain en $dB$ avec paramètre personnalisé
+		\\\hline
+			\verb!\Gdbwc!	&	\Gdbwc &	Gain en $dB$ pour la pulsation de coupure
+		\\\hline
+			\verb!\phiw!	&	\phiw &	Phase
+		\\\hline
+			\verb!\phiw[25]!	&	\phiw[25] &	Phase avec paramètre personnalisé
+		\\\hline
+			\verb!\phiwc!	&	\phiwc &	Phase pour la pulsation de coupure
+		\\\hline
+			\verb!\wCoupure!	&	\wCoupure &	Pulsation de coupure
+		\\\hline
+			\verb!\wCoupure[1]!	&	\wCoupure[1] &	Pulsation de coupure avec indice
+		\\\hline
+			\verb!\wC!	&	\wC &	Identique à \verb!\wCoupure! \rac
+		\\\hline
+			\verb!\wResonance!	&	\wResonance &	Pulsation de résonance
+		\\\hline
+			\verb!\wResonance[1]!	&	\wResonance[1] &	Pulsation de résonance avec indice
+		\\\hline
+			\verb!\wR!	&	\wR &	Identique à \verb!\wResonance! \rac
+		\\\hline
+			\verb!\wMPhase!	&	\wMPhase &	Pulsation pour un gain à $0\ dB$
+		\\\hline
+			\verb!\wMGain!	&	\wMGain &	Pulsation pour une phase à $0\deg$
+		\\\hline
+	\end{tabular}
+
+	
+	\section{Diagramme de Bode}
+	%------------------------------------------------------------------
+	(Raccourci du package \href{http://sciences-indus-cpge.papanicola.info/Bode-Black-et-Nyquist-avec-Tikz}{\textbf{bodegraph}}. Voir la doc associée).
+
+
+	
+	\subsection{Gain en dB}
+	%------------------------
+	
+	\begin{verbatim}
+\begin{bodeGain}
+	\BodeAmp[samples=100]{-1:2}{\SOAmp{3.0}{0.4}{18.0}}
+\end{bodeGain}
+	\end{verbatim}
+
+\begin{bodeGain}
+	\BodeAmp[samples=100]{-1:2}{\SOAmp{3.0}{0.4}{18.0}}
+\end{bodeGain}
+
+	\begin{verbatim}
+%Graphe pour omega entre 10^-3 et 10^2,
+%et pour un gain en dB entre -30 et +30.
+%Echelle en x de 2.5, échelle en y de 0.1
+
+\begin{bodeGain}[-3][2][-30][30][2.5][0.1]
+	\BodeAmp[samples=100]{-3:2}{\SOAmp{3.0}{0.4}{18.0}}
+\end{bodeGain}
+	\end{verbatim}
+
+\begin{bodeGain}[-3][2][-30][30][2.5][0.1]
+	\BodeAmp[samples=100]{-3:2}{\SOAmp{3.0}{0.4}{18.0}}
+\end{bodeGain}
+
+
+	\subsection{Phase}
+	%------------------------
+
+	\begin{verbatim}
+\begin{bodePhase}
+	\BodeArg[samples=100]{-1:4}{\SOArg{3.0}{0.4}{18.0}}
+\end{bodePhase}
+	\end{verbatim}
+
+\begin{bodePhase}
+	\BodeArg[samples=100]{-1:4}{\SOArg{3.0}{0.4}{18.0}}
+\end{bodePhase}
+
+	\begin{verbatim}
+%Graphe pour omega entre 10^0 et 10^3,
+%et pour une phase entre -200 et +10.
+%Echelle en x de 3, échelle en y de 0.02
+
+\begin{bodePhase}[0][3][-200][10][3][0.02]
+	\BodeArg[samples=100]{0:3}{\SOArg{3.0}{0.4}{18.0}}
+\end{bodePhase}
+	\end{verbatim}
+
+\begin{bodePhase}[0][3][-200][10][3][0.02]
+	\BodeArg[samples=100]{0:3}{\SOArg{3.0}{0.4}{18.0}}
+\end{bodePhase}
+
+\end{document}

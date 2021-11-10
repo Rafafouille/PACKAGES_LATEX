@@ -10,7 +10,7 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}Renommé})}
+	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 
 \begin{document}
 
@@ -24,27 +24,27 @@
 
 		\begin{itemize}
 			\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles (if...then...else....)
-			%\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathématiques (notamment l'utilisation de \verb!\text! il me semble).
+			%\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathÃ©matiques (notamment l'utilisation de \verb!\text! il me semble).
 			%\item \href{http://www.ctan.org/pkg/pgf}{\textbf{tikz}} : Package pour faire des dessins (avec library \verb!calc!)
 			%\item \href{http://www.ctan.org/pkg/calc}{\textbf{calc}} : Permet de faire des petits calculs au moment de la compilation
-			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour créer des commandes avec plusieurs arguments optionnels
-			%\item \href{http://www.ctan.org/pkg/array}{\textbf{array}} : Package qui rajoute des possibilités aux tableaux.
-			\item \href{https://www.ctan.org/pkg/circuitikz}{\textbf{circuitikz}} : Pour tracer des circuits électrique avec tikz. Les options \emph{european} et \emph{cute inductors} sont activées.
+			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour crÃ©er des commandes avec plusieurs arguments optionnels
+			%\item \href{http://www.ctan.org/pkg/array}{\textbf{array}} : Package qui rajoute des possibilitÃ©s aux tableaux.
+			\item \href{https://www.ctan.org/pkg/circuitikz}{\textbf{circuitikz}} : Pour tracer des circuits Ã©lectrique avec tikz. Les options \emph{european} et \emph{cute inductors} sont activÃ©es.
 		\end{itemize}
 		
 		
 	\section{Appel du package}
 	%-------------------------------------
 
-		Le package est appelé en début de document par la commande :
+		Le package est appelÃ© en dÃ©but de document par la commande :
 		\begin{verbatim}
 \usepackage{Raf_Notations_Elec}
 		\end{verbatim}
 
-		Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
-		De plus, certaines commandes ont été rebaptisées.
-		Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-		Si cela devait poser problème, pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+		Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide Ã  taper !).
+		De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©es.
+		Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+		Si cela devait poser problÃ¨me, pour ne pas crÃ©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! Ã  l'appel du package.
 
 		\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Elec}
@@ -58,7 +58,7 @@ usepackage[noRaccourci]{Raf_Notations_Elec}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\thevenin{E}{Z}!			&	\thevenin{E}{Z}		&	Configuration de Thévenin.
+				\verb!\thevenin{E}{Z}!			&	\thevenin{E}{Z}		&	Configuration de ThÃ©venin.
 			\\\hline
 				\verb!\thevenin{E}{Z}[C]! \verb![D]!		&	\thevenin{E}{Z}[C][D]	&	Idem avec changement du nom des points.
 			\\\hline
@@ -66,24 +66,24 @@ usepackage[noRaccourci]{Raf_Notations_Elec}
 			\\\hline
 				\verb!\norton{I}{Z}[C][D]!	&	\norton{I}{Z}[C][D]	&	Idem avec changement du nom des points.
 			\\\hline
-				\verb!\norton{I}{Z}[C][D]! \verb![-3]!	&	\norton{I}{Z}[C][D][-3]	&	Idem avec écart plus grand entre la source de courant et l'impédance.
+				\verb!\norton{I}{Z}[C][D]! \verb![-3]!	&	\norton{I}{Z}[C][D][-3]	&	Idem avec Ã©cart plus grand entre la source de courant et l'impÃ©dance.
 			\\\hline
 		\end{tabular}
 
 		
 
-	\section{La forme des flèches de tension}
+	\section{La forme des flÃ¨ches de tension}
 	%-----------------------------
-		\textbf{Note : } Les flèches de tension des dipôles sont droites.
+		\textbf{Note : } Les flÃ¨ches de tension des dipÃ´les sont droites.
 		
 		
-	\section{Moteurs à courant continu}
+	\section{Moteurs Ã  courant continu}
 	%----------------------------------------
 	
-	Syntaxe : \verb!\mcc[a]{b}[c]! où :
+	Syntaxe : \verb!\mcc[a]{b}[c]! oÃ¹ :
 	\begin{itemize}
-		\item \verb!a! est un angle de rotation (en degrés) [Optionnel] ;
-		\item \verb!b! sont les coordonnées du point de départ du dessin du moteur (souvent de la forme \verb!(x,y)!) ;
+		\item \verb!a! est un angle de rotation (en degrÃ©s) [Optionnel] ;
+		\item \verb!b! sont les coordonnÃ©es du point de dÃ©part du dessin du moteur (souvent de la forme \verb!(x,y)!) ;
 		\item \verb!c! est la tension aux bornes du moteur [Optionnel].
 	\end{itemize}
 	
@@ -116,7 +116,7 @@ Affichage minimum
 	\mcc[20]{(0,0)}
 \end{tikzpicture}
 &
-Avec une rotation de 20° (dans le sens horaire)
+Avec une rotation de 20Â° (dans le sens horaire)
 \\\hline
 \begin{verbatim}
 \begin{tikzpicture}
@@ -149,10 +149,10 @@ Combo
 	\section{Interrupteur ouvert}
 	%----------------------------------------
 	
-	Syntaxe : \verb!\switchOpen[a]{b}[c][d]! où :
+	Syntaxe : \verb!\switchOpen[a]{b}[c][d]! oÃ¹ :
 	\begin{itemize}
-		\item \verb!a! est un angle de rotation (en degrés) [Optionnel] ;
-		\item \verb!b! sont les coordonnées du point de départ du dessin de l'interrupteur (souvent de la forme \verb!(x,y)!) ;
+		\item \verb!a! est un angle de rotation (en degrÃ©s) [Optionnel] ;
+		\item \verb!b! sont les coordonnÃ©es du point de dÃ©part du dessin de l'interrupteur (souvent de la forme \verb!(x,y)!) ;
 		\item \verb!c! est le nom de l'interrupteur [Optionnel].
 		\item \verb!d! est la tension aux bornes de l'interrupteur [Optionnel].
 	\end{itemize}
@@ -186,7 +186,7 @@ Affichage minimum
 	\switchOpen[20]{(0,0)}
 \end{tikzpicture}
 &
-Avec une rotation de 20° (dans le sens horaire)
+Avec une rotation de 20Â° (dans le sens horaire)
 \\\hline
 \begin{verbatim}
 \begin{tikzpicture}
@@ -198,7 +198,7 @@ Avec une rotation de 20° (dans le sens horaire)
 	\switchOpen{(0,0)}[K]
 \end{tikzpicture}
 &
-Avec une rotation de 20° (dans le sens horaire)
+Avec une rotation de 20Â° (dans le sens horaire)
 \\\hline
 \begin{verbatim}
 \begin{tikzpicture}
@@ -228,13 +228,13 @@ Combo
 		
 
 
-	\section{Interrupteur fermé}
+	\section{Interrupteur fermÃ©}
 	%----------------------------------------
 	
-	Syntaxe : \verb!\switchClosed[a]{b}[c][d]! où :
+	Syntaxe : \verb!\switchClosed[a]{b}[c][d]! oÃ¹ :
 	\begin{itemize}
-		\item \verb!a! est un angle de rotation (en degrés) [Optionnel] ;
-		\item \verb!b! sont les coordonnées du point de départ du dessin de l'interrupteur (souvent de la forme \verb!(x,y)!) ;
+		\item \verb!a! est un angle de rotation (en degrÃ©s) [Optionnel] ;
+		\item \verb!b! sont les coordonnÃ©es du point de dÃ©part du dessin de l'interrupteur (souvent de la forme \verb!(x,y)!) ;
 		\item \verb!c! est le nom de l'interrupteur [Optionnel].
 		\item \verb!d! est la tension aux bornes de l'interrupteur [Optionnel].
 	\end{itemize}
@@ -268,7 +268,7 @@ Affichage minimum
 	\switchClosed[20]{(0,0)}
 \end{tikzpicture}
 &
-Avec une rotation de 20° (dans le sens horaire)
+Avec une rotation de 20Â° (dans le sens horaire)
 \\\hline
 \begin{verbatim}
 \begin{tikzpicture}
@@ -280,7 +280,7 @@ Avec une rotation de 20° (dans le sens horaire)
 	\switchClosed{(0,0)}[K]
 \end{tikzpicture}
 &
-Avec une rotation de 20° (dans le sens horaire)
+Avec une rotation de 20Â° (dans le sens horaire)
 \\\hline
 \begin{verbatim}
 \begin{tikzpicture}
@@ -313,7 +313,7 @@ Combo
 	\section{Hacheur}
 	%----------------------------------------
 
-		\subsection{Notation par défaut}
+		\subsection{Notation par dÃ©faut}
 		%...................................
 	
 \begin{verbatim}
@@ -331,8 +331,8 @@ Combo
 		%.................................................;
 	
 	Pour fermer un ou plusieurs interrupteurs,
-	il faut passer en argument une série de \verb![1]! (fermé) ou de \verb![0]! (ouvert).
-	L'ordre est : de haut en bas, puis de gauche à droite.
+	il faut passer en argument une sÃ©rie de \verb![1]! (fermÃ©) ou de \verb![0]! (ouvert).
+	L'ordre est : de haut en bas, puis de gauche Ã  droite.
 	
 	
 \begin{verbatim}

@@ -1,0 +1,163 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cotation Fonctionnelle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Cotation}[2016/08/14]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{amsmath}%Pour utiliser \text
+\RequirePackage{tikz}%Pour faire des symboles
+\usetikzlibrary{calc}
+\RequirePackage{xargs}
+\RequirePackage{array}	
+%\RequirePackage{ifmtarg}	%Permet de faire des ifthenelse avec des argument vide notamment
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisCotation}%création du booléen
+\setboolean{boolRaccourcisCotation}{true}%affectation de la valeur true
+
+%déclaration des options de l'extension
+\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisCotation}{false}}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+
+
+% Cotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\dNominal}		{\ensuremath{d_{\text{nom}}}}	%Diamètre nominal
+\newcommand*{\dMoyen}		{\ensuremath{d_{\text{moy}}}}	%Diamètre moyen
+\newcommand*{\dInferieur}	{\ensuremath{d_{\text{inf}}}}	%Diametre inferieur
+\newcommand*{\dSuperieur}	{\ensuremath{d_{\text{sup}}}}	%Diametre supérieur
+\newcommand*{\dInterieur}	{\ensuremath{d_{\text{int}}}}	%Diametre supérieur
+\newcommand*{\dExterieur}	{\ensuremath{d_{\text{ext}}}}	%Diametre supérieur
+
+\ifthenelse{\boolean{boolRaccourcisCotation}}
+{
+	\newcommand*{\dnom}	{\dNominal}
+	\newcommand*{\dNom}	{\dNominal}
+	\newcommand*{\dmoy}	{\dMoyen}
+	\newcommand*{\dMoy}	{\dMoyen}
+	\newcommand*{\dinf}	{\dInferieur}
+	\newcommand*{\dInf}	{\dInferieur}
+	\newcommand*{\dsup}	{\dSuperieur}
+	\newcommand*{\dSup}	{\dSuperieur}
+	\newcommand*{\dint}	{\dInterieur}
+	\newcommand*{\dInt}	{\dInterieur}
+	\newcommand*{\dext}	{\dExterieur}
+	\newcommand*{\dExt}	{\dExterieur}
+}{}
+
+
+% Symboles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\tSymbCot}	{2ex}	%Taille des symboles
+\newcommand*{\eSymbCot}	{0.05}	%epaisseur (par combien on multiplie la taille pour avoir l'epaisseur)
+
+\newcommand*{\symboleCotation}[1]	{\begin{tikzpicture}\draw[opacity=0] (0,0) rectangle (\tSymbCot,\tSymbCot);#1\end{tikzpicture}}
+
+
+
+%Forme
+\newcommand*{\rectitude}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round]	($(0.1*\tSymbCot,0.4*\tSymbCot)$)--($(0.9*\tSymbCot,0.4*\tSymbCot)$);}}
+\newcommand*{\planeite}		{\symboleCotation{\filldraw[fill=white,line width={\eSymbCot*\tSymbCot},join=round] ($(0*\tSymbCot,0*\tSymbCot)$)--($(0.4*\tSymbCot,0.7*\tSymbCot)$)--($(1*\tSymbCot,0.7*\tSymbCot)$)--($(0.6*\tSymbCot,0.0*\tSymbCot)$)--cycle;}}
+\newcommand*{\circularite}	{\symboleCotation{\filldraw[fill=white,line width={\eSymbCot*\tSymbCot}] ($(0.5*\tSymbCot,0.4*\tSymbCot)$) circle ({0.4*\tSymbCot});}}
+\newcommand*{\cylindricite}	{\symboleCotation{	\draw[line width={\eSymbCot*\tSymbCot},cap=round] ($(0.18*\tSymbCot,0.2*\tSymbCot)$)--($(0.44*\tSymbCot,0.8*\tSymbCot)$);
+							\draw[line width={\eSymbCot*\tSymbCot},cap=round] ($(0.82*\tSymbCot,0.6*\tSymbCot)$)--($(0.56*\tSymbCot,0.0*\tSymbCot)$);
+							\filldraw[fill=white,line width={\eSymbCot*\tSymbCot}] ($(0.5*\tSymbCot,0.4*\tSymbCot)$) circle ({0.20*\tSymbCot});}}
+\newcommand*{\profilLigne}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round] ($(0.9*\tSymbCot,0.3*\tSymbCot)$) arc (45:135:{0.4*2/(sqrt(2))*\tSymbCot});}}
+\newcommand*{\profilSurface}	{\symboleCotation{\filldraw[fill=white,line width={\eSymbCot*\tSymbCot},cap=round,join=round] ($(0.9*\tSymbCot,0.25*\tSymbCot)$) arc (20:160:{0.4/(cos(20))*\tSymbCot})--cycle;}}
+%
+%Inclinaison
+\newcommand*{\parallelisme}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round] 	($(0.2*\tSymbCot,0.1*\tSymbCot)$) -- ($(0.55*\tSymbCot,0.7*\tSymbCot)$);
+						\draw[line width={\eSymbCot*\tSymbCot},cap=round] 	($(0.45*\tSymbCot,0.1*\tSymbCot)$) -- ($(0.8*\tSymbCot,0.7*\tSymbCot)$);}}
+\newcommand*{\perpendicularite}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round] 	($(0.1*\tSymbCot,0.1*\tSymbCot)$) -- ($(0.9*\tSymbCot,0.1*\tSymbCot)$);
+						\draw[line width={\eSymbCot*\tSymbCot},cap=round] 	($(0.5*\tSymbCot,0.1*\tSymbCot)$) -- ($(0.5*\tSymbCot,0.7*\tSymbCot)$);}}
+\newcommand*{\inclinaison}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round,join=round] 	($(0.9*\tSymbCot,0.1*\tSymbCot)$) -- ($(0.1*\tSymbCot,0.1*\tSymbCot)$) -- ($(0.1*\tSymbCot+0.8*0.707*\tSymbCot,0.1*\tSymbCot+0.8*0.707*\tSymbCot)$);}}
+%
+%Position
+\newcommand*{\concentricite}	{\symboleCotation{\filldraw[fill=white,line width={\eSymbCot*\tSymbCot}] 	($(0.5*\tSymbCot,0.4*\tSymbCot)$) circle ({0.4*\tSymbCot});
+							\draw[line width={\eSymbCot*\tSymbCot}] 		($(0.5*\tSymbCot,0.4*\tSymbCot)$) circle ({0.25*\tSymbCot});}}
+\newcommand*{\coaxialite}	{\concentricite}
+\newcommand*{\symetrie}		{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round] 		($(0.1*\tSymbCot,0.4*\tSymbCot)$) -- ($(0.9*\tSymbCot,0.4*\tSymbCot)$);
+							\draw[line width={\eSymbCot*\tSymbCot},cap=round] 	($(0.3*\tSymbCot,0.25*\tSymbCot)$) -- ($(0.7*\tSymbCot,0.25*\tSymbCot)$);
+							\draw[line width={\eSymbCot*\tSymbCot},cap=round] 	($(0.3*\tSymbCot,0.55*\tSymbCot)$) -- ($(0.7*\tSymbCot,0.55*\tSymbCot)$);}}
+\newcommand*{\localisation}	{\symboleCotation{\filldraw[fill=white,line width={\eSymbCot*\tSymbCot}] 	($(0.5*\tSymbCot,0.4*\tSymbCot)$) circle ({0.25*\tSymbCot});
+							\draw[line width={\eSymbCot*\tSymbCot},cap=round]	($(0.5*\tSymbCot,0.0*\tSymbCot)$)--($(0.5*\tSymbCot,0.8*\tSymbCot)$);
+							\draw[line width={\eSymbCot*\tSymbCot},cap=round]	($(0.1*\tSymbCot,0.4*\tSymbCot)$)--($(0.9*\tSymbCot,0.4*\tSymbCot)$);}}
+%Battement
+\newcommand*{\battementSimple}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round,>=stealth,->]	($(0.25*\tSymbCot,0.1*\tSymbCot)$)--($(0.75*\tSymbCot,0.7*\tSymbCot)$);}}
+\newcommand*{\battement}	{\battementSimple}
+\newcommand*{\battementTotal}	{\symboleCotation{\draw[line width={\eSymbCot*\tSymbCot},cap=round,>=stealth,<->,join=round]	($(0.95*\tSymbCot,0.7*\tSymbCot)$)--($(0.45*\tSymbCot,0.1*\tSymbCot)$)--($(0.1*\tSymbCot,0.1*\tSymbCot)$)--($(0.6*\tSymbCot,0.7*\tSymbCot)$);}}
+
+
+%Enveloppe - Maxi/mini matiere
+\newcommand*{\lettreEntouree}[1]{\raisebox{-0.14em}{\begin{tikzpicture}\filldraw[fill=white,line width={\eSymbCot*\tSymbCot}] (0,0) circle ({0.5*\tSymbCot});\node[scale=0.6,anchor=center] at (0,0) {#1}; \end{tikzpicture}}}
+%\newcommand*{\lettreEntouree}[1]{\begin{tikzpicture}\end{tikzpicture}}
+\newcommand*{\enveloppe}	{\lettreEntouree{E}}
+\newcommand*{\maxiMatiere}	{\lettreEntouree{M}}
+\newcommand*{\miniMatiere}	{\lettreEntouree{L}}
+\newcommand*{\toleranceProjetee}{\lettreEntouree{P}}
+\newcommand*{\etatLibre}	{\lettreEntouree{F}}
+
+\newcommand*{\cotationApply}	{
+}
+
+
+
+\cotationApply
+
+
+
+
+
+
+\newenvironment{matriceGPS}[1][0.19\linewidth]
+		{	\noindent
+			\begin{tabular}{|m{#1}||m{#1}|m{#1}|m{#1}|m{#1}|}
+				\hline
+					\centering\scriptsize\textbf{Spécification\\/Dénomination}	&	\scriptsize\centering\textbf{Élément\\tolérancé}	&	\centering\scriptsize\textbf{Élément(s)\\de référence(s)}	&	\centering\scriptsize\textbf{Référence(s)\\spécifiée(s)}	&	{\centering\scriptsize\textbf{Zone de\\tolérance\\(Forme/position) }}
+				\\\hline\hline
+		}{
+			\\\hline
+			\end{tabular}
+		}
+
+%Grosse magouille pour verifier si les arguments sont vides... a changer
+\newcommandx*{\specification}[7][1=,4=,5=,6=,7=]{
+					\ifx\relax#1\relax
+					\else
+						#1\newline
+					\fi
+					\ifx \relax#4\relax
+						\begin{tabular}{|c|c|}\hline{#2}&{#3}\\\hline\end{tabular}
+					\else
+						\ifx\relax#5\relax
+							\begin{tabular}{|c|c|c|}\hline{#2}&{#3}&{#4}\\\hline\end{tabular}
+						\else
+							\ifx \relax#6\relax
+								\begin{tabular}{|c|c|c|c|}\hline{#2}&{#3}&{#4}&{#5}\\\hline\end{tabular}
+							\else 
+								\ifx \relax#7\relax
+									\begin{tabular}{|c|c|c|c|c|}\hline{#2}&{#3}&{#4}&{#5}&{#6}\\\hline\end{tabular}
+								\else 
+									titi
+								\fi
+							\fi
+						\fi
+					\fi
+					}
+
+
+
+
+
+
+\endinput

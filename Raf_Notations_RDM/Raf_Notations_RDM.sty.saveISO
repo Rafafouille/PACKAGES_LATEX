@@ -1,0 +1,463 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Mathématiques de base
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_RDM}[2018/08/01]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+
+\RequirePackage{ifthen}	%Pour faire des compilations conditionnelles (if, etc..)
+\RequirePackage{mathrsfs}	%Pour faire des maths (notamment le P calligraphié)
+\RequirePackage{xspace} %Pour faire des espaces automatiques après les commandes.
+\RequirePackage{tikz}    %Pour faire des dessins
+    \usetikzlibrary{calc}%Package supplémentaire pour faire des calculs de coordonnées
+\RequirePackage{xargs}   %Pour avoir plus d'arguments facultatifs
+\RequirePackage{Raf_Notations_Actions-Meca}	%Pour faire des actions mécaniques
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisRDM}%création du booléen
+\setboolean{boolRaccourcisRDM}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\newif\if@RafNotRDMRac	\@RafNotRDMRactrue
+\DeclareOption{noRaccourci}	{\@RafNotRDMRacfalse}
+%\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisRDM}{false}}
+\ProcessOptions
+
+
+%%%Une commande juste pour moi :
+\newcommand*{\RafRDMRac}[1]{\ifthenelse{\boolean{boolRaccourcisRDM}}{#1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+
+
+
+% ===============================
+% Notations, annotations
+% ==============================
+
+\ifcsname PCallig\endcsname%
+    %
+  \else%
+  \newcommand*{\PCallig}{\ensuremath{\mathscr{P}}\xspace}
+\fi%
+\newcommand*{\ensemblePoutre}{\ensuremath{\left\lbrace\PCallig\right\rbrace}\xspace}
+\newcommand*{\ensemblePoutreSup}{\ensuremath{\left\lbrace\PCallig_+\right\rbrace}\xspace}
+\newcommand*{\ensemblePoutreInf}{\ensuremath{\left\lbrace\PCallig_-\right\rbrace}\xspace}
+
+\if@RafNotRDMRac
+\newcommand*{\eP}{\ensemblePoutre}
+\newcommand*{\ePp}{\ensemblePoutreSup}
+\newcommand*{\ePm}{\ensemblePoutreInf}
+\fi
+
+\newcommand*{\Sx}[1][x]{\f S{#1}\xspace}
+
+
+% ===============================
+% Torseur de cohésions
+% ==============================
+
+\newcommand*{\tCohesion}{\ensuremath{\tAM{\PCallig_+}{\PCallig_-}}\xspace}
+\newcommandx*{\composanteTCohesion}[2][2=]
+    {
+        \ifthenelse{\equal{#2}{}}
+            {\ensuremath{#1}\xspace}
+            {\f{#1}{#2}}
+    }
+    
+\if@RafNotRDMRac
+\newcommand*{\Nt}[1][]{\composanteTCohesion{N}[#1]}
+\ifdefined\Ty
+    \renewcommand*{\Ty}[1][]{\composanteTCohesion{T_y}[#1]}
+\else
+    \newcommand*{\Ty}[1][]{\composanteTCohesion{T_y}[#1]}
+\fi
+\ifdefined\Tz
+    \renewcommand*{\Tz}[1][]{\composanteTCohesion{T_z}[#1]}
+\else
+    \newcommand*{\Tz}[1][]{\composanteTCohesion{T_z}[#1]}
+\fi
+
+\newcommand*{\Mt}[1][]{\composanteTCohesion{M_t}[#1]}
+\fi
+\newcommand*{\Mfy}[1][]{\composanteTCohesion{M_{fy}}[#1]}
+\newcommand*{\Mfz}[1][]{\composanteTCohesion{M_{fz}}[#1]}
+
+
+
+%=======================================================
+% Moments quadratiques
+%=======================================================
+
+\newcommandx*{\momentQuadratique}[2]{\ensuremath{I_{#1,#2}}\xspace}
+\newcommandx*{\IGz}[2][1=G,2=\vz{}]{\momentQuadratique{#1}{#2}}
+\newcommandx*{\IGy}[2][1=G,2=\vy{}]{\momentQuadratique{#1}{#2}}
+\newcommandx*{\IG}[1][1=G]{\ensuremath{I_#1}\xspace}
+
+
+%=======================================================
+% Graphe d'évolution du torseur de cohesion
+%=======================================================
+
+    %L,absisse,ymin,ymax(,xmin,xscale,yscale)
+    \newenvironmentx{grapheRDM}[7][2=0,6=8,7=0.2]
+    {
+        \newcommand*{\grapheRDMAbscisse}{#1}
+        \newcommand*{\grapheRDMxmin}{#2}
+        \newcommand*{\grapheRDMxmax}{#3}
+        \newcommand*{\grapheRDMymin}{#4}
+        \newcommand*{\grapheRDMymax}{#5}
+        \newcommand*{\grapheRDMxscale}{#6}
+        \newcommand*{\grapheRDMyscale}{#7}
+        
+        %Commande qui permet de tracer une courbe
+        \newcommandx*{\grapheRDMTrace}[3][2=\grapheRDMxmin,3=\grapheRDMxmax]
+        {
+             \fill[color=red!20] (##2,0) -- plot[domain=##2:##3] (\x,##1) -- (##3,0) -- cycle;
+             \draw [red,very thick,domain=##2:##3] plot (\x,##1);
+        }
+        
+        \begin{tikzpicture}[yscale=\grapheRDMyscale,xscale=\grapheRDMxscale]
+        
+    }
+    {
+        %Grille
+                \draw[color=black!20] (\grapheRDMxmin,\grapheRDMymin) grid[ystep=5,xstep=0.2] (\grapheRDMxmax,\grapheRDMymax);
+        %Axes
+        \draw[very thick,->] (0,\grapheRDMymin) -- (0,\grapheRDMymax);
+                    \draw [anchor=west] (0,\grapheRDMymax) node {\grapheRDMAbscisse};
+                \draw[very thick,->] (\grapheRDMxmin,0) -- (\grapheRDMxmax,0);
+                    \draw[anchor=north west] (\grapheRDMxmax,0) node {$x$};
+    
+            \end{tikzpicture}
+            
+    }
+    
+    
+    
+%=======================================================
+% Dessin d'une poutre
+%=======================================================
+
+
+    \newenvironmentx{poutre}[1]
+    {%-------------------------------------------------------
+        \newcommand*{\poutreL}{#1}
+        \newcommand*{\poutreEpaisseur}{4pt}
+        
+        \newcommand*{\epaisseurTraitsLiaisons}{2pt}
+        
+        \newcommand*{\poutreEncastrementLargeur}{0.7cm}
+        \newcommand*{\poutreEncastrementEpaisseur}{0.4}
+        \newcommand*{\poutreEncastrementNbRateaux}{5}
+        \newcommand*{\poutreEncastrementAngleRateaux}{-20}%En degrés
+        
+        \newcommand*{\poutreAppuiSimpleRayonRouleaux}{2.4pt}
+        \newcommand*{\poutreAppuiSimpleNombreRouleaux}{4}
+  
+        \newcommand*{\poutreComposanteLongueur}{1.5}
+        \newcommand*{\poutreComposanteCouleur}{red}
+        \newcommand*{\poutreComposanteEpaisseur}{5pt}
+        \newcommand*{\poutreComposanteRayon}{0.75cm}
+        
+        
+        \newcommand*{\poutreForceEpaisseur}{5pt}
+        \newcommand*{\poutreForceCouleur}{blue}
+        
+        
+        \newcommand*{\poutreForceRepLongueur}{1}
+        \newcommand*{\poutreForceRepEspace}{0.5}
+        \newcommand*{\poutreForceRepEpaisseur}{2}
+  
+        %Dessine une masse centré sur x, y, et rotation theta =====================================
+        \newcommandx*{\poutreMasse}[3][1=0,2=0,3=0]%x,y,theta (en degres)
+        {
+            \begin{scope}[xshift=##1,yshift=##2,rotate=##3]
+             \draw[line width=\epaisseurTraitsLiaisons] (0,{\poutreEncastrementLargeur/2}) -- (0,-{\poutreEncastrementLargeur/2});
+                \foreach \n in {1,...,\poutreEncastrementNbRateaux}
+                    {\draw[line width=1pt] (0,{-\poutreEncastrementLargeur/2+(\n-1)*\poutreEncastrementLargeur/(\poutreEncastrementNbRateaux-1)}) -- (-\poutreEncastrementEpaisseur,{-\poutreEncastrementLargeur/2+(\n-1)*\poutreEncastrementLargeur/(\poutreEncastrementNbRateaux-1)-\poutreEncastrementLargeur*tan(\poutreEncastrementAngleRateaux)}); 
+                }
+            \end{scope}
+        }
+  
+        %Symbole encastrement =====================================
+        \newcommandx*{\encastrement}[2][1=0,2=0]%#1=position horizontale, #2=orientation en degrés
+            {
+            \begin{scope}[xshift=##1,rotate=##2]
+               \poutreMasse
+            \end{scope}
+            }
+            
+        %Symbole articulation =====================================
+        \newcommandx*{\articulation}[3][2=0,3=cercle]%#1=position sur x, #2= orientation en degrés
+        %3=noCercle si on ne veut pas de cercle
+        {
+            \begin{scope}[xshift=##1,rotate=##2]
+                %Triangle :
+               \draw[line width=\epaisseurTraitsLiaisons,fill=white] (0,0) -- ({-\poutreEncastrementLargeur/2},{-\poutreEncastrementLargeur*0.866}) -- ({\poutreEncastrementLargeur/2},{-\poutreEncastrementLargeur*0.866}) -- (0,0);
+               %Rond :
+               \ifthenelse{\equal{##3}{noCercle}}
+               {}
+               {
+                \draw[line width=\epaisseurTraitsLiaisons,fill=white] (0,0) circle (0.15) ;
+                }
+               \poutreMasse[0][-\poutreEncastrementLargeur*0.866][90]
+            \end{scope}
+        }
+            
+        %Symbole Appui Simple =====================================
+        \newcommandx*{\appuiSimple}[3][2=0,3=cercle]%#1=position sur x, #2= orientation en degrés
+        {
+            \begin{scope}[xshift=##1,rotate=##2]
+                %Triangle :
+               \draw[line width=\epaisseurTraitsLiaisons,fill=white] (0,0) -- ({-\poutreEncastrementLargeur/2},{-\poutreEncastrementLargeur*0.866}) -- ({\poutreEncastrementLargeur/2},{-\poutreEncastrementLargeur*0.866}) -- (0,0);
+               %Rond :
+               \ifthenelse{\equal{##3}{noCercle}}
+               {}
+               {
+                \draw[line width=\epaisseurTraitsLiaisons,fill=white] (0,0) circle (0.15) ;
+                }
+                
+                \foreach \n in {1,...,\poutreAppuiSimpleNombreRouleaux}
+                {
+                    \draw[line width=\epaisseurTraitsLiaisons,fill=white] ({(\n-\poutreAppuiSimpleNombreRouleaux/2-0.5)*\poutreEncastrementLargeur/4},{-\poutreEncastrementLargeur*0.866-\poutreAppuiSimpleRayonRouleaux}) circle (\poutreAppuiSimpleRayonRouleaux);
+                }
+               \poutreMasse[0][-\poutreEncastrementLargeur*0.866-\poutreAppuiSimpleRayonRouleaux*2][90]
+            \end{scope}
+        }
+        
+        
+        %Composante sur X d'un vecteur=====================================
+        \newcommandx*{\composanteX}[2]%1:position sur X, 2:nom de la composante
+        {
+            \begin{scope}[xshift=##1]
+                \draw[\poutreComposanteCouleur, line width=\poutreComposanteEpaisseur,->,>=stealth] (0,0) -- (\poutreComposanteLongueur,0);
+                \draw (\poutreComposanteLongueur,10pt) node[anchor= south,red,fill=white] {##2};
+            \end{scope}
+
+        }
+ 
+        %Composante sur Y d'un vecteur=====================================
+        \newcommandx*{\composanteY}[2]%1:position sur X, 2:nom de la composante
+        {
+            \begin{scope}[xshift=##1]
+                \draw[\poutreComposanteCouleur, line width=\poutreComposanteEpaisseur,->,>=stealth] (0,0) -- (0,\poutreComposanteLongueur);
+                \draw (10pt,\poutreComposanteLongueur) node[anchor= west,red,fill=white] {##2};
+            \end{scope}
+
+        }
+ 
+        %Composante en moment autour de Z =====================================
+        \newcommandx*{\composanteN}[2]%1:Position sur X, 2:nom de la composante
+        {
+            \begin{scope}[xshift=##1]
+                \draw [\poutreComposanteCouleur, line width=\poutreComposanteEpaisseur,->,>=stealth]({\poutreComposanteRayon*0.707106781},{-\poutreComposanteRayon*0.707106781}) arc (-45:270:\poutreComposanteRayon);
+                \draw (0,-\poutreComposanteRayon) node[anchor=north west,red,fill=white] {##2};
+            \end{scope}
+        }
+        
+        
+        %Composante d'une liaison encastrement =====================================
+        \newcommandx*{\composanteEncastrement}[4]%1:distance, 2 à 4 : nom des compostantes X Y et N
+        {
+            \composanteX{##1}{##2};
+            \composanteY{##1}{##3};
+            \composanteN{##1}{##4};
+        }
+        
+        
+        %Composante d'une liaison pivot =====================================
+        \newcommandx*{\composanteArticulation}[3]%1:distance, 2 à 4 : nom des compostantes X Y
+        {
+            \composanteX{##1}{##2};
+            \composanteY{##1}{##3};
+        }
+        
+        
+        
+        %Composante d'une liaison pivot =====================================
+        \newcommandx*{\point}[4][3=,4=]%1:distance, 2 : nom, 3 : option du cercle, 4:option du texte
+        {
+            \begin{scope}[xshift=##1]
+               \draw[fill=black,##3] (0,0) circle ({0.75*\poutreEpaisseur});
+               \draw (-45:{0.75\poutreEpaisseur}) node[anchor=north west,##4] {##2};
+            \end{scope}
+        }
+        
+        
+        
+        %Force Extérieure =====================================
+        \newcommandx*{\Pforce}[6][5=, 6=]%1:distance, 2 : X,  3 :Y, 4 : label, 5:option fleche, 6:option texte
+        {
+            \begin{scope}[xshift=##1]
+                %Fleche
+                \draw[\poutreForceCouleur,line width=\poutreForceEpaisseur,->,>=stealth,##5] (-##2,-##3) -- (0,0);
+                %label
+                \ifthenelse{##2>0 \AND ##3>0}
+                    {\draw ({-##2/2},{-##3/2}) node[anchor=north west,\poutreForceCouleur,##6] {##4};}
+                    {
+                        \ifthenelse{##2<0 \AND ##3>0}
+                        {\draw ({-##2/2},{-##3/2}) node[anchor=north east,\poutreForceCouleur,##6] {##4};}
+                        {
+                            \ifthenelse{##2>0 \AND ##3<0}
+                            {\draw ({-##2/2},{-##3/2}) node[anchor=south west,\poutreForceCouleur,##6] {##4};}
+                            {
+                                \ifthenelse{##2<0 \AND ##3<0}
+                                {\draw ({-##2/2},{-##3/2}) node[anchor=south east,\poutreForceCouleur,##6] {##4};}
+                                {\draw ({-##2/2},{-##3/2}) node[anchor=west,\poutreForceCouleur,##6] {##4};}
+                            }
+                        }
+                    }
+            \end{scope}
+        }
+        
+        
+        %Moment extérieur =====================================
+        \newcommandx*{\pmoment}[3][3=droit]%1:distance, 2 : label, 3 : mot clé [inverse] (optionnel)
+        {
+            \begin{scope}[xshift=##1]
+                 \ifthenelse{\equal{##3}{inverse}}
+                 {
+                     \draw [\poutreForceCouleur, line width=\poutreForceEpaisseur,<-,>=stealth](0,-\poutreComposanteRayon) arc (-90:235:\poutreComposanteRayon);
+                    \draw (0,-\poutreComposanteRayon) node[anchor=north east,\poutreForceCouleur,fill=white] {\huge ##2};
+                 }
+                 {
+                    \draw [\poutreForceCouleur, line width=\poutreForceEpaisseur,->,>=stealth]({\poutreComposanteRayon*0.707106781},{-\poutreComposanteRayon*0.707106781}) arc (-45:270:\poutreComposanteRayon);
+                    \draw (0,-\poutreComposanteRayon) node[anchor=north west,\poutreForceCouleur,fill=white] {\huge ##2};
+                 }
+                
+            \end{scope}
+        }
+        
+        
+        
+        
+        
+        
+        %Force répartie =====================================
+        \newcommandx*{\pforceRepartie}[4][4=\poutreForceRepLongueur]%1:x_min, 2 :x_max, 3 : label, 4=equation de répartition (optionnel) en fonction de \x
+        {
+        
+           % \newcommand
+            \begin{scope}
+                \foreach \n in {0,...,30}
+                {
+                    %On fabrique l'abscisse x
+                        \pgfmathparse{##1+\n*\poutreForceRepEspace}%
+                        \let\x\pgfmathresult
+                        
+                    %On fabrique l'ordonnée y
+                        \pgfmathparse{##4}%
+                        \let\yyyyy\pgfmathresult
+                                            
+                    %Test d'arret
+                    \pgfmathparse{\x>##2 ? 1 : 0}%Trop loin ?
+                    \ifthenelse{\pgfmathresult>0}%Si trop loin...
+                       {\breakforeach}%On fait la dernière boucle
+                       {            %Sinon, on trace
+                            
+                            \pgfmathparse{\yyyyy*\yyyyy<0.0001 ? 1 : 0}%Trop petit ?
+                            \ifthenelse{\pgfmathresult>0}%Si trop petit
+                            {}%On en fait rien
+                            {
+                                \draw[\poutreForceCouleur,line width=\poutreForceRepEpaisseur,->,->,>=stealth] (\x,\yyyyy) -- (\x,0);
+                            }
+                       }
+                }%Fin de la boucle
+                
+                
+                %Ligne de profile
+                    %On fabrique l'ordonnée yDEB
+                        \newcommand\x{##1}
+                        \pgfmathparse{##4}%
+                        \let\yDEB\pgfmathresult
+                    %On fabrique l'ordonnée yFIN
+                         \renewcommand\x{##2}
+                         \pgfmathparse{##4}%
+                         \let\yFIN\pgfmathresult
+                \draw[\poutreForceCouleur,line width=1,dashed] (##1,\yDEB) -- (##2,\yFIN);
+                
+                %Label
+                 %On fabrique l'abscisse x
+                        \pgfmathparse{0.5*(##1+##2)}%
+                        \let\x\pgfmathresult
+                        \pgfmathparse{##4}
+                        \let\yMILIEU\pgfmathresult
+                                               
+                        
+                        \pgfmathparse{\yMILIEU>0 ? 1 : 0}%Negatif ?
+                        \ifthenelse{\pgfmathresult>0}
+                        {
+                            \draw (\x,\yMILIEU+0.25) node[\poutreForceCouleur, anchor=south,fill=white] {##3};
+                        }
+                        {
+                            \draw (\x,{\yMILIEU-0.25}) node[\poutreForceCouleur, anchor=north,fill=white] {##3};
+                        }
+            \end{scope}
+        }
+        
+        %Moment extérieur =====================================
+        \newcommandx*{\abscisse}[7][1=0,4=-1,5=,6=,7=]%1:point de départ (optionnel), 2 : point d'arrivée, 3 : label, 4 : décalage vers le bas (optionnel), 5:options de la fleche, 6:options du texte, 7: options des cotes latérales
+        {
+            \begin{scope}
+            
+                \draw[dashed,gray,##7] (##1,0) -- (##1,{##4+(abs(##4)/##4)*0.25});
+                \draw[dashed,gray,##7] (##2,0) -- (##2,{##4+(abs(##4)/##4)*0.25});
+                \draw[->,##5] (##1,##4) -- (##2,##4);
+                \draw ({0.5*(##1+##2)},##4) node[anchor=south,##6] {##3};
+            \end{scope}
+        }       
+        
+        
+
+        %Moment extérieur =====================================
+        \newcommandx*{\Pbase}[4][1=0,4=]%1:Origine, 2:label x, 3:label y, 4:options axes
+        {
+            \begin{scope}
+                \draw[->,dash pattern=on 8pt off 4pt on 4pt off 4pt,line width=1pt,##4] (0,0) -- ({\poutreL+1cm},0);
+                \draw[->,dash pattern=on 8pt off 4pt on 4pt off 4pt,line width=1pt,##4] (##1,-1cm) -- (##1,1cm);
+                
+                \draw ({\poutreL+1cm},0) node[anchor=south] {##2};
+                \draw (##1,1cm) node[anchor=east] {##3};
+            \end{scope}
+        }   
+        
+        
+        
+        
+        
+        %=================DEBUT=============================
+        \begin{tikzpicture}[x=1cm,y=1cm] 
+        
+            %DESSIN DE LA POUTRE
+            \draw[line width=\poutreEpaisseur] (0,0) -- (\poutreL,0);
+            
+        
+    }%---------------------------------------------------------
+    {
+      
+            \end{tikzpicture}
+            
+    }
+
+    
+%=======================================================
+% Pour encadrer des lignes dans \begin{align}\end{align}
+%=======================================================
+
+% \makeatletter
+%  \newlength{\boxed@align@width}
+%  \newcommand{\boxedalign}[2]{
+%  #1 & \setlength{\boxed@align@width}{\widthof{$\displaystyle#1$}+0.1389em+\fboxsep+\fboxrule}
+%  \hspace{-\boxed@align@width}\addtolength{\boxed@align@width}{-\fboxsep-\fboxrule}\boxed{\vphantom{#1}\hspace{\boxed@align@width}#2}}
+% \makeatother
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!
+% CETTE DERNIERE COMMANDE DOIT RESTER A LA FIN !!!!!!
+
+
+\endinput

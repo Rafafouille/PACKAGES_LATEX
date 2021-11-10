@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations Mathématiques de base
+%	Notations MathÃ©matiques de base
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
@@ -14,15 +14,15 @@
 	\usetikzlibrary{calc}
 
 % %Initialisation des booleens 
-% \newboolean{boolRaccourcisAutom}%création du booléen
+% \newboolean{boolRaccourcisAutom}%crÃ©ation du boolÃ©en
 % \setboolean{boolRaccourcisAutom}{false}%affectation de la valeur false
 % 
-% %déclaration des options de l'extension
+% %dÃ©claration des options de l'extension
 % \DeclareOption{noRaccourcis}{\setboolean{boolRaccourcisAutom}{true}}
 % \ProcessOptions
 
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \newif\if@RafNotAutomRac	\@RafNotAutomRactrue
 \DeclareOption{noRaccourci}	{\@RafNotAutomRacfalse}
 \ProcessOptions
@@ -33,7 +33,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 %NUMERATION
 \newcommandx{\lBase}[2][2=10]	{\ensuremath{{\mathrm{#1}}_{\ifthenelse{\equal{#2}{}}{}{(#2)}}}}

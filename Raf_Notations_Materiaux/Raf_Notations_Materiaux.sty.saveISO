@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cotation Fonctionnelle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Materiaux}[2018/08/24]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{xargs}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+%\RequirePackage{Raf_Notations_Torseurs}	%Pour faire des torseurs
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
+\RequirePackage{xspace} %Pour faire des espaces à la fin des commandes
+
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisMat}%création du booléen
+\setboolean{boolRaccourcisMat}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMat}{false}}
+\ProcessOptions
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+	\newcommand*{\tauxDeformation}[1][]	{\ensuremath{\varepsilon_{#1}}\xspace}
+	\newcommand*{\matDef}[1][]		{\tauxDeformation[#1]}
+
+	\newcommand*{\deformationElastique}	{\tauxDeformation[e]}
+	\newcommand*{\matDefE}			{\deformationElastique}
+	\newcommand*{\defE}			{\deformationElastique}
+
+	\newcommand*{\deformationPlastique}	{\tauxDeformation[p]}
+	\newcommand*{\matDefP}			{\deformationPlastique}
+	\newcommand*{\defP}			{\deformationPlastique}
+
+	\newcommandx*{\matContrainte}[2][2=]	{\ensuremath{{#1}_{#2}}\xspace}
+	\newcommand*{\contrainteNormale}[1][]	{\matContrainte{\sigma}[#1]}
+	\newcommand*{\matS}		{\contrainteNormale}
+
+	\newcommand*{\contrainteTangentielle}[1][]    {\matContrainte{\tau}[#1]}
+	\newcommand*{\matT}		             {\contrainteTangentielle}
+
+	\newcommand*{\moduleYoung}	{\ensuremath{E}\xspace}
+	\newcommand*{\matE}		{\moduleYoung}
+
+	\newcommand*{\limiteElastique}	{\ensuremath{R_e}\xspace}	%Limite élastique
+	\newcommand*{\matRe}		{{\limiteElastique}}	%idem (Ancien symbol des réels)
+
+	\newcommand*{\limiteElastiqueDeuxPourCent}	{\ensuremath{{\limiteElastique}_{2\%}}\xspace}
+	\newcommand*{\matRep}	{\limiteElastiqueDeuxPourCent}
+
+	\newcommand*{\limiteRupture}	{\ensuremath{R_m}\xspace}	%Limite à la rupture
+	\newcommand*{\matRm}		{\limiteRupture}
+	
+	\newcommand*{\limitePratique}	{\ensuremath{R_p}\xspace}	%Limite Pratique
+	\newcommand*{\resistancePratique}{\limitePratique}	%Limite Pratique
+	\newcommand*{\matRp}		{\limitePratique}
+
+	\newcommand*{\coefficientPoisson}	{\ensuremath{\nu}\xspace}	%Coefficient de Poisson
+	\newcommand*{\coefPoisson}		{\coefficientPoisson}
+	\newcommand*{\matPoisson}		{\coefficientPoisson}
+	\newcommand*{\matnu}			{\coefficientPoisson}
+
+	\newcommand*{\allongementPourCent}	{\ensuremath{A_{\%}}\xspace}
+	\newcommand*{\matAp}			{\allongementPourCent}
+
+	\newcommand*{\coefficientStriction}	{\ensuremath{Z_{\%}}\xspace}
+	\newcommand*{\matZp}			{\coefficientStriction}
+
+	\newcommand*{\matEndurance}	{\ensuremath{\epsilon}\xspace}	%Coefficient résilience en V
+
+
+%Designation
+%===========================================
+
+\definecolor{couleurMateriaux}{RGB}{200,100,0}%{250,250,250} %Couleur du fond
+	\newcommand{\designationMateriaux}[1]	{{\color{couleurMateriaux}#1}\xspace}
+
+
+%	%ACIERS
+%
+	\newcommandx*{\acier}[3][1=S,3=]	{\designationMateriaux{\ensuremath{{#1}\ {#2}\ifthenelse{\equal{#3}{}}{}{\ {#3}}}}}
+%
+	\newcommandx*{\acierS}[2][2=]	{\acier[S]{#1}[#2]}	%Acier non allié de construction mécanique
+	\newcommandx*{\acierE}[2][2=]	{\acier[E]{#1}[#2]}	%Acier non allié de construction mécanique
+	\newcommandx*{\acierC}[2][2=]	{\acier[C]{#1}[#2]}	%Acier non allié pour traitement thermique
+	\newcommandx*{\acierP}[2][2=]	{\acier[P]{#1}[#2]}	%Acier non allié pour appareil à pression
+	\newcommandx*{\acierB}[2][2=]	{\acier[B]{#1}[#2]}	%Acier non allié pour armature béton
+	\newcommandx*{\acierH}[2][2=]	{\acier[H]{#1}[#2]}	%Acier non allié pour mise en forme de pièces plates
+%
+	\newcommandx*{\acierMoule}[3][1=S,3=]	{\acier[G#1]{#2}[#3]}
+	\newcommandx*{\acierG}[3][1=S,3=]	{\acierMoule[#1]{#2}[#3]}
+	\newcommandx*{\acierGS}[2][2=]	{\acierMoule[S]{#1}[#2]}
+	\newcommandx*{\acierGE}[2][2=]	{\acierMoule[G]{#1}[#2]}
+	\newcommandx*{\acierGC}[2][2=]	{\acierMoule[E]{#1}[#2]}
+	\newcommandx*{\acierGP}[2][2=]	{\acierMoule[P]{#1}[#2]}
+	\newcommandx*{\acierGB}[2][2=]	{\acierMoule[B]{#1}[#2]}
+	\newcommandx*{\acierGH}[2][2=]	{\acierMoule[H]{#1}[#2]}
+%
+	\newcommandx*{\acierFaiblementAllie}[3][3=]	{\designationMateriaux{\ensuremath{{#1}\ {#2} \ifthenelse{\equal{#3}{}}{}{\ {#3}}}}}
+	\newcommandx*{\acierFA}[3][3=]			{\acierFaiblementAllie{#1}{#2}[#3]}
+%
+	\newcommandx*{\acierFortementAllie}[3]	{\designationMateriaux{\ensuremath{X\ {#1}\ {#2} \ifthenelse{\equal{#3}{}}{}{\ {#3}}}}}
+	\newcommandx*{\acierX}[3]			{\acierFortementAllie{#1}{#2}{#3}}
+%
+%
+%	%FONTE
+%
+	\newcommandx*{\fonte}[3][3=]	{\designationMateriaux{\ensuremath{EN-GJ{#1}\ {#2}\ifthenelse{\equal{#3}{}}{}{-{#3}}}}}
+%
+	\newcommandx*{\fonteL}[2][2=]	{\fonte{L}{#1}[#2]}
+	\newcommandx*{\fonteS}[2][2=]	{\fonte{S}{#1}[#2]}
+	\newcommandx*{\fonteMW}[2][2=]	{\fonte{MW}{#1}[#2]}
+	\newcommandx*{\fonteMB}[2][2=]	{\fonte{MB}{#1}[#2]}
+%
+%
+%	%Metaux non ferreux
+	\newcommand{\metal}[2]		{\designationMateriaux{\ensuremath{{#1}\ {#2}}}}
+	\newcommand{\alliage}[2]	{\designationMateriaux{\ensuremath{{#1}\,-\,{#2}}}}
+
+
+%Elements chimiques
+%=======================================
+%
+	\newcommandx*{\elementChimique}[2][2=]	{{\small\ensuremath{\text{\,#1}_{#2}}}\xspace}
+	\newcommandx*{\eChim}[2][2=]	{\elementChimique{#1}[#2]}
+%
+	\newcommand{\Al}[1][]	{\elementChimique{Al}[#1]}
+	\newcommand{\Ag}[1][]	{\elementChimique{Ag}[#1]}
+	\newcommand{\C}[1][]	{\elementChimique{C}[#1]}
+	\newcommand{\Cr}[1][]	{\elementChimique{Cr}[#1]}
+	\newcommand{\Co}[1][]	{\elementChimique{Co}[#1]}
+	\newcommand{\Cu}[1][]	{\elementChimique{Cu}[#1]}
+	\newcommand{\Sn}[1][]	{\elementChimique{Sn}[#1]}
+	\newcommand{\Fe}[1][]	{\elementChimique{Fe}[#1]}
+	\newcommand{\Mg}[1][]	{\elementChimique{Mg}[#1]}
+	\newcommand{\Mn}[1][]	{\elementChimique{Mn}[#1]}
+	\newcommand{\Molybdene}[1][]	{\elementChimique{Mo}[#1]}
+	\newcommand{\Ni}[1][]	{\elementChimique{Ni}[#1]}
+	\newcommand{\Au}[1][]	{\elementChimique{Au}[#1]}
+	\newcommand{\Pt}[1][]	{\elementChimique{Pt}[#1]}
+	\newcommand{\Pb}[1][]	{\elementChimique{Pb}[#1]}
+	\newcommand{\Si}[1][]	{\elementChimique{Si}[#1]}
+	\newcommand{\tungstene}[1][]	{\elementChimique{W}[#1]}
+	\newcommand{\vanadium}[1][]	{\elementChimique{V}[#1]}
+	\newcommand{\Zn}[1][]	{\elementChimique{Zn}[#1]}
+	\newcommand{\Ti}[1][]	{\elementChimique{Ti}[#1]}
+	\newcommand{\phosphore}[1][]	{\elementChimique{P}[#1]}
+	\newcommand{\soufre}[1][]	{\elementChimique{S}[#1]}
+
+
+
+% %Autre
+% %===========================
+	\ifthenelse{\boolean{boolRaccourcisMat}}
+{
+
+}{}
+
+
+
+\endinput

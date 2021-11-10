@@ -1,0 +1,255 @@
+\documentclass[a4paper,12pt]{article}
+
+	\usepackage{xcolor}
+	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	\usepackage[latin1]{inputenc} 
+	\usepackage{hyperref}
+
+	\usepackage{Raf_Notations_Cotation}
+
+
+
+	\newcommand{\rac}{({\color{red}Raccourci})}
+	\newcommand{\ren}{({\color{blue}Renommé})}
+
+\begin{document}
+
+	\begin{center}
+		\hrule{\Large Notations Cotation Fonctionnelle}\\\hrule
+	\end{center}
+
+
+	\section{Packages requis}
+	%-------------------------------------
+
+		\begin{itemize}
+			\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles (if...then...else....)
+			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathématiques (notamment l'utilisation de \verb!\text! il me semble).
+			\item \href{http://www.ctan.org/pkg/pgf}{\textbf{tikz}} : Package pour faire des dessins (avec library \verb!calc!)
+			\item \href{http://www.ctan.org/pkg/calc}{\textbf{calc}} : Permet de faire des petits calculs au moment de la compilation
+			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour créer des commandes avec plusieurs arguments optionnels
+			\item \href{http://www.ctan.org/pkg/array}{\textbf{array}} : Package qui rajoute des possibilités aux tableaux.
+		\end{itemize}
+		
+		
+	\section{Appel du package}
+	%-------------------------------------
+
+		Le package est appelé en début de document par la commande :
+		\begin{verbatim}
+\usepackage{Raf_Notations_Cotation}
+		\end{verbatim}
+
+		Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
+		De plus, certaines commandes ont été rebaptisées.
+		Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
+		Si cela devait poser problème, pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+
+		\begin{verbatim}
+usepackage[noRaccourci]{Raf_Notations_Cotation}
+		\end{verbatim}
+
+
+	\section{Raccourcis notations}
+	%-----------------------------
+		\noindent
+		\begin{tabular}{|p{0.3\linewidth}|p{0.1\linewidth}|p{0.5\linewidth}|}
+			\hline
+				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+			\\\hline\hline
+				\verb!\dNominal!			&	\dNominal	&	Diamètre nominal
+			\\\hline
+				\verb!\dNom ou \dnom!			&	\dNom ou \dnom	&	Identique à \verb!\dNominal!\rac
+			\\\hline
+				\verb!\dMoyen!				&	\dMoyen		&	Diamètre moyen
+			\\\hline
+				\verb!\dMoy ou \dmoy!			&	\dMoy ou \dmoy	&	Identique à \verb!\dMoy!\rac
+			\\\hline
+				\verb!\dInferieur!			&	\dInferieur	&	Diamètre inférieur
+			\\\hline
+				\verb!\dInf ou \dinf!			&	\dInf ou \dinf	&	Identique à \verb!\dInferieur!\rac
+			\\\hline
+				\verb!\dSuperieur!			&	\dSuperieur	&	Diamètre supérieur
+			\\\hline
+				\verb!\dSup ou \dsup!			&	\dSup ou \dsup	&	Identique à \verb!\dSuperieur!\rac
+			\\\hline
+				\verb!\dInterieur!			&	\dInterieur	&	Diamètre intérieur
+			\\\hline
+				\verb!\dInt ou \dint!			&	\dInt ou \dint	&	Identique à \verb!\dInterieur!\rac
+			\\\hline
+				\verb!\dExterieur!			&	\dExterieur	&	Diamètre extérieur
+			\\\hline
+				\verb!\dExt ou \dext!			&	\dExt ou \dext	&	Identique à \verb!\dExterieur!\rac
+			\\\hline
+		\end{tabular}
+
+	\section{Symboles}
+	%-----------------------------
+
+		\subsection{Paramètres}
+		%.................................
+
+			\noindent
+			\begin{tabular}{|p{0.5\linewidth}|p{0.1\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\tSymbCot!			&	\tSymbCot			&	Taille des symboles (par défaut \tSymbCot)
+				\\\hline
+					\verb!\renewcommand{\tSymbCot}{10cm}!	&	\renewcommand{\tSymbCot}{1cm}	&	Redéfini la taille des symboles
+				\\\hline
+					\verb!\eSymbCot!			&	\eSymbCot			&	Coefficient (pourcentage) d'épaisseur des traits par rapport à \tSymbCot\ (\eSymbCot\ par défaut).
+				\\\hline
+					\verb!\renewcommand{\eSymbCot}{0.3}!	&	\renewcommand{\eSymbCot}{0.3}	&	Redéfini l'épaisseur des traits.
+				\\\hline
+					\verb!\cotationApply!			&	\cotationApply			&	Fonction qu'il faut appeler pour appliquer les modification des paramètres ci-dessus.
+				\\\hline
+			\end{tabular}
+	
+		\subsection{Défauts de forme}
+		%.....................................
+
+			\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\rectitude!	&	\rectitude	&	Symbole rectitude
+				\\\hline
+					\verb!\planeite!	&	\planeite	&	Symbole planeïté
+				\\\hline
+					\verb!\circularite!	&	\circularite	&	Symbole circularité
+				\\\hline
+					\verb!\cylindricite!	&	\cylindricite	&	Symbole cylindricité
+				\\\hline
+					\verb!\profilLigne!	&	\profilLigne	&	Symbole profile d'une ligne
+				\\\hline
+					\verb!\profilSurface!	&	\profilSurface	&	Symbole profile d'une surface
+				\\\hline
+			\end{tabular}
+
+		\subsection{Défauts d'orientation}
+		%..........................................
+
+			\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\parallelisme!	&	\parallelisme	&	Symbole parallélisme
+				\\\hline
+					\verb!\perpendicularite!&	\perpendicularite&	Symbole parallélisme
+				\\\hline
+					\verb!\inclinaison!	&	\inclinaison	&	Symbole inclinaison
+				\\\hline
+			\end{tabular}
+
+		\subsection{Défauts de position}
+		%..........................................
+
+			\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\concentricite!	&	\concentricite	&	Symbole concentricité
+				\\\hline
+					\verb!\coaxialite!	&	\coaxialite	&	Symbole coaxialité
+				\\\hline
+					\verb!\symetrie!	&	\symetrie	&	Symbole symétrie
+				\\\hline
+					\verb!\localisation!	&	\localisation	&	Symbole localisation
+				\\\hline
+			\end{tabular}
+
+		\subsection{Tolérance de battement}
+		%..........................................
+
+			\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\battementSimple!	&	\battementSimple	&	Symbole battement simple
+				\\\hline
+					\verb!\battement!	&	\battement		&	Symbole battement simple(raccourci de \verb!\battementSimple!).
+				\\\hline
+					\verb!\battementTotal!	&	\battementTotal		&	Symbole battement total
+				\\\hline
+			\end{tabular}
+
+
+		\subsection{Tolérancement}
+		%..........................................
+
+			\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\specification{\planeite}! \verb!{0.1}!	&	\specification{\planeite}{0.1}	&	Tolérance sans référence
+				\\\hline
+					\verb!\specification! \verb!{\localisation}{0.1}[A]!	&	\specification{\localisation}{0.1}[A]		&	Tolérance avec référence
+				\\\hline
+					\verb!\specification! \verb!{\localisation}{0.1}[A][B]!	&	\specification{\localisation}{0.1}[A][B]	&	Tolérance avec 2 références
+				\\\hline
+					\verb!\specification! \verb!{\localisation}{0.1}! \verb![A][B][C]!	&	\specification{\localisation}{0.1}[A][B][C]	&	Tolérance avec 2 références
+				\\\hline
+					\verb!\specification! \verb![$2\times\emptyset20$]! \verb!{\localisation}{0.1}[A]!	&	\specification[$2\times\emptyset20$]{\localisation}{0.1}[A]	&	Tolérance avec référence
+				\\\hline
+			\end{tabular}
+
+		\subsection{Enveloppe -- Maxi-matière -- etc.}
+		%..........................................
+
+		\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\lettreEntouree{a}!	&	\lettreEntouree{a}	&	Permet de mettre une lettre dans un cercle, pour les notations suivantes.
+				\\\hline
+			\end{tabular}
+		
+			\noindent
+			\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+				\hline
+					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
+				\\\hline\hline
+					\verb!\enveloppe!	&	\enveloppe	&	Symbole d'exigence d'enveloppe
+				\\\hline
+					\verb!\maxiMatiere!	&	\maxiMatiere	&	Symbole du maximum de matière
+				\\\hline
+					\verb!\miniMatiere!	&	\miniMatiere	&	Symbole du minimum de matière
+				\\\hline
+					\verb!\toleranceProjetee!&	\toleranceProjetee	&Symbole d'une tolérance projetée
+				\\\hline
+					\verb!\etatLibre!	&	\etatLibre	&	Condition de l'état libre
+				\\\hline
+			\end{tabular}
+
+			
+		\subsection{Matrice GPS}
+		%......................................
+			\begin{verbatim}
+\begin{matriceGPS}
+	\specification{\profilSurface}{0.1}
+	&	Profil de surface
+	&	Surface réputée conique
+	&	-
+	&	-
+	& surface comprise entre deux cône coaxiaux distant de 0.1
+\end{matriceGPS}
+			\end{verbatim}
+			\begin{matriceGPS}
+				{\specification{\profilSurface}{0.1}}
+					Profil de surface
+				&	Surface réputée conique
+				&	-
+				&	-
+				& surface comprise entre deux cône coaxiaux distant de 0.1
+				%\\
+				%\hline
+			\end{matriceGPS}
+		
+\end{document}

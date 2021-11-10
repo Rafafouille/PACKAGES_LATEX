@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cotation Fonctionnelle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Fab}[2016/08/15]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+
+\newif\if@RafNotFabRac	\@RafNotFabRactrue
+\DeclareOption{noRaccourci}	{\@RafNotFabRacfalse}
+\ProcessOptions
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+
+
+
+%Mouvements de coup
+%----------------------------------------
+\newcommand*{\VCoupe}	{\ensuremath{V_c}}	%Vitesse de coupe
+\newcommand*{\Vc}	{\VCoupe}		%Vitesse de coupe (raccourci)
+\newcommand*{\VAvance}	{\ensuremath{V_f}}	%Vitesse d'avance
+\newcommand*{\Vf}	{\VAvance}		%Vitesse d'avance (raccourci)
+\newcommand*{\VEco}	{\ensuremath{V_{CE}}}	%Vitesse économique de coupe
+
+\newcommand*{\avance}	{\ensuremath{f}}	%Avance de l'outil
+\newcommand*{\pPasse}	{\ensuremath{a}}	%Profondeur de passe
+%Geometrie de l'outil
+%--------------------------------
+
+%Angles
+\newcommand*{\aCoupe}		{\ensuremath{	\gamma	}}		%Angle de coupe
+\newcommand*{\aDepouille}	{\ensuremath{	\alpha	}}		%Angle de dépouille
+\newcommand*{\aTaillant}		{\ensuremath{	\beta	}}		%Angle de dépouille
+\newcommand*{\aInclinaison}	{\ensuremath{	\lambda_r	}}	%Angle d'inclinaison
+\newcommand*{\aInc}		{\aInclinaison}				%Angle d'inclinaison (raccourci)
+\newcommand*{\aDirectionArete}	{\ensuremath{	\kappa_r	}}	%Angle de direction d'arete
+\newcommand*{\aDir}		{\aDirectionArete}			%Angle de direction d'arete (raccourci)
+\newcommand*{\Kr}		{\aDirectionArete}			%Angle de direction d'arete (raccourci)
+\newcommand*{\aPointe}		{\ensuremath{	\varepsilon_r	}}			%Angle de direction d'arete (raccourci)
+
+%Plans
+\newcommand*{\fCoupe}		{\ensuremath{	A_\aCoupe	}}	%Face de coupe
+\newcommand*{\fDepouille}	{\ensuremath{	A_\aDepouille	}}	%Face de dépouille
+\newcommand*{\pRef}		{\ensuremath{	P_r	}}		%Plan de référence
+\newcommand*{\pTravail}		{\ensuremath{	P_f	}}		%Plan de travail conventionnel
+\newcommand*{\pArete}		{\ensuremath{	P_s	}}		%Plan d'arete de l'outil
+\newcommand*{\pNormal}		{\ensuremath{	P_n	}}		%Plan d'arete de l'outil
+
+%Autre
+\newcommand*{\rBec}		{\ensuremath{	R_\varepsilon	}}	%Rayon de bec de l'outil
+\newcommand*{\usureDepouille}	{\ensuremath{	VB	}}		%Usure en dépouille
+\newcommand{\cTotal}		{\ensuremath{	C_T	}}		%Cout total
+\newcommand{\CT}		{\cTotal}				%Cout total (raccourci)
+
+
+%Efforts
+%------------------------------------
+
+\newcommand{\FCoupe}		{\ensuremath{	F_c	}}			%Effort de coupe (tangentiel)
+\newcommand{\Fc}		{\FCoupe}					%Effort de coupe (tangentiel) (raccourci)
+\newcommand{\pSpecifique}	{\ensuremath{	K_c	}}		%Pression specifique de coupe
+\newcommand{\Kc}		{\pSpecifique}				%Pression specifique de coupe (raccourci)
+\newcommand{\PCoupe}		{\ensuremath{	P_c	}}		%puissance de coupe
+\newcommand{\Pc}		{\PCoupe}					%puissance de coupe (raccourci)
+
+
+% %Autre
+% %===========================
+\if@RafNotFabRac
+
+\fi
+
+
+
+\endinput

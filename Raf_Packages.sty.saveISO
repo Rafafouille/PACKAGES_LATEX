@@ -1,0 +1,42 @@
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Packages}[2018/08/01]
+
+
+\RequirePackage{Raf_Packages_Classics}	%Tous les packages ``de base''
+
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcis}%création du booléen
+\setboolean{boolRaccourcis}{false}%affectation de la valeur false
+\DeclareOption{raccourcis}{\setboolean{boolRaccourcis}{true}}
+\ProcessOptions
+
+
+%Notations
+\RequirePackage{Raf_Boites}		%Notations Analyse fonctionnelle
+\RequirePackage{Raf_Notations_AF}		%Notations Analyse fonctionnelle
+\RequirePackage{Raf_Notations_SLCI}		%Notations Asservissements
+\RequirePackage{Raf_Notations_Maths}	%Notations mathématiques de base
+\RequirePackage{Raf_Notations_Torseurs}	%Notations mathématiques sur les torseurs
+\RequirePackage{Raf_Notations_Cinematique}	%Notations cinematique
+\RequirePackage[raccourcis]{fast-diagram}
+\RequirePackage{Raf_Notations_Autres}	%Toutes les autres notations utiles
+\RequirePackage{Raf_Notations_Unites}	%Toutes les unités
+\RequirePackage{Raf_Notations_Cotation}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Actions-Meca}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Fab}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Materiaux}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Style}				%Styles de documents
+\RequirePackage{Raf_Notations_Autom}
+\RequirePackage{Raf_Notations_Energetique}	%Notations de puissance, travail, etc...
+\RequirePackage{Raf_Notations_Elec}	%Notations de puissance, travail, etc...
+\RequirePackage{Raf_Competences}	%Pour afficher le diagramme des compétences
+\RequirePackage{Raf_Notations_RDM}	%Packages de RDM
+\RequirePackage{Raf_Notations_Dynamique}	%Packages de Dynamique
+
+
+%\ProcessOptions
+ 
+%commandes et/ou environnements personnalisés
+ 
+\endinput

@@ -3,27 +3,29 @@
 \ProvidesPackage{format_info}[11/07/2017 Fichier formats]
 
 %%%%%%%%%%%%%%%%%% Extensions
-\RequirePackage[latin1]{inputenc}
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}    %% accents
 \RequirePackage{amsmath}
-\RequirePackage{enumerate}   %% type d'�num�ration
+\RequirePackage{enumerate}   %% type d'énumération
 \RequirePackage{fancybox}    %% cadres bizarres
-\RequirePackage{fancyhdr}    %% en-t�tes et pagination
+\RequirePackage{fancyhdr}    %% en-têtes et pagination
 \RequirePackage{ifthen}      %% tests conditionnels
 \RequirePackage{titlesec}    %% style chapitres,...
-\RequirePackage[Bjornstrup]{fncychap}    %% style chapitres pr�d�finis
+\RequirePackage[Bjornstrup]{fncychap}    %% style chapitres prédéfinis
 
 \RequirePackage{xcolor}      %% choix des couleurs
 \RequirePackage{tikz}		%%Dessins
 \RequirePackage{multicol}    %% multicolonnage
-\RequirePackage{amssymb}     %% symboles sp�ciaux \leqslant
+\RequirePackage{amssymb}     %% symboles spéciaux \leqslant
 
 \RequirePackage{graphicx}    %% pour les dessins
-\RequirePackage{listings}    %% pour Python
+%\RequirePackage{listings}    %% pour Python
+\RequirePackage{listingsutf8}    %% Pour faire des consoles, avec des accents en utf8
+%\lstset{inputencoding=utf8/latin1}  
 \RequirePackage[shortlabels]{enumitem}    %% itemisation
 \RequirePackage{mdframed}      %% cadres
 \RequirePackage{xargs}
-\RequirePackage{calc}  %% dimensions � ajouter
+\RequirePackage{calc}  %% dimensions à ajouter
 \RequirePackage{mathrsfs}
 
 %%%%%%%%%%%%%%%%%% Taille de page
@@ -42,12 +44,12 @@
 \renewcommand{\headrulewidth}{0pt}
 \lhead{}
 \rhead{}
-\lfoot{\it Lyc�e G. EIFFEL - PT}
+\lfoot{\it Lycée G. EIFFEL - PT}
 \rfoot{2020/21}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Styles titre, sections, thms, d�f...
+% Styles titre, sections, thms, déf...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\cp[1]{{\tt #1}}
 
@@ -81,14 +83,14 @@
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
 
-%%%%%%%% Type th�or�me, d�finition
+%%%%%%%% Type théorème, définition
 \newmdenv[linewidth=2pt,linecolor=gray!60,rightline=false, bottomline=false, topline=false,
 skipabove=0.2cm, font=\itshape]{cours}
 
-\newenvironment{theoreme}{\begin{cours}{\bf Th�or�me.}}{ \end{cours}}
+\newenvironment{theoreme}{\begin{cours}{\bf Théorème.}}{ \end{cours}}
 \newenvironment{proposition}{\begin{cours}{\bf Proposition.}}{ \end{cours}}
-\newenvironment{propriete}{\begin{cours}{\bf Propri�t�.}}{ \end{cours}}
-\newenvironment{definition}{\begin{cours}{\bf D�finition.}} {\end{cours}}
+\newenvironment{propriete}{\begin{cours}{\bf Propriété.}}{ \end{cours}}
+\newenvironment{definition}{\begin{cours}{\bf Définition.}} {\end{cours}}
 \newcommand{\totototot}{123}
 %%%%%%%% Type "principe"
 \newmdenv[linewidth=1pt,linecolor=gray!80,skipabove=0.2cm]{coursbis}
@@ -134,15 +136,17 @@ skipabove=0.2cm, font=\itshape]{cours}
 \definecolor{PY-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 \definecolor{PY-decoration}{rgb}{0.5,0,0.5}		%Couleur des fonctions autre (??)
 \definecolor{PY-self}{rgb}{0,0,0}		%couleur perso : noir
-\definecolor{PY-numeros}{rgb}{0.6,0.6,0.6}		%num�ros de ligne
+\definecolor{PY-numeros}{rgb}{0.6,0.6,0.6}		%numéros de ligne
 \definecolor{PY-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{PY-ombre}{rgb}{0.,0.,0.}		%Ombre
 \definecolor{PY-trait}{rgb}{0.5,0.5,1}		%Trait
 
 \lstnewenvironment{codePython}
-		{\lstset{
+		{
+            \lstset{
 			%Langage
-				language=Python,	%Langage par d�faut
+				language=Python,	%Langage par défaut
+            %Accents 
 			%Mise en forme de l'environnement
 				xleftmargin=1.5cm,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -152,12 +156,12 @@ skipabove=0.2cm, font=\itshape]{cours}
 				frameround=tttt,
 				rulecolor=\color{PY-trait},
 				texcl=true,	%Activle les commandes LaTex dans le code
-				%escapechar=�,	%Caractere a echapper
+				%escapechar=ø,	%Caractere a echapper
 				escapeinside={(*}{*)},
 			%Numeros de ligne
-				numbers=left,	%Rajoute des num�ros de ligne
-				numberstyle=\footnotesize\color{PY-numeros},	%Taille des num�ros de ligne
-				numbersep=1em,			%Marge entre le code et les num�ros de ligne
+				numbers=left,	%Rajoute des numéros de ligne
+				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numéros de ligne
+				numbersep=1em,			%Marge entre le code et les numéros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily,	%Mise en forme de base
@@ -170,15 +174,54 @@ skipabove=0.2cm, font=\itshape]{cours}
 				showstringspaces=false,
 				morecomment=[s][\color{PY-chaines}]{"""}{"""},
 				morecomment=[s][\color{PY-chaines}]{'''}{'''},
-			%Fonctions et mot cl� de python
-				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+			%Fonctions et mot clé de python
+				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert,self},
 				keywordstyle=\color{PY-fonctions}\bfseries,
 				morekeywords={[3]>>>},
 				keywordstyle={[3]\color{PY-chevrons}\bfseries},
 				morekeywords={[2]@invariant},
 				keywordstyle={[2]\color{PY-decoration}\slshape},
-				emph={self},
+				%emph={self},
 				emphstyle={\color{PY-self}\slshape}
+				inputencoding=utf8/latin1,
+                extendedchars=true,
+                literate=   {à}{{\'a}}1
+                            {À}{{\'A}}1
+                            {â}{{\^a}}1
+                            {Â}{{\^A}}1
+                            {ä}{{\"a}}1
+                            {Ä}{{\"A}}1
+                            %
+                            {é}{{\'e}}1
+                            {É}{{\'E}}1
+                            {è}{{\`e}}1
+                            {È}{{\`E}}1
+                            {ê}{{\^e}}1
+                            {Ê}{{\^E}}1
+                            {ë}{{\^e}}1
+                            {Ë}{{\"E}}1
+                            %
+                            {î}{{\^i}}1
+                            {Ï}{{\^I}}1
+                            {ï}{{\"i}}1
+                            {Ï}{{\"I}}1
+                            %
+                            {ô}{{\^o}}1
+                            {Ô}{{\^O}}1
+                            {ö}{{\"o}}1
+                            {Ö}{{\"O}}1
+                            %
+                            {û}{{\^u}}1
+                            {Û}{{\^U}}1
+                            {ü}{{\"u}}1
+                            {Ü}{{\"U}}1
+                            %
+                            {ŷ}{{\^y}}1
+                            {Ŷ}{{\^Y}}1
+                            {ÿ}{{\"y}}1
+                            {Ÿ}{{\"Y}}1
+                            %
+                            {°}{\textdegree}1
 			}
 			\small}{}
 
@@ -191,8 +234,8 @@ skipabove=0.2cm, font=\itshape]{cours}
 \definecolor{SQL-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 \definecolor{SQL-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 \definecolor{SQL-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
-\definecolor{SQL-self}{rgb}{0,0,0}		%je sais pas. J'ai recopi� d'internet
-\definecolor{SQL-numeros}{rgb}{0.7,0.7,0.7}		%num�ros de ligne
+\definecolor{SQL-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
+\definecolor{SQL-numeros}{rgb}{0.7,0.7,0.7}		%numéros de ligne
 \definecolor{SQL-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{SQL-ombre}{rgb}{0.5,0.5,0.5}		%Ombre
 \definecolor{SQL-trait}{rgb}{0.5,0.5,1}		%Trait
@@ -201,7 +244,7 @@ skipabove=0.2cm, font=\itshape]{cours}
 		{
 		\lstset{
 			%Langage
-				language=sql,	%Langage par d�faut
+				language=sql,	%Langage par défaut
 			%Mise en forme de l'environnement
 				xleftmargin=1.5cm,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -211,13 +254,13 @@ skipabove=0.2cm, font=\itshape]{cours}
 				frameround=tttt,
 				rulecolor=\color{SQL-fond!30},
 				texcl=true,	%Activle les commandes LaTex dans le code
-				%escapechar=�,	%Caractere a echapper
+				%escapechar=ø,	%Caractere a echapper
 				%escapeinside={(*}{*)},
 				nolol=true,
 			%Numeros de ligne
-				numbers=none,	%Rajoute des num�ros de ligne
-				%numberstyle=\footnotesize\color{SQL-numeros},	%Taille des num�ros de ligne
-				%numbersep=1em,			%Marge entre le code et les num�ros de ligne
+				numbers=none,	%Rajoute des numéros de ligne
+				%numberstyle=\footnotesize\color{SQL-numeros},	%Taille des numéros de ligne
+				%numbersep=1em,			%Marge entre le code et les numéros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily,	%Mise en forme de base
@@ -230,11 +273,49 @@ skipabove=0.2cm, font=\itshape]{cours}
 				showstringspaces=false,
 				morecomment=[s][\color{SQL-chaines}]{"""}{"""},
 				morecomment=[s][\color{SQL-chaines}]{'''}{'''},
-			%Fonctions et mot cl� de python
+			%Fonctions et mot clé de python
 				%morekeywords=[1]{Pour,pour,Fin,fin,Effectuer,effectuer,si,Si,faire,Faire,alors,Alors},
 				keywordstyle=[1]*\color{SQL-fond}\bfseries,
 				emph={self},
-				emphstyle={\color{SQL-elf}\slshape}
+				emphstyle={\color{SQL-elf}\slshape},
+				%Accents
+                literate=   {à}{{\'a}}1
+                            {À}{{\'A}}1
+                            {â}{{\^a}}1
+                            {Â}{{\^A}}1
+                            {ä}{{\"a}}1
+                            {Ä}{{\"A}}1
+                            %
+                            {é}{{\'e}}1
+                            {É}{{\'E}}1
+                            {è}{{\`e}}1
+                            {È}{{\`E}}1
+                            {ê}{{\^e}}1
+                            {Ê}{{\^E}}1
+                            {ë}{{\^e}}1
+                            {Ë}{{\"E}}1
+                            %
+                            {î}{{\^i}}1
+                            {Ï}{{\^I}}1
+                            {ï}{{\"i}}1
+                            {Ï}{{\"I}}1
+                            %
+                            {ô}{{\^o}}1
+                            {Ô}{{\^O}}1
+                            {ö}{{\"o}}1
+                            {Ö}{{\"O}}1
+                            %
+                            {û}{{\^u}}1
+                            {Û}{{\^U}}1
+                            {ü}{{\"u}}1
+                            {Ü}{{\"U}}1
+                            %
+                            {ŷ}{{\^y}}1
+                            {Ŷ}{{\^Y}}1
+                            {ÿ}{{\"y}}1
+                            {Ÿ}{{\"Y}}1
+                            %
+                            {°}{\textdegree}1
 			}
 			\small}{}
 			
@@ -248,7 +329,7 @@ skipabove=0.2cm, font=\itshape]{cours}
 \definecolor{CS-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 \definecolor{CS-decoration}{rgb}{0.5,0,0.5}		%Couleur des fonctions autre (??)
 \definecolor{CS-self}{rgb}{0,0,0}		%couleur perso : noir
-\definecolor{CS-numeros}{rgb}{0.6,0.6,0.6}		%num�ros de ligne
+\definecolor{CS-numeros}{rgb}{0.6,0.6,0.6}		%numéros de ligne
 \definecolor{CS-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{CS-ombre}{rgb}{0.,0.,0.}		%Ombre
 \definecolor{CS-trait}{rgb}{0.7,0.7,0.7}		%Trait
@@ -256,7 +337,7 @@ skipabove=0.2cm, font=\itshape]{cours}
 \lstnewenvironment{console}
 		{\lstset{
 			%Langage
-				language=Python,	%Langage par d�faut
+				language=Python,	%Langage par défaut
 			%Mise en forme de l'environnement
 				xleftmargin=2cm,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -266,12 +347,12 @@ skipabove=0.2cm, font=\itshape]{cours}
 				framerule=2pt,
 				rulecolor=\color{CS-trait},
 				texcl=true,	%Activle les commandes LaTex dans le code
-				%escapechar=�,	%Caractere a echapper
+				%escapechar=ø,	%Caractere a echapper
 				escapeinside={(*}{*)},
 			%Numeros de ligne
-				numbers=none,	%pas de num�ros de ligne
-				%numberstyle=\footnotesize\color{CS-numeros},	%Taille des num�ros de ligne
-				numbersep=1em,			%Marge entre le code et les num�ros de ligne
+				numbers=none,	%pas de numéros de ligne
+				%numberstyle=\footnotesize\color{CS-numeros},	%Taille des numéros de ligne
+				numbersep=1em,			%Marge entre le code et les numéros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily,	%Mise en forme de base
@@ -284,11 +365,49 @@ skipabove=0.2cm, font=\itshape]{cours}
 				showstringspaces=false,
 				morecomment=[s][\color{CS-chaines}]{"""}{"""},
 				morecomment=[s][\color{CS-chaines}]{'''}{'''},
-			%Fonctions et mot cl� de python
+			%Fonctions et mot clé de python
 				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
 				keywordstyle=\color{CS-fonctions}\bfseries,
 				morekeywords={>>>},
-				keywordstyle={\color{CS-chevrons}\bfseries}
+				keywordstyle={\color{CS-chevrons}\bfseries},
+				%Accents
+                literate=   {à}{{\'a}}1
+                            {À}{{\'A}}1
+                            {â}{{\^a}}1
+                            {Â}{{\^A}}1
+                            {ä}{{\"a}}1
+                            {Ä}{{\"A}}1
+                            %
+                            {é}{{\'e}}1
+                            {É}{{\'E}}1
+                            {è}{{\`e}}1
+                            {È}{{\`E}}1
+                            {ê}{{\^e}}1
+                            {Ê}{{\^E}}1
+                            {ë}{{\^e}}1
+                            {Ë}{{\"E}}1
+                            %
+                            {î}{{\^i}}1
+                            {Ï}{{\^I}}1
+                            {ï}{{\"i}}1
+                            {Ï}{{\"I}}1
+                            %
+                            {ô}{{\^o}}1
+                            {Ô}{{\^O}}1
+                            {ö}{{\"o}}1
+                            {Ö}{{\"O}}1
+                            %
+                            {û}{{\^u}}1
+                            {Û}{{\^U}}1
+                            {ü}{{\"u}}1
+                            {Ü}{{\"U}}1
+                            %
+                            {ŷ}{{\^y}}1
+                            {Ŷ}{{\^Y}}1
+                            {ÿ}{{\"y}}1
+                            {Ÿ}{{\"Y}}1
+                            %
+                            {°}{\textdegree}1
 			}
 			\small
 			\vspace*{0.2cm}\hspace*{1.5cm}{\bf Console}\vspace*{-0.2cm}
@@ -306,14 +425,14 @@ skipabove=0.2cm, font=\itshape]{cours}
 				}
 
 
-%%%%%%%%%%%%%%%%%% Raccourcis math�matiques
-    %%%%% Lettres graiss�es
+%%%%%%%%%%%%%%%%%% Raccourcis mathématiques
+    %%%%% Lettres graissées
 \font\ens=msbm10
 \newcommand{\R}{\hbox{\ens R}}
 \newcommand{\C}{\hbox{\ens C}}
 \newcommand{\N}{\hbox{\ens N}}
 \newcommand{\Z}{\hbox{\ens Z}}
-    %%%%% Alg�bre
+    %%%%% Algèbre
 \newcommand{\lint}{[\hskip -1.5pt[}
 \newcommand{\rint}{]\hskip -1.5pt]}
     %%%%% Analyse
@@ -347,7 +466,7 @@ skipabove=0.2cm, font=\itshape]{cours}
 \newcommand{\bdet}{\left|\begin{array}}
 \newcommand{\edet}{\end{array}\right|}
 
-%%%%%%%%%%%%%%%%%% Enum�ration
+%%%%%%%%%%%%%%%%%% Enumération
 \newcommand{\be}{\begin{enumerate}}
 \newcommand{\ee}{\end{enumerate}}
 \newcommand{\bi}{\begin{itemize}}

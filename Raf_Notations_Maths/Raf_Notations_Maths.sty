@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations Mathématiques de base
+%	Notations MathÃ©matiques de base
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
@@ -9,21 +9,21 @@
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 
 %\RequirePackage{color}%Pour mettre de la couleur
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 \RequirePackage{xargs}%Pour arguments optionnels multiples
 \RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
 \RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
-\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformÃ©e de Laplace)
 \RequirePackage{color}
-\RequirePackage{xspace}		%Pour faire des espace après les commandes
+\RequirePackage{xspace}		%Pour faire des espace aprÃ¨s les commandes
 \RequirePackage{xstring}	%Pour faire des remplacements de chaines
 \RequirePackage{bm}     %Pour mettre les maths en gras
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisMaths}%création du booléen
+\newboolean{boolRaccourcisMaths}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisMaths}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \newif\if@RafNotMathRac	\@RafNotMathRactrue
 \DeclareOption{noRaccourci}	{\@RafNotMathRacfalse}
 %\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
@@ -34,7 +34,7 @@
 \newcommand*{\RafMathRac}[1]{\ifthenelse{\boolean{boolRaccourcisMaths}}{#1}{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
 
 
 \newcommand*{\indiceGauche}[2]		{\ensuremath{{\vphantom{#2}}_{#1}{#2}}}
@@ -76,7 +76,7 @@
 \fi
 
 
-%Opérateurs
+%OpÃ©rateurs
 %%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -88,7 +88,7 @@
 \newcommand*{\fonction}[2]	{\ensuremath{{#1}{\scriptstyle{\left(#2\right)}}}\xspace}
 
 %Fonctions usuelles
-\newcommand*{\reel}[1]		{\f{\mathcal Re}{#1}}	%Partie réelle
+\newcommand*{\reel}[1]		{\f{\mathcal Re}{#1}}	%Partie rÃ©elle
 \newcommand*{\imaginaire}[1]	{\f{\mathcal Im}{#1}}	%Partie imaginaire
 
 \if@RafNotMathRac
@@ -100,11 +100,20 @@
 	\newcommand*{\atan}[1][]	{\ifthenelse{\equal{#1}{}}
 						{\ensuremath{\text{arctan}}}
 						{\f{\text{arctan}}{#1}}}
-	\renewcommand*{\Re}	\reel	%Partie réelle
+	\newcommand*{\acos}[1][]	{\ifthenelse{\equal{#1}{}}
+						{\ensuremath{\text{arccos}}}
+						{\f{\text{arccos}}{#1}}}
+	\newcommand*{\asin}[1][]	{\ifthenelse{\equal{#1}{}}
+						{\ensuremath{\text{arcsin}}}
+						{\f{\text{arcsin}}{#1}}}
+	\newcommand*{\cotan}[1][]	{\ifthenelse{\equal{#1}{}}
+						{\ensuremath{\text{cotan}}}
+						{\f{\text{cotan}}{#1}}}
+	\renewcommand*{\Re}	\reel	%Partie rÃ©elle
 	\renewcommand*{\Im}	\imaginaire	%Partie imaginaire
 \fi
 
-%Derivees / Calculs différentiels
+%Derivees / Calculs diffÃ©rentiels
 \newcommandx*{\derivee}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\mathrm{d}^{#1}{#2}}{\mathrm{d}{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{{#4}}}}}
 	\newcommand*{\deriv}		{\derivee}
 %\newcommandx*{\deriv}[4][1=,4=]	{\derivee[#1]{#2}{#3}[#4]}
@@ -155,7 +164,7 @@
 \newcommand*{\segment}[1]	{\ensuremath{\left[#1\right]}}		%Fait un sement
 \newcommand*{\droite}[1]	{\ensuremath{\left(#1\right)}}
 \newcommand*{\arc}[1]		{\ensuremath{\overset{\frown}{#1}}}		%Arc
-\renewcommand*{\angle}[1]	{\ensuremath{\left(\widehat{#1}\right)}} %(Redéfini : la fonction angle correspondait au symbole angle)
+\renewcommand*{\angle}[1]	{\ensuremath{\left(\widehat{#1}\right)}} %(RedÃ©fini : la fonction angle correspondait au symbole angle)
 \fi
 
 
@@ -181,22 +190,22 @@
 %-----------------------------
 \newcommandx*{\vecteur}[2][2=]	{\ensuremath{\protect\overrightarrow{{#1}_{#2}}}\xspace}	%Fait un vecteur
 
-\newcommand{\vecteurIndice}[2]	{\vecteur{#1}[#2]} %Identique à vecteur, sauf que l'indice est obligatoire - Fait un vecteur avec un indice (x1, y1...), ou un vecteur simple si indice = espace
+\newcommand{\vecteurIndice}[2]	{\vecteur{#1}[#2]} %Identique Ã  vecteur, sauf que l'indice est obligatoire - Fait un vecteur avec un indice (x1, y1...), ou un vecteur simple si indice = espace
 \newcommand{\vInd}[2]		{\vecteurIndice{#1}{#2}} %Raccourci de vecteur Indice	
 
 \newcommand*{\vecteurChamp}[2]	{\ifthenelse{\equal{#2}{}}{\vecteur{#1}}{\fonction{\vecteur{#1}}{#2}}}
 \newcommand*{\vChamp}[2]	{\vecteurChamp{#1}{#2}}
-\newcommandx*{\vChampOpt}[2][2=]	{\vecteurChamp{#1}{#2}}	%Quasi identique à vecteur champ, sauf que le parametre du champ est optionnel
+\newcommandx*{\vChampOpt}[2][2=]	{\vecteurChamp{#1}{#2}}	%Quasi identique Ã  vecteur champ, sauf que le parametre du champ est optionnel
 
 \newcommand*{\bipoint}[2]	{\ensuremath{\vecteur{\segment{#1#2}}}}	%bipoint
 \newcommand*{\vLie}[2]		{\ensuremath{\couple{#1}{#2}}}			%Vecteur lie
 \newcommand*{\vGlissant}[2]	{\ensuremath{\couple{#1}{#2}}}			%Vecteur glissant
-%\newcommandx*{\vColonne}[2][2=]	{\ensuremath{\left( \begin{array}{c} #1 \end{array} \right)_{#2}	}}	%Vecteur colonne (avec coordonnées)
+%\newcommandx*{\vColonne}[2][2=]	{\ensuremath{\left( \begin{array}{c} #1 \end{array} \right)_{#2}	}}	%Vecteur colonne (avec coordonnÃ©es)
 
-\newcommand*{\RMremplace}[1]{\noexpandarg\StrSubstitute{#1}{;}{\\}}%On la crée juste une fois pour pas s'embeter avec les renewcommand
+\newcommand*{\RMremplace}[1]{\noexpandarg\StrSubstitute{#1}{;}{\\}}%On la crÃ©e juste une fois pour pas s'embeter avec les renewcommand
 \newcommandx*{\vColonne}[3][3=;]	{\renewcommand*{\RMremplace}[1]{\noexpandarg\StrSubstitute{##1}{#3}{\\}}%	}
 						\ensuremath{\left( \begin{array}{c} \RMremplace{#1} \end{array} \right)_{\hspace{-0.1cm}#2}	}
-					}	%Vecteur colonne (avec coordonnées)
+					}	%Vecteur colonne (avec coordonnÃ©es)
 
 %Espaces
 %--------------------------------
@@ -206,14 +215,19 @@
 %Bases
 %-------------------------
 \newcommand*{\base}[3]	{\triplet{#1}{#2}{#3}}	%Triplet de vecteurs
-\newcommand*{\bBase}[1][]	{\ensuremath{\bgroup\mathscr{B}_{#1}\egroup}}	%Symbole base portant éventuellement un indice
+\newcommand*{\bBase}[1][]	{\ensuremath{\bgroup\mathscr{B}_{#1}\egroup}}	%Symbole base portant Ã©ventuellement un indice
 \if@RafNotMathRac
 \newcommand*{\bB}[1]		{\bBase[#1]}	%Symbole d'une base avec indice
 \newcommand*{\bxyz}	{\base{\vx{}}{\vy{}}{\vz{}}}
 \newcommand*{\buvw}	{\base{\vu}{\vv}{\vw}}
 \fi
 
-%Repère
+\newcommand{\bCartesien}{\ensuremath{(\vecteur{e_1},\vecteur{e_2},\vecteur{e_3})}}
+\newcommand{\bCylindrique}{\ensuremath{(\vecteur{e_r},\vecteur{e_\theta},\vecteur{e_z})}}
+\newcommand{\bSpherique}{\ensuremath{(\vecteur{e_r},\vecteur{e_\phi},\vecteur{e_{\theta}})}}
+
+
+%RepÃ¨re
 %-------------------------
 \newcommand*{\repere}[4]	{\quadruplet{#1}{#2}{#3}{#4}}	
 \if@RafNotMathRac
@@ -237,7 +251,7 @@
 \newcommand*{\scal}			{\scalaire}	%produit vectoriel
 \fi
 
-%Vecteurs pré-fabriqués
+%Vecteurs prÃ©-fabriquÃ©s
 %--------------------------------
 
 \newcommand*{\vNul}		{\vecteur{0}}	%vecteur nul

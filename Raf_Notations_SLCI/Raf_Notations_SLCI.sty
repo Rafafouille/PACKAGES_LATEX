@@ -1,38 +1,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations Systeme Linéaire Continus Invariants
+%	Notations Systeme LinÃ©aire Continus Invariants
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
 \ProvidesPackage{Raf_Notations_SLCI}[2014/03/05]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
-\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
-\RequirePackage{xargs}		%Pour faire des fonctios à arguments multiples
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
+\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformÃ©e de Laplace)
+\RequirePackage{xargs}		%Pour faire des fonctios Ã  arguments multiples
 \RequirePackage{bodegraph}
 \RequirePackage{schemabloc}
 \RequirePackage{Raf_Notations_Maths}
 
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisSLCI}%création du booléen
+\newboolean{boolRaccourcisSLCI}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisSLCI}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \DeclareOption{noRaccourci}{\setboolean{boolRaccourcisSLCI}{false}}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 %Raccourcis
 \newcommand* {\FTBO} {fonction de transfert en boucle ouverte}
-\newcommand* {\FTBF} {fonction de transfert en boucle fermée}
+\newcommand* {\FTBF} {fonction de transfert en boucle fermÃ©e}
 
-%Opérateur
-\newcommand*{\transfoLaplace}[2][]	{\ensuremath{\mathscr{L}^{#1}\ifthenelse{\equal{#2}{}}{}{\left[#2\right]}}}	%Transformée de Laplace (anciennement un L barré)
-\newcommand*{\transfoLaplaceInv}[1]	{\transfoLaplace[-1]{#1}}	%Transformée de Laplace (anciennement un L barré)
+%OpÃ©rateur
+\newcommand*{\transfoLaplace}[2][]	{\ensuremath{\mathscr{L}^{#1}\ifthenelse{\equal{#2}{}}{}{\left[#2\right]}}}	%TransformÃ©e de Laplace (anciennement un L barrÃ©)
+\newcommand*{\transfoLaplaceInv}[1]	{\transfoLaplace[-1]{#1}}	%TransformÃ©e de Laplace (anciennement un L barrÃ©)
 
 
 %Fonctions temporelles
@@ -66,8 +66,8 @@
 \newcommand*	{\FIp}[1][]		{\f {I_{#1}}{p}}
 \newcommand*	{\FSp}[1][]		{\f {S_{#1}}{p}}
 \newcommand*	{\FEp}[1][]		{\f {E_{#1}}{p}}
-\newcommand*	{\FDp}[1][]		{\f {D_{#1}}{p}}	%Dénominateur
-\newcommand*	{\FNp}[1][]		{\f {N_{#1}}{p}}	%Numérateur
+\newcommand*	{\FDp}[1][]		{\f {D_{#1}}{p}}	%DÃ©nominateur
+\newcommand*	{\FNp}[1][]		{\f {N_{#1}}{p}}	%NumÃ©rateur
 \newcommand*	{\FHp}[1][]		{\f {H_{#1}}{p}}	%Fonction de transert
 \newcommand*	{\Hjw}[1][]		{\f {H_{#1}}{j\omega}}	%Fonction de transert
 \newcommand*	{\FGp}[1][]		{\f {G_{#1}}{p}}	%
@@ -83,7 +83,7 @@
 \newcommand*	{\FTBFp}[1][]		{\f {{FTBF}_{#1}}{p}}	%
 \newcommand*	{\FTBOp}[1][]		{\f {{FTBO}_{#1}}{p}}	%
 
-%Fréquetiel
+%FrÃ©quetiel
 \newcommand*	{\Gw}[1][\omega]			{\f G{#1}}
 \newcommand*	{\Gdbw}[1][\omega]			{\f {G_{db}}{#1}}
 \newcommand*	{\phiw}[1][\omega]			{\f\phi{#1}}
@@ -119,12 +119,12 @@
 \newcommand{\wMGain}	{\ensuremath{\omega_{\phantom{i}_{\hspace{-0.35em}-180\deg}}}}
 
 
-%Schema bloc (appuyé sur le package de Papanicola)
+%Schema bloc (appuyÃ© sur le package de Papanicola)
 
 \definecolor{fond_blocs}{RGB}{255,246,228} %Couleur du fond
-\sbStyleBloc{fill=fond_blocs}% Style par défaut des blocs
+\sbStyleBloc{fill=fond_blocs}% Style par dÃ©faut des blocs
 \newcommandx*{\blocSeul}[5][2=5,4=5]	{\begin{tikzpicture}
-					\sbEntree{E}	%Point de départ
+					\sbEntree{E}	%Point de dÃ©part
 					\sbBloc[#2]{monBloc}{#3}{E}	%Le bloc
 					\sbRelier[#1]{E}{monBloc}%Premier lien
 					\sbSortie[#4]{S}{monBloc}%Le point de sortie
@@ -136,16 +136,16 @@
 \ifthenelse{\boolean{boolRaccourcisSLCI}}
 	{
 		\newcommand*{\TOR}	{tout-ou-rien}
-		\renewcommand*{\L}[2][]	{\transfoLaplace[#1]{#2}}	%Transformée de Laplace (anciennement un L barré)
-		\newcommand*{\LInv}[1] {\transfoLaplaceInv{#1}}	%Transformée de Laplace (anciennement un L barré)
+		\renewcommand*{\L}[2][]	{\transfoLaplace[#1]{#2}}	%TransformÃ©e de Laplace (anciennement un L barrÃ©)
+		\newcommand*{\LInv}[1] {\transfoLaplaceInv{#1}}	%TransformÃ©e de Laplace (anciennement un L barrÃ©)
 
 		\newcommand*	{\Fp}[1][]		{\FFp[#1]}
 		\newcommand*	{\Yp}[1][]		{\FYp[#1]}
 		\newcommand*	{\Xp}[1][]		{\FXp[#1]}
 		\newcommand*	{\Sp}[1][]		{\FSp[#1]}
 		\newcommand*	{\Ep}[1][]		{\FEp[#1]}
-		\newcommand*	{\Dp}[1][]		{\FDp[#1]}	%Dénominateur
-		\newcommand*	{\Np}[1][]		{\FNp[#1]}	%Numérateur
+		\newcommand*	{\Dp}[1][]		{\FDp[#1]}	%DÃ©nominateur
+		\newcommand*	{\Np}[1][]		{\FNp[#1]}	%NumÃ©rateur
 		\newcommand*	{\Hp}[1][]		{\FHp[#1]}	%Fonction de transert
 		\newcommand*	{\Gp}[1][]		{\FGp[#1]}	%
 		\newcommand*	{\Cp}[1][]		{\FCp[#1]}	%

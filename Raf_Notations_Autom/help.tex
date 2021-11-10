@@ -11,7 +11,7 @@
 	
 	
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}Renommé})}
+	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 	
 	
 	
@@ -26,16 +26,16 @@
 	%-------------------------------------
 
 		\begin{itemize}
-			\item \href{https://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour faire (notamment) des commandes à plusieurs arguments optionnels.
+			\item \href{https://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour faire (notamment) des commandes Ã  plusieurs arguments optionnels.
 			\item \href{https://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles.
-			\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Package de notations mathématiques.
+			\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Package de notations mathÃ©matiques.
 			\item \href{http://www.ctan.org/pkg/pgf}{\textbf{tikz}} : Package pour faire des dessins (avec library \verb!calc!)
 		\end{itemize}
 
 	\section{Appel du package}
 	%-------------------------------------
 
-		Le package est appelé en début de document par la commande :
+		Le package est appelÃ© en dÃ©but de document par la commande :
 		\begin{verbatim}
 \usepackage{Raf_Notations_Autom}
 		\end{verbatim}
@@ -43,17 +43,17 @@
 		
 		% PAS ENCORE DE RACCOURCIS !!!!!!!!!!!!!!!!!!!!
 		
-% 	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
-% 	De plus, certaines commandes ont été rebaptisées.
-% 	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-% 	Pour ne pas créer ces raccourcis/renommage, il faut rentrer l'option \verb!noRaccourci! à l'appel du package.
+% 	Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide Ã  taper !).
+% 	De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©es.
+% 	Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+% 	Pour ne pas crÃ©er ces raccourcis/renommage, il faut rentrer l'option \verb!noRaccourci! Ã  l'appel du package.
 % 
 % 	\begin{verbatim}
 % usepackage[noRaccourci]{Raf_Notations_Autom}
 % 	\end{verbatim}
 
 
-	\section{Numération}
+	\section{NumÃ©ration}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -62,7 +62,7 @@
 		\\\hline\hline
 			\verb!lBase{20}[n]!			&	\lBase{20}[n]			&	Nombre dans une base $n$
 		\\\hline
-			\verb!lBase{20}!			&	\lBase{20}			&	idem, avec par défaut : $n=10$
+			\verb!lBase{20}!			&	\lBase{20}			&	idem, avec par dÃ©faut : $n=10$
 		\\\hline
 			\verb!\binaire{100111}!			&	\binaire{100111}		&	Raccourci de \verb!\lBase{...}[2]!
 		\\\hline
@@ -78,45 +78,45 @@
 		\\\hline
 	\end{tabular}
 
-	\section{Opérateurs Logiques}
+	\section{OpÃ©rateurs Logiques}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!a\ET b!			&	a\ET b			&	Opérateur ``et''
+			\verb!a\ET b!			&	a\ET b			&	OpÃ©rateur ``et''
 		\\\hline
 			\verb!a\AND b!			&	a\AND b			&	idem que \verb!\ET!
 		\\\hline
-			\verb!a\OU b!			&	a\OU b			&	Opérateur ``ou''
+			\verb!a\OU b!			&	a\OU b			&	OpÃ©rateur ``ou''
 		\\\hline
 			\verb!a\OR b!			&	a\OR b			&	idem que \verb!\OU!
 		\\\hline
-			\verb!\NON{a\OU b}!		&	\NON{a\OU b}		&	Opérateur ``non''
+			\verb!\NON{a\OU b}!		&	\NON{a\OU b}		&	OpÃ©rateur ``non''
 		\\\hline
 			\verb!\NOT{b}!			&	\NOT{b}			&	idem que \verb!\NON!
 		\\\hline
-			\verb!\NOR ab!			&	\NOR ab			&	Opérateur ``non-ou''
+			\verb!\NOR ab!			&	\NOR ab			&	OpÃ©rateur ``non-ou''
 		\\\hline
-			\verb!\NAND ab!			&	\NAND ab		&	Opérateur ``non-et''
+			\verb!\NAND ab!			&	\NAND ab		&	OpÃ©rateur ``non-et''
 		\\\hline
-			\verb!\XOR ab!			&	\XOR ab			&	Opérateur ``ou-exclusif''
+			\verb!\XOR ab!			&	\XOR ab			&	OpÃ©rateur ``ou-exclusif''
 		\\\hline
-			\verb!\XNOR ab!			&	\XNOR ab		&	Opérateur ``et-inclusif''
+			\verb!\XNOR ab!			&	\XNOR ab		&	OpÃ©rateur ``et-inclusif''
 		\\\hline
 	\end{tabular}
 
-	\section{Séquentiel}
+	\section{SÃ©quentiel}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\frontMontant{a}!			&	\frontMontant{a}		&	Front montant d'un événement.
+			\verb!\frontMontant{a}!			&	\frontMontant{a}		&	Front montant d'un Ã©vÃ©nement.
 		\\\hline
-			\verb!\frontDescendant{a}!			&	\frontDescendant{a}	&	Front descendant d'un événement.
+			\verb!\frontDescendant{a}!			&	\frontDescendant{a}	&	Front descendant d'un Ã©vÃ©nement.
 		\\\hline
 	\end{tabular}
 \end{document}

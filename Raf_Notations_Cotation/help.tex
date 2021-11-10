@@ -10,7 +10,7 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}Renommé})}
+	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 
 \begin{document}
 
@@ -24,26 +24,26 @@
 
 		\begin{itemize}
 			\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles (if...then...else....)
-			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathématiques (notamment l'utilisation de \verb!\text! il me semble).
+			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathÃ©matiques (notamment l'utilisation de \verb!\text! il me semble).
 			\item \href{http://www.ctan.org/pkg/pgf}{\textbf{tikz}} : Package pour faire des dessins (avec library \verb!calc!)
 			\item \href{http://www.ctan.org/pkg/calc}{\textbf{calc}} : Permet de faire des petits calculs au moment de la compilation
-			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour créer des commandes avec plusieurs arguments optionnels
-			\item \href{http://www.ctan.org/pkg/array}{\textbf{array}} : Package qui rajoute des possibilités aux tableaux.
+			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour crÃ©er des commandes avec plusieurs arguments optionnels
+			\item \href{http://www.ctan.org/pkg/array}{\textbf{array}} : Package qui rajoute des possibilitÃ©s aux tableaux.
 		\end{itemize}
 		
 		
 	\section{Appel du package}
 	%-------------------------------------
 
-		Le package est appelé en début de document par la commande :
+		Le package est appelÃ© en dÃ©but de document par la commande :
 		\begin{verbatim}
 \usepackage{Raf_Notations_Cotation}
 		\end{verbatim}
 
-		Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
-		De plus, certaines commandes ont été rebaptisées.
-		Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-		Si cela devait poser problème, pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+		Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide Ã  taper !).
+		De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©es.
+		Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+		Si cela devait poser problÃ¨me, pour ne pas crÃ©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! Ã  l'appel du package.
 
 		\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Cotation}
@@ -57,36 +57,36 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\dNominal!			&	\dNominal	&	Diamètre nominal
+				\verb!\dNominal!			&	\dNominal	&	DiamÃ¨tre nominal
 			\\\hline
-				\verb!\dNom ou \dnom!			&	\dNom ou \dnom	&	Identique à \verb!\dNominal!\rac
+				\verb!\dNom ou \dnom!			&	\dNom ou \dnom	&	Identique Ã  \verb!\dNominal!\rac
 			\\\hline
-				\verb!\dMoyen!				&	\dMoyen		&	Diamètre moyen
+				\verb!\dMoyen!				&	\dMoyen		&	DiamÃ¨tre moyen
 			\\\hline
-				\verb!\dMoy ou \dmoy!			&	\dMoy ou \dmoy	&	Identique à \verb!\dMoy!\rac
+				\verb!\dMoy ou \dmoy!			&	\dMoy ou \dmoy	&	Identique Ã  \verb!\dMoy!\rac
 			\\\hline
-				\verb!\dInferieur!			&	\dInferieur	&	Diamètre inférieur
+				\verb!\dInferieur!			&	\dInferieur	&	DiamÃ¨tre infÃ©rieur
 			\\\hline
-				\verb!\dInf ou \dinf!			&	\dInf ou \dinf	&	Identique à \verb!\dInferieur!\rac
+				\verb!\dInf ou \dinf!			&	\dInf ou \dinf	&	Identique Ã  \verb!\dInferieur!\rac
 			\\\hline
-				\verb!\dSuperieur!			&	\dSuperieur	&	Diamètre supérieur
+				\verb!\dSuperieur!			&	\dSuperieur	&	DiamÃ¨tre supÃ©rieur
 			\\\hline
-				\verb!\dSup ou \dsup!			&	\dSup ou \dsup	&	Identique à \verb!\dSuperieur!\rac
+				\verb!\dSup ou \dsup!			&	\dSup ou \dsup	&	Identique Ã  \verb!\dSuperieur!\rac
 			\\\hline
-				\verb!\dInterieur!			&	\dInterieur	&	Diamètre intérieur
+				\verb!\dInterieur!			&	\dInterieur	&	DiamÃ¨tre intÃ©rieur
 			\\\hline
-				\verb!\dInt ou \dint!			&	\dInt ou \dint	&	Identique à \verb!\dInterieur!\rac
+				\verb!\dInt ou \dint!			&	\dInt ou \dint	&	Identique Ã  \verb!\dInterieur!\rac
 			\\\hline
-				\verb!\dExterieur!			&	\dExterieur	&	Diamètre extérieur
+				\verb!\dExterieur!			&	\dExterieur	&	DiamÃ¨tre extÃ©rieur
 			\\\hline
-				\verb!\dExt ou \dext!			&	\dExt ou \dext	&	Identique à \verb!\dExterieur!\rac
+				\verb!\dExt ou \dext!			&	\dExt ou \dext	&	Identique Ã  \verb!\dExterieur!\rac
 			\\\hline
 		\end{tabular}
 
 	\section{Symboles}
 	%-----------------------------
 
-		\subsection{Paramètres}
+		\subsection{ParamÃ¨tres}
 		%.................................
 
 			\noindent
@@ -94,19 +94,19 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\hline
 					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 				\\\hline\hline
-					\verb!\tSymbCot!			&	\tSymbCot			&	Taille des symboles (par défaut \tSymbCot)
+					\verb!\tSymbCot!			&	\tSymbCot			&	Taille des symboles (par dÃ©faut \tSymbCot)
 				\\\hline
-					\verb!\renewcommand{\tSymbCot}{10cm}!	&	\renewcommand{\tSymbCot}{1cm}	&	Redéfini la taille des symboles
+					\verb!\renewcommand{\tSymbCot}{10cm}!	&	\renewcommand{\tSymbCot}{1cm}	&	RedÃ©fini la taille des symboles
 				\\\hline
-					\verb!\eSymbCot!			&	\eSymbCot			&	Coefficient (pourcentage) d'épaisseur des traits par rapport à \tSymbCot\ (\eSymbCot\ par défaut).
+					\verb!\eSymbCot!			&	\eSymbCot			&	Coefficient (pourcentage) d'Ã©paisseur des traits par rapport Ã  \tSymbCot\ (\eSymbCot\ par dÃ©faut).
 				\\\hline
-					\verb!\renewcommand{\eSymbCot}{0.3}!	&	\renewcommand{\eSymbCot}{0.3}	&	Redéfini l'épaisseur des traits.
+					\verb!\renewcommand{\eSymbCot}{0.3}!	&	\renewcommand{\eSymbCot}{0.3}	&	RedÃ©fini l'Ã©paisseur des traits.
 				\\\hline
-					\verb!\cotationApply!			&	\cotationApply			&	Fonction qu'il faut appeler pour appliquer les modification des paramètres ci-dessus.
+					\verb!\cotationApply!			&	\cotationApply			&	Fonction qu'il faut appeler pour appliquer les modification des paramÃ¨tres ci-dessus.
 				\\\hline
 			\end{tabular}
 	
-		\subsection{Défauts de forme}
+		\subsection{DÃ©fauts de forme}
 		%.....................................
 
 			\noindent
@@ -116,11 +116,11 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\\\hline\hline
 					\verb!\rectitude!	&	\rectitude	&	Symbole rectitude
 				\\\hline
-					\verb!\planeite!	&	\planeite	&	Symbole planeïté
+					\verb!\planeite!	&	\planeite	&	Symbole planeÃ¯tÃ©
 				\\\hline
-					\verb!\circularite!	&	\circularite	&	Symbole circularité
+					\verb!\circularite!	&	\circularite	&	Symbole circularitÃ©
 				\\\hline
-					\verb!\cylindricite!	&	\cylindricite	&	Symbole cylindricité
+					\verb!\cylindricite!	&	\cylindricite	&	Symbole cylindricitÃ©
 				\\\hline
 					\verb!\profilLigne!	&	\profilLigne	&	Symbole profile d'une ligne
 				\\\hline
@@ -128,7 +128,7 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\\\hline
 			\end{tabular}
 
-		\subsection{Défauts d'orientation}
+		\subsection{DÃ©fauts d'orientation}
 		%..........................................
 
 			\noindent
@@ -136,15 +136,15 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\hline
 					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 				\\\hline\hline
-					\verb!\parallelisme!	&	\parallelisme	&	Symbole parallélisme
+					\verb!\parallelisme!	&	\parallelisme	&	Symbole parallÃ©lisme
 				\\\hline
-					\verb!\perpendicularite!&	\perpendicularite&	Symbole parallélisme
+					\verb!\perpendicularite!&	\perpendicularite&	Symbole parallÃ©lisme
 				\\\hline
 					\verb!\inclinaison!	&	\inclinaison	&	Symbole inclinaison
 				\\\hline
 			\end{tabular}
 
-		\subsection{Défauts de position}
+		\subsection{DÃ©fauts de position}
 		%..........................................
 
 			\noindent
@@ -152,17 +152,17 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\hline
 					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 				\\\hline\hline
-					\verb!\concentricite!	&	\concentricite	&	Symbole concentricité
+					\verb!\concentricite!	&	\concentricite	&	Symbole concentricitÃ©
 				\\\hline
-					\verb!\coaxialite!	&	\coaxialite	&	Symbole coaxialité
+					\verb!\coaxialite!	&	\coaxialite	&	Symbole coaxialitÃ©
 				\\\hline
-					\verb!\symetrie!	&	\symetrie	&	Symbole symétrie
+					\verb!\symetrie!	&	\symetrie	&	Symbole symÃ©trie
 				\\\hline
 					\verb!\localisation!	&	\localisation	&	Symbole localisation
 				\\\hline
 			\end{tabular}
 
-		\subsection{Tolérance de battement}
+		\subsection{TolÃ©rance de battement}
 		%..........................................
 
 			\noindent
@@ -179,7 +179,7 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 			\end{tabular}
 
 
-		\subsection{Tolérancement}
+		\subsection{TolÃ©rancement}
 		%..........................................
 
 			\noindent
@@ -187,19 +187,19 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\hline
 					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 				\\\hline\hline
-					\verb!\specification{\planeite}! \verb!{0.1}!	&	\specification{\planeite}{0.1}	&	Tolérance sans référence
+					\verb!\specification{\planeite}! \verb!{0.1}!	&	\specification{\planeite}{0.1}	&	TolÃ©rance sans rÃ©fÃ©rence
 				\\\hline
-					\verb!\specification! \verb!{\localisation}{0.1}[A]!	&	\specification{\localisation}{0.1}[A]		&	Tolérance avec référence
+					\verb!\specification! \verb!{\localisation}{0.1}[A]!	&	\specification{\localisation}{0.1}[A]		&	TolÃ©rance avec rÃ©fÃ©rence
 				\\\hline
-					\verb!\specification! \verb!{\localisation}{0.1}[A][B]!	&	\specification{\localisation}{0.1}[A][B]	&	Tolérance avec 2 références
+					\verb!\specification! \verb!{\localisation}{0.1}[A][B]!	&	\specification{\localisation}{0.1}[A][B]	&	TolÃ©rance avec 2 rÃ©fÃ©rences
 				\\\hline
-					\verb!\specification! \verb!{\localisation}{0.1}! \verb![A][B][C]!	&	\specification{\localisation}{0.1}[A][B][C]	&	Tolérance avec 2 références
+					\verb!\specification! \verb!{\localisation}{0.1}! \verb![A][B][C]!	&	\specification{\localisation}{0.1}[A][B][C]	&	TolÃ©rance avec 2 rÃ©fÃ©rences
 				\\\hline
-					\verb!\specification! \verb![$2\times\emptyset20$]! \verb!{\localisation}{0.1}[A]!	&	\specification[$2\times\emptyset20$]{\localisation}{0.1}[A]	&	Tolérance avec référence
+					\verb!\specification! \verb![$2\times\emptyset20$]! \verb!{\localisation}{0.1}[A]!	&	\specification[$2\times\emptyset20$]{\localisation}{0.1}[A]	&	TolÃ©rance avec rÃ©fÃ©rence
 				\\\hline
 			\end{tabular}
 
-		\subsection{Enveloppe -- Maxi-matière -- etc.}
+		\subsection{Enveloppe -- Maxi-matiÃ¨re -- etc.}
 		%..........................................
 
 		\noindent
@@ -218,13 +218,13 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 				\\\hline\hline
 					\verb!\enveloppe!	&	\enveloppe	&	Symbole d'exigence d'enveloppe
 				\\\hline
-					\verb!\maxiMatiere!	&	\maxiMatiere	&	Symbole du maximum de matière
+					\verb!\maxiMatiere!	&	\maxiMatiere	&	Symbole du maximum de matiÃ¨re
 				\\\hline
-					\verb!\miniMatiere!	&	\miniMatiere	&	Symbole du minimum de matière
+					\verb!\miniMatiere!	&	\miniMatiere	&	Symbole du minimum de matiÃ¨re
 				\\\hline
-					\verb!\toleranceProjetee!&	\toleranceProjetee	&Symbole d'une tolérance projetée
+					\verb!\toleranceProjetee!&	\toleranceProjetee	&Symbole d'une tolÃ©rance projetÃ©e
 				\\\hline
-					\verb!\etatLibre!	&	\etatLibre	&	Condition de l'état libre
+					\verb!\etatLibre!	&	\etatLibre	&	Condition de l'Ã©tat libre
 				\\\hline
 			\end{tabular}
 
@@ -235,19 +235,19 @@ usepackage[noRaccourci]{Raf_Notations_Cotation}
 \begin{matriceGPS}
 	\specification{\profilSurface}{0.1}
 	&	Profil de surface
-	&	Surface réputée conique
+	&	Surface rÃ©putÃ©e conique
 	&	-
 	&	-
-	& surface comprise entre deux cône coaxiaux distant de 0.1
+	& surface comprise entre deux cÃ´ne coaxiaux distant de 0.1
 \end{matriceGPS}
 			\end{verbatim}
 			\begin{matriceGPS}
 				{\specification{\profilSurface}{0.1}}
 					Profil de surface
-				&	Surface réputée conique
+				&	Surface rÃ©putÃ©e conique
 				&	-
 				&	-
-				& surface comprise entre deux cône coaxiaux distant de 0.1
+				& surface comprise entre deux cÃ´ne coaxiaux distant de 0.1
 				%\\
 				%\hline
 			\end{matriceGPS}

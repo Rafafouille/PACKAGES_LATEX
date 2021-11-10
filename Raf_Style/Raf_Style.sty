@@ -7,41 +7,41 @@
 \ProvidesPackage{Raf_Style}[2016/07/02]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-%\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+%\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 %\RequirePackage{xargs}%Pour arguments optionnels multiples
 %\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
 %\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
-%\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+%\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformÃ©e de Laplace)
 \RequirePackage{import}
 \RequirePackage{graphicx}
 \RequirePackage{qrcode}
 
 
 %Initialisation des booleens 
-%\newboolean{boolRaccourcisMaths}%création du booléen
+%\newboolean{boolRaccourcisMaths}%crÃ©ation du boolÃ©en
 %\setboolean{boolRaccourcisMaths}{false}%affectation de la valeur false
 
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 %\DeclareOption{}{}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 
-%Mise à zéro des variables
+%Mise Ã  zÃ©ro des variables
 %==================================
 
-	\newcommand*	{\partie}		{Sciences Industrielles de l'Ingénieur}
+	\newcommand*	{\partie}		{Sciences Industrielles de l'IngÃ©nieur}
 	\newcommand*	{\titre}		{}
 	\newcommand*	{\sousTitre}		{}
 	\newcommand*	{\numero}		{}
-	\newcommand*	{\auteur}		{Raphaël ALLAIS}
-	\newcommand*	{\etablissement}	{Lycée Gustave Eiffel de Dijon}
-	\newcommand*	{\discipline}		{Sciences Industrielles de l'Ingénieur}
-	\newcommand*	{\classe}		{Classe préparatoire P.T.}
-	\newcommand*	{\anneeScolaire}	{2020 - 2021}
+	\newcommand*	{\auteur}		{RaphaÃ«l ALLAIS}
+	\newcommand*	{\etablissement}	{LycÃ©e Gustave Eiffel de Dijon}
+	\newcommand*	{\discipline}		{Sciences Industrielles de l'IngÃ©nieur}
+	\newcommand*	{\classe}		{Classe prÃ©paratoire P.T.}
+	\newcommand*	{\anneeScolaire}	{2021 - 2022}
 	\newcommand*	{\icone}		{logoeiffel.png}
 	\newcommand*	{\duree}		{10 minutes}
 	\newcommand*	{\jour}			{\today}
@@ -51,6 +51,7 @@
 	\newcommand*	{\QRcode}		{}
 	\newcommand*	{\codeQRcode}		{1234}
 	\newcommand*	{\iconeQRcode}		{\iconeAmpoule}
+	\newcommand*    {\nombreExemplaires}  {46}
 
 %Page de garde
 %============================
@@ -63,18 +64,18 @@
 %======================================
 
 	%Sections
-	\renewcommand*	{\thesection}	{\Roman{section}}	%Numérotation en chiffres romains
+	\renewcommand*	{\thesection}	{\Roman{section}}	%NumÃ©rotation en chiffres romains
 	\titleformat	{\section}[hang]{\LARGE\bfseries}{\thesection.}{1em}{}[\rule{\linewidth}{.5pt}]
 	%\newcommand*	{\sectionbreak}	{\clearpage}%Change de page a chaque section
 	%\titlespacing*{\section}{0px}{20cm}{\wordsep}
 
 	%Subsection
-	\renewcommand*	{\thesubsection}	{\arabic{subsection}}%Numérotation en chiffres arabes
+	\renewcommand*	{\thesubsection}	{\arabic{subsection}}%NumÃ©rotation en chiffres arabes
 	\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
 	\titleformat	{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{\underline}[]
 
 	%Subsubsection
-	\renewcommand	{\thesubsubsection}	{\alph{subsubsection})}%Numérotation en lettres
+	\renewcommand	{\thesubsubsection}	{\alph{subsubsection})}%NumÃ©rotation en lettres
 	\titlespacing*	{\subsubsection}{1cm}{0.5cm}{0.3cm}
 
 
@@ -109,11 +110,11 @@
 
 	\renewcommand*{\footrulewidth}{1px}
 	\lfoot{\etablissement}	%Pied de gauche --> Etablissement
-	\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> n°de page
-	\rfoot{\ifthenelse{\equal{\anneeScolaire}{}}{\classe }{\classe \\Année \anneeScolaire}}
+	\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> nÂ°de page
+	\rfoot{\ifthenelse{\equal{\anneeScolaire}{}}{\classe }{\classe \\AnnÃ©e \anneeScolaire}}
 
 
-%Captions (légendes)
+%Captions (lÃ©gendes)
 %==========================================
 	\captionsetup{	labelsep	=	endash,
 			justification	=	centering,
@@ -188,7 +189,7 @@
 %\newcommand*{\includeLogo}{\begingroup \includegraphics{logoeiffel.png} \endgroup}
 
 \newcommand*{\makePageDeGarde}	{\begingroup 
-			\begin{titlepage}	%Début de la page de garde
+			\begin{titlepage}	%DÃ©but de la page de garde
 			%=======================================================
 				\begin{center} %----------------------------------------
 					%partie superieure
@@ -205,7 +206,7 @@
 								\begin{center}
 									\textsc{\LARGE \etablissement}\\[1cm]
 									\textsc{\Large \classe}\\[0.5cm]
-									\textsc{\Large Année \anneeScolaire}\\[1cm]
+									\textsc{\Large AnnÃ©e \anneeScolaire}\\[1cm]
 								\end{center}
 							\end{minipage}
 						\end{tabular}
@@ -222,7 +223,7 @@
 					\begin{minipage}{0.9\linewidth}
 						\tableofcontents
 					\end{minipage}
-					%Partie inférieur
+					%Partie infÃ©rieur
 					%.........................
 					\vfill
 					%Objectif
@@ -243,7 +244,7 @@
 							\end{objectif*}
 					\fi
 					
-					%Compétences + QR code
+					%CompÃ©tences + QR code
 						\ifthenelse{\equal{\QRcode}{}}
 							{}
 							{%
@@ -323,7 +324,7 @@
 				\rotatebox{20}
 					{
 						\begin{minipage}{5cm}
-							\centering\fcolorbox{red}{white}{\qquad Corrigé\qquad}%\newline%
+							\centering\fcolorbox{red}{white}{\qquad CorrigÃ©\qquad}%\newline%
 							%{\fcolorbox{red}{white}{\normalsize\today}\\\ }
 						\end{minipage}
 					}%
@@ -347,7 +348,7 @@
 			\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
 
 			\begin{center}
-				\huge \textsc{Contrôle}
+				\huge \textsc{ContrÃ´le}
 			\end{center}
 			\vspace{0.5cm}\hrule
 			\par\vspace{0.4cm}
@@ -360,13 +361,13 @@
 				{}
 		}
 
-\newcommand{\makeEnteteDocumentReponse}[1][] %Numero du doc répond (facultatif)
+\newcommand{\makeEnteteDocumentReponse}[1][] %Numero du doc rÃ©pond (facultatif)
 		{
 			\begin{tabular}{m{0.4\linewidth}m{0.6\linewidth}}
 				\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
 				&
 				\begin{center}
-					\huge \textsc{Document-Réponse #1}
+					\huge \textsc{Document-RÃ©ponse #1}
 				\end{center}
 			\end{tabular}
 
@@ -405,10 +406,10 @@
 			%\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
 
 			\begin{center}
-				\large \textsc{Travaux Dirigés}
+				\large \textsc{Travaux DirigÃ©s}
 			\ifthenelse{\equal{\numero}{}}
 				{}%
-				{ n°\numero}%
+				{ nÂ°\numero}%
 				\\
 				\huge \textbf{\titre}
 			\end{center}
@@ -436,7 +437,7 @@
 \newcommand{\makeEnteteCorrige}
 		{
 			\begin{center}
-				\large \textsc{Corrigé}\\[0.3cm]
+				\large \textsc{CorrigÃ©}\\[0.3cm]
 				\small\textsc{\partie}\\
 				\huge \titre
 			\end{center}
@@ -465,7 +466,7 @@
     }
 
 \newcommand*{\makePageDeGardeDS}[1]	{\begingroup 
-			\begin{titlepage}	%Début de la page de garde
+			\begin{titlepage}	%DÃ©but de la page de garde
 			%=======================================================
 				\begin{center} %----------------------------------------
 					%partie superieure
@@ -493,7 +494,7 @@
 						\tableofcontents
 					\end{minipage}
 					
-					%Partie inférieur
+					%Partie infÃ©rieur
 					%.........................
 					\vfill
 					{#1}
@@ -504,7 +505,14 @@
 			\end{titlepage}		%Fin de la page de garde
 	\endgroup}
 
-
+\newcommand*{\makePageDeGardeRessources}	{\begingroup 
+				\begin{center}
+                    \phantom.\\
+					\huge \textsc{Document-Ressources}
+                \end{center}
+			\vspace{0.5cm}\hrule
+			\par\vspace{0.4cm}
+	\endgroup}
 
 
 
@@ -520,7 +528,7 @@
 			\hrule}
 
 
-% DOC RESSOURCE (a n'utiliser qu'à la fin du document)
+% DOC RESSOURCE (a n'utiliser qu'Ã  la fin du document)
 %===============================================
 
 \newcommand{\annexe}[1]
@@ -529,7 +537,7 @@
 			\newpage
 			\section{Annexe : #1}
 			%Subsection
-			\renewcommand*	{\thesubsection}{DR\arabic{subsection}}%Numérotation en chiffres arabes
+			\renewcommand*	{\thesubsection}{DR\arabic{subsection}}%NumÃ©rotation en chiffres arabes
 			\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
 			\newcommand*	{\subsectionbreak}	{\clearpage}%Change de page a chaque section
 			\titleformat	{\subsection}{\centering\normalfont\Large\bfseries}{\thesubsection\ -- }{0.em}{}[]

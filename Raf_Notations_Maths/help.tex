@@ -2,7 +2,7 @@
 
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc}
+	\usepackage[utf8]{inputenc}
 	\usepackage{hyperref}
 
 
@@ -12,7 +12,7 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}RenommÈ})}
+	\newcommand{\ren}{({\color{blue}Renomm√©})}
 
 \begin{document}
 
@@ -21,7 +21,7 @@
 
 
 	\begin{center}
-		\hrule{\Large Notations MathÈmatiques ``de base''}\\\hrule
+		\hrule{\Large Notations Math√©matiques ``de base''}\\\hrule
 	\end{center}
 
 	(Version du 27/04/13)
@@ -30,28 +30,28 @@
 	%-------------------------------------
 
 	\begin{itemize}
-		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation ‡ choix multiple,
-		\item \href{http://tug.ctan.org/tex-archive/macros/latex/contrib/xargs}{\textbf{xarg}} : Package permettant de crÈer des commandes ‡ plusieurs arguments optionnels.
-		\item \href{http://www.ams.org/publications/authors/tex/amsfonts}{\textbf{amsfonts}} : Package qui ajoute des polices d'Ècritures mathÈmatiques.
-		\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Package qui ajoute des fonctions mathÈmatiques non-standards.
-		\item \href{http://www.ctan.org/pkg/mathrsfs}{\textbf{mathrsfs}} : Package qui rajoute des polices d'Ècritures mathÈmatiques.
+		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation √† choix multiple,
+		\item \href{http://tug.ctan.org/tex-archive/macros/latex/contrib/xargs}{\textbf{xarg}} : Package permettant de cr√©er des commandes √† plusieurs arguments optionnels.
+		\item \href{http://www.ams.org/publications/authors/tex/amsfonts}{\textbf{amsfonts}} : Package qui ajoute des polices d'√©critures math√©matiques.
+		\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Package qui ajoute des fonctions math√©matiques non-standards.
+		\item \href{http://www.ctan.org/pkg/mathrsfs}{\textbf{mathrsfs}} : Package qui rajoute des polices d'√©critures math√©matiques.
 		\item \href{http://www.ctan.org/pkg/color}{\textbf{color}} : Package permettant de mettre en couleur du texte, des lignes, etc.
-		\item \href{http://www.ctan.org/pkg/xspace}{\textbf{xspace}} : Package permettant de mettre des espaces aprËs les commandes.
-		\item \href{http://www.ctan.org/pkg/xstring}{\textbf{xstring}} : Package permettant travailler sur les chaÓnes de caractËres (chercher/remplacer, etc.)
+		\item \href{http://www.ctan.org/pkg/xspace}{\textbf{xspace}} : Package permettant de mettre des espaces apr√®s les commandes.
+		\item \href{http://www.ctan.org/pkg/xstring}{\textbf{xstring}} : Package permettant travailler sur les cha√Ænes de caract√®res (chercher/remplacer, etc.)
 	\end{itemize}
 
 	\section{Appel du package}
 	%-------------------------------------
 
-	Le package est appelÈ en dÈbut de document par la commande :
+	Le package est appel√© en d√©but de document par la commande :
 	\begin{verbatim}
 \usepackage{Raf_Notations_Maths}
 	\end{verbatim}
 
-	Par dÈfaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide ‡ taper !).
-	De plus, certaines commandes ont ÈtÈ rebaptisÈe.
-	Ces raccourcis et renommages seront citÈs (\rac\ ou \ren) dans les tableaux suivants.
-	Pour ne pas crÈer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! ‡ l'appel du package.
+	Par d√©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide √† taper !).
+	De plus, certaines commandes ont √©t√© rebaptis√©e.
+	Ces raccourcis et renommages seront cit√©s (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas cr√©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! √† l'appel du package.
 
 	\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Maths}
@@ -66,37 +66,37 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline\hline
 			\verb!\ssi!			&	\ssi			&	\rac
 		\\\hline
-			\verb!\indiceGauche{i}{R}!	&	\indiceGauche{i}{R}	&	Indice ‡ gauche (mÍme pour les grands objets)
+			\verb!\indiceGauche{i}{R}!	&	\indiceGauche{i}{R}	&	Indice √† gauche (m√™me pour les grands objets)
 		\\\hline
-			\verb!\exposantGauche{i}{R}!	&	\exposantGauche{i}{R}	&	Exposant ‡ gauche (mÍme pour les grands objets)
+			\verb!\exposantGauche{i}{R}!	&	\exposantGauche{i}{R}	&	Exposant √† gauche (m√™me pour les grands objets)
 		\\\hline
-			\verb!\transposee{M}!		&	\transposee{M}		&	Symbole ``transposÈe''
+			\verb!\transposee{M}!		&	\transposee{M}		&	Symbole ``transpos√©e''
 		\\\hline
 			\verb!\Cte!			&	\Cte			&	Constante \rac
 		\\\hline
-			\verb!\equivaut!		&	\equivaut		&	…quivaut
+			\verb!\equivaut!		&	\equivaut		&	√âquivaut
 		\\\hline
-			\verb!\LR!			&	\LR			&	…quivaut \rac
+			\verb!\LR!			&	\LR			&	√âquivaut \rac
 		\\\hline
 			\verb!$2.1\E{-2}$!		&	 $2.1\E{-2}$		&	Puissances de 10\rac
 		\\\hline
-			\verb!$a=\mathbox{2}$!		&	 $a=\mathbox{2}$	&	Èquivaut ‡ \verb!\fbox{}! en mode math.
+			\verb!$a=\mathbox{2}$!		&	 $a=\mathbox{2}$	&	√©quivaut √† \verb!\fbox{}! en mode math.
 		\\\hline
 			\verb!\begin{align}! \verb!\boxedalign{resultat}{=2}! \verb!\end{align}!		&		&	Boite type \verb!\fbox{}!, pour une ligne de l'environnement \verb!align!.
 		\\\hline
-			\verb!\jComplexe!		&	\jComplexe		&	Nombre complexe \jComplexe\ pour l'Èlec ($\jComplexe^2=-1$).
+			\verb!\jComplexe!		&	\jComplexe		&	Nombre complexe \jComplexe\ pour l'√©lec ($\jComplexe^2=-1$).
 		\\\hline
-			\verb!\j!			&	\j			&	Nombre complexe \jComplexe\ pour l'Èlec \rac.
+			\verb!\j!			&	\j			&	Nombre complexe \jComplexe\ pour l'√©lec \rac.
 		\\\hline
 			\verb!\iComplexe!		&	\iComplexe		&	Nombre complexe \iComplexe\ classique ($\iComplexe^2=-1$).
 		\\\hline
-            \verb!\valPi!       &      \valPi & Valeur de Pi, ‡ quelques dÈcimales prÈs
+            \verb!\valPi!       &      \valPi & Valeur de Pi, √† quelques d√©cimales pr√©s
 		\\\hline
             \verb!$\grasMath{a}+a$!       &      $\grasMath{a}+a$ & Mets en gras en mode math.
 		\\\hline
             \verb!$\mathGras{a}+a$!       &      $\mathGras{a}+a$ & Idem que \verb!\grasMath!
 		\\\hline
-            \verb!$\inconnue{x}+1=2$!       &      $\inconnue{x}+1=2$ & Mise en Èvidence d'une inconnue
+            \verb!$\inconnue{x}+1=2$!       &      $\inconnue{x}+1=2$ & Mise en √©vidence d'une inconnue
 		\\\hline
 	\end{tabular}
 
@@ -114,42 +114,42 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 				\\\hline
 					\verb!\f{Fonction}{t}!	&	\f{Fonction}{t}		&	raccourci de \verb!\fonction! \rac
 				\\\hline
-					\verb!\f F{t}!		&	\f F{t}			&	Idem avec un nom de fonction ‡ une seule lettre \rac
+					\verb!\f F{t}!		&	\f F{t}			&	Idem avec un nom de fonction √† une seule lettre \rac
 				\\\hline
 			\end{tabular}
 
 
 			
-		\subsection{DÈrivÈes et calculs diffÈrentiels}
+		\subsection{D√©riv√©es et calculs diff√©rentiels}
 
 			\noindent
 			\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 				\hline
 					\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 				\\\hline\hline
-					\verb!\derivee{F}{t}!		&	\derivee {F}{t}			&	DÈrivÈe
+					\verb!\derivee{F}{t}!		&	\derivee {F}{t}			&	D√©riv√©e
 				\\\hline
 					\verb!\deriv{F}{t}!		&	\deriv {F}{t}			&	Raccourci de \verb!\derivee!
 				\\\hline	
-					\verb!\deriveePartielle{F}{t}!		&	\deriveePartielle {F}{t}			&	DÈrivÈe partielle
+					\verb!\deriveePartielle{F}{t}!		&	\deriveePartielle {F}{t}			&	D√©riv√©e partielle
 				\\\hline
 					\verb!\derivP{F}{t}!		&	\derivP {F}{t}			&	Raccourci de \verb!\deriveePartielle!
 				\\\hline
-					\verb!\deriv[n]{F}{t}!		&	\deriv[n] {F}{t}			&	DÈrivÈe $n^\text{iËme}$
+					\verb!\deriv[n]{F}{t}!		&	\deriv[n] {F}{t}			&	D√©riv√©e $n^\text{i√®me}$
 				\\\hline
-					\verb!\deriv{\vec F}{t}[B]!		&	\deriv {\vec F}{t}[B]			&	DÈrivÈe dans une base
+					\verb!\deriv{\vec F}{t}[B]!		&	\deriv {\vec F}{t}[B]			&	D√©riv√©e dans une base
 				\\\hline
-					\verb!\deriv{\vec F}{t}[B]!		&	\deriv {\vec F}{t}[B]			&	DÈrivÈe dans une base
+					\verb!\deriv{\vec F}{t}[B]!		&	\deriv {\vec F}{t}[B]			&	D√©riv√©e dans une base
 				\\\hline
-					\verb!\deriv{\vec F}{t}[B]!		&	\deriv {\vec F}{t}[B]			&	DÈrivÈe dans une base
+					\verb!\deriv{\vec F}{t}[B]!		&	\deriv {\vec F}{t}[B]			&	D√©riv√©e dans une base
 				\\\hline
-					\verb!\dDroit{a}!		&		\dDroit{a}		&	Notation diffÈrentielle avec un d-droit.
+					\verb!\dDroit{a}!		&		\dDroit{a}		&	Notation diff√©rentielle avec un d-droit.
 				\\\hline
-					\verb!\dRond{a}!		&		\dRond{a}		&	Notation diffÈrentielle avec un d-rond.
+					\verb!\dRond{a}!		&		\dRond{a}		&	Notation diff√©rentielle avec un d-rond.
 				\\\hline
-					\verb!\dx, \dy, \dz, \dtheta,! \verb!\dphi, \dr, \du, \dv! \verb!\dw, \dl, \dS, \dV!		&	\dx, \dy, \dz, \dtheta, \dphi, \du, \dv, \dw, \dr, \dl, \dS, \dV			&	Diverses variables d'intÈgration
+					\verb!\dx, \dy, \dz, \dtheta,! \verb!\dphi, \dr, \du, \dv! \verb!\dw, \dl, \dS, \dV!		&	\dx, \dy, \dz, \dtheta, \dphi, \du, \dv, \dw, \dr, \dl, \dS, \dV			&	Diverses variables d'int√©gration
 				\\\hline
-					\verb!\dx[1], \dy[2], \dz[3],! \verb!\dtheta[4], \dphi[5],! \verb!\dr[6], \du[7], \dv[8],! \verb!\dw[9], \dl[10],! \verb!\dS[11], \dV[12]!		&		\dx[1], \dy[2], \dz[3], \dtheta[4], \dphi[5], \dr[6], \du[7], \dv[8], \dw[9], \dl[10], \dS[11], \dV[12]		&	Diverses variables d'intÈgration avec indices
+					\verb!\dx[1], \dy[2], \dz[3],! \verb!\dtheta[4], \dphi[5],! \verb!\dr[6], \du[7], \dv[8],! \verb!\dw[9], \dl[10],! \verb!\dS[11], \dV[12]!		&		\dx[1], \dy[2], \dz[3], \dtheta[4], \dphi[5], \dr[6], \du[7], \dv[8], \dw[9], \dl[10], \dS[11], \dV[12]		&	Diverses variables d'int√©gration avec indices
 				\\\hline
 			\end{tabular}
 
@@ -163,11 +163,23 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 				\\\hline\hline
 					\verb!\atan!		&	\atan			&	Arctangente \rac
 				\\\hline
-					\verb!\atan[\frac 1x]!		&	\atan[\frac 1x]		&	Arctangente avec paramËtre \rac
+					\verb!\atan[\frac 1x]!		&	\atan[\frac 1x]		&	Arctangente avec param√®tre \rac
 				\\\hline
-					\verb!\reel{x}!			&	\reel{x}	&	Partie rÈelle.
+					\verb!\acos!		&	\acos			&	Arccosinus \rac
 				\\\hline
-					\verb!\Re{x}!			&	\Re{x}		&	Partie rÈelle \rac.
+					\verb!\acos[\frac 1x]!		&	\acos[\frac 1x]		&	Arccosinus avec param√®tre \rac
+				\\\hline
+					\verb!\asin!		&	\asin			&	Arcsinus \rac
+				\\\hline
+					\verb!\asin[\frac 1x]!		&	\asin[\frac 1x]		&	Arcsinus avec param√®tre \rac
+				\\\hline
+					\verb!\cotan!		&	\cotan			&	Cotangeante \rac
+				\\\hline
+					\verb!\cotan[\frac 1x]!		&	\cotan[\frac 1x]			&	Cotangeante \rac
+				\\\hline
+					\verb!\reel{x}!			&	\reel{x}	&	Partie r√©elle.
+				\\\hline
+					\verb!\Re{x}!			&	\Re{x}		&	Partie r√©elle \rac.
 				\\\hline
 					\verb!\imaginaire{x}!		&	\imaginaire{x}	&	Partie Imaginaire.
 				\\\hline
@@ -196,7 +208,7 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 				\\\hline
 			\end{tabular}
 			
-	\section{…quations}
+	\section{√âquations}
 		
 			\noindent
 			\begin{verbatim}
@@ -224,19 +236,19 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\R!	&	\R		&	Nombre rÈel \rac
+			\verb!\R!	&	\R		&	Nombre r√©el \rac
 		\\\hline
-			\verb!\couple{A}{B}!	&	\couple{A}{B}		&	Couple d'ÈlÈments \rac
+			\verb!\couple{A}{B}!	&	\couple{A}{B}		&	Couple d'√©l√©ments \rac
 		\\\hline
-			\verb!\triplet{A}{B}{C}!	&	\triplet{A}{B}{C}			&	Triplet d'ÈlÈments
+			\verb!\triplet{A}{B}{C}!	&	\triplet{A}{B}{C}			&	Triplet d'√©l√©ments
 		\\\hline
-			\verb!\quadruplet{A}{B}{C}{D}!		&	\quadruplet{A}{B}{C}{D}			&	Quadruplet d'ÈlÈments
+			\verb!\quadruplet{A}{B}{C}{D}!		&	\quadruplet{A}{B}{C}{D}			&	Quadruplet d'√©l√©ments
 		\\\hline
 	\end{tabular}
 
 
 
-	\section{GÈomÈtrie}
+	\section{G√©om√©trie}
 	%----------------------------
 
 	\noindent
@@ -258,9 +270,9 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 	\section{Vecteurs}
 	%-------------------------------------------
 
-	De maniËre gÈnÈrale, tout ce qui concerne les vecteurs est prÈcÈdÈ de la lettre ``\emph{v}'',
-	tout ce qui concerne les base est prÈcÈdÈ de la lettre ``\emph{b}''
-	et tout ce qui concerne les repËres est prÈcÈdÈ de la lettre ``\emph{r}''.
+	De mani√®re g√©n√©rale, tout ce qui concerne les vecteurs est pr√©c√©d√© de la lettre ``\emph{v}'',
+	tout ce qui concerne les base est pr√©c√©d√© de la lettre ``\emph{b}''
+	et tout ce qui concerne les rep√®res est pr√©c√©d√© de la lettre ``\emph{r}''.
 
 
 	\subsection{Commandes de base}
@@ -271,21 +283,21 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline
 			\verb!\vecteur{e}[1]!		&	\vecteur{e}[1]		&	Vecteur avec indice
 		\\\hline
-			\verb!\vecteurIndice{e}{1}!	&	\vecteurIndice{e}{1}	&	Identique ‡ \verb!\vecteur!, sauf que l'indice est obligatoire...
+			\verb!\vecteurIndice{e}{1}!	&	\vecteurIndice{e}{1}	&	Identique √† \verb!\vecteur!, sauf que l'indice est obligatoire...
 		\\\hline
 			\verb!\vInd {e}{1}!		&	\vecteurIndice{e}{1}	&	
 		\\\hline
-			\verb!\vInd e1!			&	\vInd e1		&	exemple de simplification d'Ècriture.
+			\verb!\vInd e1!			&	\vInd e1		&	exemple de simplification d'√©criture.
 		\\\hline
 			\verb!\vecteurChamp{V}{x}!	&	\vecteurChamp{V}{x}	&	Vecteur champ
 		\\\hline
 			\verb!\vChamp{V}{x}!		&	\vChamp{V}{x}		&	Raccourci de \verb!\vecteurChamp!
 		\\\hline
-			\verb!\vChampOpt{V}[x]!		&	\vChampOpt{V}[x]	&	Identique ‡ \verb!\vecteurChamp! avec le paramËtre optionnel
+			\verb!\vChampOpt{V}[x]!		&	\vChampOpt{V}[x]	&	Identique √† \verb!\vecteurChamp! avec le param√®tre optionnel
 		\\\hline
 			\verb!\bipoint{A}{B}!		&	\bipoint{A}{B}		&	Bipoint
 		\\\hline
-			\verb!\vLie{A}{\vecteur{V}}!	&	\vLie{A}{\vecteur{V}}	&	Vecteur liÈ ‡ un point 
+			\verb!\vLie{A}{\vecteur{V}}!	&	\vLie{A}{\vecteur{V}}	&	Vecteur li√© √† un point 
 		\\\hline
 			\verb!\vGlissant{(\Delta)}{\vecteur{V}}!&\vGlissant{(\Delta)}{\vecteur{V}}	&	Vecteur Glissant
 		\\\hline
@@ -298,39 +310,45 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\hline
 			\verb!\eAffine[n]!		&	\eAffine[n]		&	Espace affine de dimension $n$
 		\\\hline
-			\verb!\eAffine!		&	\eAffine		&	Espace affine de dimension $3$ (par dÈfaut)
+			\verb!\eAffine!		&	\eAffine		&	Espace affine de dimension $3$ (par d√©faut)
 		\\\hline
 			\verb!\eVectoriel[n]!		&	\eVectoriel[n]		&	Espace vectoriel de dimension $n$
 		\\\hline
-			\verb!\eVectoriel!		&	\eVectoriel		&	Espace vectoriel de dimension $3$ (par dÈfaut)
+			\verb!\eVectoriel!		&	\eVectoriel		&	Espace vectoriel de dimension $3$ (par d√©faut)
 		\\\hline
 	\end{tabular}
-	\subsection{Base/RepËre}
+	\subsection{Base/Rep√®re}
 	%---------------------------------
 	\noindent
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\verb!\bB{}! ou 	\verb!\bB{1}! ou \verb!\bB2!	&	\bB{} ou \bB{1} ou \bB2		&	Symbole d'un base (avec ou sans indice) \rac
 		\\\hline
-			\verb!\base UVW!		&	\base UVW		&	Triplet reprÈsentant un base
+			\verb!\base UVW!		&	\base UVW		&	Triplet repr√©sentant un base
 		\\\hline
-			\verb!\bxyz!			&	\bxyz			&	Base prÈ-fabriquÈe \rac
+			\verb!\bxyz!			&	\bxyz			&	Base pr√©-fabriqu√©e \rac
 		\\\hline
-			\verb!\buvw!			&	\buvw			&	Base prÈ-fabriquÈe \rac
+			\verb!\buvw!			&	\buvw			&	Base pr√©-fabriqu√©e \rac
 		\\\hline
-			\verb!\rR! ou 	\verb!\rR{1}!	&	\rR\ ou \rR{1}		&	Symbole d'un repËre (avec ou sans indice) \rac
+			\verb!\bCartesien!		&	\bCartesien			&	Base pr√©-fabriqu√©e
 		\\\hline
-			\verb!\repere Ouvw!		&	\repere Ouvw		&	Quadruplet reprÈsentant un base
+			\verb!\bCylindrique!	&	\bCylindrique			&	Base pr√©-fabriqu√©e
 		\\\hline
-			\verb!\rOxyz!			&	\rOxyz			&	Base prÈ-fabriquÈe
+			\verb!\bSpherique!			&	\bSpherique			&	Base pr√©-fabriqu√©e
 		\\\hline
-			\verb!\rOuvw!			&	\rOuvw			&	Base prÈ-fabriquÈe
+			\verb!\rR! ou 	\verb!\rR{1}!	&	\rR\ ou \rR{1}		&	Symbole d'un rep√®re (avec ou sans indice) \rac
+		\\\hline
+			\verb!\repere Ouvw!		&	\repere Ouvw		&	Quadruplet repr√©sentant un base
+		\\\hline
+			\verb!\rOxyz!			&	\rOxyz			&	Base pr√©-fabriqu√©e
+		\\\hline
+			\verb!\rOuvw!			&	\rOuvw			&	Base pr√©-fabriqu√©e
 		\\\hline
 	\end{tabular}
 
 
 
-	\subsection{ReprÈsentation}
+	\subsection{Repr√©sentation}
 	\noindent
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
 		\hline
@@ -338,15 +356,15 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline
 			\verb!\vColonne{X\\Y\\Z}{}!	&	\vColonne{X\\Y\\Z}{}		&	Vecteur colonne sans base (mal !)
 		\\\hline
-			\verb!\vColonne{X;Y;Z}{B}!	&	\vColonne{X;Y;Z}{B}		&	Vecteur colonne avec remplacement des points virgules (par dÈfaut) par des saut de ligne
+			\verb!\vColonne{X;Y;Z}{B}!	&	\vColonne{X;Y;Z}{B}		&	Vecteur colonne avec remplacement des points virgules (par d√©faut) par des saut de ligne
 		\\\hline
-			\verb!\vColonne{X|Y|Z}{B}[|]!	&	\vColonne{X|Y|Z}{B}[|]		&	Idem que prÈcÈdemment, en choisissant le sÈparateur de lignes
+			\verb!\vColonne{X|Y|Z}{B}[|]!	&	\vColonne{X|Y|Z}{B}[|]		&	Idem que pr√©c√©demment, en choisissant le s√©parateur de lignes
 		\\\hline
-			\verb!\vColonne{X;Y;Z}{B}[]!	&	\vColonne{X;Y;Z}{B}[]		&	Un sÈparateur ``vide'' permet d'Èchapper les points virgules.
+			\verb!\vColonne{X;Y;Z}{B}[]!	&	\vColonne{X;Y;Z}{B}[]		&	Un s√©parateur ``vide'' permet d'√©chapper les points virgules.
 		\\\hline
 	\end{tabular}
 
-	\subsection{OpÈrateurs}
+	\subsection{Op√©rateurs}
 	\noindent
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
 		\hline
@@ -360,17 +378,17 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline
 			\verb!\dbPVect UVW!		&	\dbPVect UVW	&	Raccourci de \verb!\doubleProdVect!
 		\\\hline
-			\verb!\scalaire!			&	\scalaire		&	OpÈrateur produit scalaire
+			\verb!\scalaire!			&	\scalaire		&	Op√©rateur produit scalaire
 		\\\hline
 			\verb!\scal!				&	\scal			&	Raccourci de \verb!\scalaire! \rac
 		\\\hline
-			\verb!\vectoriel!			&	\vectoriel		&	OpÈrateur produit vectoriel
+			\verb!\vectoriel!			&	\vectoriel		&	Op√©rateur produit vectoriel
 		\\\hline
 			\verb!\vect!				&	\vect			&	Raccourci de \verb!\vectoriel! \rac
 		\\\hline
 	\end{tabular}
 
-	\subsection{Vecteurs prÈ-fariquÈs}
+	\subsection{Vecteurs pr√©-fariqu√©s}
 	\noindent
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
 		\hline
@@ -380,11 +398,11 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline
 			\verb!\ve{1}! ou \verb!\ve1!	&	\ve1	&	vecteur \vecteur e, avec indice \rac
 		\\\hline
-			\verb!\vex!			&	\vex	&	Identique ‡ \verb!\ve{x}! \rac
+			\verb!\vex!			&	\vex	&	Identique √† \verb!\ve{x}! \rac
 		\\\hline
-			\verb!\vey!			&	\vey	&	Identique ‡ \verb!\ve{y}! \rac
+			\verb!\vey!			&	\vey	&	Identique √† \verb!\ve{y}! \rac
 		\\\hline
-			\verb!\vez!			&	\vez	&	Identique ‡ \verb!\ve{z}! \rac
+			\verb!\vez!			&	\vez	&	Identique √† \verb!\ve{z}! \rac
 		\\\hline
 	\end{tabular}
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
@@ -400,9 +418,9 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\hline
 			\verb!\vn! ou	\verb!\vn[1]! 	&	\vn\ ou \vn[1]	&	Vecteur \vn\ avec ou sans indice. \rac
 		\\\hline
-			\verb!\ver! ou 	\verb!\ver[x]!	&	\ver\ ou \ver[x]&	Vecteur \ver\ avec ou sans paramËtre. \rac
+			\verb!\ver! ou 	\verb!\ver[x]!	&	\ver\ ou \ver[x]&	Vecteur \ver\ avec ou sans param√®tre. \rac
 		\\\hline
-			\verb!\vetheta! ou \verb!\vetheta[y]!	&	\vetheta\ ou \vetheta[y]	&	Vecteur \vetheta\ avec ou sans paramËtre.
+			\verb!\vetheta! ou \verb!\vetheta[y]!	&	\vetheta\ ou \vetheta[y]	&	Vecteur \vetheta\ avec ou sans param√®tre.
 		\\\hline
 	\end{tabular}
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
@@ -411,7 +429,7 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline
 			\verb!vU! ou 	\verb!vU[1]!	&	\vU\ ou \vU[1]	&	Vecteur \vU\ avec ou sans indice. \rac
 		\\\hline
-			\verb!\ux,\uy,\uz!		&	\ux,\uz,\uz	&	CoordonnÈes de \vu. \rac
+			\verb!\ux,\uy,\uz!		&	\ux,\uz,\uz	&	Coordonn√©es de \vu. \rac
 		\\\hline\hline
 			\verb!vv! ou 	\verb!vv[1]!	&	\vv\ ou \vv[1]	&	Vecteur \vv\ avec ou sans indice. \rac
 		\\\hline
@@ -424,14 +442,14 @@ usepackage[noRaccourci]{Raf_Notations_Maths}
 		\\\hline
 			\verb!vW! ou 	\verb!vW[1]!	&	\vW\ ou \vW[1]	&	Vecteur \vW\ avec ou sans indice. \rac
 		\\\hline
-			\verb!\wx,\wy,\wz! 		&	\wx,\wy,\wz	&	CoordonnÈes de \vw. \rac
+			\verb!\wx,\wy,\wz! 		&	\wx,\wy,\wz	&	Coordonn√©es de \vw. \rac
 		\\\hline
 	\end{tabular}
 	\begin{tabular}{|p{0.5\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\verb!\vOM! ou  \verb!\vOM[t]!	&	\vOM\ ou  \vOM[t]	&	Vecteur ou vecteur champ \vOM.
 		\\\hline
-			\verb!\Mx,\My,\Mz!		&	\Mx,\My,\Mz	&	CoordonnÈes de \vOM.\rac
+			\verb!\Mx,\My,\Mz!		&	\Mx,\My,\Mz	&	Coordonn√©es de \vOM.\rac
 		\\\hline
 			\verb!\vOP! ou 	\verb!\vOP[t]!	&	\vOP\ ou  \vOP[t]	&	Vecteur ou vecteur champ \vOP.
 		\\\hline

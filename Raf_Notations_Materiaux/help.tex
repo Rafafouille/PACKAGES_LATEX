@@ -9,61 +9,61 @@
 
 
 % 	\newcommand{\rac}{({\color{red}Raccourci})}
-% 	\newcommand{\ren}{({\color{blue}Renommé})}
+% 	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 
 \begin{document}
 
 	\begin{center}
-		\hrule{\Large Notation Matériaux}\\\hrule
+		\hrule{\Large Notation MatÃ©riaux}\\\hrule
 	\end{center}
 
 	\section{Packages requis}
 	%-------------------------------------
 		\begin{itemize}
 			\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles (if...then...else....)
-			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour créer des commandes avec plusieurs arguments optionnels
-			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathématiques (notamment l'utilisation de \verb!\text! il me semble).
+			\item \href{http://www.ctan.org/pkg/xargs}{\textbf{xargs}} : Pour crÃ©er des commandes avec plusieurs arguments optionnels
+			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathÃ©matiques (notamment l'utilisation de \verb!\text! il me semble).
 			\item \href{http://www.ams.org/publications/authors/tex/amsfonts}{\textbf{amsfont}} : Pour faire des maths (ensemble des reels, notamment)
 		\end{itemize}
 
 	\section{Appel du package}
 	%-------------------------------------
 
-		Le package est appelé en début de document par la commande :
+		Le package est appelÃ© en dÃ©but de document par la commande :
 		\begin{verbatim}
 \usepackage{Raf_Notations_Materiaux}
 		\end{verbatim}
 
-% 	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
-% 	De plus, certaines commandes ont été rebaptisées.
-% 	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-% 	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+% 	Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide Ã  taper !).
+% 	De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©es.
+% 	Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+% 	Pour ne pas crÃ©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! Ã  l'appel du package.
 % 
 % 	\begin{verbatim}
 % usepackage[noRaccourci]{Raf_Notations_Materiaux}
 % 	\end{verbatim}
 
 
-	\section{Déformations / Contraintes des matériaux}
+	\section{DÃ©formations / Contraintes des matÃ©riaux}
 	%-----------------------------
 		\noindent
 		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\tauxDeformation!		&	\tauxDeformation		&	Déformation relative (ou taux de déformation longitudinal).
+				\verb!\tauxDeformation!		&	\tauxDeformation		&	DÃ©formation relative (ou taux de dÃ©formation longitudinal).
 			\\\hline
-				\verb!\tauxDeformation[xx]!	&	\tauxDeformation[xx]		&	Déformation relative dans la direction $x$.
+				\verb!\tauxDeformation[xx]!	&	\tauxDeformation[xx]		&	DÃ©formation relative dans la direction $x$.
 			\\\hline
 				\verb!\matDef!			&	\matDef				&	Raccourci direct de \verb'\tauxDeDeformation'.
 			\\\hline
-				\verb!\deformationElastique!	&	\deformationElastique		&	Déformation élastique.
+				\verb!\deformationElastique!	&	\deformationElastique		&	DÃ©formation Ã©lastique.
 			\\\hline
 				\verb!\matDefE!			&	\matDefE			&	Raccourci de \verb!\deformationElastique!.
 			\\\hline
 				\verb!\defE!			&	\defE				&	Raccourci de \verb!\deformationElastique!.
 			\\\hline
-				\verb!\deformationPlastique!	&	\deformationPlastique		&	Déformation plastique.
+				\verb!\deformationPlastique!	&	\deformationPlastique		&	DÃ©formation plastique.
 			\\\hline
 				\verb!\matDefP!			&	\matDefP			&	Raccourci de \verb!\deformationPlastique!.
 			\\\hline
@@ -87,7 +87,7 @@
 			\\\hline
 		\end{tabular}
 
-	\section{Caractéristiques matériaux}
+	\section{CaractÃ©ristiques matÃ©riaux}
 	%-----------------------------
 		\noindent
 		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
@@ -98,11 +98,11 @@
 			\\\hline
 				\verb!\matE!		&	\matE		&	Raccourci \verb!moduleYoung!
 			\\\hline
-				\verb!\limiteElastique!	&	\limiteElastique&	Limite élastique
+				\verb!\limiteElastique!	&	\limiteElastique&	Limite Ã©lastique
 			\\\hline
 				\verb!\matRe!		&	\matRe		&	Raccourci \verb!\limiteElastique!
 			\\\hline
-				{\small \verb!\limiteElastiqueDeuxPourCent!}	&	\limiteElastiqueDeuxPourCent	&	Limite élastique à $2\%$
+				{\small \verb!\limiteElastiqueDeuxPourCent!}	&	\limiteElastiqueDeuxPourCent	&	Limite Ã©lastique Ã  $2\%$
 			\\\hline
 				\verb!\matRep!		&	\matRep		&	Raccourci {\small\verb!\limiteElastiqueDeuxPourcent!}
 			\\\hline
@@ -110,9 +110,9 @@
 			\\\hline
 				\verb!\matRm!		&	\matRm		&	Raccourci \verb!\limiteRupture!
 			\\\hline
-				\verb!\limitePratique!		&	\limitePratique		&	Résistance pratique (comportant un coefficient de sécurité)
+				\verb!\limitePratique!		&	\limitePratique		&	RÃ©sistance pratique (comportant un coefficient de sÃ©curitÃ©)
 			\\\hline
-				\verb!\resistancePratique!		&	\resistancePratique		&	Identique à \verb!\limitePratique!
+				\verb!\resistancePratique!		&	\resistancePratique		&	Identique Ã  \verb!\limitePratique!
 			\\\hline
 				\verb!\matRp!		&	\matRp		&	Raccourci de \verb!\limitePratique!
 			\\\hline
@@ -137,7 +137,7 @@
 		\end{tabular}
 
 
-\section{Désignation matériaux}
+\section{DÃ©signation matÃ©riaux}
 %=======================================
 
 		\noindent
@@ -145,12 +145,12 @@
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\designationMateriaux! \verb!{C\ 25}!	&	\designationMateriaux{C\ 25}	&	Format de base de désignation de matériau.
+				\verb!\designationMateriaux! \verb!{C\ 25}!	&	\designationMateriaux{C\ 25}	&	Format de base de dÃ©signation de matÃ©riau.
 			\\\hline
 		\end{tabular}
 
 
-	\subsection{Aciers non-alliés}
+	\subsection{Aciers non-alliÃ©s}
 	%-----------------------------------
 
 		\noindent
@@ -158,31 +158,31 @@
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\acier{12}!	&	\acier{12}	&	acier non-allié (par défaut pour construction générale).
+				\verb!\acier{12}!	&	\acier{12}	&	acier non-alliÃ© (par dÃ©faut pour construction gÃ©nÃ©rale).
 			\\\hline
-				\verb!\acier[E]{12}!	&	\acier[E]{12}	&	acier non-allié (pour un usage différent).
+				\verb!\acier[E]{12}!	&	\acier[E]{12}	&	acier non-alliÃ© (pour un usage diffÃ©rent).
 			\\\hline
-				\verb!\acier{12}[F]!	&	\acier{12}[F]	&	acier non-allié avec complément (ici : pour forgeage).
+				\verb!\acier{12}[F]!	&	\acier{12}[F]	&	acier non-alliÃ© avec complÃ©ment (ici : pour forgeage).
 			\\\hline
-				\verb!\acierMoule[12]!	&	\acierMoule{12}	&	acier non-allié moulé (s'utilise comme \verb!acier!).
+				\verb!\acierMoule[12]!	&	\acierMoule{12}	&	acier non-alliÃ© moulÃ© (s'utilise comme \verb!acier!).
 			\\\hline
 				\verb!\acierG[12]!	&	\acierG{12}	&	Raccourci de \verb!acierMoule!.
 			\\\hline
-				\verb!\acierS{12}!\newline\verb!\acierGS{12}!	&	\acierS{12}\newline\acierGS{12}	&	Raccourci vers acier non allié (non-moulé et moulé) pour construction générale.
+				\verb!\acierS{12}!\newline\verb!\acierGS{12}!	&	\acierS{12}\newline\acierGS{12}	&	Raccourci vers acier non alliÃ© (non-moulÃ© et moulÃ©) pour construction gÃ©nÃ©rale.
 			\\\hline
-				\verb!\acierE{12}!\newline\verb!\acierGE{12}!	&	\acierE{12}\newline\acierGE{12}	&	Raccourci vers acier non allié (non-moulé et moulé) pour construction mécanique.
+				\verb!\acierE{12}!\newline\verb!\acierGE{12}!	&	\acierE{12}\newline\acierGE{12}	&	Raccourci vers acier non alliÃ© (non-moulÃ© et moulÃ©) pour construction mÃ©canique.
 			\\\hline
-				\verb!\acierC{12}!\newline\verb!\acierGC{12}!	&	\acierC{12}\newline\acierGC{12}	&	Raccourci vers acier non allié (non-moulé et moulé) pour traitement technique.
+				\verb!\acierC{12}!\newline\verb!\acierGC{12}!	&	\acierC{12}\newline\acierGC{12}	&	Raccourci vers acier non alliÃ© (non-moulÃ© et moulÃ©) pour traitement technique.
 			\\\hline
-				\verb!\acierP{12}!\newline\verb!\acierGP{12}!	&	\acierP{12}\newline\acierGP{12}	&	Raccourci vers acier non allié (non-moulé et moulé) pour appareil à pression.
+				\verb!\acierP{12}!\newline\verb!\acierGP{12}!	&	\acierP{12}\newline\acierGP{12}	&	Raccourci vers acier non alliÃ© (non-moulÃ© et moulÃ©) pour appareil Ã  pression.
 			\\\hline
-				\verb!\acierB{12}!\newline\verb!\acierGB{12}!	&	\acierB{12}\newline\acierGB{12}	&	Raccourci vers acier non allié (non-moulé et moulé) pour armature béton.
+				\verb!\acierB{12}!\newline\verb!\acierGB{12}!	&	\acierB{12}\newline\acierGB{12}	&	Raccourci vers acier non alliÃ© (non-moulÃ© et moulÃ©) pour armature bÃ©ton.
 			\\\hline
-				\verb!\acierH{12}!\newline\verb!\acierGH{12}!	&	\acierH{12}\newline\acierGH{12}	&	Raccourci vers acier non allié (non-moulé et moulé) pour en forme de pièces plates.
+				\verb!\acierH{12}!\newline\verb!\acierGH{12}!	&	\acierH{12}\newline\acierGH{12}	&	Raccourci vers acier non alliÃ© (non-moulÃ© et moulÃ©) pour en forme de piÃ¨ces plates.
 			\\\hline
 		\end{tabular}
 
-	\subsection{Aciers faiblement alliés}
+	\subsection{Aciers faiblement alliÃ©s}
 	%------------------------
 
 		\noindent
@@ -190,13 +190,13 @@
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\acierFaiblementAllie{35}! \verb!{\Ni\Cr}[16]!	&	\acierFaiblementAllie{35}{\Ni\Cr}[16]	&	Acier faiblement allié ($0.35\%$ de carbone et $4\%$ de nickel et des traces de chrome).
+				\verb!\acierFaiblementAllie{35}! \verb!{\Ni\Cr}[16]!	&	\acierFaiblementAllie{35}{\Ni\Cr}[16]	&	Acier faiblement alliÃ© ($0.35\%$ de carbone et $4\%$ de nickel et des traces de chrome).
 			\\\hline
 				\verb!\acierFA{35}{\Ni\Cr}[16]!	&	\acierFA{35}{\Ni\Cr}[16]	&	Raccourci de \verb!\acierFaiblementAllie!.
 			\\\hline
 		\end{tabular}
 
-	\subsection{Aciers fortement alliés}
+	\subsection{Aciers fortement alliÃ©s}
 	%------------------------
 
 		\noindent
@@ -204,7 +204,7 @@
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\acierFortementAllie{15}! \verb!{\Cr\Ni}{18-10}!	&	\acierFortementAllie{15}{\Cr\Ni}{18-10}	&	Acier fortement allié.
+				\verb!\acierFortementAllie{15}! \verb!{\Cr\Ni}{18-10}!	&	\acierFortementAllie{15}{\Cr\Ni}{18-10}	&	Acier fortement alliÃ©.
 			\\\hline
 				\verb!\acierX{15}{\Cr\Ni}! \verb!{18-10}!			&	\acierX{15}{\Cr\Ni}{18-10}			&	Raccourci de \verb!\acierFortementAllie!.
 			\\\hline
@@ -217,35 +217,35 @@
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\fonte{L}{120}!	&	\fonte{L}{120}		&	Fonte (ici : à graphite lamellaire, $\matRm=120\text{MPa}$).
+				\verb!\fonte{L}{120}!	&	\fonte{L}{120}		&	Fonte (ici : Ã  graphite lamellaire, $\matRm=120\text{MPa}$).
 			\\\hline
 				\verb!\fonte{L}{120}[5]!&	\fonte{L}{120}[5]	&	Fonte avec \matAp.
 			\\\hline
-				\verb!\fonteL{120}!	&	\fonteL{120}		&	Fonte à graphite lamellaire.
+				\verb!\fonteL{120}!	&	\fonteL{120}		&	Fonte Ã  graphite lamellaire.
 			\\\hline
-				\verb!\fonteS{120}!	&	\fonteS{120}		&	Fonte à graphite sphéroïdal.
+				\verb!\fonteS{120}!	&	\fonteS{120}		&	Fonte Ã  graphite sphÃ©roÃ¯dal.
 			\\\hline
-				\verb!\fonteMW{120}!	&	\fonteMW{120}		&	Fonte malléable à c\oe ur blanc.
+				\verb!\fonteMW{120}!	&	\fonteMW{120}		&	Fonte mallÃ©able Ã  c\oe ur blanc.
 			\\\hline
-				\verb!\fonteMB{120}!	&	\fonteMB{120}		&	Fonte malléable à c\oe ur noir.
+				\verb!\fonteMB{120}!	&	\fonteMB{120}		&	Fonte mallÃ©able Ã  c\oe ur noir.
 			\\\hline
 		\end{tabular}
 
-	\subsection{Métaux non-ferreux}
+	\subsection{MÃ©taux non-ferreux}
 	%-----------------------------------------
 
 		\begin{tabular}{|p{0.4\linewidth}|p{0.25\linewidth}|p{0.35\linewidth}|}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\metal{\Al}{99.5}!	&	\metal{\Al}{99.5}		&	Métal non ferreux (ici : aluminium à $99.5\%$).
+				\verb!\metal{\Al}{99.5}!	&	\metal{\Al}{99.5}		&	MÃ©tal non ferreux (ici : aluminium Ã  $99.5\%$).
 			\\\hline
 				\verb!\alliage{\Al}! \verb!{\Cu4\ \Mg\ \Ti}!	&	\alliage{\Al}{\Cu4\ \Mg\ \Ti}		&	Alliage d'aluminium.
 			\\\hline
 		\end{tabular}
 
 
-	\subsection{Éléments chimiques}
+	\subsection{Ã‰lÃ©ments chimiques}
 	%------------------------------------------
 
 
@@ -253,7 +253,7 @@
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\elementChimique{X}!	&	\elementChimique{X}		&	Format de base d'un élément chimique.
+				\verb!\elementChimique{X}!	&	\elementChimique{X}		&	Format de base d'un Ã©lÃ©ment chimique.
 			\\\hline
 				\verb!\elementChimique{X}[2]!	&	\elementChimique{X}[2]		&	idem avec nombre en indice.
 			\\\hline
@@ -277,15 +277,15 @@
 			\\\hline
 				\verb!\Cu!	&	\Cu		&	Cuivre
 			\\\hline
-				\verb!\Sn!	&	\Sn		&	Étain
+				\verb!\Sn!	&	\Sn		&	Ã‰tain
 			\\\hline
 				\verb!\Fe!	&	\Fe		&	Fer
 			\\\hline
-				\verb!\Mn!	&	\Mn		&	Manganèse
+				\verb!\Mn!	&	\Mn		&	ManganÃ¨se
 			\\\hline
-				\verb!\Mg!	&	\Mg		&	Magnésium
+				\verb!\Mg!	&	\Mg		&	MagnÃ©sium
 			\\\hline
-				\verb!\Molybdene!	&	\Molybdene		&	Molybdène
+				\verb!\Molybdene!	&	\Molybdene		&	MolybdÃ¨ne
 			\\\hline
 				\verb!\Ni!	&	\Ni		&	Nickel
 			\\\hline
@@ -307,7 +307,7 @@
 			\\\hline
 				\verb!\vanadium!&	\vanadium		&	Vanadium
 			\\\hline
-				\verb!\tungstene!&	\tungstene		&	Tungstène
+				\verb!\tungstene!&	\tungstene		&	TungstÃ¨ne
 			\\\hline
 		\end{tabular}
 

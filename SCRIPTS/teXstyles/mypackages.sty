@@ -1,0 +1,154 @@
+%=======================================================================
+%%
+%% Copyright 2013-2016 by Nicolas Mesnier <nicolas.mesnier@gmail.com>
+%%
+%% This file may be distributed and/or modified
+%% 1. under the LaTeX Project Public License and/or
+%% 2. under the GNU Public License.
+%% See the file doc/licenses/LICENSE for more details.
+%%
+%% Unlimited copying and redistribution of this file are permitted as
+%% long as this file is not modified.  Modifications, and distribution
+%% of modified versions, are permitted, but only if the resulting file
+%% is renamed.
+%-----------------------------------------------------------------------
+\ProvidesPackage{mypackages}[2014/08/12]
+%=======================================================================
+\RequirePackage{etex}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[french]{babel}
+\RequirePackage[autolanguage]{numprint}
+\RequirePackage{%
+	setspace,color,calc,graphicx,multicol,% << style
+	amsmath,amssymb,amsfonts,amstext,amsthm,stmaryrd,% << maths
+	mathtools,% << for left side subs
+%	thmtools,% << for customize theorem
+	mathrsfs, % << some math fonts
+	enumitem,% << lists
+	longtable,colortbl,multirow,array,% << tabular
+	marvosym,% << symbols
+	tikz,pgf,pgfcore,pgfplots,% << graphics
+	schemabloc,% << shémas-blocs, include tikz & pgf
+	float,wrapfig, % << to wrap fig !
+	pdfpages,%
+	framed,%mdframed,% << for frame
+	verbatim,% << comments
+	lastpage,% << to get total nb of pages
+	csquotes,%
+%	pdflscape,% << swith to landscape (lscape for print)
+%	subfigure,% << for \subfigure[]{}
+	ifthen,%
+	pifont,
+}
+\usepackage{rotating}
+\usepackage{ascii}
+
+% *** fonts
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+\RequirePackage{lmodern}
+% *** microtype
+\RequirePackage[babel,final]{microtype}% final for less badbox
+%\RequirePackage[babel=true,kerning=french]{microtype}
+
+\DeclareMicrotypeAlias{lmr}{cmr}
+
+% *** pgf/tikz library
+\usepgflibrary{arrows}
+\usetikzlibrary{calc,automata,er,fadings,decorations,shadows,shapes,%
+	topaths,positioning,matrix,patterns,intersections,%
+	babel,% pour préserver les caractères actifs
+}
+
+% *** enumitem options
+\setlist{noitemsep}
+
+%-----------------------------------------------------------------------
+% *** figures
+%-----------------------------------------------------------------------
+\def\fnum@figure{{\scshape\figurename\nobreakspace\thefigure}}
+\renewenvironment{figure}[1][htbp]%
+               {\@float{figure}[#1]}
+               {\end@float}
+% caption
+\long\def\@makecaption#1#2{
+   \vskip 10pt
+   \setbox\@tempboxa\hbox{{\scshape #1} \textendash{} #2}
+   \ifdim \wd\@tempboxa >\hsize % if longer than one line
+       {\scshape #1} \textendash{} #2\par
+     \else % else centered
+       \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+   \fi}
+
+%-----------------------------------------------------------------------
+% caption outside a figure environment
+\newcommand\captionfig[1]{\refstepcounter{figure}%
+\textsc{Figure \thefigure} \textendash{} #1}
+\newcommand\captiontab[1]{\refstepcounter{table}%
+\textsc{Table \thetable} \textendash{} #1}
+
+%-----------------------------------------------------------------------
+% *** labels of description
+\def\descriptionlabel#1{\hspace\labelsep {\bfseries#1}\hfil}
+% adjusted environment "description"
+% if an optional parameter (at the first two levels of lists)
+% is present, its width is considered to be the widest mark
+% throughout the current list.
+\def\description{\@ifnextchar[{\@describe}{\list{}{\labelwidth\z@
+          \itemindent-\leftmargin \let\makelabel\descriptionlabel}}}
+\let\enddescription\endlist
+
+
+%-----------------------------------------------------------------------
+% *** code python
+%-----------------------------------------------------------------------
+\usepackage{listings}
+\lstset{
+	upquote=true,
+	columns=flexible,
+	basicstyle=\ttfamily,
+	language=Python,
+	keywordstyle=\color{blue},
+	identifierstyle=\color{black},
+	commentstyle=\color{orange},
+	% *** style
+	frame=leftline,%
+	framerule=3pt,%
+	rulecolor=\color{black!20},%
+	framesep=1em,%
+	xleftmargin=2em,%
+	% code
+	showstringspaces=false,
+	texcl=True,% to activate teX code
+	literate=%
+{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+{€}{{\EUR}}1 {£}{{\pounds}}1
+{°}{{\degres{}}}1
+}
+
+\input{arduinoLanguage.tex}
+\lstdefinestyle{myArduino}{
+  language=Arduino,
+  %% Add other words needing highlighting below %%
+  morekeywords=[1]{},                  % [1] -> dark green
+  morekeywords=[2]{FILE_WRITE},        % [2] -> light blue
+  morekeywords=[3]{SD, File},          % [3] -> bold orange
+  morekeywords=[4]{open, exists},      % [4] -> orange
+  %% The lines below add a nifty box around the code %%
+  frame=shadowbox,
+  rulesepcolor=\color{arduinoBlue},
+}
+
+
+
+%====================================================================eof

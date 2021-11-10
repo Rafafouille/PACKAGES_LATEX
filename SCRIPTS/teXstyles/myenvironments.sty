@@ -1,0 +1,505 @@
+%=======================================================================
+\ProvidesPackage{myenvironments}[2014/08/12]
+%-----------------------------------------------------------------------
+% Copyright 2014-2016 by Nicolas Mesnier <nicolas.mesnier@gmail.com>
+%
+% This file may be distributed and/or modified
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+% See the file doc/licenses/LICENSE for more details.
+%-----------------------------------------------------------------------
+%=======================================================================
+\makeatletter
+%-----------------------------------------------------------------------
+% *** objectif & co environment
+%-----------------------------------------------------------------------
+\if@polyTD
+\newenvironment{objectif}[1][Objectif]%
+	{\par\medskip\noindent
+	\rule[3pt]{15mm}{.5pt}~\textbf{#1}~%
+	\rule[3pt]{\linewidth-\widthof{\rule[3pt]{15mm}{.5pt}~\textbf{#1}~}}{.5pt}%
+	\bgroup
+	  \list{}{\leftmargin 1.5em \rightmargin 1.5em}
+	  \item\relax
+	}{\endlist\egroup\vskip-1ex\noindent\rule{\linewidth}{.5pt}\par\vspace{1em}}
+
+\newenvironment{objectifs}[1][Objectifs]%
+	{\par\medskip\noindent
+	\rule[3pt]{15mm}{.5pt}~\textbf{#1}~%
+	\rule[3pt]{\linewidth-\widthof{\rule[3pt]{15mm}{.5pt}~\textbf{#1}~}}{.5pt}%
+	\bgroup
+	  \list{}{\leftmargin 1.5em \rightmargin 1.5em}
+	  \item\relax
+	}{\endlist\egroup\vskip-1ex\noindent\rule{\linewidth}{.5pt}\par\vspace{1em}}
+
+\else
+\newenvironment{objectifs}[1][Objectifs]%
+               {\list{}{\rightmargin\leftmargin}%
+                \item\relax\centerline{\bf Objectifs}}
+               {\endlist}
+
+\newenvironment{objectif}[1][Objectif]%
+	{\par\medskip\noindent
+	\rule[3pt]{15mm}{.5pt}~\textbf{#1}~%
+	\rule[3pt]{\linewidth-\widthof{\rule[3pt]{15mm}{.5pt}~\textbf{#1}~}}{.5pt}%
+	\bgroup
+	  \list{}{\leftmargin 1.5em \rightmargin 1.5em}
+	  \item\relax
+	}{\endlist\egroup\vskip-1ex\noindent\rule{\linewidth}{.5pt}\par\vspace{1em}}
+			   
+\fi
+
+
+\newenvironment{connaissances}
+               {\par\medskip\list{}{\rightmargin\leftmargin}%
+                \item\relax\centerline{\bf Connaissances}}
+               {\endlist}
+
+\newenvironment{competences}
+               {\par\medskip\list{}{\rightmargin\leftmargin}%
+                \item\relax\centerline{\bf Comp\'etences}}
+               {\endlist}
+
+\newenvironment{prerequis}
+               {\list{}{\rightmargin\leftmargin}%
+                \item\relax\centerline{\bf Pr\'e-requis}}
+               {\endlist}
+%-----------------------------------------------------------------------
+% *** abstract environment
+%-----------------------------------------------------------------------
+\if@poly
+  \newenvironment{abstract}
+	{\begin{shaded}\small\sffamily\quotation}
+	{\endquotation\end{shaded}\par}
+\else
+  \renewenvironment{abstract}
+	{\begin{shaded}\small\sffamily\quotation}
+	{\endquotation\end{shaded}\par}
+\fi
+
+%-----------------------------------------------------------------------
+% *** definition environment
+%-----------------------------------------------------------------------
+\newtheoremstyle{definition}% name
+	{10pt}% Space above
+	{10pt}% Space below        
+	{}%Body font    
+	{0pt}%Indent amount 1
+	{\bfseries}% Theorem head font   
+	{~\\*}%Punctuation after theorem head
+	{1ex}%Space after theorem head 2
+	{\thmname{#1}\thmnumber{ #2}\thmnote{~(\textbf{#3})}}%Theorem head spec 
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[section]
+
+%-----------------------------------------------------------------------
+% *** property environment
+%-----------------------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{property}{Propriété}[section]
+% formelly
+\newtheorem{prop}{Propriété}[section]
+%-----------------------------------------------------------------------
+% *** theorem environment
+%-----------------------------------------------------------------------
+\newtheoremstyle{theorem}% name
+	{10pt}% Space above
+	{10pt}% Space below        
+	{\itshape}%Body font    
+	{0pt}%Indent amount 1
+	{\bfseries}% Theorem head font   
+	{~\\*}%Punctuation after theorem head
+	{1ex}%Space after theorem head 2
+	{\thmname{#1}\thmnumber{ #2}\thmnote{~(\textbf{#3})}}%Theorem head spec 
+\theoremstyle{theorem}
+\newtheorem{theorem}{Théorème}[section]
+%-----------------------------------------------------------------------
+% *** proposition environment
+%-----------------------------------------------------------------------
+\theoremstyle{theorem}
+\newtheorem{proposition}{Proposition}[section]
+%-----------------------------------------------------------------------
+% *** example environment
+%-----------------------------------------------------------------------
+% style
+\newtheoremstyle{example}
+	{2pt}% space above
+	{2pt}% space below        
+	{}% body font
+	{0pt}% indent amount 1
+	{\bfseries}% Theorem head font   
+	{~\\*}% punctuation after theorem head
+	{1ex}% space after theorem head 2
+	{\thmname{#1}\thmnumber{ #2}\thmnote{~(\textbf{#3})}}% head spec 
+\theoremstyle{example}
+\newtheorem{examplethm}{Exemple}[section]
+% gray left bar (adapted from framed.sty)
+\newenvironment{grayleftbar}{%
+  \def\FrameCommand{\hspace{2pt}{\color{black!20}\vrule width 4pt}%
+    \hspace{10pt}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+% environment
+\newenvironment{example}[1][]%
+	{\begin{grayleftbar}\begin{examplethm}[#1]}%
+	{\end{examplethm}\end{grayleftbar}}
+% *** clone français
+\newenvironment{exemple}[1][]%
+	{\begin{grayleftbar}\begin{examplethm}[#1]}%
+	{\end{examplethm}\end{grayleftbar}}
+
+%-----------------------------------------------------------------------
+% *** exercice environment
+%-----------------------------------------------------------------------
+\if@cours
+\theoremstyle{example}
+\newtheorem{exothm}{Exercice}[section]
+\newenvironment{exercice}[1][]%
+	{\begin{grayleftbar}\begin{exothm}[#1]}%
+	{\end{exothm}\end{grayleftbar}}
+\fi
+%-----------------------------------------------------------------------
+% *** remarque environment
+%-----------------------------------------------------------------------
+\newtheoremstyle{remarque}% name
+	{2pt}% space above
+	{2pt}% space below        
+	{}% body font
+	{0pt}% indent amount 1
+	{\bfseries}% Theorem head font   
+	{~\\*}% punctuation after theorem head
+	{1ex}% space after theorem head 2
+	{\thmname{#1}\thmnumber{ #2}\thmnote{~(\boldmath\textbf{#3})}}% head spec 
+
+\theoremstyle{remarque}
+\newtheorem{remarkthm}{Remarque}[section]
+\newtheorem*{nnremarkthm}{Remarque}
+
+% adapted from framed.sty
+\newenvironment{thinleftbar}{%
+  \def\FrameCommand{\hspace{2pt}{\vrule width 1pt} \hspace{8pt}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+
+\newenvironment{remark}[1][]%
+	{\medskip\begin{thinleftbar}\begin{remarkthm}[#1]}%
+	{\end{remarkthm}\end{thinleftbar}\medskip}
+% unumbered remark
+\newenvironment{nnremark}[1][]%
+	{\medskip\begin{thinleftbar}\begin{nnremarkthm}[#1]}%
+	{\end{nnremarkthm}\end{thinleftbar}\medskip}
+
+\newenvironment{remarque}[1][]%
+	{\begin{thinleftbar}\begin{remarkthm}[#1]}%
+	{\end{remarkthm}\end{thinleftbar}}
+%-----------------------------------------------------------------------
+% *** method environment
+%-----------------------------------------------------------------------
+\theoremstyle{remarque}
+\newtheorem{methodthm}{Méthode}[section]
+
+% adapted from framed.sty
+\newenvironment{doubleleftbar}{%
+  \def\FrameCommand{\hspace{2pt}{\vrule width 1pt}\hspace{1pt}{\vrule width 1pt} \hspace{8pt}}%
+%  \def\FrameCommand{\hspace{2pt}{\vrule width 1pt} \hspace{8pt}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+
+%\newenvironment{method}[1][]%
+%	{\medskip\begin{doubleleftbar}\begin{methodthm}[#1]}%
+%	{\end{methodthm}\end{doubleleftbar}\medskip}
+
+\newenvironment{method}[1][]%
+	{\begin{framed}\begin{methodthm}[#1]}%
+	{\end{methodthm}\end{framed}}
+
+%-----------------------------------------------------------------------
+% *** question environment
+%-----------------------------------------------------------------------
+% *** question style
+\newtheoremstyle{quest}% name
+{6pt}% Space above
+{6pt}% Space below        
+{\itshape}%Body font    
+{0pt}%Indent amount 1
+{\bfseries}% Theorem head font   
+{.}%Punctuation after theorem head
+{1ex}%Space after theorem head 2
+{}%Theorem head spec (can be left empty, meaning 'normal')
+\theoremstyle{quest}
+\if@polyTD
+%\newtheorem{question}{Question}[chapter]% << numbered within each chapter
+\newtheorem{question}{Question}[section]% << numbered within each chapter
+\else
+	\if@DS
+	\newtheorem{question}{Question}[section]% << numbered within each section 
+	\else
+	\newtheorem{question}{Question}%
+	\fi
+\fi
+
+%-----------------------------------------------------------------------
+% *** exo environment
+%-----------------------------------------------------------------------
+% *** exo
+\if@polyTD
+\else
+\newtheoremstyle{exo}% name
+	{10pt}% Space above
+	{10pt}% Space below        
+	{}%Body font    
+	{0pt}%Indent amount 1
+	{\bfseries}% Theorem head font   
+	{~\\*}%Punctuation after theorem head
+	{1ex}%Space after theorem head 2
+	{\thmname{#1}\thmnumber{ #2}\thmnote{~(\textbf{#3})}}%Theorem head spec 
+\theoremstyle{exo}
+\newtheorem{exo}{Exercice}%[section]
+\fi
+% to get auto newline for enumerate in exo env
+\newenvironment{exonumerate}
+	{\mbox{}\leavevmode\vspace{-\baselineskip}\begin{enumerate}}
+	{\end{enumerate}}
+
+%-----------------------------------------------------------------------
+% *** notation environment
+%-----------------------------------------------------------------------
+\newenvironment{notation}%
+	{\par\vskip10pt\small
+	\begin{list}{}{
+	\leftmargin=25pt
+	\rightmargin=25pt
+	\itemindent=0pt}\item\ignorespaces{\normalsize $\vartriangleright$~\textbf{Notation}}~\\
+	\advance\baselineskip -1pt}%
+	{\end{list}\vskip5pt}
+
+%-----------------------------------------------------------------------
+% *** important environment
+%-----------------------------------------------------------------------
+\newenvironment{important}[1][]%
+	{\begin{framed}\noindent\Info~\textbf{#1}}%
+	{\end{framed}}
+
+%\newtheoremstyle{method}% name
+%{10pt}% Space above
+%{10pt}% Space below        
+%{}%Body font    
+%{0pt}%Indent amount 1
+%{\scshape}% Theorem head font   
+%{~\\}%Punctuation after theorem head
+%{1ex}%Space after theorem head 2
+%{}%Theorem head spec (can be left empty, meaning 'normal')
+%\theoremstyle{method}
+%\newtheorem{method}{Méthode}%[section]
+\newenvironment{boitemethode}[1][]%
+	{\begin{framed}\begin{method}[#1]}%
+	{\end{method}\end{framed}}
+
+%-----------------------------------------------------------------------
+% *** cpt environment
+%-----------------------------------------------------------------------
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+%	rightline=false,
+%	leftline=true,
+%	topline=false,
+%	bottomline=false,
+	backgroundcolor=black!10,
+	linecolor=black,
+	innerleftmargin=10pt,
+	innerrightmargin=10pt,
+	innertopmargin=10pt,
+	innerbottommargin=10pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=.5pt]{cptBox}
+
+\newtheoremstyle{complement}% name
+{10pt}% Space above
+{10pt}% Space below        
+{}%Body font    
+{0pt}%Indent amount 1
+{\scshape\large}% Theorem head font   
+{~\\*[1ex]}%Punctuation after theorem head
+{1ex}%Space after theorem head 2
+{\thmname{#1}\thmnumber{ #2}\thmnote{~\textendash{}~\textbf{#3}}}%Theorem head spec 
+\theoremstyle{complement}
+\newtheorem*{complementh}{Complément mathématique}%[section]
+
+\newenvironment{cpt}[1][]%
+	{\begin{cptBox}\begin{complementh}[#1]}%
+	{\nobreak\end{complementh}\nobreak\end{cptBox}}
+
+%-----------------------------------------------------------------------
+% *** « pour aller plus loin » environment
+%-----------------------------------------------------------------------
+\newenvironment{papl}%
+	{\paragraph{$\blacktriangleright$~$\blacktriangleright$~$\blacktriangleright$~
+\emph{Pour aller plus loin\dots{}}}~\\}%
+	{\par}
+
+
+%-----------------------------------------------------------------------
+% *** CDC environment
+%-----------------------------------------------------------------------
+\newenvironment{CDC}
+	{\medskip\begin{grayleftbar}\noindent\textbf{Extrait du cahier des charges :}\\}%
+	{\end{grayleftbar}\medskip}
+
+%-----------------------------------------------------------------------
+% *** info environment
+%-----------------------------------------------------------------------
+\newsavebox{\boiteinfo}
+\newenvironment{info}{\medskip%
+	\setbox\boiteinfo=\vbox\bgroup%
+	\hsize\textwidth\addtolength{\hsize}{-6em}\parindent0pt%
+	\vspace*{5pt}}%
+	{\vspace*{5pt}\par\egroup%
+	\noindent\parbox[b][\heightof{\usebox{\boiteinfo}}][c]{4em}{\centering\huge\Info}%
+	\rule{1pt}{\heightof{\usebox{\boiteinfo}}}\hskip1em%
+	\parbox[b][\heightof{\usebox{\boiteinfo}}][c]{\textwidth-6em}{\usebox{\boiteinfo}}
+	\par\medskip
+}
+
+%-----------------------------------------------------------------------
+% *** home environment
+%-----------------------------------------------------------------------
+\newsavebox{\boitehome}
+\newenvironment{home}{\medskip%
+	\setbox\boitehome=\vbox\bgroup%
+	\hsize\textwidth\addtolength{\hsize}{-6em}\parindent0pt%
+	\vspace*{5pt}}%
+	{\vspace*{5pt}\par\egroup%
+	\noindent\tikz\node at (0,0)[rectangle,fill=black!10,rounded corners]{\parbox{\linewidth}{%
+	\parbox[b][\heightof{\usebox{\boitehome}}][c]{4em}{\centering\includegraphics[width=3em]{TP_home}}%
+	\textcolor{white}{\rule{1pt}{\heightof{\usebox{\boitehome}}}}\hskip1em%
+	\parbox[b][\heightof{\usebox{\boitehome}}][c]{\textwidth-8em}{\usebox{\boitehome}}%
+	\hskip2em%
+	}};
+	\par\medskip
+}
+
+
+
+%-----------------------------------------------------------------------
+% *** manip environment
+%-----------------------------------------------------------------------
+\newtheoremstyle{manipstyle}% name
+{8pt}% Space above
+{8pt}% Space below        
+{}%Body font    
+{0pt}%Indent amount 1
+{\bfseries}% Theorem head font   
+{.\\}%Punctuation after theorem head
+{1ex}%Space after theorem head 2
+{}%Theorem head spec (can be left empty, meaning 'normal')
+\theoremstyle{manipstyle}
+\newtheorem{manipthm}{Manipulation}
+
+%\newenvironment{manip}[1][]%
+%	{\begin{grayleftbar}\begin{manipthm}[#1]\par}%
+%	{\end{manipthm}\end{grayleftbar}}
+
+\newsavebox{\boitemanip}
+\newenvironment{manip}[1][]%
+	{\medskip%
+	\setbox\boitemanip=\vbox\bgroup%
+	\addtolength{\linewidth}{-6em}
+	\hsize\textwidth\addtolength{\hsize}{-6em}\parindent0pt%
+	\begin{manipthm}[#1]\par}%
+	{\end{manipthm}\par\egroup%
+	\noindent\tikz\node at (0,0)[rectangle,fill=black!10,rounded corners]{\parbox{\linewidth-1ex}{%	
+	\parbox[b][\heightof{\usebox{\boitemanip}}][t]{4em}{\centering\vspace*{7pt}\includegraphics[width=3em]{applications-engineering}}%
+	\parbox[b][\heightof{\usebox{\boitemanip}}][c]{\textwidth-6em}{\usebox{\boitemanip}}%
+	}};
+	\par\medskip
+}
+
+%-----------------------------------------------------------------------
+% *** model environment
+%-----------------------------------------------------------------------
+\newtheoremstyle{modelstyle}% name
+{8pt}% Space above
+{8pt}% Space below        
+{}%Body font    
+{0pt}%Indent amount 1
+{\bfseries}% Theorem head font   
+{.\\}%Punctuation after theorem head
+{1ex}%Space after theorem head 2
+{}%Theorem head spec (can be left empty, meaning 'normal')
+\theoremstyle{modelstyle}
+\newtheorem{modelthm}{Modélisation}
+
+\newsavebox{\boitemodel}
+\newenvironment{model}[1][]%
+	{\medskip%
+	\setbox\boitemodel=\vbox\bgroup%
+	\addtolength{\linewidth}{-6em}
+	\hsize\textwidth\addtolength{\hsize}{-6em}\parindent0pt%
+	\begin{modelthm}[#1]\par}%
+	{\end{modelthm}\par\egroup%
+	\noindent\tikz\node at (0,0)[rectangle,fill=black!10,rounded corners]{\parbox{\linewidth-1ex}{%	
+	\parbox[b][\heightof{\usebox{\boitemodel}}][t]{4em}{\centering\vspace*{7pt}\includegraphics[width=3em]{applications-model}}%
+	\parbox[b][\heightof{\usebox{\boitemodel}}][c]{\textwidth-6em}{\usebox{\boitemodel}}%
+	}};
+	\par\medskip
+}
+
+
+%-----------------------------------------------------------------------
+% *** prof/eleve
+%-----------------------------------------------------------------------
+\newenvironment{profe}{\color{white}}
+%\newcommand{\prof}[1]{\textcolor{white}{#1}}
+
+\if@poly
+\newcommand\prof[1]{\relax
+  \if@prof 
+    {#1}
+  \else
+    \ifmmode\phantom{#1}\else\textcolor{white}{#1}\fi
+  \fi
+}
+
+\newcommand\profinv[1]{\relax
+  \if@prof 
+    {#1}   
+  \fi
+}
+\else
+
+
+\if@prof
+\newenvironment{correction}{}{}
+\newenvironment{DR}{\newpage~}{}
+\else
+\let\correction\comment
+\let\DR\comment
+\fi
+
+
+\newcommand\prof[1]{\relax
+  \if@prof 
+    {\color{blue}#1}
+  \else
+    \ifmmode\phantom{#1}\else\textcolor{white}{#1}\fi
+  \fi
+}
+
+\newcommand\profinv[1]{\relax
+  \if@prof 
+    {\color{blue}#1}   
+  \fi
+}
+\fi
+
+\newcommand\eleve[1]{\relax
+  \if@prof
+  \else
+    #1
+  \fi
+}
+
+\makeatother
+%====================================================================eof

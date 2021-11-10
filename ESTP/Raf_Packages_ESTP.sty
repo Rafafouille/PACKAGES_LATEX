@@ -1,0 +1,135 @@
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Packages_ESTP}[2020/11/11]
+
+
+
+\RequirePackage{Raf_Packages_Classics}	%Tous les packages ``de base''
+
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcis}%création du booléen
+\setboolean{boolRaccourcis}{false}%affectation de la valeur false
+\DeclareOption{raccourcis}{\setboolean{boolRaccourcis}{true}}
+\ProcessOptions
+
+
+%Notations
+\RequirePackage{Raf_Boites}		%Notations Analyse fonctionnelle
+\RequirePackage{Raf_Notations_AF}		%Notations Analyse fonctionnelle
+\RequirePackage{Raf_Notations_SLCI}		%Notations Asservissements
+\RequirePackage{Raf_Notations_Maths}	%Notations mathématiques de base
+\RequirePackage{Raf_Notations_Torseurs}	%Notations mathématiques sur les torseurs
+\RequirePackage{Raf_Notations_Cinematique}	%Notations cinematique
+\RequirePackage[raccourcis]{fast-diagram}
+\RequirePackage{Raf_Notations_Autres}	%Toutes les autres notations utiles
+\RequirePackage{Raf_Notations_Unites}	%Toutes les unités
+\RequirePackage{Raf_Notations_Cotation}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Actions-Meca}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Fab}	%Notations sur la cotation fonctionnelle
+\RequirePackage{Raf_Notations_Materiaux}	%Notations sur la cotation fonctionnelle
+%\RequirePackage{Raf_Style}				%Styles de documents
+\RequirePackage{Raf_Notations_Autom}
+\RequirePackage{Raf_Notations_Energetique}	%Notations de puissance, travail, etc...
+\RequirePackage{Raf_Notations_Elec}	%Notations de puissance, travail, etc...
+\RequirePackage{Raf_Competences}	%Pour afficher le diagramme des compétences
+\RequirePackage{Raf_Notations_RDM}	%Packages de RDM
+\RequirePackage{Raf_Notations_Dynamique}	%Packages de Dynamique
+
+\RequirePackage{Raf_Notations_MMC}	%MMC
+
+%\ProcessOptions
+ 
+%commandes et/ou environnements personnalisés
+ 
+ 
+%Commandes de mise en page
+    \newcommand*{\theAnneeUniversitaire}{2021 / 2022}
+    \newcommand*{\anneeUniversitaire}[1]{\renewcommand*{\theAnneeUniversitaire}{#1}}
+    
+    \newcommand*{\theDiscipline}{Mécanique des Milieux Continus}
+    \newcommand*{\discipline}[1]{\renewcommand*{\theDiscipline}{#1}}
+ 
+    \newcommand*{\thePartie}{}
+    \newcommand*{\partie}[1]{\renewcommand*{\thePartie}{#1}}
+ 
+    \newcommand*{\theTitre}{}
+    \newcommand*{\titre}[1]{\renewcommand*{\theTitre}{#1}}
+ 
+ 
+    \newcommand*{\theSeance}{Travaux Dirigés}
+    \newcommand*{\seance}[1]{\renewcommand*{\theSeance}{#1}}
+ 
+    \newcommand*{\theNumero}{1}
+    \newcommand*{\numero}[1]{\renewcommand*{\theNumero}{#1}}
+    \newcommand*{\theNNNumero}{\ifthenelse{\equal{\theNumero}{}}{}{ n°\theNumero}}
+ 
+ 
+%ENTETE ET PIED DE PAGE
+%=====================================
+\pagestyle{fancy}
+
+%Entete 
+\lhead{\theDiscipline} 
+%\chead{ \theSeance\theNNNumero }
+\rhead{\theSeance \theNNNumero\ -- \theTitre}
+% 
+% %Pied de page
+\setlength{\footskip}{50pt} %Pour décaler le pied de page vers le bas
+\renewcommand{\footrulewidth}{0.4pt}%
+\lfoot{\vspace{-1cm}Année universitaire\\\theAnneeUniversitaire}
+\cfoot{\vspace{-1cm}\thepage/\pageref{LastPage}}
+\rfoot{\includegraphics[height=1cm]{logo_ESTP.png}}
+
+
+
+
+% TITRES
+%=======================================
+
+\newcommand*{\makeEnteteTD}
+    {
+        \begin{center}\bfseries
+            \large{Travaux Dirigés\theNNNumero}\\
+            \huge{\theTitre}
+        \end{center}
+
+    }
+    
+    
+%Captions (légendes)
+%==========================================
+	\captionsetup{	labelsep	=	endash,
+			justification	=	centering,
+			labelfont	=	bf,
+			textfont	=	{small, it}}
+			
+			
+%MATH
+%==========================
+
+%Mode DISPLAY STYLE dans les tableau
+	%%%% debut macro %%%%
+	\newenvironment{disarray}%
+		{\everymath{\displaystyle\everymath{}}\array}%
+		{\endarray}
+		
+		
+		
+%Mise en page des titres de parties
+%======================================
+
+	%Sections
+	\renewcommand*	{\thesection}	{\Roman{section}}	%Numérotation en chiffres romains
+	\titleformat	{\section}[hang]{\LARGE\bfseries}{\thesection.}{1em}{}[\rule{\linewidth}{.5pt}]
+	%\newcommand*	{\sectionbreak}	{\clearpage}%Change de page a chaque section
+	%\titlespacing*{\section}{0px}{20cm}{\wordsep}
+
+	%Subsection
+	\renewcommand*	{\thesubsection}	{\arabic{subsection}}%Numérotation en chiffres arabes
+	\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
+	\titleformat	{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{\underline}[]
+% 
+% 	%Subsubsection
+% 	\renewcommand	{\thesubsubsection}	{\alph{subsubsection})}%Numérotation en lettres
+% 	\titlespacing*	{\subsubsection}{1cm}{0.5cm}{0.3cm}
+\endinput

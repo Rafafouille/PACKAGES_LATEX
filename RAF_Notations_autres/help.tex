@@ -11,7 +11,7 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}Renommé})}
+	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 
 
 \begin{document}
@@ -25,36 +25,36 @@
 
 		\begin{itemize}
 			\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package pour faire des compilations conditionnelles (if...then...else....)
-			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathématiques (notamment l'utilisation de \verb!\text! il me semble).
+			\item \href{http://www.ctan.org/pkg/amsmath}{\textbf{amsmath}} : Pour des notations mathÃ©matiques (notamment l'utilisation de \verb!\text! il me semble).
 			\item \href{https://www.ctan.org/pkg/etoolbox}{\textbf{etoolbox}} : Permet notamment de tester si une commande existe avec \ifdef .
-			\item \href{https://www.ctan.org/pkg/xspace}{\textbf{xspace}} : Permet de gérer les espaces après les commandes.
+			\item \href{https://www.ctan.org/pkg/xspace}{\textbf{xspace}} : Permet de gÃ©rer les espaces aprÃ¨s les commandes.
 			\item \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}}: Plusieurs symboles (dont le clic de souris)
-			\item \href{https://ctan.org/pkg/xargs}{\textbf{xargs}}: Créer des macros avec plusieurs arguments optionnels.
+			\item \href{https://ctan.org/pkg/xargs}{\textbf{xargs}}: CrÃ©er des macros avec plusieurs arguments optionnels.
 		\end{itemize}
 		
-		\paragraph{Note : } Historiquement, le package \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}} pouvait être en conflit s'il est appelé après
-			\href{https://www.ctan.org/pkg/eurosym}{\textbf{eurosym}} dans le même document.
-			La commande \verb!\EUR! (\EUR) était en cause.
-			De ce fait, le package "libère" cette commande (la supprimer) avant de la redéfinir (en utilisant \verb!\let\EUR\undefined! avant l'appel de \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}})
+		\paragraph{Note : } Historiquement, le package \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}} pouvait Ãªtre en conflit s'il est appelÃ© aprÃ¨s
+			\href{https://www.ctan.org/pkg/eurosym}{\textbf{eurosym}} dans le mÃªme document.
+			La commande \verb!\EUR! (\EUR) Ã©tait en cause.
+			De ce fait, le package "libÃ¨re" cette commande (la supprimer) avant de la redÃ©finir (en utilisant \verb!\let\EUR\undefined! avant l'appel de \href{https://www.ctan.org/pkg/marvosym}{\textbf{marvosym}})
 		
 	\section{Appel du package}
 	%-------------------------------------
 
-		Le package est appelé en début de document par la commande :
+		Le package est appelÃ© en dÃ©but de document par la commande :
 		\begin{verbatim}
 \usepackage{Raf_Notations_Autres}
 		\end{verbatim}
 
-		Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
-		De plus, certaines commandes ont été rebaptisées.
-		Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-		Si cela devait poser problème, pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+		Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide Ã  taper !).
+		De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©es.
+		Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+		Si cela devait poser problÃ¨me, pour ne pas crÃ©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! Ã  l'appel du package.
 
 		\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Autres}
 		\end{verbatim}
 
-	\section{Caractères spéciaux}
+	\section{CaractÃ¨res spÃ©ciaux}
 	%----------------------------------
 		\noindent
 		\begin{tabular}{|p{0.2\linewidth}|p{0.3\linewidth}|p{0.4\linewidth}|}
@@ -80,15 +80,15 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\\\hline
 				\verb!\italic{texte}!	&	\italic{texte}	&	Italic
 			\\\hline
-				\verb!\souligne{texte}!	&	\souligne{texte}&	Souligné
+				\verb!\souligne{texte}!	&	\souligne{texte}&	SoulignÃ©
 			\\\hline
 				\verb!\bouton{texte}!	&	\bouton{texte}	&	Bouton (pour illustrer une commande en informatique, par exemple)
 			\\\hline
 				\verb!\toutpetit{texte}!&	\toutpetit{texte}	&	Tout petit
 			\\\hline
-				\verb!\PETIT{texte}!	&	\PETIT{texte}	&	très très petit
+				\verb!\PETIT{texte}!	&	\PETIT{texte}	&	trÃ¨s trÃ¨s petit
 			\\\hline
-				\verb!\Petit{texte}!	&	\Petit{texte}	&	très petit
+				\verb!\Petit{texte}!	&	\Petit{texte}	&	trÃ¨s petit
 			\\\hline
 				\verb!\petit{texte}!	&	\petit{texte}	&	petit
 			\\\hline
@@ -96,20 +96,20 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\\\hline
 				\verb!\grand{texte}!	&	\grand{texte}	&	grand
 			\\\hline
-				\verb!\Grand{texte}!	&	\Grand{texte}	&	très grand
+				\verb!\Grand{texte}!	&	\Grand{texte}	&	trÃ¨s grand
 			\\\hline
-				\verb!\GRAND{texte}!	&	\GRAND{texte}	&	très très grand
+				\verb!\GRAND{texte}!	&	\GRAND{texte}	&	trÃ¨s trÃ¨s grand
 			\\\hline
-				\verb!\enorme{texte}!	&	\enorme{texte}	&	énorme
+				\verb!\enorme{texte}!	&	\enorme{texte}	&	Ã©norme
 			\\\hline
-				\verb!\Enorme{texte}!	&	\Enorme{texte}	&	très énorme
+				\verb!\Enorme{texte}!	&	\Enorme{texte}	&	trÃ¨s Ã©norme
 			\\\hline
 				\verb!\miniCentre[2cm]! 
-					\verb!{texte texte texte}!	&	\miniCentre[2cm]{texte texte texte}	&	Combo entre ``minipage'' et ``center''. Largeur par défaut = taille de la ligne
+					\verb!{texte texte texte}!	&	\miniCentre[2cm]{texte texte texte}	&	Combo entre ``minipage'' et ``center''. Largeur par dÃ©faut = taille de la ligne
 			\\\hline
-				\verb!\dotparagraph{titre}! 	&	\dotparagraph{titre}	&	identique à la commande ``paragraph'', avec un point devant.
+				\verb!\dotparagraph{titre}! 	&	\dotparagraph{titre}	&	identique Ã  la commande ``paragraph'', avec un point devant.
 			\\\hline
-				\verb!\dotparagraph[*]{titre}! 	&	\dotparagraph[*]{titre}	&	idem avec une puce personnalisée.
+				\verb!\dotparagraph[*]{titre}! 	&	\dotparagraph[*]{titre}	&	idem avec une puce personnalisÃ©e.
 			\\\hline
 		\end{tabular}
 
@@ -125,7 +125,7 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\\\hline
 				\verb!\oeuvres!	&	\oeuvres	&	avec le ``e dans l'o''
 			\\\hline
-				\verb!\cad!	&	\cad		&  C'est-à-dire
+				\verb!\cad!	&	\cad		&  C'est-Ã -dire
 			\\\hline
 		\end{tabular}
 
@@ -155,21 +155,21 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\\\hline
 				\verb!$1\ers$!	&	$1\ers$	 	&	Premiers
 			\\\hline
-				\verb!$1\ere$!	&	$1\ere$		&	Première
+				\verb!$1\ere$!	&	$1\ere$		&	PremiÃ¨re
 			\\\hline
-				\verb!$1\eres$!	&	$1\eres$	&	Premières
+				\verb!$1\eres$!	&	$1\eres$	&	PremiÃ¨res
 			\\\hline
 				\verb!$2\nd$!	&	$2\nd$		&	Second
 			\\\hline
 				\verb!$2\nde$!	&	$2\nde$		&	Seconde
 			\\\hline
-				\verb!$n\eme$!	&	$n\eme$		&	n-ième
+				\verb!$n\eme$!	&	$n\eme$		&	n-iÃ¨me
 			\\\hline
-				\verb!$n\emes$!	&	$n\emes$	&	n-ièmes
+				\verb!$n\emes$!	&	$n\emes$	&	n-iÃ¨mes
 			\\\hline
-				\verb!$n\ieme$!	&	$n\ieme$		&	n-ième
+				\verb!$n\ieme$!	&	$n\ieme$		&	n-iÃ¨me
 			\\\hline
-				\verb!$n\iemes$!&	$n\iemes$	&	n-ièmes
+				\verb!$n\iemes$!&	$n\iemes$	&	n-iÃ¨mes
 			\\\hline
 		\end{tabular}
 	
@@ -184,7 +184,7 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\\\hline\hline
 				\verb!\fig{REF}!	&\fig{REF} 	&	raccourci de \verb!(fig \ref{REF})!
 			\\\hline
-				\verb!\cheminGraphics!	& \cheminGraphics	&	Chemin par défaut vers les figures tex\_pdf
+				\verb!\cheminGraphics!	& \cheminGraphics	&	Chemin par dÃ©faut vers les figures tex\_pdf
 			\\\hline
 				\verb!\graphicPDF{figure}!	& 	&	Ouvre le fichier .tex (qui renferme une figure PDF) : \cheminGraphics figure.pdf\_tex
 			\\\hline
@@ -202,7 +202,7 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\qEmph{oh}!	&	\qEmph{oh} 	&	Citation entre guillemets (Problème d'encodage : il faut utiliser Babel)
+				\verb!\qEmph{oh}!	&	\qEmph{oh} 	&	Citation entre guillemets (ProblÃ¨me d'encodage : il faut utiliser Babel)
 			\\\hline
 		\end{tabular}
 \end{document}

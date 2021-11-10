@@ -4,34 +4,34 @@
 	\subsection{Reset}\label{reset}
 	%--------------------------
 
-		{\color{blue}\verb'\fastReset'} permet de remettre les paramètres par défaut.
+		{\color{blue}\verb'\fastReset'} permet de remettre les paramÃ¨tres par dÃ©faut.
 
 
 
 	\subsection{Les dimensions}\label{dimensions}
 	%-------------------------------
 
-		Les dimensions du diagramme sont réglées via plusieurs commandes.
+		Les dimensions du diagramme sont rÃ©glÃ©es via plusieurs commandes.
 		En voici la liste :
 		\begin{itemize}
 			\item {\color{blue}\verb'\fastInterligne'} : espace entre le bas de la boite la plus grande de la ligne en cours, et le haut des boites de la ligne suivante.
-									Ce nombre doit être positif.
-									(Par défaut : $0.5\uem$)
-			\item {\color{blue}\verb'\fastLargeurBoite'} : largeur des boites (Par défaut : $7\uem$)
-			\item {\color{blue}\verb'\fastHauteurBoite'} : hauteur \textbf{minimum} des boites (Par défaut : $0$)
-			\item {\color{blue}\verb'\fastEspaceColonne'} :  distance entre le coin supérieur gauche d'une boite et le coin supérieur gauche de sa voisine.
-									(Par défaut : $10\uem$)
-			\item {\color{blue}\verb'\fastDecalageTrait'} : permet de décaler le connecteur par rapport au haut de la boite.
-									(Par défaut : $-0.6\uem$)
-			\item {\color{blue}\verb'\fastEpaisseurTraits'} : épaisseur des traits (bordures et connecteurs). (Par défaut : $0.05\uem$)
-			\item {\color{blue}\verb'\fastDecalageOuVertical'} : Décalage vertical du connecteur ``OU''. (Par défaut : $0.4\uem$)
-			\item {\color{blue}\verb'\fastDecalageOuHorizontal'} :	Décalage horizontal du connecteur ``OU''. (Par défaut : $-0.4\uem$)
+									Ce nombre doit Ãªtre positif.
+									(Par dÃ©faut : $0.5\uem$)
+			\item {\color{blue}\verb'\fastLargeurBoite'} : largeur des boites (Par dÃ©faut : $7\uem$)
+			\item {\color{blue}\verb'\fastHauteurBoite'} : hauteur \textbf{minimum} des boites (Par dÃ©faut : $0$)
+			\item {\color{blue}\verb'\fastEspaceColonne'} :  distance entre le coin supÃ©rieur gauche d'une boite et le coin supÃ©rieur gauche de sa voisine.
+									(Par dÃ©faut : $10\uem$)
+			\item {\color{blue}\verb'\fastDecalageTrait'} : permet de dÃ©caler le connecteur par rapport au haut de la boite.
+									(Par dÃ©faut : $-0.6\uem$)
+			\item {\color{blue}\verb'\fastEpaisseurTraits'} : Ã©paisseur des traits (bordures et connecteurs). (Par dÃ©faut : $0.05\uem$)
+			\item {\color{blue}\verb'\fastDecalageOuVertical'} : DÃ©calage vertical du connecteur ``OU''. (Par dÃ©faut : $0.4\uem$)
+			\item {\color{blue}\verb'\fastDecalageOuHorizontal'} :	DÃ©calage horizontal du connecteur ``OU''. (Par dÃ©faut : $-0.4\uem$)
 		\end{itemize}
 
-		Les deux dernières fonctions peuvent être utiles si plusieurs connecteur ``OU'' sont utilisés sur la même lignée.
+		Les deux derniÃ¨res fonctions peuvent Ãªtre utiles si plusieurs connecteur ``OU'' sont utilisÃ©s sur la mÃªme lignÃ©e.
 
-		Toutes ces commandes peuvent être redéfinies via la fonction la fonction {\color{blue}\verb'\renewcommand'} (ou {\color{blue}\verb'\renewcommand*'}).
-		Voici ci-dessous une série d'exemples illustrant chacune de ces fonctions.
+		Toutes ces commandes peuvent Ãªtre redÃ©finies via la fonction la fonction {\color{blue}\verb'\renewcommand'} (ou {\color{blue}\verb'\renewcommand*'}).
+		Voici ci-dessous une sÃ©rie d'exemples illustrant chacune de ces fonctions.
 
 
 		\subsubsection{Exemple : interlignes}\label{interligne}
@@ -39,7 +39,7 @@
 
 %#####################################################
 \begin{code}
-\begin{fast}{Avant}	%Interligne par défaut
+\begin{fast}{Avant}	%Interligne par dÃ©faut
 	\fastFT{FT1}{
 		\fastFT{FT11 avec un peu de texte}{
 			\fastFT{FT111}{}}}
@@ -49,7 +49,7 @@
 \end{fast}
 
 \renewcommand*{\fastInterligne}{1cm}	%Nouvel interligne
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{
 		\fastFT{FT11 avec un peu de texte}{
 			\fastFT{FT111}{}}}
@@ -57,13 +57,13 @@
 		\fastFT{FT21}{
 			\fastFT{FT211}{}}}
 \end{fast}
-\fastReset	%Remise à zéro
+\fastReset	%Remise Ã  zÃ©ro
 \end{code}
 %#####################################################
 		\cqd
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{exemple}
-\begin{fast}{Avant}	%Interligne par défaut
+\begin{fast}{Avant}	%Interligne par dÃ©faut
 	\fastFT{FT1}{
 		\fastFT{FT11 avec un peu de texte}{
 			\fastFT{FT111}{}}}
@@ -72,7 +72,7 @@
 			\fastFT{FT211}{}}}
 \end{fast}
 \renewcommand*{\fastInterligne}{1cm}	%Nouvel interligne
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{
 		\fastFT{FT11 avec un peu de texte}{
 			\fastFT{FT111}{}}}
@@ -80,13 +80,13 @@
 		\fastFT{FT21}{
 			\fastFT{FT211}{}}}
 \end{fast}
-\fastReset	%Remise à zéro
+\fastReset	%Remise Ã  zÃ©ro
 \end{exemple}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-		\subsubsection{Exemple : largeur des boîtes}\label{largeur}
+		\subsubsection{Exemple : largeur des boÃ®tes}\label{largeur}
 		%-----------------------------------
 
 
@@ -98,7 +98,7 @@
 \end{fast}
 
 \renewcommand*{\fastLargeurBoite}{1.5cm}	%Nouvelle largeur de boite
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 \end{fast}
@@ -113,7 +113,7 @@
 	\fastFT{FT2}{}
 \end{fast}
 \renewcommand*{\fastLargeurBoite}{1.5cm}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 \end{fast}
@@ -123,7 +123,7 @@
 
 
 
-		\subsubsection{Exemple : hauteur des boîtes}\label{hauteur}
+		\subsubsection{Exemple : hauteur des boÃ®tes}\label{hauteur}
 		%-----------------------------------
 
 
@@ -136,7 +136,7 @@
 			\FT{FT22}{}}
 \end{fast}
 \renewcommand*{\fastHauteurBoite}{3em}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{	\FT{FT11}{}
 			\FT{FT12 FT12 FT12 FT12}{}}
 	\fastFT{FT2}{	\FT{FT21}{}
@@ -155,7 +155,7 @@
 			\FT{FT22}{}}
 \end{fast}
 \renewcommand*{\fastHauteurBoite}{3em}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{	\FT{FT11}{}
 			\FT{FT12 FT12 FT12 FT12}{}}
 	\fastFT{FT2}{	\FT{FT21}{}
@@ -180,7 +180,7 @@
 \end{fast}
 
 \renewcommand*{\fastEspaceColonne}{6cm}	%Nouvel espace inter-colonnes
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{
 		\fastFT{FT11}{}}
 	\fastFT{FT2}{
@@ -199,7 +199,7 @@
 		\fastFT{FT21}{}}
 \end{fast}
 \renewcommand*{\fastEspaceColonne}{6cm}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{
 		\fastFT{FT11}{}}
 	\fastFT{FT2}{
@@ -213,7 +213,7 @@
 
 
 
-	\subsubsection{Exemple : décalage des connecteurs}\label{decalage}
+	\subsubsection{Exemple : dÃ©calage des connecteurs}\label{decalage}
 	%----------------------------------------
 
 %###############################################
@@ -223,8 +223,8 @@
 	\fastFT{FT2}{}
 \end{fast}
 
-\renewcommand*{\fastDecalageTrait}{-13pt}	%Nouveau décalage des connecteur
-\begin{fast}{Après}
+\renewcommand*{\fastDecalageTrait}{-13pt}	%Nouveau dÃ©calage des connecteur
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 \end{fast}
@@ -239,7 +239,7 @@
 	\fastFT{FT2}{}
 \end{fast}
 \renewcommand*{\fastDecalageTrait}{-13pt}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 \end{fast}
@@ -253,7 +253,7 @@
 
 
 
-	\subsubsection{Exemple : épaisseur des traits}\label{epaisseur}
+	\subsubsection{Exemple : Ã©paisseur des traits}\label{epaisseur}
 	%----------------------------------
 
 
@@ -264,8 +264,8 @@
 	\fastFT{FT2}{}
 \end{fast}
 
-\renewcommand*{\fastEpaisseurTraits}{2pt}	%Nouvelle épaisseur de traits
-\begin{fast}{Après}
+\renewcommand*{\fastEpaisseurTraits}{2pt}	%Nouvelle Ã©paisseur de traits
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 \end{fast}
@@ -280,7 +280,7 @@
 	\fastFT{FT2}{}
 \end{fast}
 \renewcommand*{\fastEpaisseurTraits}{2pt}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 \end{fast}
@@ -290,7 +290,7 @@
 
 
 
-	\subsubsection{Exemple : Décalage des connecteur ``OU''}\label{connecteursOU}
+	\subsubsection{Exemple : DÃ©calage des connecteur ``OU''}\label{connecteursOU}
 	%----------------------------------
 
 
@@ -303,13 +303,13 @@
 	\fastFT[ou]{FT4}{}
 \end{fast}
 
-\renewcommand*{\fastDecalageOuVertical}{3pt}	%Redécalage vertical...
+\renewcommand*{\fastDecalageOuVertical}{3pt}	%RedÃ©calage vertical...
 \renewcommand*{\fastDecalageOuHorizontal}{-3pt}	%... et horizontal du 1er "OU"
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 	\fastFT[ou]{FT3}{}
-	\renewcommand{\fastDecalageOuVertical}{6pt}	%Décalage vertical...
+	\renewcommand{\fastDecalageOuVertical}{6pt}	%DÃ©calage vertical...
 	\renewcommand{\fastDecalageOuHorizontal}{-6pt}	%...et horizontal...
 	\fastFT[ou]{FT4}{}				% ...du 2eme "OU"
 \end{fast}
@@ -327,7 +327,7 @@
 \end{fast}
 \renewcommand*{\fastDecalageOuVertical}{3pt}
 \renewcommand*{\fastDecalageOuHorizontal}{-3pt}
-\begin{fast}{Après}
+\begin{fast}{AprÃ¨s}
 	\fastFT{FT1}{}
 	\fastFT{FT2}{}
 	\fastFT[ou]{FT3}{}
@@ -348,21 +348,21 @@
 	\subsection{Couleurs}\label{couleurs}
 	%--------------------------
 
-		Il est possible de modifier les couleurs de plusieurs éléments tels que :
+		Il est possible de modifier les couleurs de plusieurs Ã©lÃ©ments tels que :
 		\begin{itemize}
-			\item \textbf{la fonction de service} (la première case),
+			\item \textbf{la fonction de service} (la premiÃ¨re case),
 			\item \textbf{les fonctions techniques},
 			\item \textbf{les solutions techniques},
-			\item \textbf{les boîtes vides},
+			\item \textbf{les boÃ®tes vides},
 			\item \textbf{les connecteurs}.
 		\end{itemize}
-		Pour chacun des quatre premiers points précédents, on peut définir :
+		Pour chacun des quatre premiers points prÃ©cÃ©dents, on peut dÃ©finir :
 		\begin{itemize}
 			\item la couleur du \textbf{texte},
 			\item la couleur du \textbf{fond} (sauf boite vide),
 			\item la couleur du \textbf{cadre} (sauf boite vide).
 		\end{itemize}
-		Tout cela donne un total de $11$ couleurs, définies par les noms suivants :
+		Tout cela donne un total de $11$ couleurs, dÃ©finies par les noms suivants :
 		\begin{itemize}
 			\item {\color{blue}\verb'fastCouleurTexteFS'} : Couleur du texte de la fonction de service (la $1^{ere}$ boite),
 			\item {\color{blue}\verb'fastCouleurBorduresFS'} : Couleur de bordure de la fonction de service (la $1^{ere}$ boite),
@@ -377,7 +377,7 @@
 			\item {\color{blue}\verb'fastCouleurConnecteurs'} : Couleur des connecteurs.
 		\end{itemize}
 
-		Toutes ces couleurs peuvent être redéfinies par la fonction {\color{blue}\verb'\definecolor'}
+		Toutes ces couleurs peuvent Ãªtre redÃ©finies par la fonction {\color{blue}\verb'\definecolor'}
 		(voir le package \href{http://www.ctan.org/tex-archive/macros/latex/contrib/xcolor/}{xcolor}) :
 
 %###################################################
@@ -437,8 +437,8 @@
 		\item {\color{blue}\verb'\fastSetCouleurTraits[type]{couleur}'} : permet de changer la couleur de toutes les lignes (bordures + connecteurs),
 		\item {\color{blue}\verb'\fastSetCouleurFond[type]{couleur}'} : permet de changer la couleur du fond de toutes les boites,
 	\end{itemize}
-	où {\color{blue}\verb'[type]'} est le type d'affectation (\emph{rgb},\emph{cmyk},\emph{named}(par défaut),...)
-	et {\color{blue}\verb'[couleur]'} est la couleur, relativement à {\color{blue}\verb'[type]'} (voir {\color{blue}\verb'\definecolor'} du package \href{http://www.ctan.org/tex-archive/macros/latex/contrib/xcolor/}{xcolor}).
+	oÃ¹ {\color{blue}\verb'[type]'} est le type d'affectation (\emph{rgb},\emph{cmyk},\emph{named}(par dÃ©faut),...)
+	et {\color{blue}\verb'[couleur]'} est la couleur, relativement Ã  {\color{blue}\verb'[type]'} (voir {\color{blue}\verb'\definecolor'} du package \href{http://www.ctan.org/tex-archive/macros/latex/contrib/xcolor/}{xcolor}).
 
 
 %###################################################

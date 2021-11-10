@@ -1,0 +1,232 @@
+%=======================================================================
+%===============  N E W   C O M M A N D S ==============================
+%-----------------------------------------------------------------------
+% Copyright 2014-2017 by Nicolas Mesnier <nicolas.mesnier@gmail.com>
+%
+% This file may be distributed and/or modified
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+% See the file doc/licenses/LICENSE for more details.
+%-----------------------------------------------------------------------
+%=======================================================================
+\makeatletter
+%=======================================================================
+% *** general commands
+%=======================================================================
+
+\def\sep{\vskip1em\centerline{$\star$}\vskip1em}
+\def\tristar{\vskip1em\centerline{$\star~\star~\star$}\vskip1em}%
+
+\newcommand{\fig}[1]{figure~\ref{#1}}
+
+
+%-----------------------------------------------------------------------
+% \email{email adress}
+\newcommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
+%-----------------------------------------------------------------------
+% file{path/file.extension}
+\newcommand\file[1]{\par%
+	\leftline{\texttt{Fichier~>~}\url{#1}}%
+}
+%-----------------------------------------------------------------------
+\newcommand\texfile[1]{\par%
+	{\texttt{\TeX{}~>~}\url{#1}}%
+}
+%-----------------------------------------------------------------------
+\newcommand\pdffile[1]{\par%
+	{\texttt{pdf~>~}\url{#1}}%
+}
+%-----------------------------------------------------------------------
+% *** check
+\def\ko{$\square$~~}
+\def\ok{{\Large\Crossedbox}~~}
+%-----------------------------------------------------------------------
+% *** fin
+\def\fin{\vskip3em
+	\centerline{*\hspace*{2em}*}
+	\centerline{*}
+}
+%-----------------------------------------------------------------------
+% *** footnote cite
+%\def\up\textsuperscript
+\newcommand\footbib[1]{%
+	\refstepcounter{footnote}%
+	\footnotetext{#1}
+}
+%-----------------------------------------------------------------------
+%\newcommand\Cite[1]{\textsuperscript{\mdseries\ref{#1}}}
+\newcommand\Cite[1]{[\mdseries\ref{#1}]}
+
+%-----------------------------------------------------------------------
+% *** include a pdf with ref
+% \includepdfref{options}{label}{doc.pdf}
+% example: \includepdfref{fitpaper,scale=.9}{putty}{putty.pdf}
+\newcounter{ipp}
+\newcommand\includepdfref[3]{
+	\includepdf[#1,link,linkname=#2,pagecommand={\refstepcounter{ipp}\label{#2}}]{#3}%
+}
+% toc a pdf
+% example: \docannexe{Connexion à la pyboard avec PuTTY}{putty}
+\newcommand\docannexe[2]{%
+	\hyperlink{#2.1}{#1}\dotfill\pageref{#2}
+}
+%-----------------------------------------------------------------------
+% *** link external file
+\newcommand\link[2]{%
+    \href{#2}{\color{blue}#1}
+}
+%-----------------------------------------------------------------------
+% *** link external file width button
+\newcommand\button[2]{%
+    \href{#2}{\beamergotobutton{#1}}
+}
+%=======================================================================
+% *** maths commands
+%=======================================================================
+%-----------------------------------------------------------------------
+% operators
+\DeclareMathOperator{\atan}{Arctan}
+\DeclareMathOperator{\asin}{Arcsin}
+\DeclareMathOperator{\acos}{Arccos}
+
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\divop}{div}
+\DeclareMathOperator{\rot}{rot}
+
+%-----------------------------------------------------------------------
+% \d (math derivative)
+\def\d{\relax\ifmmode\mathrm{d}\else\textrm{d}\fi}
+%-----------------------------------------------------------------------
+% \dt (time derivative)
+\newcommand\dt[1]{\relax\ifmmode\dfrac{\d #1}{\d t}(t)\fi}
+\newcommand\ddt[1]{\relax\ifmmode\dfrac{\d^2 #1}{\d t^2}(t)\fi}
+\newcommand\dtbase[2]{\relax\ifmmode\left.\dfrac{\d #1}{\d t}\right|_{#2}\fi}
+%-----------------------------------------------------------------------
+% \abs{} (absolute value)
+\newcommand\abs[1]{\relax\ifmmode\left\vert#1\right\vert\fi}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+%-----------------------------------------------------------------------
+% \vect{} (vector arrow)
+\newcommand\vect[1]{\overrightarrow{#1}}
+%-----------------------------------------------------------------------
+% \norme{} (vector norme)
+\newcommand\norme[1]{\relax\ifmmode\left\Vert#1\right\Vert\fi}
+%-----------------------------------------------------------------------
+% \torseur[line space]{resultant}{moment}{point}
+\newcommand\torseur[4][1ex]{%
+  \prescript{}{#4}{%
+  \left\{\begin{array}{c}
+    {\displaystyle#2}\\[#1]
+    {\displaystyle#3}
+  \end{array}\right\}}%
+}
+%-----------------------------------------------------------------------
+% \torsV (cinematique)
+\newcommand\torsV{\mathscr{V}}
+% \torsT (AM)
+\newcommand\torsT{\mathscr{T}}
+% \torsC (cinétique)
+\newcommand\torsC{\mathscr{C}}
+% \torsD (dynamique)
+\newcommand\torsD{\mathscr{D}}
+% \torsU (petit deplacement)
+\newcommand\torsu{\mathscr{U}}
+% \power (puissance)
+\newcommand\power{\mathscr{P}}
+% tors
+\newcommand\tors[4]{\relax\ifmmode\left\{ \mathscr{#1}_{#2\to #3}
+\ifx{#4}\@empty\else\subc{#4}\fi
+\right\}
+\fi}
+
+% Pour ecrire des vitesses cinematiques
+% s'appelle par \...{Point d'application}{ensemble mobile}{referentiel}
+\newcommand{\vit}[3]{ \vect{V_{#1,#2/#3 }}}
+\newcommand{\viti}[4]{ \vect{V_{#1,#2/#3}\subc{#4}}}
+\newcommand{\acc}[3]{ \vect{\Gamma_{#1,#2/#3}}}
+\newcommand{\md}[3]{ \vect{\delta}_{#1,#2/#3}}
+\newcommand{\mc}[3]{ \vect{\sigma}_{#1,#2/#3}}
+\newcommand{\lap}[1]{ \mathcal{L}(#1)}
+
+% Pour ecrire des composantes statique
+% s'appelle par \...{Point d'application}{ensemble 1}{ensemble 2}
+\newcommand{\effort}[2]{ \vect{F_{#1\to #2}}}
+\newcommand{\efforti}[3]{\vect{F_{#1\to #2}\subc{#3}}}
+\newcommand{\mom}[3]{ \vect{M_{#1,#2\to#3}}}
+\newcommand{\momi}[4]{ \vect{M_{#1,#2\to#3}\subc{#4}}}
+
+
+\newcommand{\torsf}[2]{\left\{\mathscr{T}_{#1\rightarrow#2}\right\} }
+\newcommand{\torsfi}[3]{\left\{\mathscr{T}_{#1\to #2}\subc{#3}\right\} }
+\newcommand{\torsdf}[2]{\left\{\d \mathscr{T}_{#1\rightarrow#2}\right\} }
+\newcommand{\torsd}[2]{\left\{\mathscr{D}_{#1/#2}\right\} }
+\newcommand{\torsc}[2]{\left\{\mathscr{C}_{#1/#2}\right\} }
+\newcommand{\torsv}[2]{\left\{\mathscr{V}_{#1/#2}\right\} }
+\newcommand{\torsvi}[3]{\left\{\mathscr{V}_{#1/#2}\subc{#3}\right\} }
+
+\newcommand{\torsl}[3]{
+  \begin{array}{ll} ~\\~ \end{array}_{#3}
+  \left\{ \begin{array}{l}
+    #1 \\
+    #2 
+  \end{array} \right\}
+}
+
+
+%----------------------------------------------------------------------
+%Hachure
+%----------------------------------------------------------------------
+\pgfdeclarepatternformonly{hachA}
+{\pgfpoint{-0.2cm}{-0.2cm}} % <----
+{\pgfpoint{0.3cm}{0.9cm}} % <----
+{\pgfpoint{0.3cm}{.4cm}}
+{\pgfpathmoveto{\pgfpointorigin}
+\pgfsetlinewidth{.5pt}\pgfpathlineto{\pgfpoint{0.3cm}{.4cm}}
+\pgfusepath{stroke}}
+
+%-----------------------------------------------------------------------
+% \piece (Numéro de la piéce)
+\newcommand\piece[1]{\textbf{#1}}
+
+%-----------------------------------------------------------------------
+% \subc{exposant}
+% pour produire l'exposant entouré
+% dépendance : mathtools
+\newcommand*\subc[1]{%
+	^{\text{\tikz{\node[draw,circle,inner sep=.5pt]{\tiny$#1$};}}}%
+}
+%-----------------------------------------------------------------------
+% \textcircledd{lettre}
+% pour produire une lettre entourée
+\newcommand*\textcircledd[1]{%
+    {\text{\tikz{\node[draw,circle,inner sep=.5pt]{#1};}}}%
+}
+%-----------------------------------------------------------------------
+% \defeq
+% pour écrire un def au dessus d'un signe égal
+\newcommand\defeq{
+    \overset{\text{déf.}}{~=~}%
+}
+%-----------------------------------------------------------------------
+% échelle semilog
+\newcommand{\semilogvide}[5][]{
+	\pgfmathparse{int(#3-1)}\let\Xmax\pgfmathresult
+	\foreach \ee in{#2,...,\Xmax}{
+	    \foreach \x in {1,2,3,4,5,6,7,8,9}{
+	\draw[thin, black!80] ({log10(\x)+\ee},#4) -- ({log10(\x)+\ee},#5);}
+	\draw[gray] (\ee,#4) -- ({\ee},#5);
+	};
+	\draw[gray] ({#3},#4) -- ({#3},#5);
+	\pgfmathparse{int(#4+\valpas)}
+	\let\Valsuivante\pgfmathresult 
+	\foreach \yy in  {#4,\Valsuivante,...,#5}{
+	\draw[thin,black!80] (#2,\yy)  -- ({#3},\yy);};
+	\def\Unitx{}
+	\def\Unity{}
+}
+%-----------------------------------------------------------------------
+
+\makeatother
+
+%====================================================================eof

@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Analyse fonctionnelle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_AF}[2016/05/27]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{xcolor}%Pour faire des trucs en couleur
+\RequirePackage{tikz}%Pour faire des dessins
+		\usetikzlibrary{calc}
+\RequirePackage{relsize}
+% 		\makeatletter
+% 		\tikzset{
+% 			fitting node/.style={
+% 				inner sep=0pt,
+% 				fill=none,
+% 				draw=none,
+% 				reset transform,
+% 				fit={(\pgf@pathminx,\pgf@pathminy) (\pgf@pathmaxx,\pgf@pathmaxy)}
+% 				},
+% 			reset transform/.code={\pgftransformreset}
+% 			}
+% 		\makeatother
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisAF}%création du booléen
+\setboolean{boolRaccourcisAF}{true}%affectation de la valeur false
+
+%déclaration des options de l'extension
+\DeclareOption{noRaccourcis}{\setboolean{boolRaccourcisAF}{false}}
+\ProcessOptions
+
+
+
+\newcommand*{\citeSys}[1]	{\texttt{\textbf{#1}}} %Attention, il y a un renewcommand après
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+	\ifthenelse{\boolean{boolRaccourcisAF}}
+{
+	\newcommand{\MO}	{matière d'\oe uvre}
+	\newcommand{\MOs}	{matières d'\oe uvre}
+	\newcommand{\VA}	{valeur ajoutée}
+	\newcommand{\VAs}	{valeurs ajoutées}
+
+	\newcommand*{\bdd} {\citeSys{bdd}}
+	\newcommand*{\ibd} {\citeSys{ibd}}
+	\newcommand*{\uc} {\citeSys{uc}}
+	\newcommand*{\ssd} {\citeSys{ssd}}
+	\newcommand*{\dss} {\citeSys{dss}}
+	\newcommand*{\sd} {\citeSys{sd}}
+	\newcommand*{\stm} {\citeSys{stm}}
+
+}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Chaine fonctionnelle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{chaineFonctionnelle}
+	{
+	
+		\definecolor{fondBlocks}{rgb}{1.,1.,1.}%Couleur des boites
+		\definecolor{fondChaines}{rgb}{1.,0.93,0.78}%Couleur des boites
+		
+		\newcommand*{\CFinterChaine}{12em}	
+		\newcommand*{\CFInterBoites}{0.5}
+		\newcommand*{\CFHauteurBoites}	{2.5em}
+		\newcommand*{\CFLargeurBoites}	{9em}
+
+
+		\newcommand*{\CFBoiteAcquerir}{ACQUÉRIR}
+		\newcommand*{\CFBoiteTraiter}{TRAITER}
+		\newcommand*{\CFBoiteCommuniquer}{COMMUNIQUER}
+		\newcommand*{\CFBoiteAlimenter}{ALIMENTER}
+		\newcommand*{\CFBoiteDistribuer}{DISTRIBUER}
+		\newcommand*{\CFBoiteConvertir}{CONVERTIR}
+		\newcommand*{\CFBoiteTransmettre}{TRANSMETTRE\\ADAPTER}
+		\newcommand*{\CFBoiteAgir}{AGIR}
+		
+		\newcommand*{\CFNomsAcquerir}{}		\newcommand*	{\CFAcquerir}[1]	{\renewcommand*{\CFNomsAcquerir}{##1}}
+ 		\newcommand*{\CFNomsTraiter}{}		\newcommand*	{\CFTraiter}[1]		{\renewcommand*{\CFNomsTraiter}{##1}}
+		\newcommand*{\CFNomsCommuniquer}{}	\newcommand*	{\CFCommuniquer}[1]	{\renewcommand*{\CFNomsCommuniquer}{##1}}
+		\newcommand*{\CFNomsAlimenter}{}	\newcommand*	{\CFAlimenter}[1]	{\renewcommand*{\CFNomsAlimenter}{##1}}
+		\newcommand*{\CFNomsDistribuer}{}	\newcommand*	{\CFDistribuer}[1]	{\renewcommand*{\CFNomsDistribuer}{##1}}
+		\newcommand*{\CFNomsConvertir}{}	\newcommand*	{\CFConvertir}[1]	{\renewcommand*{\CFNomsConvertir}{##1}}
+		\newcommand*{\CFNomsTransmettre}{}	\newcommand*	{\CFTransmettre}[1]	{\renewcommand*{\CFNomsTransmettre}{##1}}
+		\newcommand*{\CFNomsAgir}{}		\newcommand*	{\CFAgir}[1]		{\renewcommand*{\CFNomsAgir}{##1}}
+		
+		\newcommand*{\CFNomsEnergieEntree}{}	\newcommand*	{\CFEnergieEntree}[1]	{\renewcommand*{\CFNomsEnergieEntree}{##1}}
+		\newcommand*{\CFNomsInfosEntree}{}	\newcommand*	{\CFInfosEntree}[1]	{\renewcommand*{\CFNomsInfosEntree}{##1}}
+		\newcommand*{\CFNomsInfosSortie}{}	\newcommand*	{\CFInfosSortie}[1]	{\renewcommand*{\CFNomsInfosSortie}{##1}}
+		\newcommand*{\CFNomsOrdres}{Ordres}	\newcommand*	{\CFOrdres}[1]	{\renewcommand*{\CFNomsOrdres}{##1}}
+		\newcommand*{\CFNomsAcquisition}{}	\newcommand*	{\CFAcquisition}[1]	{\renewcommand*{\CFNomsAcquisition}{##1}}
+		
+		\newcommand*{\CFNomsMO}{Matière\\ d'\oe uvre}	\newcommand*	{\CFMO}[1]	{\renewcommand*{\CFNomsMO}{##1}}
+		\newcommand*{\CFNomsMOVA}{Matière\\d'\oe uvre\\\ \ \ +\\Valeur\\ajoutée}	\newcommand*	{\CFMOVA}[1]	{\renewcommand*{\CFNomsMOVA}{##1}}
+		
+		\newcommand*{\CFChaineInfo}{Chaîne d'information}
+		\newcommand*{\CFChaineEnergie}{Chaîne d'énergie}
+		
+		\newcommand*{\CFafter}{} \newcommand*	{\CFApres}[1]	{\renewcommand*{\CFafter}{##1}}
+		\newcommand*{\CFbefore}{} \newcommand*	{\CFAvant}[1]	{\renewcommand*{\CFafter}{##1}}
+		
+		\newcommand*{\CFVierge}{
+					\renewcommand*{\CFBoiteAcquerir}{\phantom{ACQUÉRIR}}
+					\renewcommand*{\CFBoiteTraiter}{\phantom{TRAITER}}
+					\renewcommand*{\CFBoiteCommuniquer}{\phantom{COMMUNIQUER}}
+					\renewcommand*{\CFBoiteAlimenter}{\phantom{ALIMENTER}}
+					\renewcommand*{\CFBoiteDistribuer}{\phantom{DISTRIBUER}}
+					\renewcommand*{\CFBoiteConvertir}{\phantom{CONVERTIR}}
+					\renewcommand*{\CFBoiteTransmettre}{\phantom{TRANSMETTRE\\ADAPTER}}
+					\renewcommand*{\CFBoiteAgir}{\phantom{AGIR}}
+					
+					\renewcommand*{\CFNomsAcquerir}{}
+					\renewcommand*{\CFNomsTraiter}{}
+					\renewcommand*{\CFNomsCommuniquer}{}
+					\renewcommand*{\CFNomsAlimenter}{}
+					\renewcommand*{\CFNomsDistribuer}{}
+					\renewcommand*{\CFNomsConvertir}{}
+					\renewcommand*{\CFNomsTransmettre}{}
+					\renewcommand*{\CFNomsAgir}{}
+					
+					\renewcommand*{\CFNomsEnergieEntree}{}
+					\renewcommand*{\CFNomsInfosEntree}{}
+					\renewcommand*{\CFNomsInfosSortie}{}
+					\renewcommand*{\CFNomsOrdres}{Ordres}
+					\renewcommand*{\CFNomsAcquisition}{}
+					
+					\renewcommand*{\CFNomsMO}{}
+					\renewcommand*{\CFNomsMOVA}{}
+					
+					\renewcommand*{\CFChaineInfo}{}
+					\renewcommand*{\CFChaineEnergie}{}
+					
+					\newcommand*{\CFafter}{}
+					\newcommand*{\CFbefore}{}
+					}
+	}
+	{
+	
+		\pgfdeclarelayer{bg}    % declare background layer
+		\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
+		\begin{tikzpicture}
+			\CFbefore
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteAcquerir) at (0,0) {\CFBoiteAcquerir};
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteTraiter) at ($(boiteAcquerir.east)+(\CFInterBoites,0)$) {\CFBoiteTraiter};
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteCommuniquer) at ($(boiteTraiter.east)+(\CFInterBoites,0)$) {\CFBoiteCommuniquer};
+			
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteAlimenter) at ($(boiteAcquerir.south west)+(0,-\CFinterChaine)$) {\CFBoiteAlimenter};
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteDistribuer) at ($(boiteAlimenter.east)+(\CFInterBoites,0)$) {\CFBoiteDistribuer};
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteConvertir) at ($(boiteDistribuer.east)+(\CFInterBoites,0)$) {\CFBoiteConvertir};
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=\CFLargeurBoites,minimum height=\CFHauteurBoites,align=center] (boiteTransmettre) at ($(boiteConvertir.east)+(\CFInterBoites,0)$) {\CFBoiteTransmettre};
+			\node[draw,anchor=west,fill=fondBlocks,minimum width=6em,minimum height=5em,align=center] (boiteAgir) at ($(boiteTransmettre.east)+(\CFInterBoites,0)$) {\CFBoiteAgir};
+			
+			\node[anchor=south east,align=right] (boiteInfosEntrees) at ($0.7*(boiteAcquerir.south west)+0.3*(boiteAcquerir.north west)+2*(-\CFInterBoites,0)$)	{\CFNomsInfosEntree};
+			\node[anchor=south west,align=left] (boiteInfosSorties) at ($0.7*(boiteCommuniquer.north east)+0.3*(boiteCommuniquer.south east)+1.5*(\CFInterBoites,0)$)	{\CFNomsInfosSortie};
+
+			\node[anchor=south east,align=right] (boiteEnergieEntree) at ($(boiteAlimenter.west)+1.5*(-\CFInterBoites,0)$)	{\CFNomsEnergieEntree};
+			
+			\begin{pgfonlayer}{bg}
+				\draw[draw,rounded corners=1em,fill=fondChaines] ($(boiteAcquerir.north west)+(-0.5,0.7)$) rectangle ($(boiteCommuniquer.south east)+(0.5,-0.3)$);
+				\draw[draw,rounded corners=1em,fill=fondChaines] ($(boiteAlimenter.north west)+(-0.5,0.8)$) rectangle ($(boiteAgir.south east)+(0.5,-0.2)$);
+			\end{pgfonlayer}
+			
+			\node[anchor=south,align=right]	(boiteTitreChaineInfo) at ($(boiteTraiter.north)+(0,0.2)$)	{\textlarger{\textlarger{\bfseries\CFChaineInfo}}};
+			\node[anchor=south,align=right]	(boiteTitreChaineEnergie) at ($(boiteConvertir.north)+(0,0.2)$)	{\textlarger{\textlarger{\bfseries\CFChaineEnergie}}};
+			
+			\node[anchor=south west,align=left]	(boiteMO)	at ($0.2*(boiteAgir.north west)+0.8*(boiteAgir.north east)+(0,0.7)$)	{\CFNomsMO};
+			\node[anchor=north west,align=left]	(boiteMOVA)	at ($0.2*(boiteAgir.south west)+0.8*(boiteAgir.south east)+(0,-0.5)$)	{\CFNomsMOVA};
+			
+			\node[anchor=north west,align=left]	(boiteNomsAcquerir)	at	($0.8*(boiteAcquerir.south west)+0.2*(boiteAcquerir.south east)+(0,-0.4)$)	{\CFNomsAcquerir};
+			\node[anchor=north west,align=left]	(boiteNomsTraiter)	at	($0.8*(boiteTraiter.south west)+0.2*(boiteTraiter.south east)+(0,-0.4)$)		{\CFNomsTraiter};
+			\node[anchor=north west,align=left]	(boiteNomsCommuniquer)	at	($0.8*(boiteCommuniquer.south west)+0.2*(boiteCommuniquer.south east)+(0,-0.4)$)		{\CFNomsCommuniquer};
+			\node[anchor=north west,align=left]	(boiteNomsAlimenter)	at	($0.8*(boiteAlimenter.south west)+0.2*(boiteAlimenter.south east)+(0,-0.6)$)		{\CFNomsAlimenter};
+			\node[anchor=north west,align=left]	(boiteNomsDistribuer)	at	($0.8*(boiteDistribuer.south west)+0.2*(boiteDistribuer.south east)+(0,-0.6)$)		{\CFNomsDistribuer};
+			\node[anchor=north west,align=left]	(boiteNomsConvertir)	at	($0.8*(boiteConvertir.south west)+0.2*(boiteConvertir.south east)+(0,-0.6)$)		{\CFNomsConvertir};
+			\node[anchor=north west,align=left]	(boiteNomsTransmettre)	at	($0.8*(boiteTransmettre.south west)+0.2*(boiteTransmettre.south east)+(0,-0.6)$)		{\CFNomsTransmettre};
+			\node[anchor=north east,align=right]	(boiteNomsAgir)	at	($0.5*(boiteAgir.south west)+0.5*(boiteAgir.south east)+(0,-0.3)$)		{\CFNomsAgir};
+			
+			\node[anchor=north west,align=left]	(boiteOrdre)	at	($0.5*(boiteCommuniquer.south east)+0.5*(1,-0.5)+0.5*(boiteDistribuer.north west)+0.4*0.5*(-\CFInterBoites,0)+0.5*(0,0.5)$)	{\CFNomsOrdres};
+			
+			\node[anchor=south east,align=right]	(boiteSignauxRetour)	at	($(boiteAgir.north)+(0,1)$)	{\CFNomsAcquisition};
+			
+			%Fleches
+			\draw[->,>=latex]	(boiteInfosEntrees.south west) -- ($0.7*(boiteAcquerir.south west)+0.3*(boiteAcquerir.north west)$);
+			\draw[->,>=latex]	(boiteAcquerir.east) -- (boiteTraiter.west);
+			\draw[->,>=latex]	(boiteTraiter.east) -- (boiteCommuniquer.west);
+			\draw[->,>=latex]	($0.7*(boiteCommuniquer.north east)+0.3*(boiteCommuniquer.south east)$) -- (boiteInfosSorties.south east);
+			\draw[->,>=latex]	($0.3*(boiteCommuniquer.north east)+0.7*(boiteCommuniquer.south east)$) -| ($(boiteCommuniquer.south east)+(1,-0.5)$) -- ($(boiteDistribuer.north west)+0.4*(-\CFInterBoites,0)+(0,0.5)$) |- ($0.7*(boiteDistribuer.north west)+0.3*(boiteDistribuer.south west)$);
+			\draw[->,>=latex]	(boiteEnergieEntree.south west) -- (boiteAlimenter.west);
+			\draw[->,>=latex]	($0.7*(boiteAlimenter.south east)+0.3*(boiteAlimenter.north east)$) -- ($0.7*(boiteDistribuer.south west)+0.3*(boiteDistribuer.north west)$);
+			\draw[->,>=latex]	(boiteDistribuer.east) -- (boiteConvertir.west);
+			\draw[->,>=latex]	(boiteConvertir.east) -- (boiteTransmettre.west);
+			\draw[->,>=latex]	(boiteTransmettre.east) -- (boiteAgir.west);
+			
+			\draw[->,>=latex,thick]	(boiteMO.north west)	--	($0.2*(boiteAgir.north west)+0.8*(boiteAgir.north east)$);
+			\draw[->,>=latex,thick]	($0.2*(boiteAgir.south west)+0.8*(boiteAgir.south east)$)	--	(boiteMOVA.south west);
+			
+			\draw[->,>=latex]	(boiteNomsAcquerir.south west) -- ($0.8*(boiteAcquerir.south west)+0.2*(boiteAcquerir.south east)$);
+			\draw[->,>=latex]	(boiteNomsTraiter.south west) -- ($0.8*(boiteTraiter.south west)+0.2*(boiteTraiter.south east)$);
+			\draw[->,>=latex]	(boiteNomsCommuniquer.south west) -- ($0.8*(boiteCommuniquer.south west)+0.2*(boiteCommuniquer.south east)$);
+			\draw[->,>=latex]	(boiteNomsAlimenter.south west) -- ($0.8*(boiteAlimenter.south west)+0.2*(boiteAlimenter.south east)$);
+			\draw[->,>=latex]	(boiteNomsDistribuer.south west) -- ($0.8*(boiteDistribuer.south west)+0.2*(boiteDistribuer.south east)$);
+			\draw[->,>=latex]	(boiteNomsConvertir.south west) -- ($0.8*(boiteConvertir.south west)+0.2*(boiteConvertir.south east)$);
+			\draw[->,>=latex]	(boiteNomsTransmettre.south west) -- ($0.8*(boiteTransmettre.south west)+0.2*(boiteTransmettre.south east)$);
+			\draw[->,>=latex]	(boiteNomsAgir.south east) -- ($0.5*(boiteAgir.south west)+0.5*(boiteAgir.south east)$);
+			
+			\draw[->,>=latex]	($(boiteAgir.north)+(0,0.5)$) |- ($(boiteAcquerir.north west)+(-0.8,1.5)$) |- ($0.8*(boiteAcquerir.north west)+0.2*(boiteAcquerir.south west)$);
+			\CFafter
+		\end{tikzpicture}
+	}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%SysML
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\endinput

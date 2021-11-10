@@ -1,0 +1,34 @@
+
+
+%%----------------------------------------------------------------------
+%% TD de sciences industrielles de l'ingénieur en PTSI
+%% <virgile.lacharnay@gmail.com>
+%% Paramétrage LateX
+%% <nicolas.mesnier@gmail.com>
+%%----------------------------------------------------------------------
+%=======================================================================
+\CI{\CIsix}
+\title{TD : Boîtier de raboteuse}
+\maketitle
+\begin{tikzpicture}[xscale=2.5]
+\begin{scope}[yscale=5.5/60]
+\semilog{0}{6}{-60}{30}
+\draw[->,>=latex] (-.5,0)--(6.5,0)node[below left]{$\omega$};
+\draw[->,>=latex] (0,-60)--(0,35)node[left]{$|H(j\omega)|_\text{dB}$};
+\BodeAmp[blue,samples=1000]{0:6}{\POAmpAsymp{10}{0.01}}
+\BodeAmp[black,line width=2pt]{0:6}{\POAmp{10}{0.01}}
+\end{scope}
+
+\begin{scope}[yshift=-7cm,yscale=5.5/90]
+\semilog{0}{6}{-90}{0}
+\draw[->,>=latex] (-.5,0)--(6.5,0)node[below left]{$\omega$};
+\draw[->,>=latex] (0,-90)--(0,10)node[left]{$\angle H(j\omega)$};
+\BodeArg[blue,samples=1000]{0:6}{\POArgAsymp{10}{0.01}}
+\BodeArg[black,line width=2pt]{0:6}{\POArg{10}{0.01}}
+\end{scope}
+\end{tikzpicture}
+
+
+
+
+\endinput

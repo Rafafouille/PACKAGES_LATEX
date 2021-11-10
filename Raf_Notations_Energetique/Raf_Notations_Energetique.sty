@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations en énergétique
+%	Notations en Ã©nergÃ©tique
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
@@ -9,17 +9,17 @@
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 
 %\RequirePackage{color}%Pour mettre de la couleur
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 \RequirePackage{xargs}%Pour arguments optionnels multiples
 %\RequirePackage{amsfonts}		%Pour faire des maths (ensemble des reels, notamment)
 %\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
-\RequirePackage{mathrsfs}		%Pour faire des maths (notamment le L de la transformée de Laplace)
+\RequirePackage{mathrsfs}		%Pour faire des maths (notamment le L de la transformÃ©e de Laplace)
 %\RequirePackage{color}
 %\RequirePackage{xspace}
 \RequirePackage{Raf_Notations_Maths}	%Pour les fonctions (notamment)
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisEnergetique}%création du booléen
+\newboolean{boolRaccourcisEnergetique}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisEnergetique}{true}%affectation de la valeur false
 
 
@@ -34,7 +34,7 @@
 \newcommand*{\RafEnergRac}[1]{\ifthenelse{\boolean{boolRaccourcisMaths}}{#1}{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
 
 
 % PUISSANCE
@@ -80,7 +80,7 @@
                             }}
 
 \if@RafNotEnergRac
-	\renewcommand{\P}	{\puissance}	%Redéfini (anciennement : symbole paragraphe)
+	\renewcommand{\P}	{\puissance}	%RedÃ©fini (anciennement : symbole paragraphe)
 \fi
 
 
@@ -94,7 +94,7 @@
 
 
 \if@RafNotEnergRac
-	\newcommand{\Wk}	{\travail}	%Redéfini (anciennement : symbole paragraphe)
+	\newcommand{\Wk}	{\travail}	%RedÃ©fini (anciennement : symbole paragraphe)
 \fi
 
 \endinput

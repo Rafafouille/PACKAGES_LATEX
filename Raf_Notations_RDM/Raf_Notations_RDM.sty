@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations Mathématiques de base
+%	Notations MathÃ©matiques de base
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
@@ -9,18 +9,18 @@
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
 
 \RequirePackage{ifthen}	%Pour faire des compilations conditionnelles (if, etc..)
-\RequirePackage{mathrsfs}	%Pour faire des maths (notamment le P calligraphié)
-\RequirePackage{xspace} %Pour faire des espaces automatiques après les commandes.
+\RequirePackage{mathrsfs}	%Pour faire des maths (notamment le P calligraphiÃ©)
+\RequirePackage{xspace} %Pour faire des espaces automatiques aprÃ¨s les commandes.
 \RequirePackage{tikz}    %Pour faire des dessins
-    \usetikzlibrary{calc}%Package supplémentaire pour faire des calculs de coordonnées
+    \usetikzlibrary{calc}%Package supplÃ©mentaire pour faire des calculs de coordonnÃ©es
 \RequirePackage{xargs}   %Pour avoir plus d'arguments facultatifs
-\RequirePackage{Raf_Notations_Actions-Meca}	%Pour faire des actions mécaniques
+\RequirePackage{Raf_Notations_Actions-Meca}	%Pour faire des actions mÃ©caniques
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisRDM}%création du booléen
+\newboolean{boolRaccourcisRDM}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisRDM}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \newif\if@RafNotRDMRac	\@RafNotRDMRactrue
 \DeclareOption{noRaccourci}	{\@RafNotRDMRacfalse}
 %\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisRDM}{false}}
@@ -31,7 +31,7 @@
 \newcommand*{\RafRDMRac}[1]{\ifthenelse{\boolean{boolRaccourcisRDM}}{#1}{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
 
 
 
@@ -58,7 +58,7 @@
 
 
 % ===============================
-% Torseur de cohésions
+% Torseur de cohÃ©sions
 % ==============================
 
 \newcommand*{\tCohesion}{\ensuremath{\tAM{\PCallig_+}{\PCallig_-}}\xspace}
@@ -100,7 +100,7 @@
 
 
 %=======================================================
-% Graphe d'évolution du torseur de cohesion
+% Graphe d'Ã©volution du torseur de cohesion
 %=======================================================
 
     %L,absisse,ymin,ymax(,xmin,xscale,yscale)
@@ -154,7 +154,7 @@
         \newcommand*{\poutreEncastrementLargeur}{0.7cm}
         \newcommand*{\poutreEncastrementEpaisseur}{0.4}
         \newcommand*{\poutreEncastrementNbRateaux}{5}
-        \newcommand*{\poutreEncastrementAngleRateaux}{-20}%En degrés
+        \newcommand*{\poutreEncastrementAngleRateaux}{-20}%En degrÃ©s
         
         \newcommand*{\poutreAppuiSimpleRayonRouleaux}{2.4pt}
         \newcommand*{\poutreAppuiSimpleNombreRouleaux}{4}
@@ -173,7 +173,7 @@
         \newcommand*{\poutreForceRepEspace}{0.5}
         \newcommand*{\poutreForceRepEpaisseur}{2}
   
-        %Dessine une masse centré sur x, y, et rotation theta =====================================
+        %Dessine une masse centrÃ© sur x, y, et rotation theta =====================================
         \newcommandx*{\poutreMasse}[3][1=0,2=0,3=0]%x,y,theta (en degres)
         {
             \begin{scope}[xshift=##1,yshift=##2,rotate=##3]
@@ -185,7 +185,7 @@
         }
   
         %Symbole encastrement =====================================
-        \newcommandx*{\encastrement}[2][1=0,2=0]%#1=position horizontale, #2=orientation en degrés
+        \newcommandx*{\encastrement}[2][1=0,2=0]%#1=position horizontale, #2=orientation en degrÃ©s
             {
             \begin{scope}[xshift=##1,rotate=##2]
                \poutreMasse
@@ -193,7 +193,7 @@
             }
             
         %Symbole articulation =====================================
-        \newcommandx*{\articulation}[3][2=0,3=cercle]%#1=position sur x, #2= orientation en degrés
+        \newcommandx*{\articulation}[3][2=0,3=cercle]%#1=position sur x, #2= orientation en degrÃ©s
         %3=noCercle si on ne veut pas de cercle
         {
             \begin{scope}[xshift=##1,rotate=##2]
@@ -210,7 +210,7 @@
         }
             
         %Symbole Appui Simple =====================================
-        \newcommandx*{\appuiSimple}[3][2=0,3=cercle]%#1=position sur x, #2= orientation en degrés
+        \newcommandx*{\appuiSimple}[3][2=0,3=cercle]%#1=position sur x, #2= orientation en degrÃ©s
         {
             \begin{scope}[xshift=##1,rotate=##2]
                 %Triangle :
@@ -262,7 +262,7 @@
         
         
         %Composante d'une liaison encastrement =====================================
-        \newcommandx*{\composanteEncastrement}[4]%1:distance, 2 à 4 : nom des compostantes X Y et N
+        \newcommandx*{\composanteEncastrement}[4]%1:distance, 2 Ã  4 : nom des compostantes X Y et N
         {
             \composanteX{##1}{##2};
             \composanteY{##1}{##3};
@@ -271,7 +271,7 @@
         
         
         %Composante d'une liaison pivot =====================================
-        \newcommandx*{\composanteArticulation}[3]%1:distance, 2 à 4 : nom des compostantes X Y
+        \newcommandx*{\composanteArticulation}[3]%1:distance, 2 Ã  4 : nom des compostantes X Y
         {
             \composanteX{##1}{##2};
             \composanteY{##1}{##3};
@@ -290,7 +290,7 @@
         
         
         
-        %Force Extérieure =====================================
+        %Force ExtÃ©rieure =====================================
         \newcommandx*{\Pforce}[6][5=, 6=]%1:distance, 2 : X,  3 :Y, 4 : label, 5:option fleche, 6:option texte
         {
             \begin{scope}[xshift=##1]
@@ -316,8 +316,8 @@
         }
         
         
-        %Moment extérieur =====================================
-        \newcommandx*{\pmoment}[3][3=droit]%1:distance, 2 : label, 3 : mot clé [inverse] (optionnel)
+        %Moment extÃ©rieur =====================================
+        \newcommandx*{\pmoment}[3][3=droit]%1:distance, 2 : label, 3 : mot clÃ© [inverse] (optionnel)
         {
             \begin{scope}[xshift=##1]
                  \ifthenelse{\equal{##3}{inverse}}
@@ -338,8 +338,8 @@
         
         
         
-        %Force répartie =====================================
-        \newcommandx*{\pforceRepartie}[4][4=\poutreForceRepLongueur]%1:x_min, 2 :x_max, 3 : label, 4=equation de répartition (optionnel) en fonction de \x
+        %Force rÃ©partie =====================================
+        \newcommandx*{\pforceRepartie}[4][4=\poutreForceRepLongueur]%1:x_min, 2 :x_max, 3 : label, 4=equation de rÃ©partition (optionnel) en fonction de \x
         {
         
            % \newcommand
@@ -350,14 +350,14 @@
                         \pgfmathparse{##1+\n*\poutreForceRepEspace}%
                         \let\x\pgfmathresult
                         
-                    %On fabrique l'ordonnée y
+                    %On fabrique l'ordonnÃ©e y
                         \pgfmathparse{##4}%
                         \let\yyyyy\pgfmathresult
                                             
                     %Test d'arret
                     \pgfmathparse{\x>##2 ? 1 : 0}%Trop loin ?
                     \ifthenelse{\pgfmathresult>0}%Si trop loin...
-                       {\breakforeach}%On fait la dernière boucle
+                       {\breakforeach}%On fait la derniÃ¨re boucle
                        {            %Sinon, on trace
                             
                             \pgfmathparse{\yyyyy*\yyyyy<0.0001 ? 1 : 0}%Trop petit ?
@@ -371,11 +371,11 @@
                 
                 
                 %Ligne de profile
-                    %On fabrique l'ordonnée yDEB
+                    %On fabrique l'ordonnÃ©e yDEB
                         \newcommand\x{##1}
                         \pgfmathparse{##4}%
                         \let\yDEB\pgfmathresult
-                    %On fabrique l'ordonnée yFIN
+                    %On fabrique l'ordonnÃ©e yFIN
                          \renewcommand\x{##2}
                          \pgfmathparse{##4}%
                          \let\yFIN\pgfmathresult
@@ -400,8 +400,8 @@
             \end{scope}
         }
         
-        %Moment extérieur =====================================
-        \newcommandx*{\abscisse}[7][1=0,4=-1,5=,6=,7=]%1:point de départ (optionnel), 2 : point d'arrivée, 3 : label, 4 : décalage vers le bas (optionnel), 5:options de la fleche, 6:options du texte, 7: options des cotes latérales
+        %Moment extÃ©rieur =====================================
+        \newcommandx*{\abscisse}[7][1=0,4=-1,5=,6=,7=]%1:point de dÃ©part (optionnel), 2 : point d'arrivÃ©e, 3 : label, 4 : dÃ©calage vers le bas (optionnel), 5:options de la fleche, 6:options du texte, 7: options des cotes latÃ©rales
         {
             \begin{scope}
             
@@ -414,7 +414,7 @@
         
         
 
-        %Moment extérieur =====================================
+        %Moment extÃ©rieur =====================================
         \newcommandx*{\Pbase}[4][1=0,4=]%1:Origine, 2:label x, 3:label y, 4:options axes
         {
             \begin{scope}

@@ -19,7 +19,7 @@
 \RequirePackage{bold-extra}
 
 
-\RequirePackage{titlesec}	%Pour l'aspect des titres (Attention, au moment ou j'écris, il y a un bug dans la version 2016 du package. Le fichier titlesec.sty a été modifié --> http://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15  )
+\RequirePackage{titlesec}	%Pour l'aspect des titres (Attention, au moment ou j'Ã©cris, il y a un bug dans la version 2016 du package. Le fichier titlesec.sty a Ã©tÃ© modifiÃ© --> http://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15  )
 \RequirePackage{fancyhdr}	%Pour l'entete et le pied de page
 \RequirePackage{lastpage}	%Pour connaitre le nombre total de page pour le pied de page
 \RequirePackage{subfig}			%Pour faire des figures dans les figures
@@ -40,13 +40,13 @@
 	\usetikzlibrary{arrows}
 \RequirePackage{tkz-tab}
 \RequirePackage{array}
-\RequirePackage{placeins}	%Permet de mettre une ``barriere'' aux figures pour ne pas qu'elle s'étalent trop, avant de continuier le texte
+\RequirePackage{placeins}	%Permet de mettre une ``barriere'' aux figures pour ne pas qu'elle s'Ã©talent trop, avant de continuier le texte
 \RequirePackage{textcomp}
-%\RequirePackage{scrtime}	%Pour afficher l'heure dans la version prof (il y a une erreur -- package obsolète ????)
-\RequirePackage{cancel}		%Pour pouvoir faire du texte barré
+%\RequirePackage{scrtime}	%Pour afficher l'heure dans la version prof (il y a une erreur -- package obsolÃ¨te ????)
+\RequirePackage{cancel}		%Pour pouvoir faire du texte barrÃ©
 \RequirePackage{icomma}
-\RequirePackage{caption}	%Pour modifier l'aspet des légendes (en particulier pour les environnement lstlisting)
-\RequirePackage{etoolbox}	%OUtils, notamment pour changer les espaces avant et après Verbatim
+\RequirePackage{caption}	%Pour modifier l'aspet des lÃ©gendes (en particulier pour les environnement lstlisting)
+\RequirePackage{etoolbox}	%OUtils, notamment pour changer les espaces avant et aprÃ¨s Verbatim
 \RequirePackage{import}		%Pour importer des fichiers Latex, avec des chemins relatifs
 
 
@@ -56,7 +56,7 @@
 
 
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \newif\if@infoRac	\@infoRactrue
 \DeclareOption{noRaccourci}	{\@infoRacfalse}
 %\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
@@ -74,7 +74,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newboolean{versionProf}
 \setboolean{versionProf}{false}
-\newcommand*{\version}[1]	{\ifthenelse	{\equal{#1}{prof}}%	Permet de définit la version
+\newcommand*{\version}[1]	{\ifthenelse	{\equal{#1}{prof}}%	Permet de dÃ©finit la version
 						{\setboolean{versionProf}{true}}%
 						{\setboolean{versionProf}{false}}%
 				}
@@ -100,7 +100,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Année
+%AnnÃ©e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \newcommand*{\getAnnee}{2016/2017}
 % \newcommand*{\annee}[1]{\renewcommand*{\getAnnee}{#1}}
@@ -173,7 +173,7 @@
 % 				\vspace{1cm}
 % 				\begin{center}
 % 					Informatique\\[0.2cm]
-% 					TD \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
+% 					TD \ifthenelse{\equal{\getNumeroCours}{}}{}{nÂ°\getNumeroCours}\\[0.2cm]
 % 					{\Large\getTitre}
 % 				\end{center}
 % 				\vspace{1cm}
@@ -213,7 +213,7 @@
 % 				\vspace{1cm}
 % 				\begin{center}
 % 					Informatique\\[0.2cm]
-% 					Devoir Maison \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
+% 					Devoir Maison \ifthenelse{\equal{\getNumeroCours}{}}{}{nÂ°\getNumeroCours}\\[0.2cm]
 % 					{\Large\getTitre}
 % 				\end{center}
 % 				\vspace{1cm}
@@ -243,7 +243,7 @@
 				\vspace{1cm}
 				\begin{center}
 					Informatique\\[0.2cm]
-					DEVOIR SURVEILLÉ \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
+					DEVOIR SURVEILLÃ‰ \ifthenelse{\equal{\getNumeroCours}{}}{}{nÂ°\getNumeroCours}\\[0.2cm]
 					{\Large\getTitre}
 				\end{center}
 				\vspace{1cm}
@@ -273,7 +273,7 @@
 % 				\vspace{1cm}
 % 				\begin{center}
 % 					Informatique\\[0.2cm]
-% 					CONTRÔLE \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
+% 					CONTRÃ”LE \ifthenelse{\equal{\getNumeroCours}{}}{}{nÂ°\getNumeroCours}\\[0.2cm]
 % 					{\Large\getTitre}
 % 				\end{center}
 % 				\vspace{1cm}
@@ -302,7 +302,7 @@
 % 				\vspace{1cm}
 % 				\begin{center}
 % 					Informatique\\[0.2cm]
-% 					Corrigé du devoir \ifthenelse{\equal{\getNumeroCours}{}}{}{n°\getNumeroCours}\\[0.2cm]
+% 					CorrigÃ© du devoir \ifthenelse{\equal{\getNumeroCours}{}}{}{nÂ°\getNumeroCours}\\[0.2cm]
 % 					{\Large\getTitre}
 % 				\end{center}
 % 				\vspace{1cm}
@@ -359,15 +359,15 @@
 % 	\newcommand*{\souligne}		{\underline}
 %Les titres
 	%Sections
-	\renewcommand*	{\thesection}	{\Roman{section}}	%Numérotation en chiffres romains
+	\renewcommand*	{\thesection}	{\Roman{section}}	%NumÃ©rotation en chiffres romains
 	\titleformat	{\section}[hang]{\LARGE\bfseries}{\thesection.}{1em}{}[\rule{\linewidth}{.5pt}]
 	%Subsection
-	\renewcommand*	{\thesubsection}{\arabic{subsection}}%Numérotation en chiffres arabes
+	\renewcommand*	{\thesubsection}{\arabic{subsection}}%NumÃ©rotation en chiffres arabes
 	\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
 	\titleformat	{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{\underline}[]
 
 	%Subsubsection
-	\renewcommand\thesubsubsection{\alph{subsubsection})}%Numérotation en lettres
+	\renewcommand\thesubsubsection{\alph{subsubsection})}%NumÃ©rotation en lettres
 	\titlespacing*{\subsubsection}{1cm}{0.5cm}{0.3cm}
 
 	%dotparagraph % C'est comme \paragraph, mais avec un point devant
@@ -389,15 +389,15 @@
 
 	\renewcommand*{\footrulewidth}{1px}
 	\lfoot{%
-		\emph{Lycée Gustave Eiffel de Dijon}%
+		\emph{LycÃ©e Gustave Eiffel de Dijon}%
 		}%Pied de gauche --> Etablissement
-	\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> n°de page
+	\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> nÂ°de page
 	\rfoot{%
-		\emph{\getClasse \\ Année \getAnnee}%
+		\emph{\getClasse \\ AnnÃ©e \getAnnee}%
 		}
 
 %Figures
-	%Captions (légendes)
+	%Captions (lÃ©gendes)
 	\captionsetup{	labelsep	=	endash,
 			justification	=	centering,
 			labelfont	=	bf,
@@ -419,9 +419,9 @@
 
 
 %Math
-% \newcommand{\eme}	{^\text{ème}}
+% \newcommand{\eme}	{^\text{Ã¨me}}
 % \newcommand{\er}	{^\text{er}}
-% \newcommand{\ere}	{^\text{ère}}
+% \newcommand{\ere}	{^\text{Ã¨re}}
 
 %Autre
 	\definecolor{couleurVariable}{rgb}{0.,0.52,0.55}
@@ -480,7 +480,7 @@
 
 % 	\newcommand*{\question}[2][]		{	\par	%Fini un paragraphe
 % 							\refstepcounter{cptQuestions}
-% 							%\global\advance\cptQuestions\@ne	%Incrémente le compteur
+% 							%\global\advance\cptQuestions\@ne	%IncrÃ©mente le compteur
 % 							\vspace{0.cm}
 % 							\fbox{\textbf{Q\thecptQuestions .}}
 % 							\ifthenelse{\equal{#1}{}}
@@ -522,14 +522,14 @@
 %DEFINITIONS
 %%%%%%%%%%%%%%%%%%%%%%%%
 	\newcounter{cptBoiteDefinition}	%Nouveau compteur pour les numeros de definitions
-	\definecolor{fond_definition}{RGB}{255,255,255}	%Couleur de fond des boites définition
-	\definecolor{bord_definition}{RGB}{0,0,0} 		%Couleur des bords des boites définition
+	\definecolor{fond_definition}{RGB}{255,255,255}	%Couleur de fond des boites dÃ©finition
+	\definecolor{bord_definition}{RGB}{0,0,0} 		%Couleur des bords des boites dÃ©finition
 
 	\newenvironmentx*{definition}[2][1=,2=]%Une seule de definition
-				{\refstepcounter{cptBoiteDefinition}%Incrémente le compteur
+				{\refstepcounter{cptBoiteDefinition}%IncrÃ©mente le compteur
 					\begin{center}
 						%\begin{minipage}{\tailleDesBoites\linewidth}
-							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définition \thecptBoiteDefinition\ : \emph{#1}}}
+							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finition \thecptBoiteDefinition\ : \emph{#1}}}
 				{			\end{bclogo}
 						%\end{minipage}
 					\end{center}
@@ -539,7 +539,7 @@
 				{\refstepcounter{cptBoiteDefinition}
 					\begin{center}
 						\begin{minipage}{\tailleDesBoites\linewidth}
-							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définitions \thecptBoiteDefinition\ : \emph{#1}}
+							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finitions \thecptBoiteDefinition\ : \emph{#1}}
 								\begin{itemize}}
 				{				\end{itemize}
 							\end{bclogo}
@@ -549,7 +549,7 @@
 	\newenvironmentx*{definition*}[2][1=,2=]
 				{	\begin{center}
 						\begin{minipage}{\tailleDesBoites\linewidth}
-							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définition : \emph{#1}}}
+							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finition : \emph{#1}}}
 				{			\end{bclogo}
 						\end{minipage}
 					\end{center}}
@@ -557,7 +557,7 @@
 	\newenvironmentx*{definitions*}[2][1=,2=]
 				{	\begin{center}
 						\begin{minipage}{\tailleDesBoites\linewidth}
-							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définitions : \emph{#1}}
+							\begin{bclogo}[couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finitions : \emph{#1}}
 								\begin{itemize}}
 				{				\end{itemize}
 							\end{bclogo}
@@ -576,7 +576,7 @@
 	\newenvironmentx{propriete}[2][1=,2=]	{\refstepcounter{cptPropriete}
 						\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriété \thecptPropriete\ : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ© \thecptPropriete\ : \emph{#1}}}
 						{		\end{bclogo}
 						\end{minipage}
 						\end{center}}
@@ -584,7 +584,7 @@
 	\newenvironmentx{proprietes}[2][1=,2=]	{\refstepcounter{cptPropriete}
 						\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriétés \thecptPropriete\ : \emph{#1}}
+								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ©s \thecptPropriete\ : \emph{#1}}
 									\begin{itemize}}
 						{			\end{itemize}
 								\end{bclogo}
@@ -593,14 +593,14 @@
 
 	\newenvironmentx{propriete*}[2][1=,2=]	{\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriété : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ© : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
 
 	\newenvironmentx{proprietes*}[2][1=,2=]	{\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriétés : \emph{#1}}
+								\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ©s : \emph{#1}}
 									\begin{itemize}}
 						{			\end{itemize}
 								\end{bclogo}
@@ -701,7 +701,7 @@
 	\definecolor{fond_exercice}{RGB}{255,255,255}	%Couleur de fond des boites exercice
 	\definecolor{bord_exercice}{RGB}{0,0,0} 		%Couleur des bords des boites exercice
 	\newenvironmentx*{exercice}[2][1=,2=]
-				{	\refstepcounter{cptBoiteExercice}%Incrémente le compteur
+				{	\refstepcounter{cptBoiteExercice}%IncrÃ©mente le compteur
 					\resetQuestions
 					\begin{center}
 						%\begin{minipage}{\tailleDesBoites\linewidth}
@@ -714,7 +714,7 @@
 
 	\newcommand{\sectionExercice}[1]	{
 							\resetQuestions
-							\refstepcounter{cptBoiteExercice}%Incrémente le compteur
+							\refstepcounter{cptBoiteExercice}%IncrÃ©mente le compteur
 							\subsection*{Exercice \thecptBoiteExercice: \emph{#1}}
 						}
 
@@ -777,8 +777,8 @@
 % Making of
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\definecolor{fond_makingOf}{RGB}{255,200,200}	%Couleur de fond des boites définition
-\definecolor{bord_makingOf}{RGB}{200,0,0} 		%Couleur des bords des boites définition
+\definecolor{fond_makingOf}{RGB}{255,200,200}	%Couleur de fond des boites dÃ©finition
+\definecolor{bord_makingOf}{RGB}{200,0,0} 		%Couleur des bords des boites dÃ©finition
 \newcommand{\titreMakingOf}{}
 \newenvironment{makingOf}[1][]		{
 						\renewcommand{\titreMakingOf}{#1}
@@ -805,8 +805,8 @@
 % \definecolor{PY-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 % \definecolor{PY-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 % \definecolor{PY-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
-% \definecolor{PY-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
-% \definecolor{PY-numeros}{rgb}{0.7,0.7,0.7}		%numéros de ligne
+% \definecolor{PY-self}{rgb}{0,0,0}		%je sais pas. J'ai recopiÃ© d'internet
+% \definecolor{PY-numeros}{rgb}{0.7,0.7,0.7}		%numÃ©ros de ligne
 % \definecolor{PY-chevrons}{rgb}{1,0.,0.}		%chevrons
 % \definecolor{PY-ombre}{rgb}{0.,0.,0.}		%Ombre
 % 
@@ -819,7 +819,7 @@
 % 		{
 % 		\lstset{
 % 			%Langage
-% 				language=Python,	%Langage par défaut
+% 				language=Python,	%Langage par dÃ©faut
 % 			%Mise en forme de l'environnement
 % 				xleftmargin=2em,	%marge a gauche
 % 				%frame=trBL,		%Cadre (double cadre)
@@ -828,7 +828,7 @@
 % 				frame=shadowbox,
 % 				rulesepcolor=\color{PY-ombre},
 % 				texcl=true,	%Activle les commandes LaTex dans le code
-% 				%escapechar=ø,	%Caractere a echapper
+% 				%escapechar=Ã¸,	%Caractere a echapper
 % 				escapeinside={(*}{*)},
 % 				linewidth=#1,	%taille d'une ligne
 % 			%Titre
@@ -837,9 +837,9 @@
 % 				abovecaptionskip=-0.0em,
 % 				nolol=true,
 % 			%Numeros de ligne
-% 				numbers=left,	%Rajoute des numéros de ligne
-% 				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numéros de ligne
-% 				numbersep=1em,			%Marge entre le code et les numéros de ligne
+% 				numbers=left,	%Rajoute des numÃ©ros de ligne
+% 				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numÃ©ros de ligne
+% 				numbersep=1em,			%Marge entre le code et les numÃ©ros de ligne
 % 			%Mise en forme du texte
 % 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 % 				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
@@ -852,7 +852,7 @@
 % 				showstringspaces=false,
 % 				morecomment=[s][\color{PY-chaines}]{"""}{"""},
 % 				morecomment=[s][\color{PY-chaines}]{'''}{'''},
-% 			%Fonctions et mot clé de python
+% 			%Fonctions et mot clÃ© de python
 % 				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
 % 				keywordstyle=\color{PY-fonctions}\bfseries,
 % 				morekeywords={[3]>>>},
@@ -880,8 +880,8 @@
 \definecolor{PSD-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 \definecolor{PSD-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 \definecolor{PSD-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
-\definecolor{PSD-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
-\definecolor{PSD-numeros}{rgb}{0.6,0.6,0.6}		%numéros de ligne
+\definecolor{PSD-self}{rgb}{0,0,0}		%je sais pas. J'ai recopiÃ© d'internet
+\definecolor{PSD-numeros}{rgb}{0.6,0.6,0.6}		%numÃ©ros de ligne
 \definecolor{PSD-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{PSD-ombre}{rgb}{0.5,0.5,0.5}		%Ombre
 
@@ -890,7 +890,7 @@
 		{
 		\lstset{
 			%Langage
-				%language=Python,	%Langage par défaut
+				%language=Python,	%Langage par dÃ©faut
 			%Mise en forme de l'environnement
 				xleftmargin=2em,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -900,7 +900,7 @@
 				rulesepcolor=\color{PSD-ombre},
 				texcl=true,	%Activle les commandes LaTex dans le code
 				mathescape=true,	
-				%escapechar=ø,	%Caractere a echapper
+				%escapechar=Ã¸,	%Caractere a echapper
 				escapeinside={(*}{*)},
 				linewidth=#1,	%taille d'une ligne
 			%Titre
@@ -910,9 +910,9 @@
 				nolol=true,
 				%title={Pseudo-code}
 			%Numeros de ligne
-				numbers=left,	%Rajoute des numéros de ligne
-				numberstyle=\footnotesize\color{PSD-numeros},	%Taille des numéros de ligne
-				numbersep=1em,			%Marge entre le code et les numéros de ligne
+				numbers=left,	%Rajoute des numÃ©ros de ligne
+				numberstyle=\footnotesize\color{PSD-numeros},	%Taille des numÃ©ros de ligne
+				numbersep=1em,			%Marge entre le code et les numÃ©ros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
@@ -925,8 +925,8 @@
 				showstringspaces=false,
 				morecomment=[s][\color{PSD-chaines}]{"""}{"""},
 				morecomment=[s][\color{PSD-chaines}]{'''}{'''},
-			%Fonctions et mot clé de python
-				morekeywords=[1]{Pour,POUR,pour,allant,Allant,ALLANT,de,DE,De,jusqu,JUSQU,Jusqu,à,À,FIN,Fin,fin,Effectuer,EFFECTUER,effectuer,si,Si,SI,faire,et,Et,ET,ou,Ou,OU,FAIRE,Faire,alors,Alors,ALORS,sinon,Sinon,SINON,fonction,Fonction,FONCTION,retourner,Retourner,RETOURNER,afficher,Afficher,AFFICHER,concaténer,concatener,Concaténer,Concatener,CONCATÉNER,CONCATENER,nouveau,Nouveau,NOUVEAU,declarer,Declarer,DECLARER,déclarer,Déclarer,DÉCLARER,repeter,répéter,Repeter,Répéter,RÉPÉTER,finsi,Finsi,FinSi,FINSI,finpour,Finpour,FinPour,FINPOUR,debut,Debut,DEBUT,début,Début,DÉBUT,ouvrir,Ouvrir,OUVRIR,fermer,Fermer,FERMER,lire,Lire,LIRE,calculer,Calculer,CALCULER},
+			%Fonctions et mot clÃ© de python
+				morekeywords=[1]{Pour,POUR,pour,allant,Allant,ALLANT,de,DE,De,jusqu,JUSQU,Jusqu,Ã ,Ã€,FIN,Fin,fin,Effectuer,EFFECTUER,effectuer,si,Si,SI,faire,et,Et,ET,ou,Ou,OU,FAIRE,Faire,alors,Alors,ALORS,sinon,Sinon,SINON,fonction,Fonction,FONCTION,retourner,Retourner,RETOURNER,afficher,Afficher,AFFICHER,concatÃ©ner,concatener,ConcatÃ©ner,Concatener,CONCATÃ‰NER,CONCATENER,nouveau,Nouveau,NOUVEAU,declarer,Declarer,DECLARER,dÃ©clarer,DÃ©clarer,DÃ‰CLARER,repeter,rÃ©pÃ©ter,Repeter,RÃ©pÃ©ter,RÃ‰PÃ‰TER,finsi,Finsi,FinSi,FINSI,finpour,Finpour,FinPour,FINPOUR,debut,Debut,DEBUT,dÃ©but,DÃ©but,DÃ‰BUT,ouvrir,Ouvrir,OUVRIR,fermer,Fermer,FERMER,lire,Lire,LIRE,calculer,Calculer,CALCULER},
 				keywordstyle=[1]*\color{PSD-fonctions}\bfseries,
 				emph={self},
 				emphstyle={\color{PSD-self}\slshape}
@@ -948,8 +948,8 @@
 \definecolor{SQL-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 \definecolor{SQL-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 \definecolor{SQL-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
-\definecolor{SQL-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
-\definecolor{SQL-numeros}{rgb}{0.7,0.7,0.7}		%numéros de ligne
+\definecolor{SQL-self}{rgb}{0,0,0}		%je sais pas. J'ai recopiÃ© d'internet
+\definecolor{SQL-numeros}{rgb}{0.7,0.7,0.7}		%numÃ©ros de ligne
 \definecolor{SQL-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{SQL-ombre}{rgb}{0.5,0.5,0.5}		%Ombre
 
@@ -959,7 +959,7 @@
 		{
 		\lstset{
 			%Langage
-				language=sql,	%Langage par défaut
+				language=sql,	%Langage par dÃ©faut
 			%Mise en forme de l'environnement
 				xleftmargin=2em,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -968,18 +968,18 @@
 				frame=shadowbox,
 				rulesepcolor=\color{SQL-ombre},
 				texcl=true,	%Activle les commandes LaTex dans le code
-				%escapechar=ø,	%Caractere a echapper
+				%escapechar=Ã¸,	%Caractere a echapper
 				escapeinside={(*}{*)},
 				linewidth=#1,	%taille d'une ligne
 			%Titre
-				title=requête SQL,
+				title=requÃªte SQL,
 				belowcaptionskip=-0.0em,
 				abovecaptionskip=-0.0em,
 				nolol=true,
 			%Numeros de ligne
-				numbers=left,	%Rajoute des numéros de ligne
-				numberstyle=\footnotesize\color{SQL-numeros},	%Taille des numéros de ligne
-				numbersep=1em,			%Marge entre le code et les numéros de ligne
+				numbers=left,	%Rajoute des numÃ©ros de ligne
+				numberstyle=\footnotesize\color{SQL-numeros},	%Taille des numÃ©ros de ligne
+				numbersep=1em,			%Marge entre le code et les numÃ©ros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
@@ -992,9 +992,9 @@
 				showstringspaces=false,
 				morecomment=[s][\color{SQL-chaines}]{"""}{"""},
 				morecomment=[s][\color{SQL-chaines}]{'''}{'''},
-			%délimiteurs de Commentaires
+			%dÃ©limiteurs de Commentaires
 				deletecomment=[n]{(*}{*)},
-			%Fonctions et mot clé de python
+			%Fonctions et mot clÃ© de python
 				%morekeywords=[1]{Pour,pour,Fin,fin,Effectuer,effectuer,si,Si,faire,Faire,alors,Alors},
 				keywordstyle=[1]*\color{SQL-fonctions}\bfseries,
 				emph={self},
@@ -1028,8 +1028,8 @@
 \definecolor{console-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 \definecolor{console-fonctions}{rgb}{1,1,1}		%Couleur des fonctions de bases
 \definecolor{console-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
-\definecolor{console-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
-\definecolor{console-numeros}{rgb}{1,1,1}		%numéros de ligne
+\definecolor{console-self}{rgb}{0,0,0}		%je sais pas. J'ai recopiÃ© d'internet
+\definecolor{console-numeros}{rgb}{1,1,1}		%numÃ©ros de ligne
 \definecolor{console-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{console-ombre}{rgb}{0.5,0.5,0.5}		%Ombre
 
@@ -1039,7 +1039,7 @@
 		{
 		\lstset{
 			%Langage
-				language=bash,	%Langage par défaut
+				language=bash,	%Langage par dÃ©faut
 			%Mise en forme de l'environnement
 				xleftmargin=2em,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -1048,7 +1048,7 @@
 				frame=shadowbox,
 				rulesepcolor=\color{console-ombre},
 				texcl=true,	%Activle les commandes LaTex dans le code
-				%escapechar=ø,	%Caractere a echapper
+				%escapechar=Ã¸,	%Caractere a echapper
 				escapeinside={(*}{*)},
 				linewidth=#1,	%taille d'une ligne
 			%Titre
@@ -1057,9 +1057,9 @@
 				abovecaptionskip=-0.0em,
 				nolol=true,
 			%Numeros de ligne
-				numbers=left,	%Rajoute des numéros de ligne
-				numberstyle=\footnotesize\color{console-numeros},	%Taille des numéros de ligne
-				numbersep=1em,			%Marge entre le code et les numéros de ligne
+				numbers=left,	%Rajoute des numÃ©ros de ligne
+				numberstyle=\footnotesize\color{console-numeros},	%Taille des numÃ©ros de ligne
+				numbersep=1em,			%Marge entre le code et les numÃ©ros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
@@ -1072,9 +1072,9 @@
 				showstringspaces=false,
 				morecomment=[s][\color{console-chaines}]{"""}{"""},
 				morecomment=[s][\color{console-chaines}]{'''}{'''},
-			%délimiteurs de Commentaires
+			%dÃ©limiteurs de Commentaires
 				deletecomment=[n]{(*}{*)},
-			%Fonctions et mot clé de python
+			%Fonctions et mot clÃ© de python
 				%morekeywords=[1]{Pour,pour,Fin,fin,Effectuer,effectuer,si,Si,faire,Faire,alors,Alors},
 				keywordstyle=[1]*\color{console-fonctions}\bfseries,
 				emph={self},
@@ -1095,7 +1095,7 @@
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Bases de données
+%Bases de donnÃ©es
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand*{\selection}[2]	{\ensuremath{\sigma_{%
@@ -1140,7 +1140,7 @@
 			\setbox1001=\vbox\bgroup
 	}
 	{	\egroup
-		$>>>$ \codePythonInline§\box1001§
+		$>>>$ \codePythonInlineÂ§\box1001Â§
 	}
 
 

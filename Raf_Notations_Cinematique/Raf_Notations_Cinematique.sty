@@ -16,7 +16,7 @@
 
 
 
-%dÈclaration des options de l'extension
+%d√©claration des options de l'extension
 \newif\if@RafNotCinRac	\@RafNotCinRactrue
 \DeclareOption{noRaccourci}	{\@RafNotCinRacfalse}
 %\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
@@ -25,14 +25,14 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisÈs
+%commandes et/ou environnements personnalis√©s
  
-%Simplification Ècriture :
+%Simplification √©criture :
 %Raccourcis
 \if@RafNotCinRac
-\newcommand*{\CIR}	{centre instantanÈ de rotation}
+\newcommand*{\CIR}	{centre instantan√© de rotation}
 \newcommand*{\cir}	{\CIR}
-\newcommand*{\Cir}	{Centre instantanÈ de rotation}
+\newcommand*{\Cir}	{Centre instantan√© de rotation}
 
 %DDL
 \newcommand*{\Rx}	{\ensuremath{R_x}}
@@ -41,16 +41,16 @@
 \newcommand*{\Tx}	{\ensuremath{T_x}}
 \newcommand*{\Ty}	{\ensuremath{T_y}}
 \newcommand*{\Tz}	{\ensuremath{T_z}}
-%GÈomÈtrie
+%G√©om√©trie
 \fi
 \newcommand*{\solide}[1]	{\ensuremath{\left(#1\right)}}		%Solide
 \if@RafNotCinRac
 \newcommand*{\sS}[1]		{\solide{S_{#1}}}	%Solides S1, S2, ...
 \fi
-%RepËres
-%DÈj‡ fait en math
+%Rep√®res
+%D√©j√† fait en math
 
-%coordonnÈes variables fonction du temps
+%coordonn√©es variables fonction du temps
 \if@RafNotCinRac
 \newcommand*{\xt}	{\fonction{x}{t}}
 \newcommand*{\yt}	{\fonction{y}{t}}
@@ -120,7 +120,7 @@
 \newcommand*{\lambdapp}	{\ensuremath{\ddot\lambda}}
 \fi
 
-%ParamÈtrage
+%Param√©trage
 \newcommandx*{\parametrageAngulaire}[8][2=30,8=]
 	{
 	\begin{tikzpicture}
@@ -192,10 +192,10 @@
 \newcommand*{\vPivotement}[2]		{\vecteur{\Omega^p_{\left(#1/#2\right)}}}
 \newcommand*{\vRoulement}[2]		{\vecteur{\Omega^r_{\left(#1/#2\right)}}}
 
-%DÈplacement de vitesse
+%D√©placement de vitesse
 \newcommand*{\deplaceVitesse}[4]	{\ensuremath{	\vVitesse{#3}{#1}{#2}+\vecteur{#4#3}\wedge\vRotation{#1}{#2}	}}	%\deplaceVitesse{Solid}{Referentiel}{Pdepart}{Parrivee}
 
-%petits dÈplacements
+%petits d√©placements
 \newcommandx*{\vDeplacement}[3]		{\ifthenelse{\equal{#2}{}}{\vecteur{U_{\left(#1/#3\right)}}}{\vecteur{U_{\left(#1\in#2/#3\right)}}}}
 \if@RafNotCinRac
 \newcommandx*{\vDep}			{\vDeplacement}
@@ -214,8 +214,8 @@
 \newcommand*{\tV}[3][]				{\tCinematique[#1]{#2}{#3}}	%torseur cinematique
 \fi
 
-\newcommand{\UCallig}				{\ensuremath{	\mathscr{U}	}}	%Symbole du torseur petit dÈplacement
-\newcommand{\tPetitDeplacement}[3][]	{\ensuremath{	\torseur{\UCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur petit dÈplacement
+\newcommand{\UCallig}				{\ensuremath{	\mathscr{U}	}}	%Symbole du torseur petit d√©placement
+\newcommand{\tPetitDeplacement}[3][]	{\ensuremath{	\torseur{\UCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur petit d√©placement
 \newcommand{\tPetitDep}[3][]		{\tPetitDeplacement[#1]{#2}{#3}}
 \if@RafNotCinRac
 \newcommand{\tD}[3][]			{\tPetitDeplacement[#1]{#2}{#3}}

@@ -1,17 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%	Notations Actions mécaniques
+%	Notations Actions mÃ©caniques
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
 \ProvidesPackage{Raf_Notations_Actions-Meca}[2017/03/19]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 \RequirePackage{Raf_Notations_Torseurs}	%Pour faire des torseurs
 
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \newif\if@RafNotAMRac	\@RafNotAMRactrue
 \DeclareOption{noRaccourci}	{\@RafNotAMRacfalse}
 %\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisMaths}{false}}
@@ -19,7 +19,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 
 
@@ -32,7 +32,7 @@
 \newcommand*{\tAM}[3][]		{\torseurActionsMeca[#1]{#2}{#3}}
 \fi
 
-%Résultantes
+%RÃ©sultantes
 %=================================
 % 
 \newcommand*{\resultanteActionsMeca}[3][]	{\vecteur{\Res^{#1}_{\left({#2}\rightarrow{#3}\right)}}}
@@ -115,12 +115,12 @@
 \newcommand{\aFr}		{\angleFrottement}
 \fi
 % 
-\newcommand*{\coefficientAdherence}	{\ensuremath{f^{*}}}	%Coefficient d'adhérence
+\newcommand*{\coefficientAdherence}	{\ensuremath{f^{*}}}	%Coefficient d'adhÃ©rence
 \newcommand*{\coefAdh}			{\coefficientAdherence}
 \newcommand*{\fAdh}			{\coefficientAdherence}
 % 
-\newcommand*{\coefResPivotement}		{\ensuremath{\delta}}	%Coefficient de résistance pivotement
-\newcommand*{\coefResRoulement}		{\ensuremath{\eta}}	%Coefficient de résistance roulement
+\newcommand*{\coefResPivotement}		{\ensuremath{\delta}}	%Coefficient de rÃ©sistance pivotement
+\newcommand*{\coefResRoulement}		{\ensuremath{\eta}}	%Coefficient de rÃ©sistance roulement
 % 
 % 
 % %Hyperstatisme

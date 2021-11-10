@@ -7,7 +7,7 @@
 \ProvidesPackage{Raf_Notations_Cotation}[2016/08/14]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 \RequirePackage{amsmath}%Pour utiliser \text
 \RequirePackage{tikz}%Pour faire des symboles
 \usetikzlibrary{calc}
@@ -16,27 +16,27 @@
 %\RequirePackage{ifmtarg}	%Permet de faire des ifthenelse avec des argument vide notamment
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisCotation}%création du booléen
+\newboolean{boolRaccourcisCotation}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisCotation}{true}%affectation de la valeur true
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \DeclareOption{noRaccourci}{\setboolean{boolRaccourcisCotation}{false}}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 
 
 % Cotes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand*{\dNominal}		{\ensuremath{d_{\text{nom}}}}	%Diamètre nominal
-\newcommand*{\dMoyen}		{\ensuremath{d_{\text{moy}}}}	%Diamètre moyen
+\newcommand*{\dNominal}		{\ensuremath{d_{\text{nom}}}}	%DiamÃ¨tre nominal
+\newcommand*{\dMoyen}		{\ensuremath{d_{\text{moy}}}}	%DiamÃ¨tre moyen
 \newcommand*{\dInferieur}	{\ensuremath{d_{\text{inf}}}}	%Diametre inferieur
-\newcommand*{\dSuperieur}	{\ensuremath{d_{\text{sup}}}}	%Diametre supérieur
-\newcommand*{\dInterieur}	{\ensuremath{d_{\text{int}}}}	%Diametre supérieur
-\newcommand*{\dExterieur}	{\ensuremath{d_{\text{ext}}}}	%Diametre supérieur
+\newcommand*{\dSuperieur}	{\ensuremath{d_{\text{sup}}}}	%Diametre supÃ©rieur
+\newcommand*{\dInterieur}	{\ensuremath{d_{\text{int}}}}	%Diametre supÃ©rieur
+\newcommand*{\dExterieur}	{\ensuremath{d_{\text{ext}}}}	%Diametre supÃ©rieur
 
 \ifthenelse{\boolean{boolRaccourcisCotation}}
 {
@@ -123,7 +123,7 @@
 		{	\noindent
 			\begin{tabular}{|m{#1}||m{#1}|m{#1}|m{#1}|m{#1}|}
 				\hline
-					\centering\scriptsize\textbf{Spécification\\/Dénomination}	&	\scriptsize\centering\textbf{Élément\\tolérancé}	&	\centering\scriptsize\textbf{Élément(s)\\de référence(s)}	&	\centering\scriptsize\textbf{Référence(s)\\spécifiée(s)}	&	{\centering\scriptsize\textbf{Zone de\\tolérance\\(Forme/position) }}
+					\centering\scriptsize\textbf{SpÃ©cification\\/DÃ©nomination}	&	\scriptsize\centering\textbf{Ã‰lÃ©ment\\tolÃ©rancÃ©}	&	\centering\scriptsize\textbf{Ã‰lÃ©ment(s)\\de rÃ©fÃ©rence(s)}	&	\centering\scriptsize\textbf{RÃ©fÃ©rence(s)\\spÃ©cifiÃ©e(s)}	&	{\centering\scriptsize\textbf{Zone de\\tolÃ©rance\\(Forme/position) }}
 				\\\hline\hline
 		}{
 			\\\hline

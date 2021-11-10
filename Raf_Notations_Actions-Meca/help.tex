@@ -12,12 +12,12 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}Renommé})}
+	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 
 \begin{document}
 
 	\begin{center}
-		\hrule{\Large Actions mécaniques}\\\hrule
+		\hrule{\Large Actions mÃ©caniques}\\\hrule
 	\end{center}
 
 (Version du 14/04/16)
@@ -26,45 +26,45 @@
 	%-------------------------------------
 
 	\begin{itemize}
-		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation à choix multiple,
+		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation Ã  choix multiple,
 		\item \href{http://www.ctan.org/pkg/color}{\textbf{Raf\_Notations\_Torseurs}} : Package de mise en forme des torseurs
 	\end{itemize}
 
 	\section{Appel du package}
 	%-------------------------------------
 
-	Le package est appelé en début de document par la commande :
+	Le package est appelÃ© en dÃ©but de document par la commande :
 	\begin{verbatim}
 \usepackage{Raf_Notations_Actions-Meca}
 	\end{verbatim}
 
-	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide à taper !).
-	De plus, certaines commandes ont été rebaptisée.
-	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+	Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide Ã  taper !).
+	De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©e.
+	Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas crÃ©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! Ã  l'appel du package.
 
 	\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 	\end{verbatim}
 
 
-	\section{Torseur des actions mécanique}
+	\section{Torseur des actions mÃ©canique}
 	%-----------------------------
 		\noindent
 		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\torseurActionsMeca{S_1}! \verb!{S_2}!		&	\torseurActionsMeca{S_1}{S_2}		&	Torseur de l'action mécanique de $S_1$ sur $S_2$.
+				\verb!\torseurActionsMeca{S_1}! \verb!{S_2}!		&	\torseurActionsMeca{S_1}{S_2}		&	Torseur de l'action mÃ©canique de $S_1$ sur $S_2$.
 			\\\hline
-				\verb!\torseurActionsMeca[2]! \verb!{S_1}{S_2}!	&	\torseurActionsMeca[2]{S_1}{S_2}	&	Torseur de l'action mécanique de $S_1$ sur $S_2$ avec un exposant pour le différencier d'un autre torseur.
+				\verb!\torseurActionsMeca[2]! \verb!{S_1}{S_2}!	&	\torseurActionsMeca[2]{S_1}{S_2}	&	Torseur de l'action mÃ©canique de $S_1$ sur $S_2$ avec un exposant pour le diffÃ©rencier d'un autre torseur.
 			\\\hline
 				\verb!\tAM{S_1}{S_2}!					&	\tAM{S_1}{S_2}				&	Raccourci direct de \verb!\torseurActionsMeca!. \rac
 			\\\hline
 		\end{tabular}
 
 
-	\section{Forces et résultantes d'actions mécaniques}
+	\section{Forces et rÃ©sultantes d'actions mÃ©caniques}
 	%-----------------------------
 		\noindent
 		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
@@ -73,7 +73,7 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline\hline
 				\verb!\vForce{S_1}{S_2}!				&	\vForce{S_1}{S_2}			&	Vecteur force de $S_1$ sur $S_2$.
 			\\\hline
-				\verb!\vForce{}{2}!					&	\vForce{}{2}				&	Vecteur force n°2.
+				\verb!\vForce{}{2}!					&	\vForce{}{2}				&	Vecteur force nÂ°2.
 			\\\hline
 				\verb!\vForce[P]{S_1}{S_2}!				&	\vForce[P]{S_1}{S_2}			&	Vecteur force avec changement de lettre.
 			\\\hline
@@ -89,15 +89,15 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline
 				\verb!\vFT{S_1}{S_2}!					&	\vFT{S_1}{S_2}				&	Raccourci de \verb!\vForceTangentielle!. \rac
 			\\\hline
-				\verb!\resultanteActionsMeca! \verb!{S_1}{S_2}!	&	\resultanteActionsMeca{S_1}{S_2}	&	Résultante des actions mécaniques.
+				\verb!\resultanteActionsMeca! \verb!{S_1}{S_2}!	&	\resultanteActionsMeca{S_1}{S_2}	&	RÃ©sultante des actions mÃ©caniques.
 			\\\hline
-				\verb!\resultanteActionsMeca[2]! \verb!{S_1}{S_2}!	&	\resultanteActionsMeca[2]{S_1}{S_2}	&	Résultante des actions mécaniques avec exposant.
+				\verb!\resultanteActionsMeca[2]! \verb!{S_1}{S_2}!	&	\resultanteActionsMeca[2]{S_1}{S_2}	&	RÃ©sultante des actions mÃ©caniques avec exposant.
 			\\\hline
 				\verb!\resAM{S_1}{S_2}!					&	\resAM{S_1}{S_2}			&	Raccourci direct de \verb!\resultanteActionsMeca!.
 			\\\hline
 		\end{tabular}
 
-	\section{Moments d'actions mécaniques}
+	\section{Moments d'actions mÃ©caniques}
 	%-----------------------------
 		\noindent
 		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
@@ -106,7 +106,7 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline\hline
 				\verb!\momentActionsMeca! \verb!{A}{S_1}{S_2}!		&	\momentActionsMeca{A}{S_1}{S_2}	&	Vecteur moment de l'action de $S_1$ sur $S_2$ au point $A$.
 			\\\hline
-				\verb!\momentActionsMeca! \verb!{A}{\vLie{A}{\vF}}{}!	&	\momentActionsMeca{A}{\vLie{A}{\vF}}{}	&	Vecteur moment associé à un vecteur lié (le $3^{eme}$ argument est vide).
+				\verb!\momentActionsMeca! \verb!{A}{\vLie{A}{\vF}}{}!	&	\momentActionsMeca{A}{\vLie{A}{\vF}}{}	&	Vecteur moment associÃ© Ã  un vecteur liÃ© (le $3^{eme}$ argument est vide).
 			\\\hline
 				\verb!\momentActionsMeca! \verb!{A}{S_1}{S_2}!		&	\momentActionsMeca{A}{S_1}{S_2}	&	Vecteur moment de l'action de $S_1$ sur $S_2$ au point $A$.
 			\\\hline
@@ -120,7 +120,7 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline
 		\end{tabular}
 
-	\section{Densité d'effort}
+	\section{DensitÃ© d'effort}
 	%-----------------------------
 		\noindent
 		\begin{tabular}{|p{0.4\linewidth}|p{0.2\linewidth}|p{0.4\linewidth}|}
@@ -133,27 +133,27 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline
 				\verb!\vContrainte[\sigma]{X}! \verb!{\vn}!		&	\vContrainte[\sigma]{X}{\vn}	&	Idem avec changement de notation.
 			\\\hline
-				\verb!\vForceRepartie{S_1}{S_2}!			&	\vForceRepartie{S_1}{S_2}		&	Force de contact ``répartie'' sur une surface, entre $(S_1)$ et $(S_2)$ (par défaut au point $P$).
+				\verb!\vForceRepartie{S_1}{S_2}!			&	\vForceRepartie{S_1}{S_2}		&	Force de contact ``rÃ©partie'' sur une surface, entre $(S_1)$ et $(S_2)$ (par dÃ©faut au point $P$).
 			\\\hline
-				\verb!\vForceRepartie{S_1}{S_2}! \verb![X]!		&	\vForceRepartie{S_1}{S_2}[X]		&	Idem en précisant le point.
+				\verb!\vForceRepartie{S_1}{S_2}! \verb![X]!		&	\vForceRepartie{S_1}{S_2}[X]		&	Idem en prÃ©cisant le point.
 			\\\hline
 				\verb!\vForceRepartie[\sigma]! \verb!{S_1}{S_2}!		&	\vForceRepartie[\sigma]{S_1}{S_2}	&	Idem en changeant le symbole.
 			\\\hline
 				\verb!\vFRep{S_1}{S_2}!					&	\vFRep{S_1}{S_2}			&	Raccourci direct de \verb!\vForceRepartie!.
 			\\\hline
-				\verb!\vFRep{S_1}{S_2}[P]!				&	\vFRep{S_1}{S_2}[P]			&	Raccourci direct de \verb!\vForceRepartie! en précisant le point.
+				\verb!\vFRep{S_1}{S_2}[P]!				&	\vFRep{S_1}{S_2}[P]			&	Raccourci direct de \verb!\vForceRepartie! en prÃ©cisant le point.
 			\\\hline
-				\verb!\vFRep[\sigma]{S_1}{S_2}!				&	\vFRep[\sigma]{S_1}{S_2}		&	Raccourci direct de \verb!\vForceRepartie! en précisant changeant le symbole.
+				\verb!\vFRep[\sigma]{S_1}{S_2}!				&	\vFRep[\sigma]{S_1}{S_2}		&	Raccourci direct de \verb!\vForceRepartie! en prÃ©cisant changeant le symbole.
 			\\\hline
-				\verb!\vdF!						&	\vdF					&	Petite force, issue de la pression (contrainte) appliquée sur une surface $dS$ infinitésimale, centrée sur $P$.
+				\verb!\vdF!						&	\vdF					&	Petite force, issue de la pression (contrainte) appliquÃ©e sur une surface $dS$ infinitÃ©simale, centrÃ©e sur $P$.
 			\\\hline
-				\verb!\vdF[X]!						&	\vdF[X]					&	Idem, appliqué en un autre point $X$.
+				\verb!\vdF[X]!						&	\vdF[X]					&	Idem, appliquÃ© en un autre point $X$.
 			\\\hline
-				\verb!\vdM{O}!						&	\vdM{O}					&	Petit moment autour de $O$, issu de la pression (contrainte) appliquée sur une surface $dS$ infinitésimale, centrée sur $P$.
+				\verb!\vdM{O}!						&	\vdM{O}					&	Petit moment autour de $O$, issu de la pression (contrainte) appliquÃ©e sur une surface $dS$ infinitÃ©simale, centrÃ©e sur $P$.
 			\\\hline
-				\verb!\vdM[X]{O}!					&	\vdM[X]{O}				&	Idem, appliqué en un autre point $X$.
+				\verb!\vdM[X]{O}!					&	\vdM[X]{O}				&	Idem, appliquÃ© en un autre point $X$.
 			\\\hline
-				\verb!\vContrainteNormale{S_1}! \verb!{S_2}!			&	\vContrainteNormale{S_1}{S_2}		&	Contrainte normale de contact entre $(S_1)$ et $(S_2)$ (par défaut au point $P$).
+				\verb!\vContrainteNormale{S_1}! \verb!{S_2}!			&	\vContrainteNormale{S_1}{S_2}		&	Contrainte normale de contact entre $(S_1)$ et $(S_2)$ (par dÃ©faut au point $P$).
 			\\\hline
 				\verb!\vContrainteNormale{S_1}! \verb!{S_2}[X]!		&	\vContrainteNormale{S_1}{S_2}[X]	&	Idem avec changement de point.
 			\\\hline
@@ -168,7 +168,7 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\vContrainteTangentielle! \verb!{S_1}{S_2}!		&	\vContrainteTangentielle{S_1}{S_2}	&	Contrainte tangentielle de contact entre $(S_1)$ et $(S_2)$ (par défaut au point $P$).
+				\verb!\vContrainteTangentielle! \verb!{S_1}{S_2}!		&	\vContrainteTangentielle{S_1}{S_2}	&	Contrainte tangentielle de contact entre $(S_1)$ et $(S_2)$ (par dÃ©faut au point $P$).
 			\\\hline
 				\verb!\vContrainteTangentielle! \verb!{S_1}{S_2}[X]!		&	\vContrainteTangentielle{S_1}{S_2}[X]	&	Idem avec changement de point.
 			\\\hline
@@ -198,15 +198,15 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline
 				\verb!\aFr! 			&	\aFr			&	Raccourci de \verb!\angleFrottement! \rac
 			\\\hline
-				\verb!\coefficientAdherence! 	&	\coefficientAdherence	&	Coefficient d'adhérence
+				\verb!\coefficientAdherence! 	&	\coefficientAdherence	&	Coefficient d'adhÃ©rence
 			\\\hline
 				\verb!\coefAdh! 		&	\coefAdh		&	Raccourci de \verb!\coefiicientAdherence!
 			\\\hline
 				\verb!\fAdh! 			&	\fAdh			&	Raccourci de \verb!\coefiicientAdherence!
 			\\\hline
-				\verb!\coefResPivotement! 	&	\coefResPivotement	&	Coefficient de résistance au pivotement
+				\verb!\coefResPivotement! 	&	\coefResPivotement	&	Coefficient de rÃ©sistance au pivotement
 			\\\hline
-				\verb!\coefResRoulement! 	&	\coefResRoulement	&	Coefficient de résistance au roulement
+				\verb!\coefResRoulement! 	&	\coefResRoulement	&	Coefficient de rÃ©sistance au roulement
 			\\\hline
 		\end{tabular}
 
@@ -224,9 +224,9 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\\\hline
 				\verb!\iS!			&	\iS			&	Raccourci de \verb!\inconnuesStatiques! \rac
 			\\\hline
-				\verb!\inconnuesCinematiques!	&	\inconnuesCinematiques	&	Nombre d'inconnues cinématiques total
+				\verb!\inconnuesCinematiques!	&	\inconnuesCinematiques	&	Nombre d'inconnues cinÃ©matiques total
 			\\\hline
-				\verb!\inconnuesCinematiques[i]!&	\inconnuesCinematiques[i]&	Nombre d'inconnues cinématiques pour la liaison $i$
+				\verb!\inconnuesCinematiques[i]!&	\inconnuesCinematiques[i]&	Nombre d'inconnues cinÃ©matiques pour la liaison $i$
 			\\\hline
 				\verb!\iC!			&	\iC			&	Raccourci de \verb!\inconnuesCinematiques! \rac
 			\\\hline
@@ -242,7 +242,7 @@ usepackage[noRaccourci]{Raf_Notations_Actions-Meca}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\vConstanteGravite!	&	\vConstanteGravite	&	Vecteur constante de gravité
+				\verb!\vConstanteGravite!	&	\vConstanteGravite	&	Vecteur constante de gravitÃ©
 			\\\hline
 				\verb!\vg!			&	\vg			&	Raccourci de \verb!\vConstanteGravite! \rac
 			\\\hline

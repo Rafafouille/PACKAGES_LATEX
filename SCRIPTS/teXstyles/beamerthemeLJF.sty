@@ -1,0 +1,302 @@
+%%----------------------------------------------------------------------
+%% Copyright 2013-2019 by Nicolas Mesnier <nicolas.mesnier@gmail.com>
+%%
+%% This file may be distributed and/or modified
+%% 1. under the LaTeX Project Public License and/or
+%% 2. under the GNU Public License.
+%% See the file doc/licenses/LICENSE for more details.
+%%
+%% Unlimited copying and redistribution of this file are permitted as
+%% long as this file is not modified.  Modifications, and distribution
+%% of modified versions, are permitted, but only if the resulting file
+%% is renamed.
+%%----------------------------------------------------------------------
+\ProvidesPackageRCS $Header: beamerthemeLJF.sty,v 1.1 2013/08/17 mesnier$
+\RequirePackage{pgf}
+
+\mode<presentation>
+
+\usefonttheme{default}
+%\useoutertheme{smoothbars}
+\useinnertheme[shadow=true]{rounded}
+%-----------------------------------------------------------------------
+% beamer structure
+%-----------------------------------------------------------------------
+% *** options
+\newif\ifbeamer@sb@subsection
+\DeclareOptionBeamer{subsection}[true]{\csname beamer@sb@subsection#1\endcsname}
+\ExecuteOptionsBeamer{subsection=true}
+\DeclareOptionBeamer{shadow}[true]{\def\beamer@themerounded@shadow{#1}}
+\ProcessOptionsBeamer
+% *** template
+\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamertemplate{items}[ball]
+\setbeamertemplate{sections/subsections in toc}[circle]%sections numbered]
+\setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+\setbeamercovered{transparent}
+\setbeamertemplate{navigation symbols}{} % << suppress navigation symbols
+
+\tolerance=9999
+\predisplaypenalty=0
+\clubpenalty=10000
+\widowpenalty=10000
+%-----------------------------------------------------------------------
+% *** colors
+%-----------------------------------------------------------------------
+\definecolor{myblack}{HTML}{000000}
+\definecolor{myblue}{HTML}{006699}
+\definecolor{mydarkblue}{HTML}{216EAD}
+\definecolor{myDarkblue}{HTML}{283859}
+\definecolor{mylightblue}{HTML}{0099d5}
+\definecolor{mygreen}{HTML}{008542}
+\definecolor{myorange}{HTML}{E37222}
+\definecolor{myred}{HTML}{CC0033}
+\definecolor{mygray}{HTML}{686868}
+\definecolor{mylightgray}{HTML}{eeeeee}
+%-----------------------------------------------------------------------
+% beamer structure color & font
+%-----------------------------------------------------------------------
+\setbeamercolor{normal text}{fg=myblack,bg=white}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{structure}{fg=myblue}
+% *** item
+\setbeamercolor{item}{parent=local structure}
+\setbeamercolor{item projected}{parent=item,use=item,fg=white,bg=item.fg}
+\setbeamerfont{item projected}{series=\bfseries}
+\setbeamercolor{section number projected}{bg=mylightgray,fg=myblue,parent=item projected}
+\setbeamerfont{section number projected}{series=\bfseries}
+% *** titlepage
+\setbeamercolor*{title}{fg=myblue,bg=mylightgray}
+\setbeamerfont{title}{size=\Large,parent=structure}
+\setbeamerfont{subtitle}{size=\normalsize,parent=title}
+\setbeamerfont{institute}{size=\scriptsize}
+\setbeamerfont{date}{size=\normalsize}
+% *** headline
+\setbeamerfont{section in head/foot}{size=\scriptsize}
+\setbeamercolor*{section in head/foot}{fg=white,bg=myDarkblue}
+% ***  frame title
+\setbeamercolor*{frametitle}{fg=white,bg=mydarkblue}
+\setbeamerfont{frametitle}{size=\LARGE}
+\setbeamerfont{framesubtitle}{size=\normalsize}
+\setbeamercolor*{lineframe}{fg=white,bg=mylightblue}
+% *** footline
+\setbeamercolor*{Location bar}{fg=mygray,bg=white}
+\setbeamercolor*{Title bar}{fg=red,bg=white}
+\setbeamercolor*{section in foot}{fg=mygray,bg=mylightgray}
+\setbeamerfont{title in foot}{size=\tiny,series=\rm}
+%-----------------------------------------------------------------------
+% blocks
+%-----------------------------------------------------------------------
+\setbeamercolor*{block title}{fg=white,bg=mydarkblue}
+\setbeamerfont{block title}{size={}}
+\setbeamercolor*{block body}{parent=normal text,use=block title,bg=mylightgray!50!bg}
+\setbeamercolor*{block title example}{fg=white,bg=mygreen}
+\setbeamercolor*{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+\setbeamercolor*{block title alerted}{fg=white,bg=myred}
+\setbeamercolor*{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+% *** new bblock
+\setbeamercolor*{block title blued}{fg=white,bg=mylightblue}
+\setbeamerfont{block title blued}{size=\large}
+\setbeamercolor*{block body blued}{parent=normal text,fg=myblack,bg=mylightgray}
+\newenvironment{bblock}{%
+  \par\vskip\medskipamount%
+  \begin{beamerboxesrounded}[upper=block body blued,lower=block body blued,shadow=true]%
+    \raggedright\usebeamerfont{block body blued}}
+    {\par%
+\end{beamerboxesrounded}\vskip\smallskipamount}
+% *** new orangeblock
+\setbeamercolor*{block title oranged}{fg=white,bg=myorange}
+\setbeamercolor*{block body oranged}{parent=normal text,use=block title oranged,bg=block title oranged.bg!10!bg}
+\newenvironment{orangeblock}[1]{%
+  \par\vskip\medskipamount%
+  \begin{beamerboxesrounded}[upper=block title oranged,lower=block body oranged]%
+    {\raggedright\usebeamerfont*{block title oranged}#1}%
+    \raggedright%
+    \usebeamerfont{block body oranged}}
+    {\par%
+\end{beamerboxesrounded}\vskip\smallskipamount}
+%-----------------------------------------------------------------------
+% title page
+%-----------------------------------------------------------------------
+\setbeamertemplate{title page}{%
+  \vskip3em
+  \ifx\@header\@empty
+	\ifx\@CI\@empty\vspace{-2em}\else%
+  \hbox{\hskip.15\paperwidth\hskip-3ex%
+  \begin{beamercolorbox}[wd=.7\paperwidth,sep=8pt,rounded=true,shadow=true,vmode,center]{date}
+      	\usebeamerfont{subtitle}\small
+
+			\header{\SIIPTSI{} / \@CI}%
+
+  \end{beamercolorbox}
+  }
+	\fi\else%
+\fi
+  \vskip1.5em
+  \hbox{\hskip.15\paperwidth\hskip-3ex%
+  \begin{beamercolorbox}[wd=.7\paperwidth,sep=8pt,rounded=true,shadow=true,vmode,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\insertsubtitle\par}%
+      \fi%
+  \end{beamercolorbox}
+  }
+  \vskip5ex
+  \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,rounded=true,shadow=true,vmode,center]{date}
+      \usebeamerfont{author}\insertauthor
+      \ifx\insertinstitute\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{institute}\insertinstitute\par}%
+      \fi%
+  \end{beamercolorbox}
+  \vskip3ex
+  \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,rounded=true,shadow=true,vmode,center]{date}
+    \usebeamerfont{date}\insertdate
+  \end{beamercolorbox}
+  \vfill
+}
+%-----------------------------------------------------------------------
+% headline
+%-----------------------------------------------------------------------
+\def\insertsectionnavigationhorizontal{%
+  \hbox{%
+     \def\slideentry##1##2##3##4##5##6{}%
+     \setbox\beamer@sectionbox=\hbox{}%
+     \ht\beamer@sectionbox=1.875ex%
+     \dp\beamer@sectionbox=0.75ex%
+     \hskip-1.875ex plus-1fill\dohead%
+     \box\beamer@sectionbox\hfill%
+  }
+}
+\def\sectionentry#1#2#3#4#5{% section number, section title, page
+  \ifnum#5=\c@part%
+  \box\beamer@sectionbox\hskip1.875ex plus 1fill%
+  \beamer@xpos=0\relax%
+  \beamer@ypos=1\relax%
+  \setbox\beamer@sectionbox=
+  \hbox{\def\insertsectionhead{#2}%
+    \def\insertsectionheadnumber{#1}%
+    \def\insertpartheadnumber{#5}%
+    {%
+      \ifnum\c@section=#1%
+         \setlength{\fboxsep}{0pt}
+         \fcolorbox{mydarkblue}{mydarkblue}{\hyperlink{Navigation#3}{\insertsectionhead}}
+      \else%
+         {~\hyperlink{Navigation#3}{\usebeamertemplate{section in head/foot}}~~}
+      \fi}%
+  }%
+     \ht\beamer@sectionbox=1.875ex%
+     \dp\beamer@sectionbox=0.75ex%
+  \fi\ignorespaces}
+%-----------------------------------------------------------------------
+% frame title
+%-----------------------------------------------------------------------
+\setbeamertemplate{frametitle}{
+  \nointerlineskip%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[sep=0.3cm,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}
+    \vbox{}\vskip-1.5ex%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else{%
+	\vskip-.5ex%
+	\usebeamerfont{framesubtitle}~\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+  \end{beamercolorbox}%
+}
+%-----------------------------------------------------------------------
+% footline
+%-----------------------------------------------------------------------
+\setbeamertemplate{footline}{%
+  \linethickness{0pt}
+  \framelatex{%
+  \begin{beamercolorbox}[wd=.78\paperwidth,ht=5mm,sep=0.1cm]{section in foot}
+    \usebeamerfont{section in head/foot}%
+    ~~~\insertshortauthor~~~|~~~\insertshorttitle
+%    \insertshortinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.22\paperwidth,ht=5mm,sep=0.1cm]{section in foot}
+    \usebeamerfont{section in head/foot}%
+    \raisebox{2pt}{%
+      \begin{tikzpicture}[anchor=baseline]
+	\ifthenelse{\inserttotalframenumber>1}{% pour éviter les divisions par 0 à la 1ère compilation
+        \draw[draw=black!50,fill=black!50,rounded corners=0.4mm,line width=0.25pt] 
+  (0,0) rectangle ($(0,0.1)+1.6*\insertframenumber/(\inserttotalframenumber)*(1,0)$);
+	}{}% else do nothing !
+        \draw[draw=black!50,rounded corners=0.4mm,line width=0.5pt] 
+  (0,0) rectangle (1.6,0.1);
+      \end{tikzpicture}%
+    }
+    \hfill
+    \raisebox{1pt}{\small \textcolor{black}{\insertframenumber}~~}
+%    /\inserttotalframenumber}
+  \end{beamercolorbox}%
+  }
+}
+%-----------------------------------------------------------------------
+% size
+%-----------------------------------------------------------------------
+\setbeamersize{text margin left=3ex,%
+               text margin right=3ex,%
+}
+%-----------------------------------------------------------------------
+% sections
+%-----------------------------------------------------------------------
+\AtBeginSection[]{
+	\begin{frame}
+	\hbox{\hskip.15\paperwidth\hskip-3ex%
+	\begin{beamercolorbox}[wd=.7\paperwidth,sep=8pt,rounded=true,shadow=true,center]{title}
+	\begin{tikzpicture}
+	\foreach \i in {1,...,\beamer@sectionmax}{
+	\node[circle,minimum width=4mm,thick,shading=ball,ball color=mylightgray] at (0.1*\i*\linewidth,0) {\textcolor{myblue}{\i}};
+	}
+	\node[circle,minimum width=4mm,thick,shading=ball,ball color=myblue] at (0.1*\thesection*\linewidth,0) {\textcolor{white}{\huge\thesection}};
+	\end{tikzpicture}
+
+	\vskip1em
+
+	{\huge\color{myblue}
+	\setlength{\baselineskip}{1.15\baselineskip}
+
+	\insertsectionhead\par}
+	\vskip1em
+
+	\end{beamercolorbox}
+	}
+	\end{frame}
+}
+%-----------------------------------------------------------------------
+% end document
+%-----------------------------------------------------------------------
+\AtEndDocument{
+	\begin{frame}[b,plain]
+	\begin{center}
+	\includegraphics[height=4cm]{Conclu.pdf}
+	\end{center}
+	\vskip4em
+	\begin{center}\footnotesize
+	\includegraphics[height=1.5em]{By-nc-sa_plain}
+	
+	Virgile~Lacharnay <\email{virgile.lacharnay@gmail.com}>
+	
+	Ce document \'evolue.
+	Merci de signaler toute erreur ou coquille.
+	\end{center}
+	\vskip2em
+	\end{frame}
+}
+%-----------------------------------------------------------------------
+
+%-----------------------------------------------------------------------
+\mode<all>
+%------------------------------------------------------------------- eof

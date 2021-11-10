@@ -7,7 +7,7 @@
 \ProvidesPackage{Raf_Notations_Fab}[2016/08/15]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 
 \newif\if@RafNotFabRac	\@RafNotFabRactrue
 \DeclareOption{noRaccourci}	{\@RafNotFabRacfalse}
@@ -16,7 +16,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 
 
@@ -27,7 +27,7 @@
 \newcommand*{\Vc}	{\VCoupe}		%Vitesse de coupe (raccourci)
 \newcommand*{\VAvance}	{\ensuremath{V_f}}	%Vitesse d'avance
 \newcommand*{\Vf}	{\VAvance}		%Vitesse d'avance (raccourci)
-\newcommand*{\VEco}	{\ensuremath{V_{CE}}}	%Vitesse économique de coupe
+\newcommand*{\VEco}	{\ensuremath{V_{CE}}}	%Vitesse Ã©conomique de coupe
 
 \newcommand*{\avance}	{\ensuremath{f}}	%Avance de l'outil
 \newcommand*{\pPasse}	{\ensuremath{a}}	%Profondeur de passe
@@ -36,8 +36,8 @@
 
 %Angles
 \newcommand*{\aCoupe}		{\ensuremath{	\gamma	}}		%Angle de coupe
-\newcommand*{\aDepouille}	{\ensuremath{	\alpha	}}		%Angle de dépouille
-\newcommand*{\aTaillant}		{\ensuremath{	\beta	}}		%Angle de dépouille
+\newcommand*{\aDepouille}	{\ensuremath{	\alpha	}}		%Angle de dÃ©pouille
+\newcommand*{\aTaillant}		{\ensuremath{	\beta	}}		%Angle de dÃ©pouille
 \newcommand*{\aInclinaison}	{\ensuremath{	\lambda_r	}}	%Angle d'inclinaison
 \newcommand*{\aInc}		{\aInclinaison}				%Angle d'inclinaison (raccourci)
 \newcommand*{\aDirectionArete}	{\ensuremath{	\kappa_r	}}	%Angle de direction d'arete
@@ -47,15 +47,15 @@
 
 %Plans
 \newcommand*{\fCoupe}		{\ensuremath{	A_\aCoupe	}}	%Face de coupe
-\newcommand*{\fDepouille}	{\ensuremath{	A_\aDepouille	}}	%Face de dépouille
-\newcommand*{\pRef}		{\ensuremath{	P_r	}}		%Plan de référence
+\newcommand*{\fDepouille}	{\ensuremath{	A_\aDepouille	}}	%Face de dÃ©pouille
+\newcommand*{\pRef}		{\ensuremath{	P_r	}}		%Plan de rÃ©fÃ©rence
 \newcommand*{\pTravail}		{\ensuremath{	P_f	}}		%Plan de travail conventionnel
 \newcommand*{\pArete}		{\ensuremath{	P_s	}}		%Plan d'arete de l'outil
 \newcommand*{\pNormal}		{\ensuremath{	P_n	}}		%Plan d'arete de l'outil
 
 %Autre
 \newcommand*{\rBec}		{\ensuremath{	R_\varepsilon	}}	%Rayon de bec de l'outil
-\newcommand*{\usureDepouille}	{\ensuremath{	VB	}}		%Usure en dépouille
+\newcommand*{\usureDepouille}	{\ensuremath{	VB	}}		%Usure en dÃ©pouille
 \newcommand{\cTotal}		{\ensuremath{	C_T	}}		%Cout total
 \newcommand{\CT}		{\cTotal}				%Cout total (raccourci)
 

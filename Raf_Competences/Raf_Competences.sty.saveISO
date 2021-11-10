@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cotation Fonctionnelle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Competences}[2015/08/14]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+%\RequirePackage{amsmath}%Pour utiliser \text
+\RequirePackage{tikz}%Pour faire des symboles
+%\usetikzlibrary{calc}
+\RequirePackage{xargs}
+%\RequirePackage{array}	
+%\RequirePackage{ifmtarg}	%Permet de faire des ifthenelse avec des argument vide notamment
+%\RequirePackage[european]	{circuitikz}	%Permet de dessiner des packages
+\RequirePackage{xstring}
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisCompetences}%création du booléen
+\setboolean{boolRaccourcisCompetences}{true}%affectation de la valeur true
+
+%déclaration des options de l'extension
+\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisCompetences}{false}}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+
+\ifthenelse{\boolean{boolRaccourcisCompetences}}
+{
+
+}{}
+
+
+
+% Liste des compétences par section
+
+\newcommand*	{\competencesPT}	{Concevoir,Réaliser,Expérimenter,Communiquer,Analyser,Modéliser,Résoudre}
+\newcommand*	{\competencesPTSI}	{\competencesPT}
+\newcommand*	{\competencesTSI}	{\competencesPT}
+
+\newcommand*	{\competencesMP}	{Communiquer,Expérimenter,Analyser,Modéliser,Résoudre}
+\newcommand*	{\competencesMPSI}	{\competencesMP}
+
+\newcommand*	{\competencesPSI}	{Concevoir,Expérimenter,Communiquer,Analyser,Modéliser,Résoudre}
+\newcommand*	{\competencesPCSI}	{\competencesPSI}
+
+
+% Personnalisation
+\newcommand*	{\competencesTexteCentral}	{Compétences}
+\definecolor	{competencesCouleurFondCentrale}{HTML}	{173660}
+\definecolor	{competencesCouleurTexteCentrale}{rgb}	{1.,1.,1.}
+\definecolor	{competencesCouleurFondFeuille}{HTML}	{C8D6E6}
+\definecolor	{competencesCouleurFondFeuilleSelected}{rgb}	{0.,0.,0.}
+\definecolor	{competencesCouleurTexteFeuille}{rgb}	{0.,0.,0.}
+\definecolor	{competencesCouleurTexteFeuilleSelected}{rgb}	{1.,1.,1.}
+\definecolor	{competencesCouleurTexteFeuilleUnselected}{HTML}	{647373}
+\newcommand*	{\competencesDelimiteur}	{,}	%Délimiteur dans les paramètres passés
+\newcommand*	{\competencesRayon}	{10em}	%Rayon autour duquel les compétences sont affichées
+\newcommand*	{\competencesIncrement}	{20}	%Incrément angulaire entre deux compétences
+
+% Commande principale pour tracer un diagramme de compétences
+
+\newcounter{numeroCompetence}
+\newcounter{placeCompetence}
+\newcounter{placeDoubleCompetence}
+\newcounter{nombreCompetences}
+
+\newcommandx {\diagrammeCompetences}[3][1=\competencesPT,2=,3=]	%
+	{%
+		\setcounter{placeCompetence}{0}%
+		\setcounter{placeDoubleCompetence}{0}	%Comme je n'arrive pas à faire une bête division par deux, je vais faire un compter qui va s'incrémenter 2 fois...
+		\setcounter{numeroCompetence}{0}%
+%
+		\ifthenelse{\equal{#2}{}}%Juste un petit truc pour effacer les feuilles non-sélectionnées...
+			{}{%
+				\definecolor{competencesCouleurTexteFeuilleSauvegarde}{named}{competencesCouleurTexteFeuille}%
+				\definecolor{competencesCouleurTexteFeuille}{named}{competencesCouleurTexteFeuilleUnselected}%
+			}%
+%
+		\newcommand*{\competencesCote}{gauche}	%Indique de quel coté on est
+		\StrCount{#1}{\competencesDelimiteur}[\competencesDADA]		\setcounter{nombreCompetences}{\competencesDADA}	\stepcounter{nombreCompetences}	%Compte le nombre de compétences
+%
+		\begin{tikzpicture}%
+			\placeCompetence[#2]{#1};%
+			\node[rounded corners=0.4em,draw,anchor=center,thick,fill=competencesCouleurFondCentrale,minimum height=3em] (centre) at (0,0) {\textbf{\color{competencesCouleurTexteCentrale}\competencesTexteCentral}};%
+			\draw[>-,color=red,very thick] (0,\competencesRayon/2) arc (450:80:\competencesRayon/2);%
+		\end{tikzpicture}%
+%		
+		\ifthenelse{\equal{#2}{}}%Remise de la couleur initiale
+			{}%
+			{\definecolor{competencesCouleurTexteFeuille}{named}{competencesCouleurTexteFeuilleSauvegarde}}%
+	}
+	
+	
+	
+
+\newcommand*	{\placeCompetence}[2][]
+	{%
+		\addtocounter{numeroCompetence}{1}
+		\StrPosition{#2}{\competencesDelimiteur}[\diagCompPos]	%On cherche la position de la 1ere virgule
+		\ifthenelse{\equal{\diagCompPos}{0}}%
+			{%
+				%\node[draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({180-(\thenombreCompetences *0.5- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {#1};
+				\IfSubStr{#1}{\thenumeroCompetence}%Si mise en évidence
+					{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em] (A) at ({(\thenombreCompetences/4- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\textbf{\color{competencesCouleurTexteFeuilleSelected}#2}};}%
+					{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({(\thenombreCompetences/4- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\color{competencesCouleurTexteFeuille}#2};}%
+				\draw (A) .. controls +(-9em,0) and (0,0) .. (0,0);%
+			}	%Si plus de virgule (position = 0) on renvoie le texte
+			{%
+				%On extrait le 1er nom de la liste
+				\StrSplit{#2}{\diagCompPos}{\diagSplitUn}{\diagSplitdeux}%On sépare autour de la 1ere virgule
+				\StrDel{\diagSplitUn}{\competencesDelimiteur}[\diagSplitNom]	%On vire la premiere virgule (restée dans la premiere moitiée...)
+				%
+				%Position des boites
+				%
+				%
+				\ifthenelse{\equal{\competencesCote}{gauche}}	%Si on est à gauche
+					{%
+						%Select ou pas ???
+						\IfSubStr{#1}{\thenumeroCompetence}%Si mise en évidence
+							{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em] (A) at ({180+(-\thenombreCompetences/4+\theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\textbf{\color{competencesCouleurTexteFeuilleSelected}\diagSplitNom}};}%
+							{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({180+(-\thenombreCompetences/4+\theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\color{competencesCouleurTexteFeuille}\diagSplitNom};}%
+						%
+						\draw (A) .. controls +(9em,0) and (0,0) .. (0,0);%
+						%
+						%PASSAGE A DROITE...
+						\addtocounter{placeCompetence}{1}%
+						\addtocounter{placeDoubleCompetence}{1}%
+				%		\renewcommand*{\competencesCote}{droite}
+						\ifthenelse{\equal{\thenombreCompetences}{\theplaceDoubleCompetence}}%Pour les nombres impairs...
+							{%
+								\renewcommand*{\competencesCote}{droite}%
+								\setcounter{placeCompetence}{1}%
+							}%
+							{%
+								\addtocounter{placeDoubleCompetence}{1}	%Pour les nombres pairs...
+								\ifthenelse{\equal{\thenombreCompetences}{\theplaceDoubleCompetence}}%Pour les nombre impaire...
+									{%
+										\renewcommand*{\competencesCote}{droite}%
+										\setcounter{placeCompetence}{1}%
+									}%
+									{}%	
+							}%
+					}%
+					{%
+						\IfSubStr{#1}{\thenumeroCompetence}%Si mise en évidence
+							{\node[rounded corners=3pt,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em] (A) at ({(\thenombreCompetences/4-\theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\textbf{\color{competencesCouleurTexteFeuilleSelected}\diagSplitNom}};}%
+							{\node[rounded corners=3pt,draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({(\thenombreCompetences/4-\theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\color{competencesCouleurTexteFeuille}\diagSplitNom};}%
+						%
+						\draw (A) .. controls +(-9em,0) and (0,0) .. (0,0);%
+						\addtocounter{placeCompetence}{1}%
+%
+					}%
+%
+%
+				\placeCompetence[#1]{\diagSplitdeux}	%Récurcivité...
+			}	%Si encore des virgules...
+%
+	}
+
+
+\endinput

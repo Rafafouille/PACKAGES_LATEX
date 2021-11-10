@@ -2,7 +2,7 @@
 
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc}
+	\usepackage[utf8]{inputenc}
 	\usepackage{hyperref} 
 
 	\usepackage{Raf_Notations_Unites}
@@ -10,19 +10,19 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}RenommÈ})}
+	\newcommand{\ren}{({\color{blue}Renomm√©})}
 
 \begin{document}
 
 
 	\begin{center}
-		\hrule{\Large Notations d'unitÈs}\\\hrule
+		\hrule{\Large Notations d'unit√©s}\\\hrule
 	\end{center}
 
 	
-	Ce package propose des unitÈs (de la physique ou autre),
-	Ècrites un peu plus petites que la police normale,
-	et gÈrant automatiquement les espaces avec les nombres qu'ils suivent.
+	Ce package propose des unit√©s (de la physique ou autre),
+	√©crites un peu plus petites que la police normale,
+	et g√©rant automatiquement les espaces avec les nombres qu'ils suivent.
 	
 	\tableofcontents
 	
@@ -32,22 +32,22 @@
 	%-------------------------------------
 
 	\begin{itemize}
-		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation ‡ choix multiple,
-		\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Notations mathÈmatiques (Ici : pour utiliser la fonction \verb!\text! dans les formules)
+		\item \href{http://www.ctan.org/pkg/ifthen}{\textbf{ifthen}} : Package permettant une compilation √† choix multiple,
+		\item \href{http://www.ams.org/publications/authors/tex/amslatex}{\textbf{amsmath}} : Notations math√©matiques (Ici : pour utiliser la fonction \verb!\text! dans les formules)
 	\end{itemize}
 
 	\section{Appel du package}
 	%-------------------------------------
 
-	Le package est appelÈ en dÈbut de document par la commande :
+	Le package est appel√© en d√©but de document par la commande :
 	\begin{verbatim}
 \usepackage{Raf_Notations_Unites}
 	\end{verbatim}
 
-	Par dÈfaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide ‡ taper !).
-	De plus, certaines commandes ont ÈtÈ rebaptisÈe.
-	Ces raccourcis et renommages seront citÈs (\rac\ ou \ren) dans les tableaux suivants.
-	Pour ne pas crÈer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! ‡ l'appel du package.
+	Par d√©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autre package (mais tellement plus rapide √† taper !).
+	De plus, certaines commandes ont √©t√© rebaptis√©e.
+	Ces raccourcis et renommages seront cit√©s (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas cr√©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! √† l'appel du package.
 
 	\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Unites}
@@ -62,23 +62,23 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\unite{raf}!			&	\unite{raf}			&	Une unitÈ (gÈnÈrique...)
+			\verb!\unite{raf}!			&	\unite{raf}			&	Une unit√© (g√©n√©rique...)
 		\\\hline
-			\verb!\unite[-3]{raf}!			&	\unite[-3]{raf}		&	Puissance d'une unitÈ
+			\verb!\unite[-3]{raf}!			&	\unite[-3]{raf}		&	Puissance d'une unit√©
 		\\\hline
 			\verb!\unite{\text{raf}}!		&	\unite{\text{raf}}		&	Avec police textuelle
 		\\\hline
-			\verb!12\micron!		&	12\micron		&	Un exemple d'unitÈ sur ces bases...
+			\verb!12\micron!		&	12\micron		&	Un exemple d'unit√© sur ces bases...
 		\\\hline
 			\verb!12\micron[-2]!		&	12\micron[-2]		&	...avec une puissance
 		\\\hline
-			\verb!12\micron\volt/\ampere!	&	12\micron\volt/\ampere	&	Chaque unitÈ est prÈcÈdÈe d'une espace, sauf aprËs un divisÈ ``$/$''.
+			\verb!12\micron\volt/\ampere!	&	12\micron\volt/\ampere	&	Chaque unit√© est pr√©c√©d√©e d'une espace, sauf apr√®s un divis√© ``$/$''.
 		\\\hline
 	\end{tabular}
 
 
 	
-	\section{Sans unitÈ (autre que les angles)}
+	\section{Sans unit√© (autre que les angles)}
 	%---------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -154,7 +154,7 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\verb!\litre!		& 	\litre		&	\\
 		\hline
-			\verb!\Ltr!		& 	\Ltr		&	\rac (Le \verb!L! est dÈj‡ utilisÈ ailleurs)\\
+			\verb!\Ltr!		& 	\Ltr		&	\rac (Le \verb!L! est d√©j√† utilis√© ailleurs)\\
 		\hline
 			\verb!\decalitre!	& 	\decalitre	&	\\
 		\hline
@@ -262,6 +262,8 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\verb!\kilopascal!	& 	\kilopascal	&	\\
 		\hline
+			\verb!\kPa!	& 	\kPa	&	\rac\\
+		\hline
 			\verb!\megapascal!	& 	\megapascal	&	\\
 		\hline
 			\verb!\MPa!		& 	\MPa		&	\rac\\
@@ -316,7 +318,7 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 	
 		
 	
-	\section{FrÈquences}
+	\section{Fr√©quences}
 	%------------------------------------------
 	
 	\noindent
@@ -362,7 +364,7 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 	\end{tabular}
 
-	\section{…nergie}
+	\section{√ânergie}
 	%------------------------------------------
 
 	
@@ -438,14 +440,14 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\verb!\cheval!		& 	\cheval		&	\\
 %		\hline
-%			\verb!\VA!		& 	\VA		&	Volts AmpËre\\
+%			\verb!\VA!		& 	\VA		&	Volts Amp√®re\\
 		\hline
-			\verb!\VAR!		& 	\VAR		&	Volts AmpËre RÈactifs\\
+			\verb!\VAR!		& 	\VAR		&	Volts Amp√®re R√©actifs\\
 		\hline
 	\end{tabular}
 	
 	
-	\section{IntensitÈ lumineuse}
+	\section{Intensit√© lumineuse}
 	%------------------------------------------
 
 	\noindent
@@ -517,7 +519,7 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 	\end{tabular}
 	
-	\section{…lectricitÈ (GÈnÈral -- encore partiel)}
+	\section{√âlectricit√© (G√©n√©ral -- encore partiel)}
 	%------------------------------------------
 	
 	
@@ -614,7 +616,7 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 	\end{tabular}
 	
 
-	\section{DuretÈ matÈriaux}
+	\section{Duret√© mat√©riaux}
 	%------------------------------------------
 	
 	
@@ -623,39 +625,39 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
  			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
  		\\\hline\hline
-			\verb!\dureteHB!	& 	\dureteHB	&	DuretÈ Brinell\\
+			\verb!\dureteHB!	& 	\dureteHB	&	Duret√© Brinell\\
 		\hline
 			\verb!\HB!		& 	\HB		&	\rac\\
 		\hline
-			\verb!\dureteHBS!	& 	\dureteHBS	&	DuretÈ Brinell avec bille acier\\
+			\verb!\dureteHBS!	& 	\dureteHBS	&	Duret√© Brinell avec bille acier\\
 		\hline
 			\verb!\HBS!		& 	\HBS		&	\rac\\
 		\hline
-			\verb!\dureteHBW!	& 	\dureteHBW	&	DuretÈ Brinell avec bille en carbure de tungstËne\\
+			\verb!\dureteHBW!	& 	\dureteHBW	&	Duret√© Brinell avec bille en carbure de tungst√®ne\\
 		\hline
 			\verb!\HBW!		& 	\HBW		&	\rac\\
 		\hline
-			\verb!\dureteHRB!	& 	\dureteHRB	&	DuretÈ Rockwell	\\
+			\verb!\dureteHRB!	& 	\dureteHRB	&	Duret√© Rockwell	\\
 		\hline
 			\verb!\HRB!		& 	\HRB		&	\ren \rac\\
 		\hline
-			\verb!\dureteHRC!	& 	\dureteHRC	&	DuretÈ Rockwell\\
+			\verb!\dureteHRC!	& 	\dureteHRC	&	Duret√© Rockwell\\
 		\hline
 			\verb!\HRC!		& 	\HRC		&	\rac\\
 		\hline
-			\verb!\dureteHV!	& 	\dureteHV	&	DuretÈ Vikers\\
+			\verb!\dureteHV!	& 	\dureteHV	&	Duret√© Vikers\\
 		\hline
 			\verb!\HV!		& 	\HV		&	\rac\\
 		\hline
-			\verb!\dureteHSh!	& 	\dureteHSh	&	DuretÈ Shore\\
+			\verb!\dureteHSh!	& 	\dureteHSh	&	Duret√© Shore\\
 		\hline
 			\verb!\HSh!		& 	\HSh		&	\rac\\
 		\hline
-			\verb!\dureteKCU!	& 	\dureteKCU	&	Coefficient rÈsilience en U\\
+			\verb!\dureteKCU!	& 	\dureteKCU	&	Coefficient r√©silience en U\\
 		\hline
 			\verb!\KCU!		& 	\KCU		&	\rac\\
 		\hline
-			\verb!\dureteKCV!	& 	\dureteKCV	&	Coefficient rÈsilience en V\\
+			\verb!\dureteKCV!	& 	\dureteKCV	&	Coefficient r√©silience en V\\
 		\hline
 			\verb!\KCV!		& 	\KCV		&	\rac\\
 		\hline
@@ -671,22 +673,22 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
  			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
  		\\\hline\hline
-			\verb!\decibell!	& 	\decibell	&	DÈcibell\\
+			\verb!\decibell!	& 	\decibell	&	D√©cibell\\
 		\hline
-			\verb!\dB!		& 	\dB		&	DÈcibell \rac\\
+			\verb!\dB!		& 	\dB		&	D√©cibell \rac\\
 		\hline
-			\verb!\decade!		& 	\decade		&	DÈcade (logarithme dÈcimal)\\
+			\verb!\decade!		& 	\decade		&	D√©cade (logarithme d√©cimal)\\
 		\hline
-			\verb!\dec!		& 	\dec		&	DÈcade \rac\\
+			\verb!\dec!		& 	\dec		&	D√©cade \rac\\
 		\hline
-			\verb!\decades!		& 	\decades	&	DÈcade au pluriel\\
+			\verb!\decades!		& 	\decades	&	D√©cade au pluriel\\
 		\hline
-			\verb!\decs!		& 	\decs		&	DÈcade au pluriel \rac\\
+			\verb!\decs!		& 	\decs		&	D√©cade au pluriel \rac\\
 		\hline
 	\end{tabular}
 
 	
-	\section{TempÈrature}
+	\section{Temp√©rature}
 	%------------------------------------------
 	
 	\noindent
@@ -694,9 +696,9 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
  			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
  		\\\hline\hline
-			\verb!\degreCelcius!	& 	\degreCelcius	&	DegrÈs Celcius\\
+			\verb!\degreCelcius!	& 	\degreCelcius	&	Degr√©s Celcius\\
 		\hline
-			\verb!\degC!		& 	\degC		&	DegrÈs Celcius \rac\\
+			\verb!\degC!		& 	\degC		&	Degr√©s Celcius \rac\\
 		\hline
 			\verb!\kelvin!		& 	\kelvin		&	Kelvin\\
 		\hline
@@ -718,17 +720,17 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\verb!\ko!		& 	\ko		&	Kilooctet \rac\\
 		\hline
-			\verb!\megaoctet!	& 	\megaoctet	&	MÈgaoctet ($10^6\octet$)\\
+			\verb!\megaoctet!	& 	\megaoctet	&	M√©gaoctet ($10^6\octet$)\\
 		\hline
-			\verb!\Mo!		& 	\Mo		&	MÈgaoctet \rac\\
+			\verb!\Mo!		& 	\Mo		&	M√©gaoctet \rac\\
 		\hline
 			\verb!\gigaoctet!	& 	\gigaoctet	&	Gigaoctet ($10^9\octet$)\\
 		\hline
 			\verb!\Go!		& 	\Go		&	Gigaoctet \rac\\
 		\hline
-			\verb!\teraoctet!	& 	\teraoctet	&	TÈraoctet ($10^{12}\octet$)\\
+			\verb!\teraoctet!	& 	\teraoctet	&	T√©raoctet ($10^{12}\octet$)\\
 		\hline
-			\verb!\To!		& 	\To		&	TÈraoctet \rac\\
+			\verb!\To!		& 	\To		&	T√©raoctet \rac\\
 		\hline
 	\end{tabular}
 	
@@ -741,17 +743,17 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\verb!\kio!		& 	\kio		&	Kibi-octet \rac\\
 		\hline
-			\verb!\mebioctet!	& 	\mebioctet	&	MÈbi-octet ($2^{20}\octet=1024\kibioctet$)\\
+			\verb!\mebioctet!	& 	\mebioctet	&	M√©bi-octet ($2^{20}\octet=1024\kibioctet$)\\
 		\hline
-			\verb!\Mio!		& 	\Mio		&	MÈbi-octet \rac\\
+			\verb!\Mio!		& 	\Mio		&	M√©bi-octet \rac\\
 		\hline
 			\verb!\gibioctet!	& 	\gibioctet	&	Gibi-octet ($2^{30}\octet=1024\mebioctet$)\\
 		\hline
 			\verb!\Gio!		& 	\Gio		&	Gibi-octet \rac\\
 		\hline
-			\verb!\tebioctet!	& 	\tebioctet	&	TÈbi-octet ($2^{40}\octet=1024\gibioctet$)\\
+			\verb!\tebioctet!	& 	\tebioctet	&	T√©bi-octet ($2^{40}\octet=1024\gibioctet$)\\
 		\hline
-			\verb!\Tio!		& 	\Tio		&	TÈbi-octet \rac\\
+			\verb!\Tio!		& 	\Tio		&	T√©bi-octet \rac\\
 		\hline
 	\end{tabular}
 
@@ -766,17 +768,17 @@ usepackage[noRaccourci]{Raf_Notations_Unites}
 		\hline
 			\verb!\kbit!		& 	\kbit		&	Kilo-bit \rac\\
 		\hline
-			\verb!\megabit!		& 	\megabit	&	MÈga-bit ($10^{6}\bit$)\\
+			\verb!\megabit!		& 	\megabit	&	M√©ga-bit ($10^{6}\bit$)\\
 		\hline
-			\verb!\Mbit!		& 	\Mbit		&	MÈga-bit \rac\\
+			\verb!\Mbit!		& 	\Mbit		&	M√©ga-bit \rac\\
 		\hline
 			\verb!\gigabit!		& 	\gigabit	&	Giga-bit ($10^{9}\bit$)\\
 		\hline
 			\verb!\Gbit!		& 	\Gbit		&	Giga-bit \rac\\
 		\hline
-			\verb!\terabit!		& 	\terabit	&	TÈra-bit ($10^{12}\bit$)\\
+			\verb!\terabit!		& 	\terabit	&	T√©ra-bit ($10^{12}\bit$)\\
 		\hline
-			\verb!\Tbit!		& 	\Tbit		&	TÈra-bit \rac\\
+			\verb!\Tbit!		& 	\Tbit		&	T√©ra-bit \rac\\
 		\hline
 	\end{tabular}
 

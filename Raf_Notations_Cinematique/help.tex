@@ -11,13 +11,13 @@
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
-	\newcommand{\ren}{({\color{blue}Renommé})}
+	\newcommand{\ren}{({\color{blue}RenommÃ©})}
 
 
 \begin{document}
 
 	\begin{center}
-		\hrule{\Large Notations de cinématique}\\\hrule
+		\hrule{\Large Notations de cinÃ©matique}\\\hrule
 	\end{center}
 
 	(Version du 02/07/16)
@@ -27,29 +27,29 @@
 
 		\begin{itemize}
 			\item \href{http://enseignement.allais.eu/page-latex}{\textbf{Raf\_Notations\_Torseurs}} : Package de mise en forme des torseurs
-			\item \href{http://enseignement.allais.eu/page-latex}{\textbf{Raf\_Notations\_Maths}} : Package de mise en forme mathématique
+			\item \href{http://enseignement.allais.eu/page-latex}{\textbf{Raf\_Notations\_Maths}} : Package de mise en forme mathÃ©matique
 			\item \href{http://www.ctan.org/pkg/pgf}{\textbf{tikz}} : Package pour faire des dessins (avec library \verb!calc!)
 		\end{itemize}
 
 	\section{Appel du package}
 	%-------------------------------------
 
-		Le package est appelé en début de document par la commande :
+		Le package est appelÃ© en dÃ©but de document par la commande :
 		\begin{verbatim}
 \usepackage{Raf_Notations_Cinematique}
 		\end{verbatim}
 
-	Par défaut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide à taper !).
-	De plus, certaines commandes ont été rebaptisées.
-	Ces raccourcis et renommages seront cités (\rac\ ou \ren) dans les tableaux suivants.
-	Pour ne pas créer ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! à l'appel du package.
+	Par dÃ©faut, ce package utilise un certain nombre de notations raccourcies, susceptibles de rentrer en conflit avec d'autres packages (mais tellement plus rapide Ã  taper !).
+	De plus, certaines commandes ont Ã©tÃ© rebaptisÃ©es.
+	Ces raccourcis et renommages seront citÃ©s (\rac\ ou \ren) dans les tableaux suivants.
+	Pour ne pas crÃ©er ces raccourcis/renommage, il faut rentre l'option \verb!noRaccourci! Ã  l'appel du package.
 
 	\begin{verbatim}
 usepackage[noRaccourci]{Raf_Notations_Cinematique}
 	\end{verbatim}
 
 
-	\section{Simplification écriture}
+	\section{Simplification Ã©criture}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -63,7 +63,7 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 			\verb!\Cir!			&	\Cir			&	idem avec 1er lettre majuscule \rac
 		\\\hline
 	\end{tabular}
-	\section{Degrés de liberté}
+	\section{DegrÃ©s de libertÃ©}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -83,7 +83,7 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 			\verb!\Tz!			&	\Tz			&	Translation autour de z \rac
 		\\\hline
 	\end{tabular}
-	\section{Géométrie}
+	\section{GÃ©omÃ©trie}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -100,17 +100,17 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 		\\\hline
 	\end{tabular}
 
-	\section{paramétrage}
+	\section{paramÃ©trage}
 	%-----------------------------
 	\begin{tabular}{|p{0.35\linewidth}|p{0.4\linewidth}|p{0.2\linewidth}|}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\parametrageAngulaire! \verb!{\theta}{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}!	&	\parametrageAngulaire{\theta}{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}	&Figure plane de paramétrage angulaire
+			\verb!\parametrageAngulaire! \verb!{\theta}{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}!	&	\parametrageAngulaire{\theta}{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}	&Figure plane de paramÃ©trage angulaire
 		\\\hline
-			\verb!\parametrageAngulaire! \verb!{\theta}{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}[\vz1]!	&	\parametrageAngulaire{\theta}{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}[\vz1]	&idem avec $3^\text{ème}$ vecteur de la base tournante.
+			\verb!\parametrageAngulaire! \verb!{\theta}{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}[\vz1]!	&	\parametrageAngulaire{\theta}{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}[\vz1]	&idem avec $3^\text{Ã¨me}$ vecteur de la base tournante.
 		\\\hline
-			\verb!\parametrageAngulaire! \verb!{\theta}[60]{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}!	&	\parametrageAngulaire{\theta}[60]{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}		&idem avec un angle différent.
+			\verb!\parametrageAngulaire! \verb!{\theta}[60]{\vx0}{\vy0}! \verb!{\vz0}{\vx1}{\vy1}!	&	\parametrageAngulaire{\theta}[60]{\vx0}{\vy0}{\vz0}{\vx1}{\vy1}		&idem avec un angle diffÃ©rent.
 		\\\hline
 	\end{tabular}
 	
@@ -118,17 +118,17 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\parametrageLineaire! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}! &	\parametrageLineaire{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}	&Figure plane de paramétrage linéaire
+			\verb!\parametrageLineaire! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}! &	\parametrageLineaire{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}	&Figure plane de paramÃ©trage linÃ©aire
 		\\\hline
-			\verb!\parametrageLineaire! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}{B}[\vy1][\vz1]!	&	\parametrageLineaire{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}[\vy1][\vz1]	&idem en changeant le nom des deux axes orthogonaux d'un repère à l'autre. (Note : impossible de changer le nom du troisième axe -- Nombre de paramètres limités par xarg.)
+			\verb!\parametrageLineaire! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}{B}[\vy1][\vz1]!	&	\parametrageLineaire{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}[\vy1][\vz1]	&idem en changeant le nom des deux axes orthogonaux d'un repÃ¨re Ã  l'autre. (Note : impossible de changer le nom du troisiÃ¨me axe -- Nombre de paramÃ¨tres limitÃ©s par xarg.)
 		\\\hline
-			\verb!\parametrageLineaire[7]! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}{B}[\vy1][\vz1]!	&	\parametrageLineaire[7]{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}[\vy1][\vz1]	&Idem avec changement d'écartement.
+			\verb!\parametrageLineaire[7]! \verb!{\lambda}{A}{\vx0}{\vy0}! \verb!{\vz0}{B}[\vy1][\vz1]!	&	\parametrageLineaire[7]{\lambda}{A}{\vx0}{\vy0}{\vz0}{B}[\vy1][\vz1]	&Idem avec changement d'Ã©cartement.
 		\\\hline
 	\end{tabular}
 	
 	
 
-	\section{Vecteurs de la base tournante (en coordonnées sphériques)}
+	\section{Vecteurs de la base tournante (en coordonnÃ©es sphÃ©riques)}
 	%-----------------------------
 	\begin{tabular}{|p{0.35\linewidth}|p{0.4\linewidth}|p{0.2\linewidth}|}
 		\hline
@@ -144,22 +144,22 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 		\\\hline
 	\end{tabular}
 
-	\section{Coordonnées variables dans le temps}
+	\section{CoordonnÃ©es variables dans le temps}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\xt,\yt,\zt,\rt,\alphat,! \verb!\betat,\gammat,\phit! \verb!\varphit,\psit,\thetat,! \verb!\lambdat!	&	\xt,\yt,\zt,\rt,\alphat, \betat,\gammat,\phit,\varphit,\psit, \thetat,\lambdat	&	Variables dépendant du temps \rac
+			\verb!\xt,\yt,\zt,\rt,\alphat,! \verb!\betat,\gammat,\phit! \verb!\varphit,\psit,\thetat,! \verb!\lambdat!	&	\xt,\yt,\zt,\rt,\alphat, \betat,\gammat,\phit,\varphit,\psit, \thetat,\lambdat	&	Variables dÃ©pendant du temps \rac
 		\\\hline
-			\verb!\xtp,\ytp,\ztp,\rtp,! \verb!\alphatp,\betatp,! \verb!\gammatp,\phitp,! \verb!\varphitp,\psitp,! \verb!\thetatp,\lambdatp!	&	\xtp,\ytp,\ztp,\rtp,\alphatp, \betatp,\gammatp,\phitp,\varphitp,\psitp,\thetatp,\lambdatp	&	Dérivée de variables dépendant du temps \rac
+			\verb!\xtp,\ytp,\ztp,\rtp,! \verb!\alphatp,\betatp,! \verb!\gammatp,\phitp,! \verb!\varphitp,\psitp,! \verb!\thetatp,\lambdatp!	&	\xtp,\ytp,\ztp,\rtp,\alphatp, \betatp,\gammatp,\phitp,\varphitp,\psitp,\thetatp,\lambdatp	&	DÃ©rivÃ©e de variables dÃ©pendant du temps \rac
 		\\\hline
-			\verb!\xp,\yp,\zp,\rp,\alphap,! \verb!\betap,\gammap,\phip,! \verb!\varphip,\psip,\thetap,! \verb!\lambdap!	&	\xp,\yp,\zp,\rp,\alphap, \betap,\gammap,\phip,\varphip,\psip,\thetap,\lambdap	&	Identique à précédemment sans la dépendance temporelle.
+			\verb!\xp,\yp,\zp,\rp,\alphap,! \verb!\betap,\gammap,\phip,! \verb!\varphip,\psip,\thetap,! \verb!\lambdap!	&	\xp,\yp,\zp,\rp,\alphap, \betap,\gammap,\phip,\varphip,\psip,\thetap,\lambdap	&	Identique Ã  prÃ©cÃ©demment sans la dÃ©pendance temporelle.
 		\\\hline
-			\verb!\xtpp,\ytpp,\ztpp,\rtpp,! \verb!\alphatpp,\betatpp,! \verb!\gammatpp,\phitpp,! \verb!\psitpp,\varphitpp,! \verb!\thetatpp,\lambdatpp!	&	\xtpp,\ytpp,\ztpp,\rtpp,\alphatpp, \betatpp,\gammatpp,\phitpp,\varphitpp,\psitpp, \thetatpp,\lambdatpp	&	Dérivée seconde de variables dépendant du temps \rac
+			\verb!\xtpp,\ytpp,\ztpp,\rtpp,! \verb!\alphatpp,\betatpp,! \verb!\gammatpp,\phitpp,! \verb!\psitpp,\varphitpp,! \verb!\thetatpp,\lambdatpp!	&	\xtpp,\ytpp,\ztpp,\rtpp,\alphatpp, \betatpp,\gammatpp,\phitpp,\varphitpp,\psitpp, \thetatpp,\lambdatpp	&	DÃ©rivÃ©e seconde de variables dÃ©pendant du temps \rac
 		\\\hline
-			\verb!\xpp,\ypp,\zpp,\rpp,! \verb!\alphapp,\betapp,! \verb!\gammapp,\phip,! \verb!\varphipp,\psipp,! \verb!\thetapp,\lambdapp!	&	\xpp,\ypp,\zpp,\rpp,\alphapp, \betapp,\gammapp,\phipp,\varphipp\psipp,\thetapp,\lambdapp	&	Identique à précédemment sans la dépendance temporelle.
+			\verb!\xpp,\ypp,\zpp,\rpp,! \verb!\alphapp,\betapp,! \verb!\gammapp,\phip,! \verb!\varphipp,\psipp,! \verb!\thetapp,\lambdapp!	&	\xpp,\ypp,\zpp,\rpp,\alphapp, \betapp,\gammapp,\phipp,\varphipp\psipp,\thetapp,\lambdapp	&	Identique Ã  prÃ©cÃ©demment sans la dÃ©pendance temporelle.
 		\\\hline
 	\end{tabular}
 
@@ -173,11 +173,11 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 		\\\hline\hline
 			\verb!\vVitesse{A}{S_1}! \verb!{S_2}!		&	\vVitesse{A}{S_1}{S_2}		&	Vecteur vitesse
 		\\\hline
-			\verb!\vVitesse{A}{}! \verb!{S_2}!		&	\vVitesse{A}{}{S_2}		&	Vecteur vitesse (sans appartenance à un solide)
+			\verb!\vVitesse{A}{}! \verb!{S_2}!		&	\vVitesse{A}{}{S_2}		&	Vecteur vitesse (sans appartenance Ã  un solide)
 		\\\hline
-			\verb!\vAcceleration{A}! \verb!{S_1}{S_2}!	&	\vAcceleration{A}{S_1}{S_2}	&	Vecteur accélération
+			\verb!\vAcceleration{A}! \verb!{S_1}{S_2}!	&	\vAcceleration{A}{S_1}{S_2}	&	Vecteur accÃ©lÃ©ration
 		\\\hline
-			\verb!\vAcceleration{A}! \verb!{}{S_2}!	&	\vAcceleration{A}{}{S_2}	&	Vecteur accélération (sans appartenance à un solide)
+			\verb!\vAcceleration{A}! \verb!{}{S_2}!	&	\vAcceleration{A}{}{S_2}	&	Vecteur accÃ©lÃ©ration (sans appartenance Ã  un solide)
 		\\\hline
 			\verb!\vRotation{S_1}{S_2}!			&	\vRotation{S_1}{S_2}		&	Vecteur vitesse de rotation
 		\\\hline
@@ -195,24 +195,24 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\deplaceVitesse{S_1}! \verb!{S_2}{B}{A}!		&	\deplaceVitesse{S_1}{S_2}{B}{A}		&	Formule du champ de moment pour déplacer une vitesse (de $B$ vers $A$)
+			\verb!\deplaceVitesse{S_1}! \verb!{S_2}{B}{A}!		&	\deplaceVitesse{S_1}{S_2}{B}{A}		&	Formule du champ de moment pour dÃ©placer une vitesse (de $B$ vers $A$)
 		\\\hline
 	\end{tabular}
 
-	\section{Déplacements - Petits déplacements}
+	\section{DÃ©placements - Petits dÃ©placements}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\vDeplacement{A}! \verb!{S_1}{S_2}!		&	\vDeplacement{A}{S_1}{S_2}	&	Vecteur déplacement
+			\verb!\vDeplacement{A}! \verb!{S_1}{S_2}!		&	\vDeplacement{A}{S_1}{S_2}	&	Vecteur dÃ©placement
 		\\\hline
-			\verb!\vDeplacement{A}! \verb!{}{S_2}!		&	\vDeplacement{A}{}{S_2}	&	Vecteur déplacement (sans appartenance à un solide)
+			\verb!\vDeplacement{A}! \verb!{}{S_2}!		&	\vDeplacement{A}{}{S_2}	&	Vecteur dÃ©placement (sans appartenance Ã  un solide)
 		\\\hline
 			\verb!\vDep{A}! \verb!{S_1}{S_2}!		&	\vDep{A}{S_1}{S_2}	&	raccourci direct de \verb!\vDeplacement! \rac
 		\\\hline
-			\verb!\vPetitDeplacement! \verb!{A}{S_1}{S_2}!		&	\vPetitDeplacement{A}{S_1}{S_2}		&	Vecteur-petit déplacement
+			\verb!\vPetitDeplacement! \verb!{A}{S_1}{S_2}!		&	\vPetitDeplacement{A}{S_1}{S_2}		&	Vecteur-petit dÃ©placement
 		\\\hline
 			\verb!\vPetitDep{A}{S_1}! \verb!{S_2}!		&	\vPetitDep{A}{S_1}{S_2}		&	Raccourci direct de \verb!\vPetitDeplacement!
 		\\\hline
@@ -223,26 +223,26 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 	\end{tabular}
 
 
-	\section{Torseurs cinématique -- Torseurs de petits déplacement}
+	\section{Torseurs cinÃ©matique -- Torseurs de petits dÃ©placement}
 	%-------------------------------------------
 	\noindent
 	\begin{tabular}{|p{0.35\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\VCallig!		&	\VCallig	&	``V'' calligraphié
+			\verb!\VCallig!		&	\VCallig	&	``V'' calligraphiÃ©
 		\\\hline
-			\verb!\tCinematique{S_1}! \verb!{S_2}!		&	\tCinematique{S_1}{S_2}	& Torseur cinématique	
+			\verb!\tCinematique{S_1}! \verb!{S_2}!		&	\tCinematique{S_1}{S_2}	& Torseur cinÃ©matique	
 		\\\hline
-			\verb!\tCinematique[2]{S_1}! \verb!{S_2}!	&	\tCinematique[2]{S_1}{S_2}	&	Idem avec un exposant (pour différencier plusieurs torseurs)
+			\verb!\tCinematique[2]{S_1}! \verb!{S_2}!	&	\tCinematique[2]{S_1}{S_2}	&	Idem avec un exposant (pour diffÃ©rencier plusieurs torseurs)
 		\\\hline
 			\verb!\tV{S_1}{S_2}!		&	\tV{S_1}{S_2}	&	Raccourci direct de \verb!\tCinematique! \rac
 		\\\hline
-			\verb!\UCallig!		&	\UCallig	&	``U'' calligraphié
+			\verb!\UCallig!		&	\UCallig	&	``U'' calligraphiÃ©
 		\\\hline
-			\verb!\tPetitDeplacement! \verb!{S_1}{S_2}!	&\tPetitDeplacement{S_1}{S_2}	&	Torseur de petits-déplacements	
+			\verb!\tPetitDeplacement! \verb!{S_1}{S_2}!	&\tPetitDeplacement{S_1}{S_2}	&	Torseur de petits-dÃ©placements	
 		\\\hline
-			\verb!\tPetitDeplacement! \verb![2]{S_1}{S_2}!		&	\tPetitDeplacement[2]{S_1}{S_2}	&	Idem avec un exposant (pour différencier plusieurs torseurs)
+			\verb!\tPetitDeplacement! \verb![2]{S_1}{S_2}!		&	\tPetitDeplacement[2]{S_1}{S_2}	&	Idem avec un exposant (pour diffÃ©rencier plusieurs torseurs)
 		\\\hline
 			\verb!\tPetitDep{S_1}{S_2}!		&	\tPetitDep{S_1}{S_2}	&	Raccourci direct de \verb!\tPetitDeplacement!
 		\\\hline

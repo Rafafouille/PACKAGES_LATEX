@@ -3,26 +3,26 @@
 %	Package fast-diagram.sty
 %
 % Version 1.1 (27/02/13)
-% Ce package est destiné à réaliser facilement des diagrammes FAST
+% Ce package est destinÃ© Ã  rÃ©aliser facilement des diagrammes FAST
 % (voir http://fr.wikipedia.org/wiki/Function_Analysis_System_Technique ).
 %
-% Réalisé par Raphaël ALLAIS (Lycée G.Eiffel de Dijon),
-% avec l'importante contribution de Yannick Le Bras (Lycée Montesquieu du Mans)
-% et les conseils de Robert Papanicola (Lycée Jacques Amyot d'Auxerre)
-% et de Xavier Pessoles (Lycée Rouvière de Toulon).
+% RÃ©alisÃ© par RaphaÃ«l ALLAIS (LycÃ©e G.Eiffel de Dijon),
+% avec l'importante contribution de Yannick Le Bras (LycÃ©e Montesquieu du Mans)
+% et les conseils de Robert Papanicola (LycÃ©e Jacques Amyot d'Auxerre)
+% et de Xavier Pessoles (LycÃ©e RouviÃ¨re de Toulon).
 %
-% Ce package est proposé en licence LPPL (LaTeX Project Public License), version 1.3c 2008-05-04.
+% Ce package est proposÃ© en licence LPPL (LaTeX Project Public License), version 1.3c 2008-05-04.
 % Cela implique que vous pouvez UTILISER ce package autant que vous le voulez,
-% mais que vous ne pouvez le MODIFIER que SOUS UN AUTRE NOM (créer un dérivé).
-% Toutefois, je suis totalement ouvert à toute contribution.
-% Je souhaite juste être prévenu si vous souhaitez apporter votre pierre à l'édifice.
+% mais que vous ne pouvez le MODIFIER que SOUS UN AUTRE NOM (crÃ©er un dÃ©rivÃ©).
+% Toutefois, je suis totalement ouvert Ã  toute contribution.
+% Je souhaite juste Ãªtre prÃ©venu si vous souhaitez apporter votre pierre Ã  l'Ã©difice.
 %
 % Pour toute question/conseil/commentaire/reproche/menace de mort ou autre :
 % allais.raphael -arobase- free.fr
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Mise à jour :
+% Mise Ã  jour :
 % V1.0 (25/02/13) :
 %   Uplaod du package "FAST.sty"
 % V1.1 (27/02/13) :
@@ -36,9 +36,9 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Entête
+%EntÃªte
 %-----------------------------------------
-%% Informations générales
+%% Informations gÃ©nÃ©rales
 %-----------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1999/01/01]
 \ProvidesPackage{fast-diagram}[2013/02/27]
@@ -62,18 +62,18 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Paramètres divers
+%ParamÃ¨tres divers
 %--------------------------
 %Dimentsions
 %........................
 
 \newcommand*{\fastInterligne}		{}	%Longueur d'interligne
-\newcommand*{\fastEspaceColonne}		{}	%Espace entre colonne (de coin supérieur droit à coin supérieur droit)
+\newcommand*{\fastEspaceColonne}		{}	%Espace entre colonne (de coin supÃ©rieur droit Ã  coin supÃ©rieur droit)
 \newcommand*{\fastLargeurBoite}		{}	%Largeur des boites
 \newcommand*{\fastHauteurBoite}		{}	%Largeur des boites
-\newcommand*{\fastDecalageTrait}		{}	%Décalage des connecteur vers le bas, par rapport au sommet de la boite
-\newcommand*{\fastDecalageOuVertical}	{}	%Décalage vertical du connecteur ``OU''
-\newcommand*{\fastDecalageOuHorizontal}	{}	%Décalage horizontal du connecteur ``OU''
+\newcommand*{\fastDecalageTrait}		{}	%DÃ©calage des connecteur vers le bas, par rapport au sommet de la boite
+\newcommand*{\fastDecalageOuVertical}	{}	%DÃ©calage vertical du connecteur ``OU''
+\newcommand*{\fastDecalageOuHorizontal}	{}	%DÃ©calage horizontal du connecteur ``OU''
 
 %Styles
 %.........................
@@ -124,7 +124,7 @@
 \newcommand*{\fastSetCouleurConnecteurs}[2][named]	%Commande qui change la couleur du texte
 	{\definecolor{fastCouleurConnecteurs}{rgb}{#1}}
 
-\newcommand*{\fastSetCouleurTraits}[2][named]		%Commande qui change la couleur à la fois des bordures et des connecteurs
+\newcommand*{\fastSetCouleurTraits}[2][named]		%Commande qui change la couleur Ã  la fois des bordures et des connecteurs
 	{\fastSetCouleurConnecteurs[#1]{#2}
 	\fastSetCouleurBordures[#1]{#2}}
 
@@ -134,7 +134,7 @@
 %Commandes internes
 %-----------------------------
 
-\newcommand*{\fastReset}	%Remet tous les paramètres à zéro (utilisé une fois au début pour initialisé)
+\newcommand*{\fastReset}	%Remet tous les paramÃ¨tres Ã  zÃ©ro (utilisÃ© une fois au dÃ©but pour initialisÃ©)
 	{
 		\renewcommand*{\fastInterligne}			{0.5em}
 		\renewcommand*{\fastEspaceColonne}		{10em}
@@ -175,7 +175,7 @@
 
 
 
-\newcounter{cptAbscisse} 		%Compteur d'abscisse (a quelle colonne sommes-nous ?) - Sert notamment à nommer les noeuds
+\newcounter{cptAbscisse} 		%Compteur d'abscisse (a quelle colonne sommes-nous ?) - Sert notamment Ã  nommer les noeuds
 \newcounter{cptAbscisseParent} 		%abscisse parent
 \newcounter{cptBoite} 			%Compteur de boite (pour leur donner un nom different)
 \newlength\posX
@@ -194,28 +194,28 @@
 	{	
 
 
-		\newcommand*{\fastAvanceColonne}	%Avance à la colonne suivant
+		\newcommand*{\fastAvanceColonne}	%Avance Ã  la colonne suivant
 		{	\setcounter{cptAbscisseParent}{\thecptAbscisse}	%On enregistre le compteur actuel (qui correspond encore au parent)
-			\addtocounter{cptAbscisse}{1}			%puis on décale le compteur d'une colonne
-			%\advance \posX by \fastEspaceColonne		%On se décale l'abscisse géométrique d'une colonne
+			\addtocounter{cptAbscisse}{1}			%puis on dÃ©cale le compteur d'une colonne
+			%\advance \posX by \fastEspaceColonne		%On se dÃ©cale l'abscisse gÃ©omÃ©trique d'une colonne
 			%\setlength{\posX}{\posX + \fastEspaceColonne}
 			\addtolength{\posX}{\fastEspaceColonne}
 		}
 
 		\newcommand*{\fastEnregistreMinimum}	% Enregistre la position minimum de la ligne en cours (pour aligner la ligne suivante)
-			{	%Attention, c'est compliqué : le but est de chercher le minimum absolu des nodes de la ligne en cours, qui nous servira d'ordonnee pour la ligne suivante
+			{	%Attention, c'est compliquÃ© : le but est de chercher le minimum absolu des nodes de la ligne en cours, qui nous servira d'ordonnee pour la ligne suivante
 				\coordinate (SudBoite) at ($(noeud \thecptAbscisse.south)+(0,-\fastInterligne)$);%Sud de la boite + interligne
-				\node[inner sep=0,fit=(SudBoite) (BoiteMinimums)] (BoiteMinimumsAnnexe) {};	%On cree une boite qui contient le point minimum du node courant ainsi que le dernier minimum enregistré 
+				\node[inner sep=0,fit=(SudBoite) (BoiteMinimums)] (BoiteMinimumsAnnexe) {};	%On cree une boite qui contient le point minimum du node courant ainsi que le dernier minimum enregistrÃ© 
 				\path let \p1=(BoiteMinimumsAnnexe.south) in coordinate (BoiteMinimums) at (0,\y1) ;	%On enregistre ce minimum dans BoiteMinimums
 			}
 
 		\newcommand*{\fastReculeColonne}
-			{	%\advance \posX by -\fastEspaceColonne	%On recule l'abscisse géométrique d'une colonne
+			{	%\advance \posX by -\fastEspaceColonne	%On recule l'abscisse gÃ©omÃ©trique d'une colonne
 				\addtolength{\posX}{-\fastEspaceColonne}
 				\addtocounter{cptAbscisse}{-1}	%On recule le compteur d'une colonne
 			}
 
-		\newcommandx*{\fastTraceConnecteurs}[3][1=,2=0em,3=0em]%(#1 : Mot clé (ou,...) #2 : Décallage horizontale parent, #3 : Décallage horizontal enfant)
+		\newcommandx*{\fastTraceConnecteurs}[3][1=,2=0em,3=0em]%(#1 : Mot clÃ© (ou,...) #2 : DÃ©callage horizontale parent, #3 : DÃ©callage horizontal enfant)
 			{
 				\ifthenelse{\equal{##1}{tempo}}	%Option ``tempo''
 					{\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits] (noeud \thecptAbscisse.north) -- ($(noeud \thecptAbscisse.north)+(0,\fastInterligne)$); }{}
@@ -244,11 +244,11 @@
 						\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits]($(noeud \thecptAbscisse.north east)+(0,\fastDecalageTrait)$)--($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)$);
 						\fastTraceConnecteurs
 					}%Si la fonction n'est pas vide
-					{	\node[draw,rounded corners=\fastFTarrondi,text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,text centered,anchor=north west,fastCouleurBorduresFT,fill=fastCouleurFondFT,text=fastCouleurTexteFT,line width=\fastEpaisseurTraits,\fastFTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastFTtexteStyle ##2}; %On écrit le contenu de la fonction}
+					{	\node[draw,rounded corners=\fastFTarrondi,text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,text centered,anchor=north west,fastCouleurBorduresFT,fill=fastCouleurFondFT,text=fastCouleurTexteFT,line width=\fastEpaisseurTraits,\fastFTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastFTtexteStyle ##2}; %On Ã©crit le contenu de la fonction}
 						\fastTraceConnecteurs[##1]
-						\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
+						\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On crÃ©er une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
 					}
-				##3	%Il s'agit de la descendance passée en argument, et affichée ici.
+				##3	%Il s'agit de la descendance passÃ©e en argument, et affichÃ©e ici.
 				\fastEnregistreMinimum
 				\fastReculeColonne
 		}
@@ -261,10 +261,10 @@
 		\newcommandx*\fastIF[3][1=]{%Argument 1 = option,Argument 2 = contenu de la solution technique)
 				\fastAvanceColonne	%On avance d'une colonne
 				\addtocounter{cptBoite}{1}	%//On incremente le numero de la boite
-				\node[text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,anchor=north west] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {}; %On écrit le contenu de la fonction
+				\node[text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,anchor=north west] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {}; %On Ã©crit le contenu de la fonction
 				\node[draw,signal,signal to=east and west,anchor=north,text width=\fastLargeurBoite-1.2em,text=fastCouleurTexteFV,\fastFVStyle,text centered,] (sousNoeud \thecptAbscisse) at (noeud \thecptAbscisse.north) {\fastFVtexteStyle ##2};
 				\fastTraceConnecteurs[##1]%[1em][-1em]
-				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
+				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On crÃ©er une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
 				##3
 				\fastEnregistreMinimum
 				\fastReculeColonne
@@ -277,8 +277,8 @@
 		\newcommandx*\fastST[3][1=,3=]{%Argument 1 = option,Argument 2 = contenu de la solution technique)
 				\fastAvanceColonne	%On avance d'une colonne
 				\addtocounter{cptBoite}{1}	%//On incremente le numero de la boite
-				\node[dashed,rounded corners=\fastSTarrondi,draw,text width=\fastLargeurBoit-,minimum size=\fastHauteurBoite,line width=\fastEpaisseurTraits,text centered,anchor=north west,fastCouleurBorduresST,fill=fastCouleurFondST,text=fastCouleurTexteST,\fastSTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastSTtexteStyle ##2}; %On écrit le contenu de la fonction
-				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
+				\node[dashed,rounded corners=\fastSTarrondi,draw,text width=\fastLargeurBoit-,minimum size=\fastHauteurBoite,line width=\fastEpaisseurTraits,text centered,anchor=north west,fastCouleurBorduresST,fill=fastCouleurFondST,text=fastCouleurTexteST,\fastSTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastSTtexteStyle ##2}; %On Ã©crit le contenu de la fonction
+				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On crÃ©er une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
 				\fastTraceConnecteurs[##1]
 				##3
 				\fastEnregistreMinimum
@@ -292,8 +292,8 @@
 		\newcommandx*\fastVide[3][1=,3=]{%Argument 1 = option,Argument 2 = contenu de la solution technique)
 				\fastAvanceColonne	%On avance d'une colonne
 				\addtocounter{cptBoite}{1}	%//On incremente le numero de la boite
-				\node[text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,text centered,anchor=north west,text=fastCouleurTexteFV,\fastFVStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastFVtexteStyle ##2}; %On écrit le contenu de la fonction
-				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
+				\node[text width=\fastLargeurBoite,minimum size=\fastHauteurBoite,text centered,anchor=north west,text=fastCouleurTexteFV,\fastFVStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastFVtexteStyle ##2}; %On Ã©crit le contenu de la fonction
+				\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On crÃ©er une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
 				##3
 				\fastEnregistreMinimum
 				\fastReculeColonne
@@ -309,7 +309,7 @@
 				\node[text width=\fastLargeurBoite,anchor=north west] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {}; %Un node vide (parce que les enfants vont en avoir besoin)
 				\draw [color=fastCouleurConnecteurs,line width=\fastEpaisseurTraits] ($(noeud \thecptAbscisse.north east)+(0,\fastDecalageTrait)$)--($(noeud \thecptAbscisse.north west)+(0,\fastDecalageTrait)$);
 				\fastTraceConnecteurs
-				##1	%Il s'agit de la descendance passée en argument, et affichée ici.
+				##1	%Il s'agit de la descendance passÃ©e en argument, et affichÃ©e ici.
 				\fastEnregistreMinimum
 				\fastReculeColonne
 				}
@@ -328,10 +328,10 @@
 			\setcounter{cptAbscisse}{0}
 			\setcounter{cptAbscisseParent}{0}
 			\setcounter{cptBoite}{0}
-			\posX=0em	%Abscisse des boites (0 au début)
+			\posX=0em	%Abscisse des boites (0 au dÃ©but)
 			\coordinate (BoiteMinimums) at (0,0);	%noeud ou coordonnees, dont le south correspond au minimum de la ligne en cours (utile pour positionner la ligne suivante)
-			\node[draw,rounded corners=\fastFSarrondi,minimum size=\fastHauteurBoite,line width=\fastEpaisseurTraits,text width=\fastLargeurBoite,text centered,anchor=north west,fastCouleurBorduresFS,fill=fastCouleurFondFS,text=fastCouleurTexteFS,\fastFSStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastFStexteStyle #1}; %Fonction de service que l'on va développer dans ce FAST
-			\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On créer une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
+			\node[draw,rounded corners=\fastFSarrondi,minimum size=\fastHauteurBoite,line width=\fastEpaisseurTraits,text width=\fastLargeurBoite,text centered,anchor=north west,fastCouleurBorduresFS,fill=fastCouleurFondFS,text=fastCouleurTexteFS,\fastFSStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\fastFStexteStyle #1}; %Fonction de service que l'on va dÃ©velopper dans ce FAST
+			\node[inner sep=0,fit=(noeud \thecptAbscisse.north west) (noeud \thecptAbscisse.south east)] (fastBoite\thecptBoite) {};%On crÃ©er une boite vide par dessus, aux bonne dimension, afin de lui donner un nom
 			
 	}
 	{	\end{tikzpicture}	%Fin du dessin

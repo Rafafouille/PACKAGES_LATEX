@@ -19,7 +19,7 @@
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 
 %TAILLE DES BOITES : pourcentage de la taille de la ligne
@@ -37,7 +37,7 @@
 	\newcounter{cptDefinition}	%Compteur de definitions
 
 	\newenvironmentx{definition}[2][1=,2=]	{	\refstepcounter{cptDefinition}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définition \thecptDefinition\ : \emph{#1}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finition \thecptDefinition\ : \emph{#1}}
 						}
 						{	\end{bclogo}
 						}
@@ -49,14 +49,14 @@
 													{}
 													{\textbf{##1} :}
 											}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définitions \thecptDefinition\ : \emph{#1}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finitions \thecptDefinition\ : \emph{#1}}
 									\begin{description}[leftmargin=2cm]%,style=nextline]
 						}
 						{			\end{description}
 							\end{bclogo}
 						}
 
-	\newenvironmentx{definition*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définition : \emph{#1}}
+	\newenvironmentx{definition*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finition : \emph{#1}}
 						}
 						{		\end{bclogo}
 						}
@@ -67,7 +67,7 @@
 														{}
 														{\textbf{##1} :}
 												}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{Définitions : \emph{#1}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_definition,couleurBord=bord_definition,arrondi=0.2,logo=\bcplume,#2]{DÃ©finitions : \emph{#1}
 						}
 								\begin{description}[leftmargin=2cm]}%,style=nextline]}
 						{		\end{description}
@@ -87,7 +87,7 @@
 	\newenvironmentx{hypothese}[2][1=,2=]	{\refstepcounter{cptHypothese}
 						\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{Hypothèse \thecptHypothese\ : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{HypothÃ¨se \thecptHypothese\ : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
@@ -95,7 +95,7 @@
 	\newenvironmentx{hypotheses}[2][1=,2=]	{\refstepcounter{cptHypothese}
 						\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{Hypothèses \thecptHypothese\ : \emph{#1}}
+								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{HypothÃ¨ses \thecptHypothese\ : \emph{#1}}
 									\begin{itemize}}
 						{			\end{itemize}
 								\end{bclogo}
@@ -104,14 +104,14 @@
 
 	\newenvironmentx{hypothese*}[2][1=,2=]	{\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{Hypothèse : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{HypothÃ¨se : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
 
 	\newenvironmentx{hypotheses*}[2][1=,2=]	{\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{Hypothèses : \emph{#1}}
+								\begin{bclogo}[couleur=fond_hypothese,couleurBord=bord_hypothese,arrondi=0.2,logo=\bctrombone,#2]{HypothÃ¨ses : \emph{#1}}
 									\begin{itemize}}
 						{			\end{itemize}
 								\end{bclogo}
@@ -206,7 +206,7 @@
 	\newcounter{cptPropriete}
 
 	\newenvironmentx{propriete}[2][1=,2=]		{\refstepcounter{cptPropriete}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriété \thecptPropriete\ : \emph{#1}}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ© \thecptPropriete\ : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
@@ -217,14 +217,14 @@
 													{}
 													{\textbf{##1} :}
 											}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriétés \thecptPropriete\ : \emph{#1}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ©s \thecptPropriete\ : \emph{#1}}
 								\begin{description}[leftmargin=2cm,style=nextline]}
 						{		\end{description}
 							\end{bclogo}}
 							
 
 
-	\newenvironmentx{propriete*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriété : \emph{#1}}}
+	\newenvironmentx{propriete*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ© : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
@@ -234,7 +234,7 @@
 														{}
 														{\textbf{##1} :}
 												}
-							\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{Propriétés : \emph{#1}}
+							\begin{bclogo}[couleur=fond_propriete,couleurBord=bord_propriete,arrondi=0.2,logo=\bccrayon,#2]{PropriÃ©tÃ©s : \emph{#1}}
 								\begin{description}[leftmargin=2cm,style=nextline]}
 						{		\end{description}
 							\end{bclogo}
@@ -252,7 +252,7 @@
 	\newenvironmentx*{theoreme}[2][1=,2=]		{\refstepcounter{cptTheoreme}
 						\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{Théorème \thecptTheoreme\ : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{ThÃ©orÃ¨me \thecptTheoreme\ : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
@@ -266,7 +266,7 @@
 														{}
 														{\textbf{##1} :}
 												}
-								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{Théorèmes \thecptTheoreme\ : \emph{#1}}
+								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{ThÃ©orÃ¨mes \thecptTheoreme\ : \emph{#1}}
 									\begin{description}[leftmargin=2cm]}
 						{			\end{description}
 								\end{bclogo}
@@ -275,7 +275,7 @@
 
 	\newenvironmentx*{theoreme*}[2][1=,2=]		{\begin{center}
 							\begin{minipage}{\tailleDesBoites\linewidth}
-								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{Théorème : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{ThÃ©orÃ¨me : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
@@ -288,7 +288,7 @@
 														{}
 														{\textbf{##1} :}
 												}
-								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{Théorèmes : \emph{#1}}
+								\begin{bclogo}[couleur=fond_theoreme,couleurBord=bord_theoreme,arrondi=0.2,logo=\bccrayon,#2]{ThÃ©orÃ¨mes : \emph{#1}}
 									\begin{description}[leftmargin=2cm]}
 						{			\end{description}
 								\end{bclogo}
@@ -378,22 +378,22 @@
 	\newcounter{cptDemonstration}
 
 	\newenvironment{demonstration}[1][]	{	\stepcounter{cptDemonstration}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstration \thecptDemonstration\ : \emph{#1}}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{DÃ©monstration \thecptDemonstration\ : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
-	\newenvironment{demonstration*}[1][]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstration : \emph{#1}}}
+	\newenvironment{demonstration*}[1][]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{DÃ©monstration : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
 	\newenvironment{demonstrations}[1][]	{	\stepcounter{cptDemonstration}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstrations \thecptDemonstration\ : \emph{#1}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{DÃ©monstrations \thecptDemonstration\ : \emph{#1}}
 								\begin{itemize}}
 						{		\end{itemize}
 							\end{bclogo}
 						}
 
-	\newenvironment{demonstrations*}[1][]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstration : \emph{#1}}
+	\newenvironment{demonstrations*}[1][]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{DÃ©monstration : \emph{#1}}
 								\begin{itemize}}
 						{		\end{itemize}
 							\end{bclogo}
@@ -411,11 +411,11 @@
 
 
 	\newenvironmentx{resume}[2][1=,2=]	{\stepcounter{cptResume}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_resume,couleurBord=bord_resume,arrondi=0.2,logo=\bcpanchant,#2]{Résumé \thecptResume\ : \emph{#1}}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_resume,couleurBord=bord_resume,arrondi=0.2,logo=\bcpanchant,#2]{RÃ©sumÃ© \thecptResume\ : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
-	\newenvironmentx{resume*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_resume,couleurBord=bord_resume,arrondi=0.2,logo=\bcpanchant,#2]{Résumé : \emph{#1}}}
+	\newenvironmentx{resume*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_resume,couleurBord=bord_resume,arrondi=0.2,logo=\bcpanchant,#2]{RÃ©sumÃ© : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
@@ -428,8 +428,8 @@
 
 
 
-	\newcommand*{\setMakingOfOn}{\setboolean{makingOf}{true}}	%Active le texte à trous
-	\newcommand*{\setMakingOfOff}{\setboolean{makingOf}{false}}	%Active le texte à trous
+	\newcommand*{\setMakingOfOn}{\setboolean{makingOf}{true}}	%Active le texte Ã  trous
+	\newcommand*{\setMakingOfOff}{\setboolean{makingOf}{false}}	%Active le texte Ã  trous
 	\setMakingOfOff
 
 	\definecolor{fond_makingOf}{RGB}{230,255,230} %Couleur du fond
@@ -485,9 +485,9 @@
 
 
 %\newcommand*{\setCorrectionOn}{\setboolean{correction}{true}
-%				\specialcomment{correction}{\par\begingroup\color{red}}{\endgroup\par}}	%Active le texte à trous
+%				\specialcomment{correction}{\par\begingroup\color{red}}{\endgroup\par}}	%Active le texte Ã  trous
 %\newcommand*{\setCorrectionOff}{\setboolean{correction}{false}
-%				\excludecomment{correction}}	%Active le texte à trous
+%				\excludecomment{correction}}	%Active le texte Ã  trous
 %\setCorrectionOff
 %\newcommand*{\reponse}[2][]{\ifthenelse{\boolean{correction} \OR \boolean{makingOf}}{{\color{red}#2}}{#1}}
 
@@ -499,8 +499,8 @@
 
 	\newboolean{texteATrou}
 	\setboolean{texteATrou}{false}	%Petite condition qui choisit entre 2 formats d'image
-	\newcommand*{\setTexteATrouOn}{\setboolean{texteATrou}{true}}	%Active le texte à trous
-	\newcommand*{\setTexteATrouOff}{\setboolean{texteATrou}{false}}	%Désactive le texte à trous
+	\newcommand*{\setTexteATrouOn}{\setboolean{texteATrou}{true}}	%Active le texte Ã  trous
+	\newcommand*{\setTexteATrouOff}{\setboolean{texteATrou}{false}}	%DÃ©sactive le texte Ã  trous
 	\definecolor{couleurTrou}{rgb}{0,0.5,0}
 
 	\newcommandx*{\trou}[2][2=totolabricot]{%
@@ -521,7 +521,7 @@
 	\newcommand*{\texteATrouSetPhantom}{0}
 	\newlength{\texteATrouEspace}
 
-	%deprecié
+	%depreciÃ©
 	\newenvironment{texteCache}[1][]	{	\par
 							%\ifthenelse{\boolean{texteATrou} \AND \NOT \boolean{makingOf}}
 							%	{\vspace{#1}}
@@ -558,7 +558,7 @@
 	%Mode de compilation :
 	\newboolean{versionProf}
 	\setboolean{versionProf}{false}
-	\newcommand*{\setVersionProf}	%Commande utilisée par "version"
+	\newcommand*{\setVersionProf}	%Commande utilisÃ©e par "version"
 		{
 			\setboolean{versionProf}{true}
 			\setboolean{versionCorrigee}{false}
@@ -594,7 +594,7 @@
 			\setboolean{afficheCorrection}{false}
 		}
 		
-	%Les options associées :
+	%Les options associÃ©es :
 	\newboolean{afficheCorrection}
 	\setboolean{afficheCorrection}{false}
 	
@@ -612,7 +612,7 @@
 						\setVersionProf
 					}
 					{
-						\ifthenelse{\equal{#1}{corrige} \OR \equal{#1}{corrigée} \OR \equal{#1}{corrigee} \OR \equal{#1}{corrigé} \OR \equal{#1}{correction}}
+						\ifthenelse{\equal{#1}{corrige} \OR \equal{#1}{corrigÃ©e} \OR \equal{#1}{corrigee} \OR \equal{#1}{corrigÃ©} \OR \equal{#1}{correction}}
 							{
 								\setVersionCorrigee
 							}
@@ -765,7 +765,7 @@
 						}
 
 	\newenvironment{questions}[1][]		{	\itshape \vspace{0.3cm}
-							%\addtocounter{cptQuestions}{-1}	%Désincrémenter le compteur
+							%\addtocounter{cptQuestions}{-1}	%DÃ©sincrÃ©menter le compteur
 							%\global\advance\cptQuestions-\@ne
 							%\def\labelitemi{\global\advance\cptQuestions\@ne Q\the\cptQuestions.}
 							\renewcommand*{\labelitemi}{\refstepcounter{cptQuestions}\fbox{Q\thecptQuestions.}}
@@ -889,14 +889,14 @@
 	\newenvironment*{modele}[1][]		{\refstepcounter{cptModele}
 						\begin{center}
 							\begin{minipage}{0.95\linewidth}
-								\begin{bclogo}[couleur=fond_modele,couleurBord=bord_modele,arrondi=0.2,logo=\bcicosaedre]{Modèle \thecptModele\ : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_modele,couleurBord=bord_modele,arrondi=0.2,logo=\bcicosaedre]{ModÃ¨le \thecptModele\ : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
 
 	\newenvironment*{modele*}[1][]		{\begin{center}
 							\begin{minipage}{0.95\linewidth}
-								\begin{bclogo}[couleur=fond_modele,couleurBord=bord_modele,arrondi=0.2,logo=\bcicosaedre]{Modèle : \emph{#1}}}
+								\begin{bclogo}[couleur=fond_modele,couleurBord=bord_modele,arrondi=0.2,logo=\bcicosaedre]{ModÃ¨le : \emph{#1}}}
 						{		\end{bclogo}
 							\end{minipage}
 						\end{center}}
@@ -912,13 +912,13 @@
 
 
 	\newenvironmentx*{methode}[2][1=,2=]	{	\refstepcounter{cptMethode}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe,#2]{Méthode \thecptMethode\ : \emph{#1}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe,#2]{MÃ©thode \thecptMethode\ : \emph{#1}}
 						}
 						{	\end{bclogo}
 						}
 
 
-	\newenvironmentx*{methode*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe,#2]{Méthode : \emph{#1}}}
+	\newenvironmentx*{methode*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe,#2]{MÃ©thode : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
@@ -929,7 +929,7 @@
 													{}
 													{\textbf{##1} :}
 											}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe]{Méthodes \thecptMethode : \emph{#1}}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe]{MÃ©thodes \thecptMethode : \emph{#1}}
 								\begin{description}}
 						{		\end{description}
 							\end{bclogo}
@@ -940,7 +940,7 @@
 												\ifthenelse{\equal{##1}{}}
 													{}
 													{\textbf{##1} :}
-											}	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe]{Méthodes : \emph{#1}}
+											}	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_methode,couleurBord=bord_methode,arrondi=0.2,logo=\bclampe]{MÃ©thodes : \emph{#1}}
 								\begin{description}}
 						{		\end{description}
 							\end{bclogo}

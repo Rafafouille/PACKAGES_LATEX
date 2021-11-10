@@ -1,0 +1,18 @@
+%LaTeX with PSTricks extensions
+%%Creator: inkscape 0.48.3.1
+%%Please note this file requires PSTricks extensions
+\psset{xunit=.5pt,yunit=.5pt,runit=.5pt}
+\begin{pspicture}(565.35699463,565.28930664)
+{
+\newrgbcolor{curcolor}{1 1 1}
+\pscustom[linestyle=none,fillstyle=solid,fillcolor=curcolor]
+{
+\newpath
+\moveto(91.65313907,333.39805156)
+\lineto(444.59686465,333.39805156)
+\lineto(444.59686465,260.93052226)
+\lineto(91.65313907,260.93052226)
+\closepath
+}
+}
+\end{pspicture}

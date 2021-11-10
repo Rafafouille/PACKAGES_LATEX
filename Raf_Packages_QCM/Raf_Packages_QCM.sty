@@ -7,14 +7,15 @@
 
 
 
-\RequirePackage[latin1]{inputenc} 		%Caracteres francais
+%\RequirePackage[latin1]{inputenc} 		%Caracteres francais
+\RequirePackage[utf8]{inputenc} 		%Caracteres francais
 \RequirePackage[T1]{fontenc} 		%Caracteres francais
 \RequirePackage[francais]{babel}		%On ecrit en francais
 \RequirePackage{graphicx}			%Pour les images
 \RequirePackage[top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}%Marges etc...
 \RequirePackage{fancybox}			%Des boites
 \RequirePackage[tikz]{bclogo}		%Pour faire des boites avec logo (remarques, etc...)
-\RequirePackage{xcolor}			%Pour définir les couleurs
+\RequirePackage{xcolor}			%Pour dÃ©finir les couleurs
 \RequirePackage{titlesec}		%Pour modifier l'aspet des titres (sections, etc...)
 \RequirePackage{soul} 			%Pour souligner
 \RequirePackage{ifthen}			%Package des conditions
@@ -24,12 +25,12 @@
 \RequirePackage{amsmath}			%Pour faire des maths (environnement ``align'' notamment)
 \RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
 \RequirePackage{amssymb}
-\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
+\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformÃ©e de Laplace)
 %\RequirePackage{answers}
-\RequirePackage{pifont}			%Pour faire des chiffres entourés
+\RequirePackage{pifont}			%Pour faire des chiffres entourÃ©s
 % \RequirePackage[colorlinks=true,linkcolor=black,linktocpage]{hyperref}	%Pour faire des liens
-\RequirePackage{calc}			%Pour faire heightof et des calculs de coordonnées
-\RequirePackage{import}			%Permet de gérer les chemins relatifs des fichiers dans Latex
+\RequirePackage{calc}			%Pour faire heightof et des calculs de coordonnÃ©es
+\RequirePackage{import}			%Permet de gÃ©rer les chemins relatifs des fichiers dans Latex
 \RequirePackage{multirow}		%Pour faire des tableau avec plusieurs lignes
 \RequirePackage{tikz}			%Pour faire des dessins
 	\usetikzlibrary{calc}
@@ -38,25 +39,25 @@
 \RequirePackage{enumitem}			%Pour personnaliser les listes
 \RequirePackage{wasysym}			%Pour faire le symbole diametre
 \RequirePackage{array}			%Tableaux (notamment alignements)
-\RequirePackage{xargs}			%Pour faire des commandes à plusieurs arguments
+\RequirePackage{xargs}			%Pour faire des commandes Ã  plusieurs arguments
 \RequirePackage{eurosym}		%Pour faire des euros
 \RequirePackage[subfigure]{tocloft}		%Pour modifier le style de la table des matieres
 %	\RequirePackage{comment}		%Pour virer des paragraphe (comme les corrections, par exemple)
-\RequirePackage{icomma}			%Pour ne pas mettre d'espace après une virgule (le séparateur décimal étant par défaut le ``.'', et non le ``,'')
-\RequirePackage{xspace}			%pour mettre des espaces automatique à la fin des commandes
+\RequirePackage{icomma}			%Pour ne pas mettre d'espace aprÃ¨s une virgule (le sÃ©parateur dÃ©cimal Ã©tant par dÃ©faut le ``.'', et non le ``,'')
+\RequirePackage{xspace}			%pour mettre des espaces automatique Ã  la fin des commandes
 \RequirePackage[absolute,overlay]{textpos}	%Positionner du texte de maniere absolue (``version prof''...)
 %\RequirePackage{scrtime}		%Pour avoir l'heure (voir mode version prof)IL NE FONCTIONNE PAS BIEN !!!!!
-\RequirePackage[european,cute inductors]{circuitikz}		%Pour dessiner des circuit électriques avec Tikz
+\RequirePackage[european,cute inductors]{circuitikz}		%Pour dessiner des circuit Ã©lectriques avec Tikz
 \RequirePackage[space]{grffile}
 \RequirePackage{etoolbox}		%Permet notamment de tester si une commande existe avec \ifdef
-\RequirePackage{setspace}		%Permet de régler les interlignes
+\RequirePackage{setspace}		%Permet de rÃ©gler les interlignes
 \RequirePackage{listings}		%Pour faire du code
 \RequirePackage[francais,bloc,completemulti]{automultiplechoice}
 
 
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcis}%création du booléen
+\newboolean{boolRaccourcis}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcis}{false}%affectation de la valeur false
 \DeclareOption{raccourcis}{\setboolean{boolRaccourcis}{true}}
 \ProcessOptions
@@ -65,12 +66,12 @@
 %\RequirePackage{Raf_Boites}		%Notations Analyse fonctionnelle
 \RequirePackage{Raf_Notations_AF}		%Notations Analyse fonctionnelle
 \RequirePackage{Raf_Notations_SLCI}		%Notations Asservissements
-\RequirePackage{Raf_Notations_Maths}	%Notations mathématiques de base
-\RequirePackage{Raf_Notations_Torseurs}	%Notations mathématiques sur les torseurs
+\RequirePackage{Raf_Notations_Maths}	%Notations mathÃ©matiques de base
+\RequirePackage{Raf_Notations_Torseurs}	%Notations mathÃ©matiques sur les torseurs
 \RequirePackage{Raf_Notations_Cinematique}	%Notations cinematique
 \RequirePackage[raccourcis]{fast-diagram}
 \RequirePackage{Raf_Notations_Autres}	%Toutes les autres notations utiles
-\RequirePackage{Raf_Notations_Unites}	%Toutes les unités
+\RequirePackage{Raf_Notations_Unites}	%Toutes les unitÃ©s
 \RequirePackage{Raf_Notations_Cotation}	%Notations sur la cotation fonctionnelle
 \RequirePackage{Raf_Notations_Actions-Meca}	%Notations sur la cotation fonctionnelle
 \RequirePackage{Raf_Notations_Fab}	%Notations sur la cotation fonctionnelle
@@ -88,25 +89,25 @@
 
 \ProcessOptions
  
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
 
 
-\newcommand{\pointsBonnesRepSimple}	{1}	%En cas de bonne réponse
-\newcommand{\pointsMauvaisesRepSimple}	{-0.5}	%En cas de mauvaise réponse
-\newcommand{\pointsNoRepSimple}		{0}	%En cas de pas de réponse.
+\newcommand{\pointsBonnesRepSimple}	{1}	%En cas de bonne rÃ©ponse
+\newcommand{\pointsMauvaisesRepSimple}	{-0.5}	%En cas de mauvaise rÃ©ponse
+\newcommand{\pointsNoRepSimple}		{0}	%En cas de pas de rÃ©ponse.
 
-\newcommand{\pointsBonnesRepMult}	{0.5}	%En cas de bonne réponse
-\newcommand{\pointsMauvaisesRepMult}	{-0.25}	%En cas de mauvaise réponse
-\newcommand{\pointsNoRepMult}	{0}	%En cas de pas de réponse.
+\newcommand{\pointsBonnesRepMult}	{0.5}	%En cas de bonne rÃ©ponse
+\newcommand{\pointsMauvaisesRepMult}	{-0.25}	%En cas de mauvaise rÃ©ponse
+\newcommand{\pointsNoRepMult}	{0}	%En cas de pas de rÃ©ponse.
 
-%Barême simple
-\baremeDefautS{e=0,v=\pointsNoRepSimple,b=\pointsBonnesRepSimple,m=\pointsMauvaisesRepSimple}%e=incohérent ; v= vide ; b = bonne ; m = mauvaise
-%Barême question multiple
+%BarÃªme simple
+\baremeDefautS{e=0,v=\pointsNoRepSimple,b=\pointsBonnesRepSimple,m=\pointsMauvaisesRepSimple}%e=incohÃ©rent ; v= vide ; b = bonne ; m = mauvaise
+%BarÃªme question multiple
 \baremeDefautM{e=0,v=0,formula=(NBC+NMC>0 ? \pointsMauvaisesRepMult*NMC+\pointsBonnesRepMult*NBC : ( NB>0 ? \pointsNoRepMult : \pointsBonnesRepMult ))}
-% SI on a coché des trucs, alors on compte les bon points moins les mauvais poins
-% SINON si on a rien coché et SI Il y avait quand meme des choses à cocher,
+% SI on a cochÃ© des trucs, alors on compte les bon points moins les mauvais poins
+% SINON si on a rien cochÃ© et SI Il y avait quand meme des choses Ã  cocher,
 % Alors on met les points NoReponse
-% Sinon, on met les points Bonne réponse
+% Sinon, on met les points Bonne rÃ©ponse
 
 \newcommand*{\nombreCopies}{35}
 
@@ -114,13 +115,13 @@
 \newcommand*{\makeEnteteQCM} {
 	\begin{tabular}{m{0.45\linewidth}m{0.45\linewidth}}
 		\begin{center}
-			\Large \textbf{Contrôle de SII}\\
+			\Large \textbf{ContrÃ´le de SII}\\
 			\emph{\titre}
 		\end{center}
 	&
 		\champnom{\fbox{
 				\begin{minipage}{\linewidth}
-					Nom et prénom :
+					Nom et prÃ©nom :
 
 					\vspace*{.5cm}\dotfill
 					\vspace*{1mm}
@@ -132,13 +133,13 @@
 \newcommand*{\makeEnteteQCMInfo} {
 	\begin{tabular}{m{0.45\linewidth}m{0.45\linewidth}}
 		\begin{center}
-			\Large \textbf{Contrôle d'Informatique}\\
+			\Large \textbf{ContrÃ´le d'Informatique}\\
 			\emph{\titre}
 		\end{center}
 	&
 		\champnom{\fbox{
 				\begin{minipage}{\linewidth}
-					Nom et prénom :
+					Nom et prÃ©nom :
 
 					\vspace*{.5cm}\dotfill
 					\vspace*{1mm}
@@ -150,21 +151,21 @@
 \newcommand*{\makeConsignesQCM}{
 	\begin{tabular}{m{0.75\linewidth}m{0.25\linewidth}}
 		\em\footnotesize
-		Durée : \duree.\newline\newline
+		DurÃ©e : \duree.\newline\newline
 		%
-		\gras{Aucun document} autorisé.
+		\gras{Aucun document} autorisÃ©.
 		\gras{Calculatrice interdite}.
 		%
 		Les questions avec \multiSymbole{} peuvent
-		présenter 0, 1 ou plusieurs bonnes réponses. Les autres ont
-		une unique bonne réponse.
+		prÃ©senter 0, 1 ou plusieurs bonnes rÃ©ponses. Les autres ont
+		une unique bonne rÃ©ponse.
 		%
-		Barème  :\newline
-		\gras{Réponses simples} :
+		BarÃ¨me  :\newline
+		\gras{RÃ©ponses simples} :
 		Bonne : \gras{\pointsBonnesRepSimple\ pt.}
 		-- Mauvaise : \gras{\pointsMauvaisesRepSimple\ pt.}
 		-- Vide : \gras{\pointsNoRepSimple\ pt.}\newline
-		\gras{Réponses multiples \multiSymbole{} :}
+		\gras{RÃ©ponses multiples \multiSymbole{} :}
 		Bonnes : \gras{\pointsBonnesRepMult\ pt.}
 		-- Mauvaises : \gras{\pointsMauvaisesRepMult\ pt.}
 		-- Vide : \gras{\pointsNoRepMult\ pt.}
@@ -430,9 +431,9 @@
       (167.4554,286.0265) .. (167.4021,286.0531) .. controls (167.3644,286.0719) and
       (167.3179,286.0531) .. (167.2759,286.0531);
   \path[fill=black] (216.28572,225.65137) node[above right] (text3838) {Bien
-    coché};
+    cochÃ©};
   \path[fill=black] (216.27072,280.26816) node[above right] (text3842) {Mal
-    coché};
+    cochÃ©};
 \end{scope}
 \end{tikzpicture}
 }
@@ -450,8 +451,8 @@
 \definecolor{PY-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
 \definecolor{PY-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
 \definecolor{PY-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
-\definecolor{PY-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
-\definecolor{PY-numeros}{rgb}{0.7,0.7,0.7}		%numéros de ligne
+\definecolor{PY-self}{rgb}{0,0,0}		%je sais pas. J'ai recopiÃ© d'internet
+\definecolor{PY-numeros}{rgb}{0.7,0.7,0.7}		%numÃ©ros de ligne
 \definecolor{PY-chevrons}{rgb}{1,0.,0.}		%chevrons
 \definecolor{PY-ombre}{rgb}{0.,0.,0.}		%Ombre
 
@@ -464,7 +465,7 @@
 		{
 		\lstset{
 			%Langage
-				language=Python,	%Langage par défaut
+				language=Python,	%Langage par dÃ©faut
 			%Mise en forme de l'environnement
 				xleftmargin=2em,	%marge a gauche
 				%frame=trBL,		%Cadre (double cadre)
@@ -473,7 +474,7 @@
 				frame=shadowbox,
 				rulesepcolor=\color{PY-ombre},
 				texcl=true,	%Activle les commandes LaTex dans le code
-				%escapechar=ø,	%Caractere a echapper
+				%escapechar=Ã¸,	%Caractere a echapper
 				escapeinside={(*}{*)},
 				linewidth=#1,	%taille d'une ligne
 			%Titre
@@ -482,9 +483,9 @@
 				abovecaptionskip=-0.0em,
 				nolol=true,
 			%Numeros de ligne
-				numbers=left,	%Rajoute des numéros de ligne
-				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numéros de ligne
-				numbersep=1em,			%Marge entre le code et les numéros de ligne
+				numbers=left,	%Rajoute des numÃ©ros de ligne
+				numberstyle=\footnotesize\color{PY-numeros},	%Taille des numÃ©ros de ligne
+				numbersep=1em,			%Marge entre le code et les numÃ©ros de ligne
 			%Mise en forme du texte
 				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
 				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
@@ -497,7 +498,7 @@
 				showstringspaces=false,
 				morecomment=[s][\color{PY-chaines}]{"""}{"""},
 				morecomment=[s][\color{PY-chaines}]{'''}{'''},
-			%Fonctions et mot clé de python
+			%Fonctions et mot clÃ© de python
 				morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
 				keywordstyle=\color{PY-fonctions}\bfseries,
 				morekeywords={[3]>>>},

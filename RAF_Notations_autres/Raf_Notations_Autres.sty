@@ -7,25 +7,25 @@
 \ProvidesPackage{Raf_Notations_Autres}[2018/08/16]
  
 %chargement des extensions requises au bon fonctionnement de l'extension et des documents
-\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+\RequirePackage{ifthen}%pour utiliser les boolÃ©ens, Ã  mettre avec les autres RequirePackage's
 \RequirePackage{amsmath}
 \RequirePackage{etoolbox}		%Permet notamment de tester si une commande existe avec \ifdef
 \RequirePackage{xspace}		%Permet notamment de tester si une commande existe avec \ifdef
 \let\EUR\undefined
-\RequirePackage{marvosym}		%Pour faire des symboles (utilisé pour le symbole "souris")
+\RequirePackage{marvosym}		%Pour faire des symboles (utilisÃ© pour le symbole "souris")
 \RequirePackage{xargs}		%Pour faires des commandes avec plusieurs arguments optionnels
 
 
 %Initialisation des booleens 
-\newboolean{boolRaccourcisAutres}%création du booléen
+\newboolean{boolRaccourcisAutres}%crÃ©ation du boolÃ©en
 \setboolean{boolRaccourcisAutres}{true}%affectation de la valeur false
 
-%déclaration des options de l'extension
+%dÃ©claration des options de l'extension
 \DeclareOption{noRaccourcis}{\setboolean{boolRaccourcisAutres}{false}}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%commandes et/ou environnements personnalisés
+%commandes et/ou environnements personnalisÃ©s
  
 %Lettres grecques oubliees
 \newcommand{\Mu}{M} %mu majuscule
@@ -49,19 +49,19 @@
 
 \newcommand*{\oeuvre}		{\oe uvre}
 \newcommand*{\oeuvres}		{\oe uvres}
-\newcommand*{\cad}		{c'est-à-dire}
+\newcommand*{\cad}		{c'est-Ã -dire}
 
 \newcommand*{\qEmph}[1]		{\og \emph{#1} \fg{}}
 
 
 \ifdef{\er}	{\renewcommand*{\er}	{^{\text{er}}}	}	{\newcommand*{\er}{^{\text{er}}}	}
 \ifdef{\ers}	{\renewcommand*{\ers}	{^{\text{ers}}}	}	{\newcommand*{\ers}{^{\text{ers}}}	}
-\ifdef{\ere}	{\renewcommand*{\ere}	{^{\text{ère}}}	}	{\newcommand*{\ere}{^{\text{ère}}}	}
-\ifdef{\eres}	{\renewcommand*{\eres}	{^{\text{ères}}}}	{\newcommand*{\eres}{^{\text{ères}}}	}
-\ifdef{\eme}	{\renewcommand*{\eme}	{^{\text{ème}}}	}	{\newcommand*{\eme}{^{\text{ème}}}	}
-\ifdef{\emes}	{\renewcommand*{\emes}	{^{\text{èmes}}}}	{\newcommand*{\emes}{^{\text{èmes}}}	}
-\ifdef{\ieme}	{\renewcommand*{\ieme}	{^{\text{ième}}}}	{\newcommand*{\ieme}{^{\text{ième}}}	}
-\ifdef{\iemes}	{\renewcommand*{\iemes}	{^{\text{ièmes}}}}	{\newcommand*{\iemes}{^{\text{ièmes}}}	}
+\ifdef{\ere}	{\renewcommand*{\ere}	{^{\text{Ã¨re}}}	}	{\newcommand*{\ere}{^{\text{Ã¨re}}}	}
+\ifdef{\eres}	{\renewcommand*{\eres}	{^{\text{Ã¨res}}}}	{\newcommand*{\eres}{^{\text{Ã¨res}}}	}
+\ifdef{\eme}	{\renewcommand*{\eme}	{^{\text{Ã¨me}}}	}	{\newcommand*{\eme}{^{\text{Ã¨me}}}	}
+\ifdef{\emes}	{\renewcommand*{\emes}	{^{\text{Ã¨mes}}}}	{\newcommand*{\emes}{^{\text{Ã¨mes}}}	}
+\ifdef{\ieme}	{\renewcommand*{\ieme}	{^{\text{iÃ¨me}}}}	{\newcommand*{\ieme}{^{\text{iÃ¨me}}}	}
+\ifdef{\iemes}	{\renewcommand*{\iemes}	{^{\text{iÃ¨mes}}}}	{\newcommand*{\iemes}{^{\text{iÃ¨mes}}}	}
 \ifdef{\nd}	{\renewcommand*{\nd}	{^{\text{nd}}}}		{\newcommand*{\nd}{^{\text{nd}}}	}
 \ifdef{\nde}	{\renewcommand*{\nde}	{^{\text{nde}}}}	{\newcommand*{\nde}{^{\text{nde}}}	}
 
@@ -96,7 +96,7 @@
 
 
 	
-%Notation relative à des logiciels
+%Notation relative Ã  des logiciels
 \newcommand*{\clic}{{\LARGE\ComputerMouse}}
 %\newcommand{\bouton}[1]{[#1]}
 	

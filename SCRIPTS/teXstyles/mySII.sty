@@ -1,0 +1,42 @@
+%%======================================================================
+%% Copyright 2013-2015 by Nicolas Mesnier <nicolas.mesnier@gmail.com>
+%%
+%% This file may be distributed and/or modified
+%% 1. under the LaTeX Project Public License and/or
+%% 2. under the GNU Public License.
+%% See the file doc/licenses/LICENSE for more details.
+%%
+%% Unlimited copying and redistribution of this file are permitted as
+%% long as this file is not modified.  Modifications, and distribution
+%% of modified versions, are permitted, but only if the resulting file
+%% is renamed.
+%-----------------------------------------------------------------------
+\ProvidesPackage{mySII}[2015/06/30]
+%=======================================================================
+% *** unités SII
+\RequirePackage{siunitx}
+\sisetup{
+    locale= FR ,%
+    detect-mode,%
+    per-mode=reciprocal,%
+%    per-mode=symbol-or-fraction,%
+    output-decimal-marker={,},
+    inter-unit-product = \ensuremath{\!\cdot\!},%
+    group-minimum-digits = 4,%
+    group-separator = \text{\;},%
+}
+\SendSettingsToPgf
+\DeclareSIUnit\tr{tr}
+% *** shémas-blocs, include tikz & pgf
+\RequirePackage{schemabloc}
+% *** frequentiel
+\RequirePackage{atbegshi}
+\RequirePackage{mybodegraph}
+% *** elec
+\RequirePackage[european]{circuitikz}
+\RequirePackage{myelec}
+% *** pedagogie
+\RequirePackage{LJF-SII_pedagogie}
+%\RequirePackage{LJP-SII_pedagogie}
+%\RequirePackage{ascii}
+%====================================================================eof

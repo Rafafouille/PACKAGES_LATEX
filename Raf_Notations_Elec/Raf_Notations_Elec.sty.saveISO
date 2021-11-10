@@ -1,0 +1,326 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Notations Cotation Fonctionnelle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{Raf_Notations_Elec}[2016/08/15]
+ 
+%chargement des extensions requises au bon fonctionnement de l'extension et des documents
+\RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
+%\RequirePackage{amsmath}%Pour utiliser \text
+%\RequirePackage{tikz}%Pour faire des symboles
+%\usetikzlibrary{calc}
+\RequirePackage{xargs}
+%\RequirePackage{array}	
+%\RequirePackage{ifmtarg}	%Permet de faire des ifthenelse avec des argument vide notamment
+\RequirePackage[european]	{circuitikz}	%Permet de dessiner des packages
+
+%Initialisation des booleens 
+\newboolean{boolRaccourcisElec}%création du booléen
+\setboolean{boolRaccourcisElec}{true}%affectation de la valeur true
+
+%déclaration des options de l'extension
+\DeclareOption{noRaccourci}{\setboolean{boolRaccourcisElec}{false}}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%commandes et/ou environnements personnalisés
+ 
+
+
+% Cotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommandx*{\thevenin}[4][3=$A$,4=$B$]		{\begin{circuitikz}%
+                                    		 \draw (0,0)%
+							to[short,o-]	(-1.5,0)%
+							to[V,v=$#1$]	(-1.5,1.5)%
+							to[R,l=$#2$]	(-1.5,3)%
+							to[short,-o]	(0,3);%
+						\node[anchor=north] at (0,3) {#3};%
+						\node[anchor=south] at (0,0) {#4};%
+                                    		 ;\end{circuitikz}%
+						}
+
+\newcommandx*{\norton}[5][3=$A$,4=$B$,5=-2.5]		{\begin{circuitikz}%
+                                    		 \draw (0,0)%
+							to[short,o-]	(#5,0)%
+							to[I,i=$#1$]	(#5,3)%
+							to[short,-o]	(0,3);%
+						\draw (-1,0) to[R,l=$#2$,*-*] (-1,3);
+						\node[anchor=north] at (0,3) {#3};%
+						\node[anchor=south] at (0,0) {#4};%
+                                    		 ;\end{circuitikz}%
+						}
+
+\ifthenelse{\boolean{boolRaccourcisElec}}
+{
+
+}{}
+
+
+
+
+
+
+
+\newcommandx*{\hacheur}[2][2=0]	{\begin{scope}[rotate=#2]\draw #1 -- ($#1+(0.5,0)$);%
+					\draw ($#1+(0.5,-0.5)$) rectangle ($#1+(1.5,0.5)$);%
+					\draw ($#1+(1.5,0)$) -- ($#1+(2.,0)$);%
+					\draw ($#1+(0.5,-0.5)$) -- ($#1+(1.5,0.5)$);%
+					\draw ($#1+(0.6,0.35)$) -- ($#1+(0.9,0.35)$);%
+					\draw ($#1+(1.4,-0.35)$) -- ($#1+(1.1,-0.35)$);%
+				\end{scope}}
+
+
+
+
+%-- ancien ---
+% %Transformer les fleches droites....
+% \newif\ifpgf@circuit@germanvoltage
+% \ctikzset{voltage/german/.code = {\pgf@circuit@germanvoltagetrue } }
+% 
+% % Output routine for generic bipoles
+% 
+% \def\pgf@circ@drawvoltagegeneric{
+%     \pgfextra{
+%         \ifnum \ctikzvalof{mirror value}=-1
+%                         \ifpgf@circuit@bipole@voltage@below\pgf@circuit@bipole@voltage@belowfalse\else\pgf@circuit@bipole@voltage@belowtrue\fi
+%         \fi
+% 
+%         \ifpgf@circuit@bipole@voltage@below
+%             \def\pgf@circ@voltage@angle{90}
+%         \else
+%             \def\pgf@circ@voltage@angle{-90} 
+%         \fi 
+% 
+%         \edef\pgf@temp{/tikz/circuitikz/bipoles/\pgfkeysvalueof{/tikz/circuitikz/bipole/kind}/voltage/distance from node}
+%         \pgfkeysifdefined{\pgf@temp}
+%             { \edef\distacefromnode{\ctikzvalof{bipoles/\pgfkeysvalueof{/tikz/circuitikz/bipole/kind}/voltage/distance from node}} }
+%             { \edef\distacefromnode{\ctikzvalof{voltage/distance from node}} }
+%         \edef\pgf@temp{/tikz/circuitikz/bipoles/\pgfkeysvalueof{/tikz/circuitikz/bipole/kind}/voltage/bump b}
+%         \pgfkeysifdefined{\pgf@temp}
+%             { \edef\bumpb{\ctikzvalof{bipoles/\pgfkeysvalueof{/tikz/circuitikz/bipole/kind}/voltage/bump b}} }
+%             { \edef\bumpb{\ctikzvalof{voltage/bump b}} }
+%     }
+% 
+%     coordinate (pgfcirc@mid) at ($(\tikztostart) ! \distacefromnode ! (\ctikzvalof{bipole/name}.left)$)
+%     coordinate (pgfcirc@Vfrom) at ($(pgfcirc@mid) ! -\ctikzvalof{voltage/distance from line}\pgf@circ@Rlen ! \pgf@circ@voltage@angle:(\ctikzvalof{bipole/name}.left)$) 
+% 
+%     coordinate (pgfcirc@mid) at ($(\tikztotarget) ! \distacefromnode ! (\ctikzvalof{bipole/name}.right)$)
+%     coordinate (pgfcirc@Vto) at ($(pgfcirc@mid) ! \ctikzvalof{voltage/distance from line}\pgf@circ@Rlen ! \pgf@circ@voltage@angle : (\ctikzvalof{bipole/name}.right)$)
+% 
+%     \ifpgf@circuit@bipole@voltage@below
+%         coordinate (pgfcirc@Vcont1) at ($(\ctikzvalof{bipole/name}.center) ! \bumpb ! (\ctikzvalof{bipole/name}.-110)$)
+%         coordinate (pgfcirc@Vcont2) at ($(\ctikzvalof{bipole/name}.center) ! \bumpb ! (\ctikzvalof{bipole/name}.-70)$)
+%     \else
+%         coordinate (pgfcirc@Vcont1) at ($(\ctikzvalof{bipole/name}.center) ! \bumpb ! (\ctikzvalof{bipole/name}.110)$)
+%         coordinate (pgfcirc@Vcont2) at ($(\ctikzvalof{bipole/name}.center) ! \bumpb ! (\ctikzvalof{bipole/name}.70)$)
+%     \fi
+% 
+%     \ifpgf@circuit@germanvoltage
+%       \ifpgf@circuit@bipole@voltage@below
+%         coordinate (pgfcirc@Vcont1) at ($(\ctikzvalof{bipole/name}.center) ! \ctikzvalof{voltage/bump a} ! (\ctikzvalof{bipole/name}.-120)$)
+%         coordinate (pgfcirc@Vcont2) at ($(\ctikzvalof{bipole/name}.center) ! \ctikzvalof{voltage/bump a} ! (\ctikzvalof{bipole/name}.-60)$)
+%     \else
+%         coordinate (pgfcirc@Vcont1) at ($ (\ctikzvalof{bipole/name}.center) ! \ctikzvalof{voltage/bump a} ! (\ctikzvalof{bipole/name}.120)$)
+%         coordinate (pgfcirc@Vcont2) at ($ (\ctikzvalof{bipole/name}.center) ! \ctikzvalof{voltage/bump a} ! (\ctikzvalof{bipole/name}.60)$)
+%       \fi
+%     \fi
+% 
+%     \ifpgf@circuit@europeanvoltage
+%         \ifpgf@circuit@germanvoltage
+%           \ifpgf@circuit@bipole@voltage@backward
+%             (pgfcirc@Vcont2)  -- node[currarrow, sloped,  allow upside down, pos=1] {} (pgfcirc@Vcont1)
+%           \else
+%             (pgfcirc@Vcont1)  -- node[currarrow, sloped,  allow upside down, pos=1] {} (pgfcirc@Vcont2)
+%           \fi
+%         \else
+%           \ifpgf@circuit@bipole@voltage@backward
+%             (pgfcirc@Vto) .. controls (pgfcirc@Vcont2)  and (pgfcirc@Vcont1) .. 
+%                 node[currarrow, sloped,  allow upside down, pos=1] {} 
+%             (pgfcirc@Vfrom) 
+%           \else
+%             (pgfcirc@Vfrom) .. controls (pgfcirc@Vcont1)  and (pgfcirc@Vcont2) ..
+%                 node[currarrow, sloped,  allow upside down, pos=1] {}
+%             (pgfcirc@Vto)   
+%           \fi  
+%         \fi      
+%     \else
+%         \ifpgf@circuit@bipole@voltage@backward
+%             (pgfcirc@Vfrom) node[inner sep=0, anchor=\pgf@circ@bipole@voltage@label@anchor]{\scriptsize$+$}   
+%             (pgfcirc@Vto) node[inner sep=0, anchor=\pgf@circ@bipole@voltage@label@anchor]{$-$}
+%         \else
+%             (pgfcirc@Vfrom) node[inner sep=0, anchor=\pgf@circ@bipole@voltage@label@anchor]{\scriptsize$-$}   
+%             (pgfcirc@Vto) node[inner sep=0, anchor=\pgf@circ@bipole@voltage@label@anchor]{$+$}
+%         \fi 
+%     \fi
+% }
+% \makeatother
+% -----
+
+
+
+
+
+
+
+
+
+
+
+%Changement des interrupteurs dans circuitikz
+\makeatletter
+% create the shape
+\pgfcircdeclarebipole{}{\ctikzvalof{bipoles/interr/height 2}}{spst}{\ctikzvalof{bipoles/interr/height}}{\ctikzvalof{bipoles/interr/width}}{
+
+    \pgfsetlinewidth{\pgfkeysvalueof{/tikz/circuitikz/bipoles/thickness}\pgfstartlinewidth}
+
+    \pgfpathmoveto{\pgfpoint{\pgf@circ@res@left}{0pt}}
+    \pgfpathlineto{\pgfpoint{.6\pgf@circ@res@right}{\pgf@circ@res@up}}
+    \pgfusepath{draw}   
+}
+
+% make the shape accessible with nice syntax
+\def\pgf@circ@spst@path#1{\pgf@circ@bipole@path{spst}{#1}}
+\tikzset{switch/.style = {\circuitikzbasekey, /tikz/to path=\pgf@circ@spst@path, l=#1}}
+\tikzset{spst/.style = {switch = #1}}
+\makeatother
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%-- ancien ---
+%%Activation de l'option qui mets des fleches droites
+%\ctikzset{voltage=german}
+%--------
+
+% Trouvé sur http://www.developpez.net/forums/d1115674/autres-langages/autres-langages/latex/tableaux-graphiques-images-flottants/fleches-tension-circuitikz/
+%Note : le fichier pgfcircvoltage.sty
+\ctikzset{voltage/european label distance=1.8}
+
+
+
+\newcommandx*{\mcc}[3][1=0,3=]{\begin{scope}[shift={#2}]\begin{scope}[rotate=#1]
+					\draw (0,0) -- (0.5,0);
+					\draw (0.5,-0.25) rectangle (0.75,0.25);
+					\draw (2,0) -- (2.5,0);
+					\draw (1.75,-0.25) rectangle (2,0.25);
+					\draw (1.25,0) circle (0.5);
+					\node[anchor=center] at (1.25,0) {\footnotesize Mcc};
+					\ifthenelse{\equal{#3}{}}
+						{}
+						{\draw[-triangle 45] (2.25,0.65) -- (0.25,0.65);
+						\node at (1.25,1) {#3};
+						}
+				;\end{scope};\end{scope};
+}
+
+\newcommandx*{\switchOpen}[4][1=0,3=,4=]{\begin{scope}[shift={#2}]\begin{scope}[rotate=#1]
+					\draw (0,0) -- (0.25,0)-- (0.7,0.25);
+					\draw (0.75,0) -- (1,0);
+					\fill[black] (0.25,0) circle (0.05);
+					\fill (0.75,0) circle (0.05);
+					\ifthenelse{\equal{#3}{}}
+						{}
+						{\node[anchor=south] at (0.5,0.5) {#3};}
+					\ifthenelse{\equal{#4}{}}
+						{}
+						{\draw[-triangle 45] (0.8,-0.25) -- (0.2,-0.25);
+						\node[anchor=north] at (0.5,-0.25) {#4};}
+				;\end{scope};\end{scope};
+}
+
+\newcommandx*{\switchClosed}[4][1=0,3=,4=]{\begin{scope}[shift={#2}]\begin{scope}[rotate=#1]
+					\draw (0,0) -- (1,0);
+					\fill[black] (0.25,0) circle (0.05);
+					\fill (0.75,0) circle (0.05);
+					\ifthenelse{\equal{#3}{}}
+						{}
+						{\node[anchor=south] at (0.5,0.25) {#3};}
+					\ifthenelse{\equal{#4}{}}
+						{}
+						{\draw[-triangle 45] (0.8,-0.25) -- (0.2,-0.25);
+						\node[anchor=north] at (0.5,-0.25) {#4};}
+				;\end{scope};\end{scope};
+}
+
+
+%\newcommand*{\tension}[3][]	{\draw[-triangle 45] #2 -- #3;\node	at($0.5*#2+0.5*#3$) {#1};}
+
+
+\newcommandx*{\hacheurQuatreQuadrants}[4][1=0,2=0,3=0,4=0]
+				{	\newcommand{\brasun}{2}%
+					\newcommand{\brasdeux}{6}%
+					\draw			(0,6)%
+						to[short,o-]	(\brasdeux,6)%
+						to		(\brasdeux,5);%
+					\draw			(\brasdeux,4)%
+						to		(\brasdeux,2);%
+					\draw			(\brasdeux,1)%
+						to		(\brasdeux,0)%
+						to[short,-o]	(0,0);%
+%
+					\ifthenelse{\equal{#3}{1}}%
+						{\switchClosed[-90]{(\brasdeux,5)}}%
+						{\switchOpen[-90]{(\brasdeux,5)}}%
+					\draw	(\brasdeux,3.75)	to[short,*-]	($(\brasdeux,3.75)+(0.75,0)$)%
+						to[D]			($(\brasdeux,5.25)+(0.75,0)$)%
+						to[short,-*]	(\brasdeux,5.25);%
+					%
+					\ifthenelse{\equal{#4}{1}}%
+						{\switchClosed[-90]{(\brasdeux,2)}}
+						{\switchOpen[-90]{(\brasdeux,2)}}%
+					\draw	(\brasdeux,0.75)	to[short,*-]	($(\brasdeux,0.75)+(0.75,0)$)%
+						to[D]			($(\brasdeux,2.25)+(0.75,0)$)%
+						to[short,-*]	(\brasdeux,2.25);%
+						%
+					\draw			(\brasun,6)%
+						to[short,*-]	(\brasun,5);%
+					\draw			(\brasun,4)%
+						to		(\brasun,2);%
+					\draw			(\brasun,1)%
+						to[short,-*]	(\brasun,0);%
+						%
+					\ifthenelse{\equal{#1}{1}}%
+						{\switchClosed[-90]{(\brasun,5)}}%
+						{\switchOpen[-90]{(\brasun,5)}}%
+					%
+					\draw	(\brasun,3.75)	to[short,*-]	($(\brasun,3.75)+(0.75,0)$)%
+						to[D]			($(\brasun,5.25)+(0.75,0)$)%
+						to[short,-*]	(\brasun,5.25);%
+						%
+						%
+					\ifthenelse{\equal{#2}{1}}%
+						{\switchClosed[-90]{(\brasun,2)}}
+						{\switchOpen[-90]{(\brasun,2)}}%
+					\draw	(\brasun,0.75)	to[short,*-]	($(\brasun,0.75)+(0.75,0)$)%
+						to[D]			($(\brasun,2.25)+(0.75,0)$)%
+						to[short,-*]	(\brasun,2.25);%
+						%
+					\draw (\brasun,3)	to[short,*-,i=$I$]	($0.5*(\brasun,3)+0.5*(\brasdeux,3)-(1.25,0)$);%
+					\draw ($0.5*(\brasun,3)+0.5*(\brasdeux,3)+(1.25,0)$)	to[short,-*]	(\brasdeux,3);%
+					\mcc{($0.5*(\brasun,3)+0.5*(\brasdeux,3)-(1.25,0)$)}[$U_m$];%
+					%
+					\draw[-triangle 45]	(0,0.25) -- (0,5.75);%
+					\node[anchor=east]	at(0,3){$U$};%
+					
+					\node[anchor=east] at	($(\brasun,4.5)-(0.1,0)$)	{$K_1$};
+					\node[anchor=east] at	($(\brasun,1.5)-(0.1,0)$)	{$K_2$};
+					\node[anchor=east] at	($(\brasdeux,4.5)-(0.1,0)$)	{$K_3$};
+					\node[anchor=east] at	($(\brasdeux,1.5)-(0.1,0)$)	{$K_4$};
+				}
+
+\endinput
