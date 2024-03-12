@@ -72,7 +72,7 @@
 \newcommandx {\diagrammeCompetences}[3][1=\competencesPT,2=,3=]	%
 	{%
 		\setcounter{placeCompetence}{0}%
-		\setcounter{placeDoubleCompetence}{0}	%Comme je n'arrive pas à faire une bête division par deux, je vais faire un compter qui va s'incrémenter 2 fois...
+		\setcounter{placeDoubleCompetence}{0}	%Comme je n'arrive pas à faire une bête division par deux, je vais faire un compteur qui va s'incrémenter 2 fois...
 		\setcounter{numeroCompetence}{0}%
 %
 		\ifthenelse{\equal{#2}{}}%Juste un petit truc pour effacer les feuilles non-sélectionnées...
@@ -89,7 +89,7 @@
 			\node[rounded corners=0.4em,draw,anchor=center,thick,fill=competencesCouleurFondCentrale,minimum height=3em] (centre) at (0,0) {\textbf{\color{competencesCouleurTexteCentrale}\competencesTexteCentral}};%
 			\draw[>-,color=red,very thick] (0,\competencesRayon/2) arc (450:80:\competencesRayon/2);%
 		\end{tikzpicture}%
-%		
+%
 		\ifthenelse{\equal{#2}{}}%Remise de la couleur initiale
 			{}%
 			{\definecolor{competencesCouleurTexteFeuille}{named}{competencesCouleurTexteFeuilleSauvegarde}}%
@@ -102,12 +102,21 @@
 	{%
 		\addtocounter{numeroCompetence}{1}
 		\StrPosition{#2}{\competencesDelimiteur}[\diagCompPos]	%On cherche la position de la 1ere virgule
-		\ifthenelse{\equal{\diagCompPos}{0}}%
+		\ifthenelse{\equal{\diagCompPos}{0}}% S'il n'y a pas de virgule (dernière feuille)
 			{%
 				%\node[draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({180-(\thenombreCompetences *0.5- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {#1};
 				\IfSubStr{#1}{\thenumeroCompetence}%Si mise en évidence
-					{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em] (A) at ({(\thenombreCompetences/4- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\textbf{\color{competencesCouleurTexteFeuilleSelected}#2}};}%
-					{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({(\thenombreCompetences/4- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\color{competencesCouleurTexteFeuille}#2};}%
+					{
+						\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em]
+						(A)
+						at ({(\thenombreCompetences/4- \theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\textbf{\color{competencesCouleurTexteFeuilleSelected}#2}};
+					}%
+					{
+						\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuille,minimum height=2em]
+						(A)
+						at ({(\thenombreCompetences/4- \theplaceCompetence)*\competencesIncrement}:\competencesRayon)
+						{\color{competencesCouleurTexteFeuille}#2};
+					}%
 				\draw (A) .. controls +(-9em,0) and (0,0) .. (0,0);%
 			}	%Si plus de virgule (position = 0) on renvoie le texte
 			{%
@@ -118,12 +127,23 @@
 				%Position des boites
 				%
 				%
+
 				\ifthenelse{\equal{\competencesCote}{gauche}}	%Si on est à gauche
 					{%
 						%Select ou pas ???
 						\IfSubStr{#1}{\thenumeroCompetence}%Si mise en évidence
-							{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em] (A) at ({180+(-\thenombreCompetences/4+\theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\textbf{\color{competencesCouleurTexteFeuilleSelected}\diagSplitNom}};}%
-							{\node[rounded corners=0.4em,draw,fill=competencesCouleurFondFeuille,minimum height=2em] (A) at ({180+(-\thenombreCompetences/4+\theplaceCompetence)*\competencesIncrement}:\competencesRayon) {\color{competencesCouleurTexteFeuille}\diagSplitNom};}%
+							{
+								\node   [rounded corners=0.4em,draw,fill=competencesCouleurFondFeuilleSelected,minimum height=2em]
+										(A)
+										at ({180+(-\thenombreCompetences/4+\theplaceCompetence)*\competencesIncrement}:\competencesRayon)
+										{\textbf{\color{competencesCouleurTexteFeuilleSelected}\diagSplitNom}};
+							}%
+							{
+								\node   [rounded corners=0.4em,draw,fill=competencesCouleurFondFeuille,minimum height=2em]
+										(A)
+										at ({180+(-\thenombreCompetences/4+\theplaceCompetence)*\competencesIncrement}:\competencesRayon)
+										{\color{competencesCouleurTexteFeuille} \diagSplitNom };
+							}%
 						%
 						\draw (A) .. controls +(9em,0) and (0,0) .. (0,0);%
 						%
@@ -143,7 +163,7 @@
 										\renewcommand*{\competencesCote}{droite}%
 										\setcounter{placeCompetence}{1}%
 									}%
-									{}%	
+									{}%
 							}%
 					}%
 					{%
@@ -157,7 +177,7 @@
 					}%
 %
 %
-				\placeCompetence[#1]{\diagSplitdeux}	%Récurcivité...
+ 				\placeCompetence[#1]{\diagSplitdeux}	%Récurcivité...
 			}	%Si encore des virgules...
 %
 	}

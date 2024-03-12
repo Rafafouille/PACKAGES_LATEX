@@ -36,9 +36,10 @@
 
 
 %Fonctions temporelles
-\newcommand* {\echelon}[1][t]	{\ensuremath{\mathbf{\f u{#1}}}}
-\newcommand* {\rampe}[1][t]	{\ensuremath{\mathbf{\f r{#1}}}}
-\newcommand* {\dirac}[1][t]	{\ensuremath{\mathbf{\f \delta{#1}}}}
+\newcommand* {\echelon}[1][t]	{\ensuremath{\f {\text{u}}{#1}}}
+\newcommand* {\rampe}[1][t]	{\ensuremath{\f {\text{r}}{#1}}}
+\newcommand* {\dirac}[1][t]	{\ensuremath{\f \delta{#1}}}
+\newcommand*	{\Fat}[1][]			{\f {a_{#1}}{t}}
 \newcommand*	{\Fft}[1][]			{\f {f_{#1}}{t}}
 \newcommand*	{\Fst}[1][]			{\f {s_{#1}}{t}}
 \newcommand*	{\Fstc}[1][]			{\f {\underline{s}}{t}}
@@ -60,28 +61,42 @@
 %Fonctions laplace
 \newcommand* {\ECHELON}[1][p]	{\ensuremath{\mathbf{\f U{#1}}}}
 \newcommand* {\RAMPE}[1][p]	{\ensuremath{\mathbf{\f R{#1}}}}
-\newcommand*	{\FFp}[1][]		{\f {F_{#1}}{p}}
-\newcommand*	{\FYp}[1][]		{\f {Y_{#1}}{p}}
-\newcommand*	{\FXp}[1][]		{\f {X_{#1}}{p}}
-\newcommand*	{\FIp}[1][]		{\f {I_{#1}}{p}}
-\newcommand*	{\FSp}[1][]		{\f {S_{#1}}{p}}
-\newcommand*	{\FEp}[1][]		{\f {E_{#1}}{p}}
-\newcommand*	{\FDp}[1][]		{\f {D_{#1}}{p}}	%Dénominateur
-\newcommand*	{\FNp}[1][]		{\f {N_{#1}}{p}}	%Numérateur
-\newcommand*	{\FHp}[1][]		{\f {H_{#1}}{p}}	%Fonction de transert
-\newcommand*	{\Hjw}[1][]		{\f {H_{#1}}{j\omega}}	%Fonction de transert
-\newcommand*	{\FGp}[1][]		{\f {G_{#1}}{p}}	%
+\newcommand*	{\FAp}[1][]		{\f {A_{#1}}{p}}	%
+\newcommand*	{\FBp}[1][]		{\f {B_{#1}}{p}}	%
 \newcommand*	{\FCp}[1][]		{\f {C_{#1}}{p}}	%
+\newcommand*	{\FDp}[1][]		{\f {D_{#1}}{p}}	%Dénominateur
+\newcommand*	{\FEp}[1][]		{\f {E_{#1}}{p}}
+\newcommand*	{\FFp}[1][]		{\f {F_{#1}}{p}}
+\newcommand*	{\FIp}[1][]		{\f {I_{#1}}{p}}
+\newcommand*	{\FGp}[1][]		{\f {G_{#1}}{p}}	%
+\newcommand*	{\FHp}[1][]		{\f {H_{#1}}{p}}	%Fonction de transert
+\newcommand*	{\FMp}[1][]		{\f {M_{#1}}{p}}	
+\newcommand*	{\FNp}[1][]		{\f {N_{#1}}{p}}	%Numérateur
+\newcommand*	{\FOp}[1][]		{\f {O_{#1}}{p}}	%Numérateur
+\newcommand*	{\FPp}[1][]		{\f {P_{#1}}{p}}	%
+\newcommand*	{\FQp}[1][]		{\f {Q_{#1}}{p}}	%
+\newcommand*	{\FSp}[1][]		{\f {S_{#1}}{p}}
 \newcommand*	{\FTp}[1][]		{\f {T_{#1}}{p}}	%
 \newcommand*	{\FUp}[1][]		{\f {U_{#1}}{p}}	%
 \newcommand*	{\FVp}[1][]		{\f {V_{#1}}{p}}	%
-\newcommand*	{\FUmp}			{\f {U_{m}}{p}}	%
+\newcommand*	{\FXp}[1][]		{\f {X_{#1}}{p}}
+\newcommand*	{\FYp}[1][]		{\f {Y_{#1}}{p}}
 \newcommand*	{\FWp}			{\f \Omega{p}}	%
+\newcommand*	{\Hjw}[1][]		{\f {H_{#1}}{j\omega}}	%Fonction de transert
+\newcommand*	{\FUmp}			{\f {U_{m}}{p}}	%
 \newcommand*	{\FWmp}			{\f {\Omega_m}{p}}	%
 \newcommand*	{\FWrp}			{\f {\Omega_r}{p}}	%
 \newcommand*	{\Fepsp}[1][]		{\f {\varepsilon_{#1}}{p}}	%
 \newcommand*	{\FTBFp}[1][]		{\f {{FTBF}_{#1}}{p}}	%
 \newcommand*	{\FTBOp}[1][]		{\f {{FTBO}_{#1}}{p}}	%
+\newcommand*	{\KBO}		    {\ensuremath{K_{BO}}}	%
+\newcommand*	{\FNBOp}		{\f {N_{BO}}{p}}	%
+\newcommand*	{\FDBOp}		{\f {D_{BO}}{p}}	%
+\newcommand*	{\FBOncp}[1][p]		{\f {BO_{\text{nc}}}{#1}}	% BO non-corriée
+\newcommand*	{\BOncp}		{\FBOncp}	% BO non-corriée
+\newcommand*	{\FBOcorp}[1][p]		{\f {BO_{\text{cor}}}{#1}}	% BO corriée
+\newcommand*	{\BOcorp}		{\FBOcorp}	% BO corriée
+
 
 %Fréquetiel
 \newcommand*	{\Gw}[1][\omega]			{\f G{#1}}
@@ -90,9 +105,14 @@
 \newcommand*	{\Gwc}					{\Gw[\wCoupure]}
 \newcommand*	{\Gdbwc}				{\Gdbw[\wCoupure]}
 \newcommand*	{\phiwc}				{\phiw[\wCoupure]}
-\newcommand*	{\wCoupure}[1][]	{\ensuremath{{\omega_c}_{#1}}}
+%\newcommand*	{\wCoupure}[1][]	{\ensuremath{{\omega_c}_{#1}}} OBSOLETE
+\newcommand*	{\wCoupure}[1][0]	{\ensuremath{\omega_{#1\text{dB}}}}
 \newcommand*	{\wResonance}[1][]	{\ensuremath{{\omega_r}_{#1}}}
 
+
+%Marges
+\newcommand*    {\MG}   {\ensuremath{M_G}} % Marge de gain
+\newcommand*    {\Mphi}   {\ensuremath{M_\varphi}} % Marge de phase
 
 %Forme canonique
 \newcommandx*{\canonique}[4][2=K,3=,4=z]	{

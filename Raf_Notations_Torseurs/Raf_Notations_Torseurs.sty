@@ -26,9 +26,13 @@
 %Ecriture
 %--------------------------------------
 %\if@RafNotTorRac
-\newcommand*{\TCallig}		{\ensuremath{\mathscr{T}}}	%T en joli
+\newcommand*{\TCallig}		{\ensuremath{\pmb{\mathscr{T}}}}	%T en joli
 %\fi
-\newcommand*{\torseur}[1]	{\ensuremath{\left\lbrace{#1}\right\rbrace}}	%Torseur quelconque
+\newcommand*{\torseur}[2][]	{
+								\ifthenelse{\equal{#1}{noBraket}}
+									{\ensuremath{#2}}
+									{\ensuremath{\left\lbrace{#2}\right\rbrace}}
+							}	%Torseur quelconque
 \if@RafNotTorRac
 \newcommand*{\tT}[1][]		{\ensuremath{\torseur{\TCallig_{#1}}}}	%Torseur T
 \fi

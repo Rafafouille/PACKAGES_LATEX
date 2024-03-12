@@ -118,17 +118,8 @@ fichier = open(nomFichier,"r")
 lignes = fichier.readlines()
 
 # texte est liste de ligne. Mode = "prof" ou "eleve"
-def generePageFormatee(texte,mode="",format="normal"):
+def generePageFormatee(texte,mode=""):
 	output = ""
-	# Première ligne (Class du document)
-	if(format=="2colonnes"):
-		output += "\\documentclass[a4paper,9pt,twocolumn,landscape]{extarticle}"
-		print(" -> "+jaune+"Classe du document : 2 colonnes"+reset)
-	else:
-		output += "\\documentclass[a4paper,10pt]{article}"
-		print(" -> "+jaune+"Classe du document : normale"+reset)
-	
-	
 	for ligne in lignes :
 	
 		# On ignore les éventuels types par défaut déjà présent dans le document original
@@ -137,8 +128,9 @@ def generePageFormatee(texte,mode="",format="normal"):
 		elif (re.search('\\\\makePageDeGarde',ligne) or re.search('\\\\makeEnteteDM',ligne) or re.search('\\\\makeEnteteTD',ligne) or re.search('\\\\makeEnteteColle',ligne)) and TYPE!="": # S'il y a déjà un mode, et qu'on est pas en compile simple : on supprime le mode
 			print(" -> "+jaune+"Le type initial a été ignoré au profit du type demandé : "+TYPE+reset)
 		# ... ensuite, on traite les lignes
-		elif re.search('\\\\documentclass',ligne): # Si on a une classe, et qu'on mais qu'on veut un type partiulier
-			print(" -> "+jaune+"La class du document initiale a été ignorée pour l'impression"+reset)
+		elif (re.search('\\\\documentclass',ligne) and COMPILE_IMPRESSION): # Si on a une classe, et qu'on mais qu'on veut un type partiulier
+			print(" -> "+jaune+"La class du document initiale a été ignorée (y comprise ses options initiales) au profit de la classe demandée"+reset)
+			output += "\\documentclass[a4paper,10pt,twocolumn,landscape]{article}"
 		else :
 			if(re.search('\\\\begin\s*\{\s*document\s*\}',ligne)): # Si on a atteint le début du document, on rentre les options de compilation juste avant.
 				if(mode=="eleve"):
@@ -201,7 +193,7 @@ if COMPILE_PROF:
 		nettoie(nomFichierPROFsansExt,True)
 		
 if COMPILE_IMPRESSION: # Que pour les élèves
-	output = generePageFormatee(lignes,"eleve","2colonnes")
+	output = generePageFormatee(lignes,"eleve")
 	nomFichierIMPsansExt = nomSansExt+"_IMPRESSION"
 	compileLaTex(output,nomFichierIMPsansExt)
 	if(NETTOIE):

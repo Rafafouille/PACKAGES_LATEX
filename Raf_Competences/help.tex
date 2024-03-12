@@ -2,11 +2,10 @@
 
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc} 
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
 	\usepackage{hyperref}
-
 	\usepackage{Raf_Competences}
-
 
 
 	\newcommand{\rac}{({\color{red}Raccourci})}
@@ -53,13 +52,13 @@
 	\begin{center}
 		\verb!\diagrammeCompetences[<competences>][<mise en valeur>]!
 	\end{center}
-	où :
+ 	où :
 	\begin{itemize}
 		\item\verb!<competences>! est une liste de mots (les compétences...) séparés par des virgules.
 					Par défaut, c'est la liste des compétences attendues en PTSI/PT qui est utilisée.
 		\item\verb!<mise en valeur>! est la liste des compétences que l'on souhaite mettre en valeurs. C'est une liste de chiffre (on ne peux donc aller que jusqu'à 9 compétences pour le moment...).
 	\end{itemize}
-	
+
 	\paragraph{Exemple :}
 	\begin{verbatim}
 \begin{center}
@@ -71,9 +70,11 @@
 \diagrammeCompetences[Compétence 1,Compétence 2,Compétence 3][2]
 \end{center}
 
+
+
 	\section{Compétences pré-programmées}
 	%---------------------------------------
-	
+
 		Certaines listes de compétences sont déjà pré-implantées, et accessible au travers de commandes décrites ci-dessous. En voici la liste :
 		\begin{itemize}
 			\item \verb!\competencesPTSI!
@@ -85,12 +86,12 @@
 			\item \verb!\competencesMP!
 		\end{itemize}
 
-		
-	
+
+
 		\subsection{PTSI, PT, TSI}
 		%...............................
-		
-		
+
+
 			\begin{verbatim}
 \begin{center}
 \diagrammeCompetences		%(Par défaut)
@@ -103,42 +104,42 @@
 			\begin{center}
 				\diagrammeCompetences
 			\end{center}
-		
+
 
 		\subsection{PSCI, PSI}
 		%...............................
-		
+
 			\begin{verbatim}
 \begin{center}
 \diagrammeCompetences[\competencesPCSI]
 %\diagrammeCompetences[\competencesPSI]
 \end{center}
 			\end{verbatim}
-			
+
 			\begin{center}
 				\diagrammeCompetences[\competencesPSI]
 			\end{center}
 
 		\subsection{MPSI, MP}
 		%...............................
-		
+
 			\begin{verbatim}
 \begin{center}
 \diagrammeCompetences[\competencesMPSI]
 %\diagrammeCompetences[\competencesMP]
 \end{center}
 			\end{verbatim}
-			
+
 			\begin{center}
 				\diagrammeCompetences[\competencesMP]
 			\end{center}
 
-		
-		
-		
+
+
+
 	\section{Mise en évidences de compétences...}
 	%------------------------------------------------
-	
+
 		Les compétences sont numérotées de haut en bas, d'abord à gauche puis à droite.
 
 		\begin{center}
@@ -146,7 +147,7 @@
 		\end{center}
 
 		Pour mettre en évidence une ou plusieurs compétences, il suffit de lister les numéros des compétences en second argument optionnel.
-		
+
 		\paragraph{Exemple :}
 \begin{verbatim}
 \begin{center}
@@ -157,13 +158,13 @@
 		\begin{center}
 			\diagrammeCompetences[\competencesPT][2,5,7]
 		\end{center}
-		
+
 		\paragraph{Note :} Ne fonctionne que jusqu'à 9 compétences...
 		\paragraph{Note-2 :} Comme c'est le second argument optionnel, cela implique qu'il faille mettre les compétences avant en 1er argument\dots
 		\paragraph{Note-3 :} Les autres compétences sont un peu effacées pour accentuer la mise en avant...
-		
-		
-	
+
+
+
 	\section{Personnalisation}
 	%---------------------------------------
 
@@ -173,44 +174,44 @@
 
 			Toutes les dimensions sont relatives.
 			Il suffit donc de précéder la commande, par exemple, d'une commande de taille (\verb!\footnotesize!, \verb!\scriptsize!,  \dots)
-			
+
 			\begin{verbatim}
 \begin{center}
 \scriptsize
 \diagrammeCompetences
 \end{center}
 			\end{verbatim}
-		
+
 		\begin{center}
 			\scriptsize
 			\diagrammeCompetences
 		\end{center}
-		
-		
+
+
 
 		\subsection{Mettre ses propres compétences}
 		%...................................................
-	
-			
+
+
 			\begin{verbatim}
 \begin{center}
 \diagrammeCompetences[S'assoire,Se lever,Se coucher]
 \end{center}
 			\end{verbatim}
-		
+
 			\begin{center}
 				\diagrammeCompetences[S'assoire,Se lever,Se coucher]
 			\end{center}
 
-		
+
 		\subsection{Les paramètres de style}
 		%...................................................
-		
-		
+
+
 			Des commandes ont été crées par le packages, contenant les paramètres dimensionnels du diagramme.
 			Il est possible de les modifier via la fonction \verb!renewcommand!, avant l'appel du diagramme.
 			En voici la liste :
-			
+
 			\begin{itemize}
 				\item \verb!\competencesTexteCentral! : Texte qui est écrit au centre du diagramme (`` \emph{Compétences} '' par défaut).
 				\item \verb!\competencesDelimiteur! : Le délimiteur dans la liste des compétences (une virgule, par défaut).
@@ -219,7 +220,7 @@
 			\end{itemize}
 
 			\paragraph{Exemple :}
-			
+
 			\begin{verbatim}
 \begin{center}
 \renewcommand{\competencesTexteCentral}{Toto}
@@ -229,7 +230,7 @@
 \diagrammeCompetences[compétence 1-compétence 2-compétence 3]
 \end{center}
 			\end{verbatim}
-		
+
 			\begin{center}
 				\renewcommand{\competencesTexteCentral}{Toto}
 				\renewcommand{\competencesDelimiteur}{-}
@@ -237,10 +238,10 @@
 				\renewcommand{\competencesIncrement}{60}
 				\diagrammeCompetences[compétence 1-compétence 2-compétence 3]
 			\end{center}
-			
-			
+
+
 			Il est également possible de modifier certaines couleurs avec les fonctions usuelles de \verb!xcolor! :
-			
+
 			\begin{itemize}
 				\item \verb!competencesCouleurFondCentrale! : Couleur de l'arrière plan la boite centrale.
 				\item \verb!competencesCouleurTexteCentrale! : Couleur du texte central.
@@ -253,4 +254,14 @@
 
 			Bien sur, j'aurais pu paramétrer plus de choses, mais je n'ai pas pris le temps de le faire et je le rajouterai selon la demande...
 			
+	\section{Problèmes rencontrés}
+	%---------------------------------------
+
+		J'ai eu des soucis avec les accents français dans tikz.
+		Penser à bien mettre les packages :
+
+			\begin{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+			\end{verbatim}
 \end{document}

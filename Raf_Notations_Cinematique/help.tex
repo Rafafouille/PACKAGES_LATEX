@@ -2,7 +2,7 @@
 
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc}
+	%\usepackage[latin1]{inputenc}
 	\usepackage{hyperref}
 
 	\usepackage{Raf_Notations_Cinematique}
@@ -234,6 +234,8 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 		\\\hline
 			\verb!\tCinematique{S_1}! \verb!{S_2}!		&	\tCinematique{S_1}{S_2}	& Torseur cinématique	
 		\\\hline
+			\verb!\tCinematique{S_1}! \verb!{S_2}[braket]!		&	\tCinematique{S_1}{S_2}[braket]	& Torseur cinématique avec accolade (dès que l'argument de fin n'est pas \verb!noBraket!)
+		\\\hline
 			\verb!\tCinematique[2]{S_1}! \verb!{S_2}!	&	\tCinematique[2]{S_1}{S_2}	&	Idem avec un exposant (pour différencier plusieurs torseurs)
 		\\\hline
 			\verb!\tV{S_1}{S_2}!		&	\tV{S_1}{S_2}	&	Raccourci direct de \verb!\tCinematique! \rac
@@ -241,6 +243,8 @@ usepackage[noRaccourci]{Raf_Notations_Cinematique}
 			\verb!\UCallig!		&	\UCallig	&	``U'' calligraphié
 		\\\hline
 			\verb!\tPetitDeplacement! \verb!{S_1}{S_2}!	&\tPetitDeplacement{S_1}{S_2}	&	Torseur de petits-déplacements	
+		\\\hline
+			\verb!\tPetitDeplacement! \verb!{S_1}{S_2}[braket]!	&\tPetitDeplacement{S_1}{S_2}[braket]	&	Torseur de petits-déplacements avec accolade (dès que l'argument de fin n'est pas \verb!noBraket!)
 		\\\hline
 			\verb!\tPetitDeplacement! \verb![2]{S_1}{S_2}!		&	\tPetitDeplacement[2]{S_1}{S_2}	&	Idem avec un exposant (pour différencier plusieurs torseurs)
 		\\\hline

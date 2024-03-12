@@ -2,7 +2,7 @@
 
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc}
+	%\usepackage[latin1]{inputenc}
 	\usepackage{hyperref}
 
 
@@ -115,6 +115,8 @@ usepackage[noRaccourci]{Raf_Notations_Dynamique}
 		\\\hline
 			\verb!\tCinetique{S_1}{S_2}!			&	\tCinetique{S_1}{S_2}			&	Torseur cinétique
 		\\\hline
+			\verb!\tCinetique{S_1}{S_2}! \verb![braket]!			&	\tCinetique{S_1}{S_2}[braket]			&	Torseur cinétique avec accolade (n'importe quel argument en fin, différent de \verb!noBraket!)
+		\\\hline
 			\verb!\tCinetique[2]{S_1}{S_2}!			&	\tCinetique[2]{S_1}{S_2}			&	Torseur cinétique avec exposant
 		\\\hline
 			\verb!\resCinetique{S_1}{S_2}!			&	\resCinetique{S_1}{S_2}			&	Résultante cinétique
@@ -130,7 +132,9 @@ usepackage[noRaccourci]{Raf_Notations_Dynamique}
 		\hline
 			\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 		\\\hline\hline
-			\verb!\ACallig!			&	\ACallig			&	\ACallig calligraphié
+			\verb!\ACallig!			&	\ACallig			&	\ACallig\ calligraphié
+		\\\hline
+			\verb!\DCallig!			&	\DCallig			&	\DCallig\ calligraphié pour le nom du torseur
 		\\\hline
 			\verb!\dA!			&	\dA			&	Quantité d'accélération (scalaire)
 		\\\hline
@@ -141,6 +145,8 @@ usepackage[noRaccourci]{Raf_Notations_Dynamique}
 			\verb!\momDynamique{A}{S}{R}!			&	\momDynamique{A}{S}{R}			&	moment dynamique au point $A$
 		\\\hline
 			\verb!\tDynamique{S}{R}!			&	\tDynamique{S}{R}			&	Torseur dynamique
+		\\\hline
+			\verb!\tDynamique{S}{R}! \verb![braket]!			&	\tDynamique{S}{R}[braket]			&	Torseur dynamique avec accolade (n'importe quel argument en fin, différent de \verb!noBraket!)
 		\\\hline
 			\verb!\tDynamique[2]{S}{R}!			&	\tDynamique[2]{S}{R}			&	Torseur dynamique avec exposant
 		\\\hline

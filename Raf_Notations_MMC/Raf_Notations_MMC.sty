@@ -11,15 +11,17 @@
 %\RequirePackage{color}%Pour mettre de la couleur
 \RequirePackage{ifthen}%pour utiliser les booléens, à mettre avec les autres RequirePackage's
 \RequirePackage[cspex,bbgreekl]{mathbbol}   %Pour faire un epsilon tenseur
-\RequirePackage{Raf_Notations_Maths}   %Pour faire un epsilon tenseur
+%\RequirePackage{Raf_Notations_Maths}   %Pour faire un epsilon tenseur
 %\RequirePackage{xargs}%Pour arguments optionnels multiples
 %\RequirePackage{amsfonts}			%Pour faire des maths (ensemble des reels, notamment)
 %\RequirePackage{amsmath}		%Plein de trucs, notamment les arcs
 %\RequirePackage{mathrsfs}			%Pour faire des maths (notamment le L de la transformée de Laplace)
 %\RequirePackage{color}
-%\RequirePackage{xspace}		%Pour faire des espace après les commandes
+%\RequirePackage{xspace}		%Pour faire des espaces après les commandes
 %\RequirePackage{xstring}	%Pour faire des remplacements de chaines
-%\RequirePackage{bm}     %Pour mettre les maths en gras
+\RequirePackage{Raf_Notations_Maths}   %Pour faire un epsilon tenseur
+
+\RequirePackage{bm}     %Pour mettre les maths en gras <-- dejé fait dans Raf_Notation_Maths
 
 %Initialisation des booleens 
 \newboolean{boolRaccourcisMMC}%création du booléen
@@ -59,7 +61,7 @@
 						{\ensuremath{\text{rot}}}
 						{\f{\text{rot}}{#1}}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TENSEURS
 
 \newenvironment*{tenseur}[1][\bB{}]
@@ -69,7 +71,7 @@
                     {\end{array}\right]_{\baseDuTenseursmldfmsd}}
 
 \newcommand*{\dbarre}[1]    {\ensuremath{\overline{\overline{#1}}}}
-                    
+
 \newcommand*{\symbolTenseurF}{\ensuremath{\mathbb{F}}}
 \newcommand*{\symbolTenseurE}{\ensuremath{\mathbb{E}}}
 \newcommand*{\symbolTenseure}{\ensuremath{\mathbb{e}}}
@@ -94,9 +96,10 @@
 \newcommand*{\eps}[2]{\ensuremath{\varepsilon_{#1#2}}}
 
 \newcommandx*{\grad}[3][1=,2=entier] {{
+                            \providecommand{\nomOperateurGraddd}{}  % Cette ligne sert à créer \nomOperateurGraddd s'il n'existe pas, pour être sûr de pouvoir utiliser renewcommand aux lignes d'en dessous (sinon, on ne sait pas si elle existe déjà ou non)
                             \ifthenelse{\equal{#2}{nabla}}
-                                {\newcommand*{\nomOperateurGraddd}{\nabla}}
-                                {\newcommand*{\nomOperateurGraddd}{\operatorname{grad}}}
+                                {\renewcommand*{\nomOperateurGraddd}{\nabla}}
+                                {\renewcommand*{\nomOperateurGraddd}{\operatorname{grad}}}
                             %
                             \ifthenelse{\equal{#1}{1}}
                                 {\ensuremath{\vecteur{\f {\nomOperateurGraddd}{#3}}}}
@@ -125,7 +128,7 @@
     {
         \f{\Delta}{#1}
     }
-                        
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fonctions
 

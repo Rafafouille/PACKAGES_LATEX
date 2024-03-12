@@ -1,4 +1,4 @@
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %	Notations Style
 %
@@ -15,6 +15,7 @@
 \RequirePackage{import}
 \RequirePackage{graphicx}
 \RequirePackage{qrcode}
+\RequirePackage{sfmath} % <--- Permet d'avoir les expressions mathématiques en sans-serifss
 
 
 %Initialisation des booleens 
@@ -33,15 +34,17 @@
 %Mise à zéro des variables
 %==================================
 
-	\newcommand*	{\partie}		{Sciences Industrielles de l'Ingénieur}
+	\newcommand*	{\partie}		{}
 	\newcommand*	{\titre}		{}
 	\newcommand*	{\sousTitre}		{}
+	\newcommand*	{\nSequence}		{}
+	\newcommand*	{\sequence}		{}
 	\newcommand*	{\numero}		{}
 	\newcommand*	{\auteur}		{Raphaël ALLAIS}
 	\newcommand*	{\etablissement}	{Lycée Gustave Eiffel de Dijon}
 	\newcommand*	{\discipline}		{Sciences Industrielles de l'Ingénieur}
 	\newcommand*	{\classe}		{Classe préparatoire P.T.}
-	\newcommand*	{\anneeScolaire}	{2021 - 2022}
+	\newcommand*	{\anneeScolaire}	{2023 - 2024}
 	\newcommand*	{\icone}		{logoeiffel.png}
 	\newcommand*	{\duree}		{10 minutes}
 	\newcommand*	{\jour}			{\today}
@@ -51,7 +54,6 @@
 	\newcommand*	{\QRcode}		{}
 	\newcommand*	{\codeQRcode}		{1234}
 	\newcommand*	{\iconeQRcode}		{\iconeAmpoule}
-	\newcommand*    {\nombreExemplaires}  {46}
 
 %Page de garde
 %============================
@@ -65,14 +67,14 @@
 
 	%Sections
 	\renewcommand*	{\thesection}	{\Roman{section}}	%Numérotation en chiffres romains
-	\titleformat	{\section}[hang]{\LARGE\bfseries}{\thesection.}{1em}{}[\rule{\linewidth}{.5pt}]
+	\titleformat	{\section}[hang]{\Large\bfseries}{\thesection.}{1em}{}[\rule{\linewidth}{.5pt}]
 	%\newcommand*	{\sectionbreak}	{\clearpage}%Change de page a chaque section
 	%\titlespacing*{\section}{0px}{20cm}{\wordsep}
 
 	%Subsection
 	\renewcommand*	{\thesubsection}	{\arabic{subsection}}%Numérotation en chiffres arabes
-	\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
-	\titleformat	{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{\underline}[]
+	\titlespacing*	{\subsection}{1cm}{1cm}{0.5cm}
+	\titleformat	{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}[]%    autrefois ca finissait par : {\underline}[]
 
 	%Subsubsection
 	\renewcommand	{\thesubsubsection}	{\alph{subsubsection})}%Numérotation en lettres
@@ -88,8 +90,13 @@
 	\renewcommand{\baselinestretch}{0.9}		%Inter ligne
 	\setlength{\parskip}{0.3em}	%Inter-paragraphe
 	\setlist{itemsep=0mm}
-	
 
+	% POLICE
+	\renewcommand\familydefault{\sfdefault} % Change la police de tout le document
+
+	% TOW COLUMNS
+	\setlength{\columnseprule}{0.4pt}
+	\setlength{\columnsep}{3em}
 
 %Table des matieres
 %==========================
@@ -104,14 +111,35 @@
 %Entete / Pied de page
 %===========================
 
-	\pagestyle{fancy}	%On veut utiliser les entetes/pieds
-	\rhead{\ifthenelse{\equal{\partie}{}}{}{\partie}\\\titre}		%Entete gauche --> Titre du document
-	\lhead{\textsc{\discipline}}	%Entete droite --> Titre de la sections
+	\fancypagestyle{plain}
+	{
+			\rhead{
+					\ifthenelse{\equal{\nSequence}{}}
+						{}
+						{Seq.\nSequence}
+					\ifthenelse{\equal{\nSequence}{} \OR \equal{\sequence}{}}
+						{}
+						{\ \uppercase{-}\ }
+					\ifthenelse{\equal{\sequence}{}}
+						{}
+						{\sequence}
+		%			\ifthenelse{\equal{\nSequence}{} \AND \equal{\sequence}{}}
+		%				{}
+		%				{\\}
+		%			\ifthenelse{\equal{\numero}{}}
+		%				{}
+		%				{\numero\ -\ }
+		%			\titre
+			}		%Entete gauche --> Titre du document
+			\lhead{\MakeUppercase{\discipline}}	%Entete droite --> Titre de la sections
 
-	\renewcommand*{\footrulewidth}{1px}
-	\lfoot{\etablissement}	%Pied de gauche --> Etablissement
-	\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> n°de page
-	\rfoot{\ifthenelse{\equal{\anneeScolaire}{}}{\classe }{\classe \\Année \anneeScolaire}}
+			\renewcommand*{\footrulewidth}{1px}
+			\lfoot{\MakeUppercase{\etablissement}}	%Pied de gauche --> Etablissement
+			\cfoot{\thepage\ / \pageref{LastPage}}	%Pied Centre --> n°de page
+			\rfoot{\ifthenelse{\equal{\anneeScolaire}{}}{\classe }{\classe \\Année \anneeScolaire}}
+	}
+	\pagestyle{plain}	%On veut utiliser les entetes/pieds
+
 
 
 %Captions (légendes)
@@ -121,8 +149,39 @@
 			labelfont	=	bf,
 			textfont	=	{small, it}}
 	
+\setlength{\abovecaptionskip}{0pt} % Espace au dessus d'un caption
+\setlength{\belowcaptionskip}{0pt}
 
+% Nouveau caption personnalisés (\ccpation[label]{texte}[center/nocenter])
+\newcommandx*{\ccaption}[3][1=,3=center]{
+			\ifthenelse{\equal{#3}{center}}
+			{
+				\begin{center}
+					\refstepcounter{figure}
+					\ifthenelse{\equal{#1}{}}
+					{}
+					{\label{#1}}
+					\textbf{Figure \thefigure}
+					\ifthenelse{\equal{#2}{}}
+					{}
+					{-- \emph{\small #2}}
 
+				\end{center}
+			}
+			{
+				\refstepcounter{figure}
+					\ifthenelse{\equal{#1}{}}
+					{}
+					{\label{#1}}
+					\textbf{Figure \thefigure}
+					\ifthenelse{\equal{#2}{}}
+					{}
+					{-- \emph{\small #2}}
+			}
+    }
+	
+	
+	
 %Booleen d'affichage vectoriel ou bitmap
 \newboolean{imageEnVectoriel}
 \setboolean{imageEnVectoriel}{true}	%Petite condition qui choisit entre 2 formats d'image
@@ -184,11 +243,13 @@
 
 
 
+
+
 %Page de garde
 %=================================
 %\newcommand*{\includeLogo}{\begingroup \includegraphics{logoeiffel.png} \endgroup}
 
-\newcommand*{\makePageDeGarde}	{\begingroup 
+\newcommand*{\makePageDeGardeOld}	{\begingroup
 			\begin{titlepage}	%Début de la page de garde
 			%=======================================================
 				\begin{center} %----------------------------------------
@@ -215,8 +276,31 @@
 					%Titre
 					%..........................
 					\rule{\linewidth}{0.5mm}\\[0.4cm]
-					{\textsc{\partie}}\\[0.4cm]
-					{ \huge \bfseries \ifthenelse{\equal{\numero}{}}{}{\numero\ -} \titre }\\[0.4cm]
+					% PARTIES (obsolete)
+					\ifthenelse{\equal{\partie}{}}
+						{}
+						{{\textsc{\partie}}\\[0.4cm]}
+					% SEQUENCES
+					{\ifthenelse{\equal{\nSequence}{}}
+						{}
+						{\textsc{Séquence \nSequence}}
+					}
+					{\ifthenelse{\equal{\nSequence}{} \OR \equal{\sequence}{}}
+						{}
+						{\textsc{\ -\ }}
+					}
+					{\textsc{\sequence}}
+					{\ifthenelse{\equal{\nSequence}{} \AND \equal{\sequence}{}}
+						{}
+						{\\[0.4cm]}
+					}
+					%Cours
+					{ \huge \bfseries
+						\ifthenelse{\equal{\numero}{}}
+							{}
+							{\numero\ -}
+							\titre
+					}\\[0.4cm]
 					\rule{\linewidth}{0.5mm}\\[1cm]
 					%Sommaire
 					%.............................
@@ -229,13 +313,13 @@
 					%Objectif
 					%........................
 					%\ifthenelse{\isundefined{\competences}}
-					
-					
+
+
 					\hfill
-					
-					
+
+
 					\ifx \competences \@empty
-						
+
 					\else
 							\begin{objectif*}
 								\begin{itemize}
@@ -243,7 +327,7 @@
 								\end{itemize}
 							\end{objectif*}
 					\fi
-					
+
 					%Compétences + QR code
 						\ifthenelse{\equal{\QRcode}{}}
 							{}
@@ -262,7 +346,13 @@
 					\hfill
 						\ifthenelse{\equal{\dessineCompetences}{}}
 							{}
-							{{\tiny\diagrammeCompetences[\dessineCompetences][\pointeCompetences]}\vspace{0.5cm}\hfill}
+							{
+ 								{
+									\tiny
+ 									\diagrammeCompetences[\dessineCompetences][\pointeCompetences]
+								}
+								\vspace{0.5cm}\hfill
+							}
 					\phantom.
 
 % 					\begin{center}
@@ -283,17 +373,178 @@
 						{}
 
 
-						
+
 					% Bottom of the page
 					{\large \jour}
 				\end{center}	%-----------------------------------------
 			%=======================================================
-
-			
-
-
 			\end{titlepage}		%Fin de la page de garde
 	\endgroup}
+
+
+
+
+
+
+
+
+\newcommand*{\makePageDeGarde}	{\begingroup
+			%\begin{titlepage}	%Début de la page de garde
+			%=======================================================
+
+				\begin{center} %----------------------------------------
+					%partie superieure
+					%......................
+% 					\begin{center}
+% 						\begin{tabular}{p{0.15\linewidth}p{0.6\linewidth}}
+% 							\begin{minipage}{\linewidth}
+% 								\begin{center}
+% 									\includegraphics[width=\linewidth]{\icone}
+% 								\end{center}
+% 							\end{minipage}
+% 						&
+% 							\begin{minipage}{\linewidth}
+% 								\begin{center}
+% 									%\textsc{\LARGE \etablissement}\\[1cm]
+% 									{\LARGE \etablissement}\\[0.5cm]
+% 									%\textsc{\Large \classe}\\[0.5cm]
+% 									{\Large \classe}\\[0.3cm]
+% 									%\textsc{\Large Année \anneeScolaire}\\[1cm]
+% 									{\Large Année \anneeScolaire}
+% 								\end{center}
+% 							\end{minipage}
+% 						\end{tabular}
+% 					\end{center}
+%					\vspace{0.6cm}
+
+					%Titre ==========================================
+					%..........................
+					\vfill
+					\rule{\linewidth}{0.5mm}\\[0.4cm]
+					% PARTIES (obsolete)
+					\ifthenelse{\equal{\partie}{}}
+						{}
+						{
+							{\partie}\\[0.4cm]
+						}
+					% SEQUENCES
+					{\ifthenelse{\equal{\nSequence}{}}
+						{}
+						{
+							{Séquence \nSequence}%
+						}%
+					}%
+					{%
+						\ifthenelse{\equal{\nSequence}{} \OR \equal{\sequence}{}}%
+							{}%
+							{%
+								{ -- }%
+							}%
+					}%
+					{%
+						%\textsc{\sequence}
+						\itshape \sequence
+					}
+					{\ifthenelse{\equal{\nSequence}{} \AND \equal{\sequence}{}}
+						{}
+						{\\[0.4cm]}
+					}
+					%Cours
+					{ \huge \bfseries
+						\ifthenelse{\equal{\numero}{}}
+							{}
+							{\numero\ -}
+							\titre
+					}\\[0.4cm]
+					\rule{\linewidth}{0.5mm}\\[0.0cm]
+
+
+					%Sommaire ==========================================
+					\vfill
+					%.............................
+					\begin{minipage}{0.9\linewidth}
+						\tableofcontents
+					\end{minipage}
+
+
+					%Partie inférieur ==========================================
+					%.........................
+					\vfill
+					%Objectif
+					%........................
+					%\ifthenelse{\isundefined{\competences}}
+
+
+					%\hfill
+
+
+					\ifx \competences \@empty
+
+					\else
+							\begin{objectif*}
+								\begin{itemize}
+									\competences
+								\end{itemize}
+							\end{objectif*}
+					\fi
+
+					%Compétences + QR code
+						\ifthenelse{\equal{\QRcode}{}}
+							{}
+							{%
+								\hfill%
+								\begin{tikzpicture}%
+									\ifthenelse{\equal{\codeQRcode}{}}
+										{\node[anchor=center] (QRCODE) at (0,0) {\qrcode[forget,nolinks,height=7em,level=4,version=6]{\QRcode}};}
+										{\node[anchor=center] (QRCODE) at (0,0) {\qrcode[forget,nolinks,height=7em,level=4,version=6]{\QRcode?QR\_CODE=\codeQRcode}};}
+									%
+									%\fill[color=white] (-4.8em,1.16em) rectangle (-2.59em,-1.05em);
+									%\fill[color=white] (-1.0em,-1.0em) rectangle (1.0em,1.0em);%
+									\iconeQRcode%
+								\end{tikzpicture}%
+							}
+					\hfill
+						\ifthenelse{\equal{\dessineCompetences}{}}
+							{}
+							{
+ 								{
+									\tiny
+									\renewcommand*	{\competencesIncrement}	{15}
+									\diagrammeCompetences[\dessineCompetences][\pointeCompetences]
+								}
+								%\vspace{0.5cm}
+								\hfill
+							}
+					\phantom.
+
+		\graphicspath{{illustrations/}}
+					%Affiche Version
+					\ifthenelse{\boolean{versionProf}}
+						{\afficheLogoVersionProf}
+						{}
+					\ifthenelse{\boolean{versionCorrigee}}
+						{\afficheLogoVersionCorrigee}
+						{}
+
+
+
+					% Bottom of the page ==========================
+					%{\large \jour}
+				\end{center}	%-----------------------------------------
+			%=======================================================
+			%\end{titlepage}		%Fin de la page de garde
+			\newpage
+	\endgroup}
+
+
+
+
+
+
+
+
+
+
 
 
 \newcommand*{\afficheLogoVersionProf}
@@ -336,7 +587,27 @@
 \newcommand{\makeTitre}
 		{
 			\begin{center}
-				{\textsc{\partie}}\\[0.4cm]
+
+
+				% PARTIES (obsolete)
+					\ifthenelse{\equal{\partie}{}}
+						{}
+						{{\uppercase{\partie}}\\[0.4cm]}
+					% SEQUENCES
+					{\ifthenelse{\equal{\nSequence}{}}
+						{}
+						{\uppercase{Séquence \nSequence}}
+					}
+					{\ifthenelse{\equal{\nSequence}{} \OR \equal{\sequence}{}}
+						{}
+						{\uppercase{\ -\ }}
+					}
+					{\uppercase{\sequence}}
+					{\ifthenelse{\equal{\nSequence}{} \AND \equal{\sequence}{}}
+						{}
+						{\\[0.4cm]}
+					}
+
 				{ \huge \bfseries \ifthenelse{\equal{\numero}{}}{}{\numero\ -} \titre }\\[0.4cm]
 			\end{center}
 			\vspace{0.5cm}\hrule
@@ -345,10 +616,10 @@
 
 \newcommand{\makeEnteteControle}
 		{
-			\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+			\noindent\fbox{{\Large \uppercase{Nom :}\hspace{5cm}}}
 
 			\begin{center}
-				\huge \textsc{Contrôle}
+				\huge \uppercase{Contrôle}
 			\end{center}
 			\vspace{0.5cm}\hrule
 			\par\vspace{0.4cm}
@@ -364,10 +635,10 @@
 \newcommand{\makeEnteteDocumentReponse}[1][] %Numero du doc répond (facultatif)
 		{
 			\begin{tabular}{m{0.4\linewidth}m{0.6\linewidth}}
-				\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+				\noindent\fbox{{\Large \uppercase{Nom :}\hspace{5cm}}}
 				&
 				\begin{center}
-					\huge \textsc{Document-Réponse #1}
+					\huge \uppercase{Document-Réponse #1}
 				\end{center}
 			\end{tabular}
 
@@ -389,7 +660,8 @@
 			%\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
 
 			\begin{center}
-				\large \textsc{Devoir - Maison}\\
+				\Large D\large EVOIR - \Large M\large AISON\\
+				%\large \uppercase{Dvoir Maison}\\
 				\huge \titre
 			\end{center}
 			\vspace{0.5cm}\hrule
@@ -403,10 +675,10 @@
 
 \newcommand{\makeEnteteTD}
 		{
-			%\noindent\fbox{{\Large \textsc{Nom :}\hspace{5cm}}}
+			%\noindent\fbox{{\Large \uppercase{Nom :}\hspace{5cm}}}
 
 			\begin{center}
-				\large \textsc{Travaux Dirigés}
+				\large \uppercase{Travaux Dirigés}
 			\ifthenelse{\equal{\numero}{}}
 				{}%
 				{ n°\numero}%
@@ -425,8 +697,8 @@
 \newcommand{\makeEnteteSoutien}
 		{
 			\begin{center}
-				\large \textsc{Soutien}\\[0.3cm]
-				\small\textsc{\partie}\\
+				\large \uppercase{Soutien}\\[0.3cm]
+				\small\uppercase{\partie}\\
 				\huge \titre
 			\end{center}
 			\vspace{0.5cm}\hrule
@@ -437,8 +709,8 @@
 \newcommand{\makeEnteteCorrige}
 		{
 			\begin{center}
-				\large \textsc{Corrigé}\\[0.3cm]
-				\small\textsc{\partie}\\
+				\large \uppercase{Corrigé}\\[0.3cm]
+				\small\\uppercase{\partie}\\
 				\huge \titre
 			\end{center}
 			\vspace{0.5cm}\hrule
@@ -448,8 +720,8 @@
 \newcommand{\makeEnteteTIPE}
 		{
 			\begin{center}
-				\large \textsc{TIPE}\\[0.3cm]
-				\small\textsc{\partie}\\
+				\large \uppercase{TIPE}\\[0.3cm]
+				\small\uppercase{\partie}\\
 				\huge \titre
 			\end{center}
 			\vspace{0.5cm}\hrule
@@ -460,12 +732,12 @@
 \newcommand*{\makeEnteteColle}
     {
     \begin{center}
-		\huge {\partie\ \numero\\\gras{\textsc{\titre}}}
+		\huge {\partie\ \numero\\\gras{\uppercase{\titre}}}
 	\end{center}
 	
     }
 
-\newcommand*{\makePageDeGardeDS}[1]	{\begingroup 
+\newcommand*{\makePageDeGardeDSOLD}[1]	{\begingroup
 			\begin{titlepage}	%Début de la page de garde
 			%=======================================================
 				\begin{center} %----------------------------------------
@@ -479,7 +751,7 @@
 					%Titre
 					%..........................
 					\rule{\linewidth}{0.5mm}\\[0.4cm]
-					{\textsc{\partie}}\\[0.4cm]
+					{\uppercase{\partie}}\\[0.4cm]
 					{ \huge \bfseries \ifthenelse{\equal{\numero}{}}{}{\numero\ -} \titre }
 					\ifthenelse{\equal{\sousTitre}{}}{}{\\[0.4cm]\emph{\large\gras{\sousTitre}}}\\[0.4cm]
 					\rule{\linewidth}{0.5mm}\\[1cm]
@@ -505,10 +777,50 @@
 			\end{titlepage}		%Fin de la page de garde
 	\endgroup}
 
+
+\newcommand*{\makePageDeGardeDS}[1]	{\begingroup
+			%\begin{titlepage}	%Début de la page de garde
+			%=======================================================
+				\begin{center} %----------------------------------------
+					%partie superieure
+					%......................
+					\begin{center}
+						% DATE =====
+						\jour
+						\\[0.2cm] % PARTIE =====
+						{\Large\uppercase{\partie}}
+						\\[0.cm]
+						%\huge\emph{\gras{Sujet}}
+					\end{center}
+
+					%Titre
+					%..........................
+					\rule{\linewidth}{0.5mm}\\[0.2cm]
+					{ \huge \bfseries
+					SUJET%
+					\ifthenelse{\equal{\numero}{}}
+						{}
+						{ n°\numero} : \titre }
+					\ifthenelse{\equal{\sousTitre}{}}{}{\\[0.4cm]\emph{\large\gras{\sousTitre}}}
+					\\[0.cm]
+					\rule{\linewidth}{0.5mm}\\[0.5cm]
+
+
+					%Partie inférieur
+					%.........................
+					%\vfill
+					{#1}
+
+					%\vfill%{\large \jour}
+				\end{center}	%-----------------------------------------
+			%=======================================================
+%			\end{titlepage}		%Fin de la page de garde
+	\endgroup}
+
 \newcommand*{\makePageDeGardeRessources}	{\begingroup 
 				\begin{center}
                     \phantom.\\
-					\huge \textsc{Document-Ressources}
+					\huge \uppercase{Document-Ressources}
                 \end{center}
 			\vspace{0.5cm}\hrule
 			\par\vspace{0.4cm}
@@ -539,7 +851,7 @@
 			%Subsection
 			\renewcommand*	{\thesubsection}{DR\arabic{subsection}}%Numérotation en chiffres arabes
 			\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
-			\newcommand*	{\subsectionbreak}	{\clearpage}%Change de page a chaque section
+			\newcommand*	{\subsectionbreak}	{\newpage}%Change de page a chaque section
 			\titleformat	{\subsection}{\centering\normalfont\Large\bfseries}{\thesubsection\ -- }{0.em}{}[]
 
 		}
@@ -759,7 +1071,7 @@
         \hfill
         \rule[3pt]{0.3\linewidth}{0.4pt}
         \hfill
-        \textbf{\textsc{#1}}
+        \textbf{\uppercase{#1}}
         \hfill 
         \rule[3pt]{0.3\linewidth}{0.4pt}
         \hfill \phantom.

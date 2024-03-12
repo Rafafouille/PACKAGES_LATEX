@@ -6,7 +6,7 @@
 \RequirePackage{Raf_Packages_Classics}	%Tous les packages ``de base''
 
 
-%Initialisation des booleens 
+%Initialisation des booleens
 \newboolean{boolRaccourcis}%création du booléen
 \setboolean{boolRaccourcis}{false}%affectation de la valeur false
 \DeclareOption{raccourcis}{\setboolean{boolRaccourcis}{true}}
@@ -14,6 +14,7 @@
 
 
 %Notations
+
 \RequirePackage{Raf_Boites}		%Notations Analyse fonctionnelle
 \RequirePackage{Raf_Notations_AF}		%Notations Analyse fonctionnelle
 \RequirePackage{Raf_Notations_SLCI}		%Notations Asservissements
@@ -27,7 +28,7 @@
 \RequirePackage{Raf_Notations_Actions-Meca}	%Notations sur la cotation fonctionnelle
 \RequirePackage{Raf_Notations_Fab}	%Notations sur la cotation fonctionnelle
 \RequirePackage{Raf_Notations_Materiaux}	%Notations sur la cotation fonctionnelle
-%\RequirePackage{Raf_Style}				%Styles de documents
+% \RequirePackage{Raf_Style}				%Styles de documents
 \RequirePackage{Raf_Notations_Autom}
 \RequirePackage{Raf_Notations_Energetique}	%Notations de puissance, travail, etc...
 \RequirePackage{Raf_Notations_Elec}	%Notations de puissance, travail, etc...
@@ -37,46 +38,51 @@
 
 \RequirePackage{Raf_Notations_MMC}	%MMC
 
+% \RequirePackage{sfmath} % <--- Permet d'avoir les expressions mathématiques en sans-serifss
+
+
 %\ProcessOptions
- 
+
 %commandes et/ou environnements personnalisés
- 
- 
+
+
 %Commandes de mise en page
-    \newcommand*{\theAnneeUniversitaire}{2021 / 2022}
+    \newcommand*{\theAnneeUniversitaire}{2023 / 2024}
     \newcommand*{\anneeUniversitaire}[1]{\renewcommand*{\theAnneeUniversitaire}{#1}}
-    
+
     \newcommand*{\theDiscipline}{Mécanique des Milieux Continus}
     \newcommand*{\discipline}[1]{\renewcommand*{\theDiscipline}{#1}}
- 
+
     \newcommand*{\thePartie}{}
     \newcommand*{\partie}[1]{\renewcommand*{\thePartie}{#1}}
- 
+
     \newcommand*{\theTitre}{}
     \newcommand*{\titre}[1]{\renewcommand*{\theTitre}{#1}}
- 
- 
+
+
     \newcommand*{\theSeance}{Travaux Dirigés}
     \newcommand*{\seance}[1]{\renewcommand*{\theSeance}{#1}}
- 
+
     \newcommand*{\theNumero}{1}
     \newcommand*{\numero}[1]{\renewcommand*{\theNumero}{#1}}
     \newcommand*{\theNNNumero}{\ifthenelse{\equal{\theNumero}{}}{}{ n°\theNumero}}
- 
- 
+
+
+   % \renewcommand\familydefault{\sfdefault} % Change la police de tout le document
+
 %ENTETE ET PIED DE PAGE
 %=====================================
 \pagestyle{fancy}
 
-%Entete 
-\lhead{\theDiscipline} 
+%Entete
+\lhead{\theDiscipline}
 %\chead{ \theSeance\theNNNumero }
 \rhead{\theSeance \theNNNumero\ -- \theTitre}
-% 
+%
 % %Pied de page
 \setlength{\footskip}{50pt} %Pour décaler le pied de page vers le bas
 \renewcommand{\footrulewidth}{0.4pt}%
-\lfoot{\vspace{-1cm}Année universitaire\\\theAnneeUniversitaire}
+\lfoot{\ifthenelse{\equal{\theAnneeUniversitaire}{}}{} {\vspace{-1cm}Année universitaire\\\theAnneeUniversitaire}}
 \cfoot{\vspace{-1cm}\thepage/\pageref{LastPage}}
 \rfoot{\includegraphics[height=1cm]{logo_ESTP.png}}
 
@@ -94,16 +100,16 @@
         \end{center}
 
     }
-    
-    
+
+
 %Captions (légendes)
 %==========================================
 	\captionsetup{	labelsep	=	endash,
 			justification	=	centering,
 			labelfont	=	bf,
 			textfont	=	{small, it}}
-			
-			
+
+
 %MATH
 %==========================
 
@@ -112,9 +118,9 @@
 	\newenvironment{disarray}%
 		{\everymath{\displaystyle\everymath{}}\array}%
 		{\endarray}
-		
-		
-		
+
+
+
 %Mise en page des titres de parties
 %======================================
 
@@ -128,8 +134,50 @@
 	\renewcommand*	{\thesubsection}	{\arabic{subsection}}%Numérotation en chiffres arabes
 	\titlespacing*	{\subsection}{0cm}{1cm}{0.5cm}
 	\titleformat	{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{\underline}[]
-% 
+%
 % 	%Subsubsection
 % 	\renewcommand	{\thesubsubsection}	{\alph{subsubsection})}%Numérotation en lettres
 % 	\titlespacing*	{\subsubsection}{1cm}{0.5cm}{0.3cm}
+
+
+
+
+
+
+
+
+
+
+
+% CAPTIONS
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nouveau caption personnalisés (\ccpation[label]{texte}[center/nocenter])
+\newcommandx*{\ccaption}[3][1=,3=center]{
+			\ifthenelse{\equal{#3}{center}}
+			{
+				\begin{center}
+					\refstepcounter{figure}
+					\ifthenelse{\equal{#1}{}}
+					{}
+					{\label{#1}}
+					\textbf{\textsc{Figure \thefigure}}
+					\ifthenelse{\equal{#2}{}}
+					{}
+					{-- \emph{\small #2}}
+
+				\end{center}
+			}
+			{
+				\refstepcounter{figure}
+					\ifthenelse{\equal{#1}{}}
+					{}
+					{\label{#1}}
+					\textbf{\textsc{Figure \thefigure}}
+					\ifthenelse{\equal{#2}{}}
+					{}
+					{-- \emph{\small #2}}
+			}
+    }
+
 \endinput

@@ -2,7 +2,7 @@
 
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc} 
+	%\usepackage[latin1]{inputenc}
 	\usepackage{hyperref}
 
 	\usepackage[]{Raf_Notations_Torseurs}
@@ -59,6 +59,8 @@ usepackage[noRaccourci]{Raf_Notations_Torseurs}
 			\verb!\TCallig!			&	\TCallig		&	Symbole ``T'' de torseur calligraphié du torseur
 		\\\hline
 			\verb!\torseur{X}!		&	\torseur{X}		&	Objet torseur
+		\\\hline
+			\verb!\torseur[noBraket]{X}!		&	\torseur[noBraket]{X}		&	Idem sans les accolades (oui, ça ne sert à rien, mais c'est compatible avec d'autres trucs d'autres packages)
 		\\\hline
 			\verb!\tT!			&	\tT			&	Torseur \TCallig \rac
 		\\\hline

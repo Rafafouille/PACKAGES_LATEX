@@ -56,7 +56,7 @@
 \newcommand*{\yt}	{\fonction{y}{t}}
 \newcommand*{\zt}	{\fonction{z}{t}}
 \newcommand*{\rt}	{\fonction{r}{t}}
-\newcommand*{\thetat}	{\fonction{\theta}{t}}
+\newcommand*{\thetat}[1][]	{\fonction{\theta_{#1}}{t}}
 \newcommand*{\phit}	{\fonction{\phi}{t}}
 \newcommand*{\varphit}	{\fonction{\varphi}{t}}
 \newcommand*{\psit}	{\fonction{\psi}{t}}
@@ -208,14 +208,14 @@
 
 
 %Torseur
-\newcommand*{\VCallig}				{\ensuremath{	\mathscr{V}	}}	%Symbole du torseur cinematique
-\newcommand*{\tCinematique}[3][]		{\ensuremath{	\torseur{\VCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur cinematique
+\newcommand*{\VCallig}				{\ensuremath{	\pmb{\mathscr{V}}	}}	%Symbole du torseur cinematique
+\newcommandx*{\tCinematique}[4][1=,4=noBraket]		{\ensuremath{	\torseur[#4]{\VCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur cinematique
 \if@RafNotCinRac
 \newcommand*{\tV}[3][]				{\tCinematique[#1]{#2}{#3}}	%torseur cinematique
 \fi
 
-\newcommand{\UCallig}				{\ensuremath{	\mathscr{U}	}}	%Symbole du torseur petit déplacement
-\newcommand{\tPetitDeplacement}[3][]	{\ensuremath{	\torseur{\UCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur petit déplacement
+\newcommand{\UCallig}				{\ensuremath{	\pmb{\mathscr{U}}	}}	%Symbole du torseur petit déplacement
+\newcommandx*{\tPetitDeplacement}[4][1=,4=noBraket]	{\ensuremath{	\torseur[#4]{\UCallig^{#1}_{\left(#2/#3\right)}}	}}%torseur petit déplacement
 \newcommand{\tPetitDep}[3][]		{\tPetitDeplacement[#1]{#2}{#3}}
 \if@RafNotCinRac
 \newcommand{\tD}[3][]			{\tPetitDeplacement[#1]{#2}{#3}}

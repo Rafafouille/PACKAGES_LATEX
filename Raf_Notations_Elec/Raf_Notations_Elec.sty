@@ -12,6 +12,7 @@
 %\RequirePackage{tikz}%Pour faire des symboles
 %\usetikzlibrary{calc}
 \RequirePackage{xargs}
+\RequirePackage{xspace}
 %\RequirePackage{array}	
 %\RequirePackage{ifmtarg}	%Permet de faire des ifthenelse avec des argument vide notamment
 \RequirePackage[european]	{circuitikz}	%Permet de dessiner des packages
@@ -29,6 +30,31 @@
  
 
 
+% Fonctions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\uI}[1][]   {\ensuremath{\underline{I}_{#1}}\xspace}   %Tension complexe
+\newcommand{\uJ}[1][]   {\ensuremath{\underline{J}_{#1}}\xspace}   %Tension complexe
+\newcommand{\uU}[1][]   {\ensuremath{\underline{U}_{#1}}\xspace}   %Courant complexe
+\newcommand{\uZ}   {\ensuremath{\underline{Z}}\xspace}   %Impédance complexe
+\newcommand{\uV}[1]   {\ensuremath{\underline{V}_{#1}}\xspace}   %Tension Simple
+
+%\newcommand{\j} {\ensuremath{toto}} %j complexe
+ 
+% Raccourcis 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\Cem}   {\ensuremath{{C_{\text{em}}}}} % Couple électromagnétique
+\newcommand{\Cutile}   {\ensuremath{{C_{\text{u}}}}} % Puissance mécanique
+%\newcommand{\PCallig} {\ensuremath{P}}
+\newcommand{\Pabs}   {\ensuremath{\PCallig_{\text{a}}}} % Puissance active
+\newcommand{\Ptr}   {\ensuremath{\PCallig_{\text{tr}}}} % Puissance transrmise
+\newcommand{\Pjr}   {\ensuremath{\PCallig_{\text{jr}}}} % Pertes joules au rotor
+\newcommand{\Pm}   {\ensuremath{\PCallig_{\text{m}}}} % Puissance mécanique
+ 
+\newcommand{\Pu}   {\ensuremath{\PCallig_{\text{u}}}} % Puissance mécanique
+ 
 % Cotes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -249,7 +275,10 @@
 					\fill (0.75,0) circle (0.05);
 					\ifthenelse{\equal{#3}{}}
 						{}
-						{\node[anchor=south] at (0.5,0.25) {#3};}
+						{\node[anchor=south]
+
+    \end{definition}
+ at (0.5,0.25) {#3};}
 					\ifthenelse{\equal{#4}{}}
 						{}
 						{\draw[-triangle 45] (0.8,-0.25) -- (0.2,-0.25);

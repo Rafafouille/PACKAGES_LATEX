@@ -377,23 +377,23 @@
 
 	\newcounter{cptDemonstration}
 
-	\newenvironment{demonstration}[1][]	{	\stepcounter{cptDemonstration}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstration \thecptDemonstration\ : \emph{#1}}}
+	\newenvironmentx*{demonstration}[2][1=,2=]	{	\stepcounter{cptDemonstration}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant,#2]{Démonstration \thecptDemonstration\ : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
-	\newenvironment{demonstration*}[1][]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstration : \emph{#1}}}
+	\newenvironmentx*{demonstration*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant,#2]{Démonstration : \emph{#1}}}
 						{	\end{bclogo}
 						}
 
-	\newenvironment{demonstrations}[1][]	{	\stepcounter{cptDemonstration}
-							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstrations \thecptDemonstration\ : \emph{#1}}
+	\newenvironmentx*{demonstrations}[2][1=,2=]	{	\stepcounter{cptDemonstration}
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant,#2]{Démonstrations \thecptDemonstration\ : \emph{#1}}
 								\begin{itemize}}
 						{		\end{itemize}
 							\end{bclogo}
 						}
 
-	\newenvironment{demonstrations*}[1][]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant]{Démonstration : \emph{#1}}
+	\newenvironmentx{demonstrations*}[2][1=,2=]	{	\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_demo,couleurBord=bord_demo,arrondi=0.2,logo=\bcpanchant,#2]{Démonstration : \emph{#1}}
 								\begin{itemize}}
 						{		\end{itemize}
 							\end{bclogo}
@@ -706,6 +706,11 @@
 % EXERCICE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+	\definecolor{fond_exercice}{RGB}{250,250,250}
+	\definecolor{bord_exercice}{RGB}{0,0,0} 
+
+
 	\newcounter{cptExos}
 %	\newcommand*{\exercice}[1]		{\refstepcounter{cptExos}
 %						\section*{Exercice \thecptExos\ : #1}
@@ -729,13 +734,24 @@
 						\resetQuestions}
 						
                     
-	\newenvironment{exercice}[1][]		{%\refstepcounter{cptExos}
-						%\setcounter{subsection}{0}
-						%\section*{Exercice \thecptExos\ : #1}
-						%\resetQuestions
-						\sectionExercice{#1}}
-						{%\clearpage
-						\vspace{0.5cm}\hrule}
+% 	\newenvironment{exercice}[1][]		{%\refstepcounter{cptExos}
+% 						%\setcounter{subsection}{0}
+% 						%\section*{Exercice \thecptExos\ : #1}
+% 						%\resetQuestions
+% 						\sectionExercice{#1}}
+% 						{%\clearpage
+% 						\vspace{0.5cm}\hrule}
+						
+						
+    \newenvironmentx{exercice}[2][1=,2=]	{
+                            \refstepcounter{cptExos}
+                            \resetQuestions
+							\begin{bclogo}[margeG=\margesBoites,margeD=\margesBoites,couleur=fond_exercice,couleurBord=bord_exercice,arrondi=0.2,logo=\bcplume,#2]
+                            {Exercice \thecptExos\ : \emph{#1}}
+						}
+						{	\end{bclogo}
+						}
+
 						
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -761,7 +777,7 @@
 									\bareme{#1}
  								} 
  							{\textbf{\itshape #2}}
- 							\par\vspace{0.0cm}
+ 							\par%\vspace{-0.2cm}ss
 						}
 
 	\newenvironment{questions}[1][]		{	\itshape \vspace{0.3cm}
@@ -955,5 +971,162 @@
 \reversemarginpar
 \setlength{\marginparwidth}{0.7cm}
 \newcommand{\bareme}[1]{\ifthenelse{\boolean{afficheBareme}}{\marginpar{(/#1)}}{}}
+
+
+
+
+% CODAGE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code python
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{PY-fond}{rgb}{1,1,1}			%Couleur du fond
+\definecolor{PY-commentaires}{rgb}{0.5,0.5,0.5}	%Couleur des commentaires
+\definecolor{PY-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
+\definecolor{PY-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
+\definecolor{PY-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
+\definecolor{PY-self}{rgb}{0,0,0}		%je sais pas. J'ai recopié d'internet
+\definecolor{PY-numeros}{rgb}{0.7,0.7,0.7}		%numéros de ligne
+\definecolor{PY-chevrons}{rgb}{1,0.,0.}		%chevrons
+\definecolor{PY-ombre}{rgb}{0.,0.,0.}		%Ombre
+
+
+
+
+%\makeatletter
+%\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+%\makeatother
+
+\lstnewenvironment{Python}[1][0.975\linewidth]
+		{
+         \lstset{
+                upquote=true,
+                columns=flexible,
+                basicstyle=\ttfamily,
+                language=Python,
+                keywordstyle=\color{blue},
+                identifierstyle=\color{black},
+                commentstyle=\color{orange},
+            % *** titre
+                title={\hspace{-2.2em}\color{black}\raggedright \hspace{1cm} Code Python :},
+                belowcaptionskip=0.5em, 
+                abovecaptionskip=-0.0em,
+                nolol=true,
+            % *** style
+                frame=leftline,%
+                framerule=3pt,%
+                rulecolor=\color{black!20},%
+                framesep=2em,%
+                xleftmargin=2em,%
+            %Numeros de ligne
+				numbers=left,	%Rajoute des numéros de ligne
+				numberstyle=\footnotesize\color{black!20},	%Taille des numéros de ligne
+				numbersep=1em,			%Marge entre le code et les numéros de ligne
+            % code
+                showstringspaces=false,
+                texcl=True,% to activate teX code
+            literate=%
+                {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+                {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+                {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+                {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+                {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+                {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+                {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+                {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+                {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+                {?}{{\H{u}}}1 {?}{{\H{U}}}1 {?}{{\H{o}}}1 {?}{{\H{O}}}1
+                {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+                {€}{{\EUR}}1 {£}{{\pounds}}1
+                {°}{{\degres{}}}1
+            }
+			%\minipage{#1}
+		}
+		{	%\endminipage%
+		}
+		%\BeforeBeginEnvironment{codePython}{\par\noindent}
+		%\AfterEndEnvironment{codePython}{\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code Pseudo Code
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{PSD-fond}{rgb}{0.9,1,0.9}			%Couleur du fond
+\definecolor{PSD-commentaires}{rgb}{0.5,0.5,0.5}	%Couleur des commentaires
+\definecolor{PSD-chaines}{rgb}{0,0.63,0}		%Couleur des chaines de caracteres
+\definecolor{PSD-fonctions}{rgb}{0,0,1}		%Couleur des fonctions de bases
+\definecolor{PSD-decoration}{rgb}{0.5,0.5,0.5}		%Couleur des fonctions autre (??)
+\definecolor{PSD-self}{rgb}{0,0,0}		%je sais pas. J'ai recopiÃ© d'internet
+\definecolor{PSD-numeros}{rgb}{0.6,0.6,0.6}		%numÃ©ros de ligne
+\definecolor{PSD-chevrons}{rgb}{1,0.,0.}		%chevrons
+\definecolor{PSD-ombre}{rgb}{0.5,0.5,0.5}		%Ombre
+\lstnewenvironment{pseudoCode}[1][\linewidth]
+		{
+		\lstset{
+			%Langage
+				%language=Python,	%Langage par défaut
+			%Mise en forme de l'environnement
+				xleftmargin=2em,	%marge a gauche
+				%frame=trBL,		%Cadre (double cadre)
+				backgroundcolor=\color{PSD-fond},	%Couleur d'arriere plan
+				framexleftmargin=5mm,
+				%frame=shadowbox,
+				rulesepcolor=\color{PSD-ombre},
+				texcl=true,	%Activle les commandes LaTex dans le code
+				mathescape=true,	
+				%escapechar=ø,	%Caractere a echapper
+				escapeinside={(*}{*)},
+				linewidth=#1,	%taille d'une ligne
+			%Titre
+				title={\hspace{-2.2em}\color{black}\raggedright \hspace{1cm} Pseudo-code :},
+				belowcaptionskip=-0.em,
+				abovecaptionskip=-0.0em,
+				nolol=true,
+				%title={Pseudo-code}
+			%Numeros de ligne
+				numbers=left,	%Rajoute des numéros de ligne
+				numberstyle=\footnotesize\color{PSD-numeros},	%Taille des numéros de ligne
+				numbersep=1em,			%Marge entre le code et les numéros de ligne
+			%Mise en forme du texte
+				columns=fixed,		%Largeur des lettres (fixed, flexible, fullflexible)
+				basicstyle=\ttfamily\footnotesize,	%Mise en forme de base
+				showspaces=false,	%Pour mettre des especes d'underscore sur les espaces
+				tabsize=4,	%Taille des tabulations	
+			%Commentaires
+				commentstyle=\color{PSD-commentaires}\slshape,	%Couleur des commentaires
+			%Chaine de caracteres
+				stringstyle=\color{PSD-chaines},
+				showstringspaces=false,
+				morecomment=[s][\color{PSD-chaines}]{"""}{"""},
+				morecomment=[s][\color{PSD-chaines}]{'''}{'''},
+				comment=[l]{\#},
+			%Fonctions et mot clé de python
+				morekeywords=[1]{Pour,POUR,pour,allant,Allant,ALLANT,de,DE,De,jusqu,JUSQU,Jusqu,à,À,FIN,Fin,fin,Effectuer,EFFECTUER,effectuer,si,Si,SI,faire,et,Et,ET,ou,Ou,OU,FAIRE,Faire,alors,Alors,ALORS,sinon,Sinon,SINON,fonction,Fonction,FONCTION,retourner,Retourner,RETOURNER,afficher,Afficher,AFFICHER,concaténer,concatener,Concaténer,Concatener,CONCATÉNER,CONCATENER,nouveau,Nouveau,NOUVEAU,declarer,Declarer,DECLARER,déclarer,Déclarer,DÉCLARER,repeter,répéter,Repeter,Répéter,RÉPÉTER,finsi,Finsi,FinSi,FINSI,finpour,Finpour,FinPour,FINPOUR,debut,Debut,DEBUT,début,Début,DÉBUT,ouvrir,Ouvrir,OUVRIR,fermer,Fermer,FERMER,lire,Lire,LIRE,calculer,Calculer,CALCULER},
+				keywordstyle=[1]*\color{PSD-fonctions}\bfseries,
+				emph={self},
+				emphstyle={\color{PSD-self}\slshape}
+				%
+            literate=%
+                {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+                {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+                {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+                {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+                {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+                {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+                {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+                {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+                {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+                {?}{{\H{u}}}1 {?}{{\H{U}}}1 {?}{{\H{o}}}1 {?}{{\H{O}}}1
+                {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+                {€}{{\EUR}}1 {£}{{\pounds}}1
+                {°}{{\degres{}}}1
+			}
+			\minipage{#1}
+		}
+		{	\endminipage
+		}
+		\BeforeBeginEnvironment{pseudoCode}{\par\noindent}
+		\AfterEndEnvironment{pseudoCode}{\par}
 
 \endinput

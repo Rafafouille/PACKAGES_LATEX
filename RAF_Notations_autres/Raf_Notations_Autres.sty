@@ -69,7 +69,8 @@
 % DESSIN
 % ==============================
 
-\newcommand*{\fig}[1]		{(fig.\ref{#1})}
+\newcommand*{\fig}[1]		{(\textbf{fig.\ref{#1}})}
+\newcommand*{\Figure}[1]		{\textbf{Figure \ref{#1}}}
 \newcommand{\cheminGraphics}{./sources/images/}
 \newcommandx*{\graphicPDF}[4][1=\linewidth,2=\cheminGraphics,4=.pdf_tex]{\def\svgwidth{#1}\input{#2/#3#4}}
 

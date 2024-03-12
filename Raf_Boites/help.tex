@@ -1,8 +1,10 @@
 \documentclass[a4paper,12pt]{article}
 
 	\usepackage{xcolor}
-	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc} 
+	%\usepackage{listings}
+	\usepackage{listingsutf8}
+	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
+	%\usepackage[utf8]{inputenc}
 	\usepackage{titlesec}
 	\usepackage{hyperref}
 		\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=red,urlcolor=blue}
@@ -40,7 +42,7 @@
 
 		Pour fonctionner, ce package nécessite les packages suivants :
 		\begin{itemize}
-			\item \href{http://melusine.eu.org/syracuse/G/bclogo/dev/latex/}{\textbf{bclogo}} : pour faire de jolies boîtes (ce package appelle Tikz). Attention ! Il s'agit de la version 3 du package ! À l'heure où j'écris ce document, elle n'est pas officielle et est téléchargeable sur le site du projet (à installer manuellement).
+			\item \href{http://melusine.eu.org/syracuse/G/bclogo/dev/latex/}{\textbf{bclogo}} : pour faire de jolies boîtes (ce package appelle Tikz). %Attention ! Il s'agit de la version 3 du package ! À l'heure où j'écris ce document, elle n'est pas officielle et est téléchargeable sur le site du projet (à installer manuellement).
 			\item \href{http://ctan.org/pkg/graphicx}{\textbf{graphicx}} : Permet notamment de faire des logos personnalisés
 			\item \href{http://www.ctan.org/tex-archive/macros/latex/contrib/xcolor}{\textbf{xcolor}} : Permet la gestion des couleurs.
 			\item \href{http://www.ctan.org/tex-archive/macros/latex/contrib/xargs}{\textbf{xargs}} : Permet de faire des commandes avec plusieurs arguments optionnels.
@@ -62,7 +64,7 @@
 \begin{code}%==========================================
 \begin{astuce}[Titre (optionnel)]
 	Trucs et astuces
-\end{astuce}
+\end{astuce}listingsutf8
 \end{code}
 
 \begin{astuce}[Titre (optionnel)]
@@ -1061,7 +1063,16 @@ Pour afficher à nouveau le texte :
 \question{Compteur de question remis à zéro}
 
 
+\begin{code}%==========================================
+%\ begin{exerice}{un probleme}
+Enonce du probleme...
+%\ end{exerice}
+\end{code}
 
+\begin{exercice}{un probleme}
+Enonce du probleme...
+\question{Une question qui repart à Q1}
+\end{exercice}
 
 
 
@@ -1072,7 +1083,7 @@ Pour afficher à nouveau le texte :
 %==========================
 
 
-\begin{code}%==========================================
+\begin{code}%=============\ =============================
 \begin{docReponse}
 Ceci est un document réponse qui change
 de page et change sa numérotation seul.

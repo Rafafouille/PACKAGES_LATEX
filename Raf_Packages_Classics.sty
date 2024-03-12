@@ -2,13 +2,13 @@
 \ProvidesPackage{Raf_Packages_Classics}[2012/06/13]
 
 
-	
+\RequirePackage{extsizes}		% Permet de faire du texte avec un police plus petite ou plus grande que 10, 11,12
 %\RequirePackage[latin1]{inputenc} 		%Caracteres francais
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc} 		%Caracteres francais
+\RequirePackage[T1]{fontenc} 		%Caracteres francais fonctionné a un moment et produisait une erreur
 \RequirePackage[francais]{babel}		%On ecrit en francais
 \RequirePackage{graphicx}			%Pour les images
-\RequirePackage[top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}%Marges etc...
+\RequirePackage[top=2.5cm, bottom=2.5cm, left=1.5cm, right=1cm,  twoside]{geometry}%Marges etc...
 \RequirePackage{fancybox}			%Des boites
 \RequirePackage[tikz]{bclogo}		%Pour faire des boites avec logo (remarques, etc...)
 \RequirePackage{xcolor}			%Pour définir les couleurs
@@ -32,6 +32,7 @@
 	\usetikzlibrary{calc}		%Pour faire des calculs dans les coordonnées notamment
 	\usetikzlibrary{arrows}		%Pour avoir des flèche de 'contenance' de SysML...
 	\usetikzlibrary{babel}		%Pour inclure la typo française, sinon, ça bug parfois...
+\RequirePackage{pstricks}
 \RequirePackage{pgfplots}			%Pour faire des dessins (bis) (voir --> http://bertrandmasson.free.fr/index.php?article28/comment-faire-de-beaux-graphiques-avec-tikz-et-pgfplots)
 \RequirePackage{enumerate}			%Pour personnaliser les listes ``enumerate''
 \RequirePackage{enumitem}			%Pour personnaliser les listes
@@ -60,8 +61,12 @@
 \RequirePackage{pdfpages}       %Pour insérer des PDF
 \RequirePackage{cancel}         %Pour barrer en mathématiques
 \RequirePackage{multido}        %Pour faire des boucles
+%\RequirePackage{sfmath}		% Pour faire les maths en police "sans serif" NON !!!! PAUSE UN CONFLIT AVEC LES NOTATIONS DES TENSEURS EN MMC... est placé dans le package ``Raf_Style à la place''
 \ProcessOptions
  
 %commandes et/ou environnements personnalisés
+
+
+
  
 \endinput

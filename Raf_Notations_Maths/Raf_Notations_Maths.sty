@@ -19,7 +19,7 @@
 \RequirePackage{xstring}	%Pour faire des remplacements de chaines
 \RequirePackage{bm}     %Pour mettre les maths en gras
 
-%Initialisation des booleens 
+%Initialisation des booleens
 \newboolean{boolRaccourcisMaths}%création du booléen
 \setboolean{boolRaccourcisMaths}{true}%affectation de la valeur false
 
@@ -33,7 +33,7 @@
 %%%Une commande juste pour moi :
 \newcommand*{\RafMathRac}[1]{\ifthenelse{\boolean{boolRaccourcisMaths}}{#1}{}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %commandes et/ou environnements personnalisés
 
 
@@ -72,7 +72,7 @@
 \newcommand{\iComplexe}		{\ensuremath{\text{\textbf{\emph{i}}}}}	%Nombre complexe, initialement un e dans le a (un symbole bizarre)
 \if@RafNotMathRac
 \renewcommand{\j}	\jComplexe	%Nombre complexe, initialement un e dans le a (un symbole bizarre)
-%\renewcommand{\i}	\iComplexe	%Nombre complexe, initialement un e dans le a (un symbole bizarre)
+\newcommand{\ii}	\iComplexe	%Nombre complexe, initialement un e dans le a (un symbole bizarre)
 \fi
 
 
@@ -114,7 +114,7 @@
 \fi
 
 %Derivees / Calculs différentiels
-\newcommandx*{\derivee}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\mathrm{d}^{#1}{#2}}{\mathrm{d}{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{{#4}}}}}
+\newcommandx*{\derivee}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\text{{\normalfont d}}^{#1}{#2}}{\text{{\normalfont d}}{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{{#4}}}}}
 	\newcommand*{\deriv}		{\derivee}
 %\newcommandx*{\deriv}[4][1=,4=]	{\derivee[#1]{#2}{#3}[#4]}
 \newcommandx*{\deriveePartielle}[4][1=,4=]	{\ensuremath{\ifthenelse{\equal{#4}{}}{\left.}{\left[}\frac{\partial^{#1}{#2}}{\partial{#3}^{#1}}\ifthenelse{\equal{#4}{}}{\right.}{\right]_{#4}}}}
@@ -144,13 +144,16 @@
 	\newcommand*{\dS}[1][]	{\dDroit{S_{#1}}}
 	\newcommand*{\dV}[1][]	{\dDroit{V_{#1}}}
 	\newcommand*{\dl}[1][]	{\dDroit{l_{#1}}}
+	\newcommand*{\dt}[1][]	{\dDroit{t_{#1}}}
 \fi
 
 
 % ENSEMBLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if@RafNotMathRac
-\newcommand*{\R}		{\ensuremath{\mathbb{R}}}
+\newcommand*{\RR}		{\ensuremath{\mathbb{R}}}
+\newcommand*{\R}		{\RR}
+\newcommand*{\NN}		{\ensuremath{\mathbb{N}}}
 \newcommand*{\couple}[2]	{\ensuremath{\left(#1,#2\right)}}	%Couple (ex : (U,V) )
 \fi
 \newcommand*{\triplet}[3]	{\ensuremath{\left(#1,#2,#3\right)}}	%Triplet (ex : (U,V,W) )
@@ -179,7 +182,7 @@
 				\node[anchor=east] at (0,#5) {#6};%
 				}
 
-				
+
 
 
 
@@ -191,7 +194,7 @@
 \newcommandx*{\vecteur}[2][2=]	{\ensuremath{\protect\overrightarrow{{#1}_{#2}}}\xspace}	%Fait un vecteur
 
 \newcommand{\vecteurIndice}[2]	{\vecteur{#1}[#2]} %Identique à vecteur, sauf que l'indice est obligatoire - Fait un vecteur avec un indice (x1, y1...), ou un vecteur simple si indice = espace
-\newcommand{\vInd}[2]		{\vecteurIndice{#1}{#2}} %Raccourci de vecteur Indice	
+\newcommand{\vInd}[2]		{\vecteurIndice{#1}{#2}} %Raccourci de vecteur Indice
 
 \newcommand*{\vecteurChamp}[2]	{\ifthenelse{\equal{#2}{}}{\vecteur{#1}}{\fonction{\vecteur{#1}}{#2}}}
 \newcommand*{\vChamp}[2]	{\vecteurChamp{#1}{#2}}
@@ -229,7 +232,7 @@
 
 %Repère
 %-------------------------
-\newcommand*{\repere}[4]	{\quadruplet{#1}{#2}{#3}{#4}}	
+\newcommand*{\repere}[4]	{\quadruplet{#1}{#2}{#3}{#4}}
 \if@RafNotMathRac
 \newcommand*{\rR}[1]		{\ensuremath{R_{#1}}}	%Symbole d'une base
 \fi
@@ -346,7 +349,7 @@
 
 
 
-				
+
 %=======================================================
 % Pour encadrer des lignes dans \begin{align}\end{align}
 %=======================================================

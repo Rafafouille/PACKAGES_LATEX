@@ -26,7 +26,9 @@
 %Torseur
 %=================================================
 
-\newcommand*{\torseurActionsMeca}[3][]	{\ensuremath{\torseur{\TCallig^{#1}_{\left({#2}\rightarrow{#3}\right)}}}}
+\newcommand{\FCallig}	{\mathscr{F}}
+
+\newcommandx*{\torseurActionsMeca}[4][1=,4=noBraket]	{\ensuremath{\torseur[#4]{\TCallig^{#1}_{\left({#2}\rightarrow{#3}\right)}}}}
 \newcommand*{\tActionsMeca}[3][]	{\torseurActionsMeca[#1]{#2}{#3}}
 \if@RafNotAMRac
 \newcommand*{\tAM}[3][]		{\torseurActionsMeca[#1]{#2}{#3}}
@@ -70,6 +72,9 @@
 % \newcommand{\momentForce}[3]		{\moment[#2\rightarrow#3]{#1}}
 \newcommand*{\momentRoulement}[3]	{\ensuremath{	\vecteur{{\Mom^r_{#1}}_{\left(#2\rightarrow#3\right)}}	}}
 \newcommand*{\momentPivotement}[3]	{\ensuremath{	\vecteur{{\Mom^p_{#1}}_{\left(#2\rightarrow#3\right)}}	}}
+
+\newcommand*{\Cres}{\ensuremath{C_{\text{res}}}}
+\newcommand*{\Cm}{\ensuremath{C_{\text{m}}}}
 % 
 % 
 % %Vecteurs contrainte/pression

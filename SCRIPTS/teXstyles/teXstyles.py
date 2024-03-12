@@ -42,7 +42,7 @@ by the terms the GNU General Public License version 3 or above."""
 #
 data = {
     "teXstylesPATH":"/media/Placard/Boulot/LaTex/PACKAGES_RAF/SCRIPTS/teXstyles/",
-    "author":"Virgile Lacharnay",
+    "author":"Raphaël ALLAIS",
     "matiere":"Sciences industrielles de l'ingénieur en PTSI",
     "prefix":"SII",
     "URL":"http://ptsi.geiffel.free.fr/sii/ptsi2/",
@@ -410,6 +410,7 @@ def MakeTeX(data):
             "    pdfauthor={"+data['author']+"},%\n"+\
             "    pdfsubject={"+data['matiere']+"},%\n"+\
             "}")
+    c.append("\\usepackage{import}%\n")
     c.append("\\begin{document}")
     
     # date automatique pour les présentations
@@ -530,6 +531,7 @@ def pdf_compose(infile, mode, outfile=None, paper="a4paper", landscape=False):
     c.append("\\usepackage[utf8]{inputenc}")
     c.append("\\usepackage{hyperref}")
     c.append("\\usepackage{pdfpages}")
+    c.append("\\usepackage{import}")
     if mode=="booklet":
         c.append("\\usepackage{everyshi}")
         c.append("\\makeatletter")

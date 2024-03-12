@@ -3,7 +3,7 @@
 	\usepackage[french]{babel}
 	\usepackage{xcolor}
 	\usepackage{listings}	\lstset{language=[LaTeX]TeX,basicstyle=\ttfamily,texcsstyle=*\color{blue},identifierstyle=\color{brown},commentstyle=\color{gray}\itshape,escapechar=!,moretexcs={}}
-	\usepackage[latin1]{inputenc}
+	%\usepackage[latin1]{inputenc}
 	\usepackage{hyperref}
 	
 
@@ -182,7 +182,9 @@ usepackage[noRaccourci]{Raf_Notations_Autres}
 			\hline
 				\textbf{Commandes}&\textbf{Rendus}&\textbf{Commentaires}
 			\\\hline\hline
-				\verb!\fig{REF}!	&\fig{REF} 	&	raccourci de \verb!(fig \ref{REF})!
+				\verb!\fig{REF}!	&\fig{REF} 	&	raccourci de \verb!(\textbf{fig \ref{REF}})!
+			\\\hline
+				\verb!\Figure{REF}!	&\Figure{REF} 	&	raccourci de \verb!\textbf{Figure \ref{REF}}!
 			\\\hline
 				\verb!\cheminGraphics!	& \cheminGraphics	&	Chemin par défaut vers les figures tex\_pdf
 			\\\hline

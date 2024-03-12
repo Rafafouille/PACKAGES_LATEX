@@ -12,7 +12,7 @@
 \RequirePackage[T1]{fontenc} 		%Caracteres francais
 \RequirePackage[francais]{babel}		%On ecrit en francais
 \RequirePackage{graphicx}			%Pour les images
-\RequirePackage[top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}%Marges etc...
+\RequirePackage{geometry}%[top=2.5cm, bottom=2.5cm, left=1cm, right=1cm]{geometry}%Marges etc...
 \RequirePackage{fancybox}			%Des boites
 \RequirePackage[tikz]{bclogo}		%Pour faire des boites avec logo (remarques, etc...)
 \RequirePackage{xcolor}			%Pour définir les couleurs
@@ -52,7 +52,7 @@
 \RequirePackage{etoolbox}		%Permet notamment de tester si une commande existe avec \ifdef
 \RequirePackage{setspace}		%Permet de régler les interlignes
 \RequirePackage{listings}		%Pour faire du code
-\RequirePackage[francais,bloc,completemulti]{automultiplechoice}
+\RequirePackage[francais,bloc,completemulti,nowatermark]{automultiplechoice}
 
 
 
@@ -92,6 +92,15 @@
 %commandes et/ou environnements personnalisés
 
 
+
+
+% STYLE
+
+\geometry{hmargin=2cm,headheight=2cm,headsep=.3cm,footskip=1cm,top=3.5cm,bottom=2.5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newcommand{\pointsBonnesRepSimple}	{1}	%En cas de bonne réponse
 \newcommand{\pointsMauvaisesRepSimple}	{-0.5}	%En cas de mauvaise réponse
 \newcommand{\pointsNoRepSimple}		{0}	%En cas de pas de réponse.
@@ -109,7 +118,9 @@
 % Alors on met les points NoReponse
 % Sinon, on met les points Bonne réponse
 
-\newcommand*{\nombreCopies}{35}
+
+	\newcommand*    {\nombreExemplaires}  {38}
+	\newcommand*{\nombreCopies}{\nombreExemplaires}
 
 
 \newcommand*{\makeEnteteQCM} {
